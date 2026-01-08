@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verchas Academy – NEET & IIT-JEE Coaching</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  font-size:1.25em;
+  margin:0;
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:#f0f0f0;
+}
+.site-container{
+  max-width:1200px;
+  margin:10px auto;
+  border:8px solid #2e7d32;
+  border-radius:15px;
+  background:#e0e0e0;
+  box-shadow:0 6px 20px rgba(0,0,0,.2);
+  overflow:hidden;
+}
+
+/* HEADER */
+header{
+  background:#6ec1ff;
+  color:#fff;
+  padding:30px 20px;
+}
+.header-content{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:25px;
+  text-align:left;
+}
+.header-content img{
+  height:168px; /* Change 4 */
+}
+.header-text h1{
+  margin:0;
+  font-size:3.875em; /* Change 4 */
+  letter-spacing:1px;
+  text-align:center;
+}
+.header-text p{
+  margin-top:6px;
+  font-size:1.15em;
+  text-align:center;
+}
+
+/* NAV BAR */
+nav{
+  background:#ffcc00;
+  padding:12px;
+}
+.nav-links{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+}
+.nav-links a{
+  text-decoration:none;
+  color:#004aad;
+  font-weight:bold;
+  font-size:1.05em;
+}
+.nav-links .cta{
+  background:#004aad;
+  color:#fff;
+  padding:8px 22px;
+  border-radius:6px;
+}
+
+/* HERO */
+.hero{position:relative;}
+.hero img{
+  width:100%;
+  display:block;
+  filter: brightness(1.25) contrast(1.05);
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding-top:10px;
+}
+.hero-content{
+  max-width:900px;
+  color:#fff;
+  text-align:center;
+}
+.hero-content h1{
+  font-size:2.75em;
+  margin-bottom:6px;
+  margin-top:-15px;   /* 🔑 moves ONLY the text UP */
+}
+.hero-content p{
+  white-space:nowrap;
+
+  font-size:1.2em;
+}
+
+/* SECTIONS – compact spacing (Change 3) */
+section { padding: 20px 45px;
+}
+section h2{
+  margin-top:0;
+}
+p{
+  text-align:justify;
+  line-height:1.6;
+}
+
+/* COURSES – single line (Change 1) */
+.courses{
+  display:flex;
+  gap:18px;
+  justify-content:space-between;
+}
+.course-card{
+  width:23%;
+  border:2px solid #004aad;
+  border-radius:14px;
+  padding:18px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+.course-card h3{
+  color:#004aad;
+  margin-top:0;
+}
+
+/* FEATURES */
+.features ul{
+  padding-left:20px;
+  margin-top:5px;
+}
+.features li{
+  margin:6px 0;
+}
+
+/* FOUNDERS */
+.founder-cards{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+}
+.founder{
+  flex:1;
+  min-width:280px;
+}
+.founder img{
+  width:180px;
+  display:block;
+  margin:0 auto;
+  border-radius:10px;
+}
+.founder h4{
+  text-align:center;
+  color:#004aad;
+  margin-top:6px;     /* 🔑 reduced space from photo */
+  margin-bottom:4px;  /* 🔑 tighter gap to qualifications */
+}
+.founder-description{
+  text-align:justify;
+  font-size:.95em;
+}
+
+.founder-qualification{
+  text-align:center;
+  font-size:0.95em;
+  line-height:1.3;        /* slightly tighter */
+  margin:2px 0 14px 0;    /* 🔑 reduced top gap */
+  color:#1e5aa8;
+  font-weight:600;
+  min-height:110px;       /* keep alignment intact */
+}
+
+/* QUOTE */
+.quote{
+  background:linear-gradient(90deg,#ffcc00,#ff9900);
+  padding:35px;
+  text-align:center;
+  font-size:1.35em;
+  font-style:italic;
+}
+
+/* CONTACT */
+.contact-btn{
+  text-align:center;
+  margin-top:15px;
+}
+.contact-btn a{
+  background:#ffcc00;
+  color:#004aad;
+  padding:12px 35px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+  background:#222;
+  color:#fff;
+  text-align:center;
+  padding:22px;
+}
+footer p{margin:5px 0}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .courses{flex-wrap:wrap}
+  .course-card{width:48%}
+}
+@media(max-width:600px){
+  .course-card{width:100%}
+  .header-content{flex-direction:column;text-align:center}
+  .header-text h1{font-size:2.775em}
+}
+
+/* Watermark background for main content */
+.watermark-section{
+  position: relative;
+  background:#e0e0e0;
+}
+.watermark-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('verchas-logo.png') no-repeat center center;
+  background-size:80%;
+  opacity:0.10;
+  pointer-events:none;
+}
+.watermark-section > *{
+  position:relative;
+}
+
+
+/* Center align main content sections */
+#about, #courses, .features, .founder-cards {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Proper horizontal centering of sections (heading + content) */
+.section-center{
+  max-width:1000px;
+  margin:0 auto;
+}
+
+
+/* Center section headings */
+.section-center > h2{
+  text-align:center;
+}
+
+
+/* Salient Features list aligned under centered heading */
+.features .section-center ul{
+  margin-top:20px;
+  padding-left:20px;
+}
+
+
+/* Center-align text inside course boxes */
+.course-card p{
+  text-align:center;
+}
+
+
+/* Subtle premium animations for course boxes */
+.course-card{
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+}
+.course-card:hover{
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+  background-color:#f7f9fc;
+}
+
+
+/* Force center alignment for footer text */
+footer, footer p{
+  text-align: center !important;
+}
+
+
+/* Nav buttons style */
+nav a{
+  nav a{
+  padding:14px 30px;   /* 🔑 THIS increases breadth */
+  border-radius:10px;  /* slightly smoother */
+  background:#77c5ff;
+  color:#ffffff !important;
+}
+
+nav a:hover{
+  background:#003f8a;
+}
+
+
+/* Use consistent sky-blue across header and nav buttons */
+:root{
+  --sky-blue:#77c5ff;
+}
+
+header{
+  background: var(--sky-blue) !important;
+}
+
+nav a{
+  background: var(--sky-blue) !important;
+  color:#ffffff !important;
+}
+nav a:hover{
+  filter: brightness(0.9);
+}
+
+
+/* Enroll Now dropdown */
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+/* ===== FIXED ENROLL NOW DROPDOWN ===== */
+
+.dropdown-content{
+  display: none;
+  position: absolute;
+  top: 120%;
+  right: 0;
+
+  background: #ffffff;
+  color: #000;
+  padding: 14px 26px;        /* 🔑 extra horizontal padding */
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+  min-width: 360px;          /* 🔑 force box wider than text */
+  max-width: 360px;
+  box-sizing: border-box;    /* 🔑 include padding in width */
+
+  white-space: normal;       /* allow wrapping if needed */
+  text-align: center;
+  line-height: 1.4;
+  z-index: 9999;
+  font-size: 0.95em;
+}
+}
+
+
+/* Enroll Now dropdown */
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content{
+  display: none !important;
+}
+
+.dropdown{
+  pointer-events: none;
+}
+
+.dropdown .cta{
+  pointer-events: auto;
+}
+/* ===== Scholarship Result Flash Link ===== */
+.result-link {
+  display: inline-block;
+  background: #ffcc00;
+  color: #004aad;
+  font-weight: bold;
+  padding: 10px 22px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  text-decoration: none;
+  animation: flash 1.2s infinite;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.35; }
+  100% { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+<div class="site-container">
+
+<header>
+  <div class="header-content">
+    <img src="verchas-logo.png" alt="Verchas Academy Logo">
+    <div class="header-text">
+      <h1>Verchas Academy</h1>
+      <p>Your Gateway to NEET & IIT-JEE Success</p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-links">
+    <a href="#about">About Us</a>
+    <a href="#courses">Our Courses</a>
+    <a href="#contact">Contact Us</a>
+    <a href="#founders">Know the Founders</a>
+    <a href="#hods">Our HODs</a>
+    <a href="registration.html" class="cta">Enroll Now</a>
+  </div>
+</nav>
+<div class="hero">
+  <img src="webpic1.png" alt="Hero Image">
+  <div class="hero-overlay">
+    <div class="hero-content">
+
+  <a href="Adarsh Result.pdf" target="_blank" class="result-link">
+    Scholarship Test Result: Adarsh Inter College
+  </a>
+
+  <h1>Igniting Minds, Shaping Futures</h1>
+
+</div>
+  </div>
+</div>
+
+<div class="watermark-section">
+<section id="about"><div class="section-center">
+<h2>About Us</h2>
+<p>
+Founded & Mentored by Dr. Ambrish, Mr. Nikhil & Mr. Satish, VERCHAS ACADEMY is a premier institute for Board & Competitive Exam preparation. Inspired by the academic culture of Banaras Hindu University and discipline, dedication & sacrifice of Indian Air Force. We deliver metropolitan-level academic excellence. Concept-driven, result-oriented coaching for NEET-UG & IIT-JEE aspirants, focusing on fundamentals, consistent practice & scientific learning methods.
+</p>
+</div></section>
+
+<section id="courses"><div class="section-center">
+<h2>Our Courses</h2>
+<div class="courses">
+  <div class="course-card"><h3>NEET Preparation</h3><p>Complete medical entrance coaching with tests and mentorship.</p></div>
+  <div class="course-card"><h3>IIT-JEE Coaching</h3><p>Advanced problem-solving with strong conceptual foundation.</p></div>
+  <div class="course-card"><h3>Foundation<br><span style="font-size:0.95em;">(11th–12th)</span></h3><p>Board + competitive exam integrated preparation.</p></div>
+  <div class="course-card"><h3>Pre-Foundation (9th–10th)</h3><p>Early foundation and Olympiad orientation.</p></div>
+</div>
+</div></section>
+
+<section class="features"><div class="section-center">
+<h2>Salient Features</h2>
+<ul>
+<li>Founded and Run by Ex-Air Force, Doctors & Engineers.</li>
+<li>Most experienced faculty comprising of Doctors, Engineers & PhD.</li>
+<li>Most advanced and modern infrastructure of Ayodhya.</li>
+<li>Concept-Oriented Classroom Teaching.</li>
+<li>Discipline-Focused Academic Environment.</li>
+<li>Regular Tests & Performance Analysis.</li>
+<li>Separate Doubt Sessions & Personal Mentorship.</li>
+<li>Limited Batch Size for Individual Attention.</li>
+</ul>
+</div></section>
+
+<section id="founders">
+<div class="section-center">
+<h2>Know the Founders</h2>
+<div class="founder-cards">
+
+<div class="founder">
+    <img src="founder1.png">
+    <h4>Dr. Ambrish Sir</h4>
+    <p class="founder-qualification">
+      MD (Ay), Gold Medalist<br>
+      Former Junior Resident Doctor<br>
+      IMS, BHU<br>
+      (7+ years of Teaching Experience)
+    </p>
+    <div class="founder-description">
+      Dr. Ambrish Sir is the proud recipient of 8 Gold Medals from the Institute of Medical Sciences, Banaras Hindu University, reflecting his academic brilliance and dedication to excellence. He has served as a Junior Resident Doctor at IMS BHU, gaining invaluable clinical and academic exposure. With over 7 years of teaching experience, he has mentored countless aspirants and under his mentorship many students have secured MBBS & other professional courses in government medical colleges across India.
+    </div>
+  </div>
+
+  
+
+<div class="founder">
+    <img src="founder3.png">
+    <h4>Mr. Satish Sir</h4>
+    <p class="founder-qualification">
+      Ex. Indian Air Force<br>
+      MA (English),
+      BSc (Mathematics)<br>
+      Dip. in Electronics<br>
+      Cyber Security (NIELIT)
+    </p>
+    <div class="founder-description">
+      Mr. Satish Sir devoted 20 years of distinguished service to the Armed Forces. During his journey in the Indian Air Force, he closely observed diverse education policies and teaching methods across India, gaining deep insight into what truly shapes successful learners. Drawing from this vast experience, he brings a powerful vision of instilling military-grade discipline, resilience, and dedication in students. His guidance ensures that learners not only achieve academic excellence but also develop the mindset of warriors, prepared to face challenges, overcome obstacles, and succeed in every sphere of life.
+    </div>
+  </div>
+
+
+<div class="founder">
+    <img src="founder2.png">
+    <h4>Mr. Nikhil Sir</h4>
+    <p class="founder-qualification">
+      MSc (Chemistry) AU<br>
+      (4+ Years of Teaching Experience)<br>
+      Former Faculty at Prayagraj
+    </p>
+    <div class="founder-description">
+      Mr. Nikhil Sir brings with him a vast experience of teaching and mentoring students, shaping their academic journeys with clarity and confidence. Having faced challenges during his own school days where proper guidance and structured support were lacking, he now envisions providing every student with the essential guidelines and mentorship. His mission is to ensure that learners never feel directionless, but instead receive the right strategies and conceptual clarity to excel in their chosen fields.
+    </div>
+  </div>
+
+  
+</div></div>
+</section>
+
+<section id="hods">
+  <div class="section-center">
+    <h2>Our Head of Departments</h2>
+
+    <div class="hod-flex">
+  <img src="HOD1.png" alt="HOD 1">
+  <img src="HOD2.png" alt="HOD 2">
+  <img src="HOD3.png" alt="HOD 3">
+  <img src="HOD4.png" alt="HOD 4">
+  <img src="HOD5.png" alt="HOD 5">
+  <img src="HOD6.png" alt="HOD 6">
+</div>
+
+    <p class="hod-description">
+      Our commitment is to always provide our students with the best and most experienced faculty.
+      To ensure this, the quality of teaching and faculty performance is regularly reviewed.
+      Feedback is taken not only from students but parents and guardians are also always welcome
+      to visit the academy and experience the live classroom teaching environment firsthand.
+      In addition, teachers undergo a monthly evaluation conducted by our expert academic panel
+      from Kota, Delhi, and Lucknow, ensuring that teaching standards remain consistently high
+      and up to national benchmarks.
+    </p>
+  </div>
+</section>
+
+<style>
+/* ===== HOD FLEX LAYOUT (4 + 2) ===== */
+
+.hod-flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 26px;
+  margin: 35px auto 25px auto;
+  max-width: 1200px;
+}
+
+.hod-flex img{
+  width: 22%;          /* 4 in first row */
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+  height: auto;
+}
+
+/* Tablet */
+@media (max-width: 900px){
+  .hod-flex img{
+    width: 45%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px){
+  .hod-flex img{
+    width: 45%;   /* 🔑 2 images per row */
+  
+  }
+}
+
+.hod-description{
+  text-align: justify;    /* ✅ justified text */
+  font-size: 1.05em;
+  line-height: 1.65;
+  color: #333;
+  margin-top: 10px;
+}
+
+/* Mobile optimization */
+@media (max-width: 600px){
+  .hod-image-wrapper img{
+    max-height: 320px;
+  }
+}
+/* 🔑 Allow dropdown to show fully */
+.site-container{
+  overflow: hidden;   /* keeps border intact */
+}
+
+nav{
+  overflow: visible;  /* dropdowns / buttons can overflow */
+}
+
+}
+/* ===== NAV BUTTON TEXT ALIGNMENT FIX ===== */
+
+.nav-links a,
+.nav-links .cta {
+  display: flex;                 /* 🔑 enables perfect centering */
+  align-items: center;           /* vertical center */
+  justify-content: center;       /* horizontal center */
+  text-align: center;            /* multiline text center */
+  line-height: 1.2;              /* balanced line spacing */
+  padding: 14px 22px;            /* keeps box size nice */
+  white-space: normal;           /* allow line breaks */
+}
+
+/* Ensure dropdown button text also aligns perfectly */
+.nav-links .dropdown > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;                      /* space between text & arrow */
+}
+/* ================= MOBILE RESPONSIVE FIX ================= */
+@media (max-width: 768px){
+  body{ font-size:1em; }
+  .site-container{ margin:0; border-radius:0; border-width:6px; }
+  .header-content{ flex-direction:column; text-align:center; }
+  .header-content img{ height:120px; }
+  .header-text h1{ font-size:2.2em; }
+  .nav-links{ flex-direction:column; gap:12px; }
+  .nav-links a{ width:100%; }
+  .hero-content h1{ font-size:1.9em; }
+  .hero-content p{ white-space:normal; font-size:1em; }
+  section{ padding:18px 20px; }
+  .courses{ flex-direction:column; }
+  .course-card{ width:100%; }
+  .founder-cards{ flex-direction:column; gap:25px; }
+  .founder img{ width:160px; }
+  .quote{ font-size:1.05em; padding:22px; }
+  #contact p{ font-size:1em; text-align:center; }
+  .cta{ font-size:1em; padding:12px; }
+}
+
+</style>
+
+<section class="quote">
+“In the Mission, even 1˚ error in navigation leads you miles away from the target.
+Your career is your Mission - Ensure your navigation be in correct hands!”
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Email: verchas@outlook.com</p>
+<p>Contact & Whatsapp: +91 8756591001, +91 8347658985</p>
+<p>Saketpuri Road, Devkali Bypass, Ayodhya, Uttar Pradesh</p>
+<p>Facebook / Instagram: #verchas.academy</p>
+
+</section>
+<footer>
+  <p>© 2025 Verchas Academy. All rights reserved.</p>
+</footer>
+
+</div>  <!-- ✅ site-container yahin close hoga -->
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration | Verchas Academy</title>
+
+<style>
+body{
+  margin:0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background:#f2f4f8;
+}
+.container{
+  position:relative;
+  max-width:700px;
+  margin:40px auto;
+  background:#ffffff;
+  padding:35px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  overflow:hidden;
+}
+h1{
+  text-align:center;
+  font-size:1.5em;
+  color:#003366;
+  margin-bottom:25px;
+}
+h3{
+  margin-top:25px;
+  color:#004aad;
+}
+input, select, textarea, button{
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  font-size:1em;
+}
+textarea{resize:none}
+button{
+  background:#004aad;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  font-size:1.1em;
+  cursor:pointer;
+}
+button:hover{
+  background:#003366;
+}
+.note{
+  font-size:0.9em;
+  color:#555;
+  margin-top:6px;
+}
+/* ---------- Form Header (Logo + Academy Name in one row) ---------- */
+.form-header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin-bottom:10px;
+}
+.form-header img{
+  height:65px;
+}
+
+.academy-name{
+  font-size:2.4em;   /* DEFINITELY bigger than h1 */
+  font-weight:700;
+  color:#003366;
+}
+.container > *{
+  position:relative;
+  z-index:1;
+}
+/* ---------- Logo Watermark ---------- */
+/* ---------- Logo Watermark (FULL WIDTH) ---------- */
+.container::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:100%;              /* almost full breadth */
+  height:100%;             /* covers most of container */
+  background:url("logo.png") no-repeat center;
+  background-size:contain;
+  opacity:0.06;           /* adjust if needed */
+  transform:translate(-50%, -50%);
+  pointer-events:none;
+  z-index:0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<!-- Form Header : Logo + Academy Name -->
+<div class="form-header">
+  <img src="verchas-logo.png" alt="Verchas Academy Logo">
+  <div class="academy-name">Verchas Academy</div>
+</div>
+<h1>Student Registration Form</h1>
+
+<form action="https://formsubmit.co/verchas@outlook.com" method="POST">
+
+<h3>Student Details</h3>
+<input type="text" name="Student Name" placeholder="Student Name" required>
+<input type="text" name="Father Name" placeholder="Father's Name" required>
+<input
+  type="text"
+  id="dob"
+  name="Date_of_Birth"
+  placeholder="Date of Birth (DD/MM/YYYY)"
+  maxlength="10"
+  required
+>
+<select name="Gender" required>
+  <option value="">Gender</option>
+  <option>Male</option>
+  <option>Female</option>
+  <option>Other</option>
+</select>
+
+<h3>Academic Information</h3>
+<select name="Standard" required>
+  <option value="">Standard / Class</option>
+  <option>Class 8th</option>
+  <option>Class 9th</option>
+  <option>Class 10th</option>
+  <option>Class 11th</option>
+  <option>Class 12th</option>
+  <option>Graduation</option>
+</select>
+
+<select name="Board" required>
+  <option value="">Board</option>
+  <option>CBSE</option>
+  <option>ICSE</option>
+  <option>UP Board</option>
+  <option>Other</option>
+</select>
+
+<select name="Medium" required>
+  <option value="">Medium of Education</option>
+  <option>English</option>
+  <option>Hindi</option>
+</select>
+
+<input type="text" name="Current School/College" placeholder="Current School / College" required>
+
+<h3>Academic Performance</h3>
+<input 
+  type="text" 
+  name="High_School_Marks" 
+  placeholder="High School Marks (%) or NA" 
+  pattern="^([0-9]{1,2}|100|NA|na)$"
+  title="Enter marks between 0–100 or NA"
+  required
+>
+
+<input 
+  type="text" 
+  name="Inter_Marks" 
+  placeholder="Intermediate Marks (%) or NA" 
+  pattern="^([0-9]{1,2}|100|NA|na)$"
+  title="Enter marks between 0–100 or NA"
+  required
+>
+
+<div class="note">
+Write <b>NA</b> if the exam has not been appeared yet.
+</div>
+<h3>Contact Information</h3>
+<input type="tel" name="Mobile Number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+<input type="tel" name="Emergency Contact Number" placeholder="Emergency Contact Number" pattern="[0-9]{10}" required>
+<input type="email" name="Email" placeholder="Email Address">
+<textarea name="Address" rows="3" placeholder="Full Address" required></textarea>
+
+<input type="text" name="Aadhaar Number" placeholder="Aadhaar Number (12 digits)" pattern="[0-9]{12}" required>
+<div class="note">
+Aadhaar details will be kept confidential and used only for official admission purposes.
+</div>
+
+<h3>Course & Other Details</h3>
+<select name="Course Opted For" required>
+  <option value="">Course Opted For</option>
+  <option>NEET</option>
+  <option>IIT-JEE</option>
+  <option>Pre-Foundation (9th–10th)</option>
+  <option>Foundation (11th–12th)</option>
+  <option>Other</option>
+</select>
+
+<select name="How did you get to know about Verchas Academy?" required>
+  <option value="">How did you get to know about us?</option>
+  <option>Friends / Seniors</option>
+  <option>Parents / Relatives</option>
+  <option>Teachers / School</option>
+  <option>Social Media</option>
+  <option>Website / Google</option>
+  <option>Poster / Banner</option>
+</select>
+
+<select name="Sibling_Registered" id="siblingRegistered" required>
+  <option value="">Any sibling already registered?</option>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+<div id="siblingDetails" style="display:none; margin-top:12px;">
+
+  <input
+    type="text"
+    name="Sibling_Name"
+    placeholder="Sibling Name"
+  >
+
+  <select name="Sibling_Gender">
+    <option value="">Sibling Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+  </select>
+
+  <select name="Sibling_Course">
+    <option value="">Sibling Course</option>
+    <option>NEET</option>
+    <option>IIT-JEE</option>
+    <option>Pre-Foundation</option>
+    <option>Foundation</option>
+    <option>Other</option>
+  </select>
+
+</div>
+<button type="submit">Submit Registration</button>
+
+<input type="hidden" name="_subject" value="New Student Registration – Verchas Academy">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="thankyou.html">
+
+</form>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const dob = document.getElementById("dob");
+
+  dob.addEventListener("input", function () {
+    let value = dob.value.replace(/[^0-9]/g, "");
+
+    if (value.length > 8) value = value.slice(0, 8);
+
+    let day = value.slice(0, 2);
+    let month = value.slice(2, 4);
+    let year = value.slice(4, 8);
+
+    // Validate day
+    if (day.length === 2 && (day < "01" || day > "31")) {
+      dob.value = "";
+      return;
+    }
+
+    // Validate month
+    if (month.length === 2 && (month < "01" || month > "12")) {
+      dob.value = day + "/";
+      return;
+    }
+
+    // Validate year
+    if (year.length === 4) {
+      const currentYear = new Date().getFullYear().toString();
+      if (year > currentYear) {
+        dob.value = day + "/" + month + "/";
+        return;
+      }
+    }
+
+    // Auto format
+    if (value.length > 4) {
+      dob.value = day + "/" + month + "/" + year;
+    } else if (value.length > 2) {
+      dob.value = day + "/" + month;
+    } else {
+      dob.value = value;
+    }
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const siblingSelect = document.getElementById("siblingRegistered");
+  const siblingDetails = document.getElementById("siblingDetails");
+  const siblingInputs = siblingDetails.querySelectorAll("input, select");
+
+  siblingSelect.addEventListener("change", function () {
+    if (this.value === "Yes") {
+      siblingDetails.style.display = "block";
+      siblingInputs.forEach(el => el.required = true);
+    } else {
+      siblingDetails.style.display = "none";
+      siblingInputs.forEach(el => {
+        el.required = false;
+        el.value = "";
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>

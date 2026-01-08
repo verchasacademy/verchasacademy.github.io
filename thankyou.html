@@ -1,37 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="refresh" content="5;url=index.html">
-<title>Thank You | Verchas Academy</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KP1HYGJL04"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KP1HYGJL04');
+  </script>
 
-<style>
-body{
-  font-family: Arial, sans-serif;
-  background:#f2f4f8;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-}
-.box{
-  background:#fff;
-  padding:40px;
-  border-radius:12px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
-}
-h1{color:#004aad}
-p{font-size:1.1em}
-</style>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="5;url=index.html">
+  <title>Thank You | Verchas Academy</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#f2f4f8;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+    .box{
+      background:#fff;
+      padding:40px;
+      border-radius:12px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+    h1{color:#004aad}
+    p{font-size:1.1em}
+  </style>
 </head>
 
 <body>
-<div class="box">
-  <h1>Thank You!</h1>
-  <p>Your registration has been submitted successfully.</p>
-  <p>Our team will contact you shortly.</p>
-  <p><small>Redirecting to homepage…</small></p>
-</div>
+  <div class="box">
+    <h1>Thank You!</h1>
+    <p>Your registration has been submitted successfully.</p>
+    <p>Our team will contact you shortly.</p>
+    <p><small>Redirecting to homepage…</small></p>
+  </div>
+
+  <!-- Enrollment conversion event -->
+  <script>
+    gtag('event', 'enroll_complete', {
+      'event_category': 'Enrollment',
+      'event_label': 'Thank You Page'
+    });
+  </script>
+
 </body>
 </html>

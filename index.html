@@ -704,6 +704,30 @@ a[href^="tel"]{
 #contact p{
   margin: 8px 0;
 }
+/* ===== FLOATING REGISTER NOW BUTTON ===== */
+.register-float-btn {
+  position: fixed;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  background: #ffcc00;
+  color: #004aad;
+  font-weight: bold;
+  padding: 14px 18px;
+  border-radius: 10px 0 0 10px;
+  text-decoration: none;
+  font-size: 1em;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.register-float-btn:hover {
+  background: #004aad;
+  color: #ffffff;
+  transform: translateY(-50%) translateX(-6px);
+}
 </style>
 
 <section class="quote">
@@ -745,5 +769,8 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 </footer>
 
 </div>  <!-- ✅ site-container yahin close hoga -->
+<a href="registration.html" class="register-float-btn">
+  Register Now
+</a>
 </body>
 </html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scholarship Result | Verchas Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 25px;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    /* HEADER WITH LOGO */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .header img {
+      height: 45px;
+      width: auto;
+    }
+
+    .title h2 {
+      margin: 0;
+      color: #0a3d62;
+    }
+
+    .title p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px;
+      font-size: 16px;
+      margin: 18px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 11px;
+      font-size: 16px;
+      background: #0a3d62;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #075985;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 15px;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+
+    .contact {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="verchas-logo.png" alt="Verchas Academy Logo">
+    <div class="title">
+      <h2>Verchas Academy</h2>
+      <p>Scholarship Test Result</p>
+    </div>
+  </div>
+
+  <!-- INPUT -->
+  <input type="text" id="mobile" placeholder="Enter Registered Mobile Number">
+
+  <button onclick="checkResult()">View Result</button>
+
+  <!-- RESULT -->
+  <div class="result" id="result"></div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    📞 8756591001 | 8347658985<br>
+    🌐 www.verchasacademy.in
+  </div>
+
+</div>
+
+<script>
+function checkResult() {
+  const mobile = document.getElementById("mobile").value.trim();
+  const resultDiv = document.getElementById("result");
+
+  if (mobile.length !== 10) {
+    resultDiv.innerHTML = "<p class='error'>Please enter valid 10-digit mobile number</p>";
+    return;
+  }
+
+  const apiUrl =
+    "https://script.google.com/macros/s/AKfycbxAl3He7ZSWYKR4zGKW7rYj7T52Yizt4nVXrORFzqqKEvrHSQ003LWoYbfqhcjwktw7/exec?mobile="
+    + mobile;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        resultDiv.innerHTML = "<p class='error'>Result not found</p>";
+      } else {
+        resultDiv.innerHTML = `
+          <p class="success">Result Found ✅</p>
+          <p><b>Name:</b> ${data.name}</p>
+          <p><b>Marks:</b> ${data.marks} / 20</p>
+          <p><b>Scholarship:</b> ${data.scholarship}</p>
+        `;
+      }
+    })
+    .catch(() => {
+      resultDiv.innerHTML = "<p class='error'>Something went wrong. Please try again.</p>";
+    });
+}
+</script>
+
+</body>
+</html>

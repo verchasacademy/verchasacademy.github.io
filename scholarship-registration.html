@@ -397,19 +397,12 @@ scholarshipForm.addEventListener("submit", function (e) {
     return;
   }
 
-  const data = {};
-  new FormData(scholarshipForm).forEach((value, key) => {
-    data[key] = value;
-  });
+  const formData = new FormData(scholarshipForm);
 
   fetch("https://script.google.com/macros/s/AKfycbzfS5nRaeiCOppIUmouY7W_WdLCfI3Qqc7CmoD373ohAYtxm1IWKap0yhYnSGLoWhtWdw/exec", {
     method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
-    }
+    body: formData
   })
-  .then(res => res.json())
   .then(() => {
     window.location.href = "thankyou.html";
   })

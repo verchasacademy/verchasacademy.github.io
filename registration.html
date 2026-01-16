@@ -262,7 +262,6 @@ Aadhaar details will be kept confidential and used only for official admission p
 <p id="submitMsg" style="display:none; margin-top:12px; font-weight:600; color:#004aad;">
 Please wait… Submitting your registration.
 </p>
-
 <input type="hidden" name="_subject" value="New Student Registration – Verchas Academy">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_next" value="https://verchasacademy.in/thankyou.html">
@@ -353,15 +352,34 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
-const form = document.querySelector("form");
-const errorMsg = document.getElementById("formError");
+document.addEventListener("DOMContentLoaded", function () {
 
-form.addEventListener("submit", function(e){
-  if(!form.checkValidity()){
-    e.preventDefault();
-    errorMsg.style.display = "block";
-    errorMsg.scrollIntoView({behavior:"smooth"});
-  }
+  const form = document.querySelector("form");
+  const submitBtn = document.getElementById("submitBtn");
+  const btnText = document.getElementById("btnText");
+  const spinner = document.getElementById("btnSpinner");
+  const submitMsg = document.getElementById("submitMsg");
+  const errorMsg = document.getElementById("formError");
+
+  form.addEventListener("submit", function (e) {
+
+    // If form invalid → show error, DO NOT lock button
+    if (!form.checkValidity()) {
+      e.preventDefault();
+      errorMsg.style.display = "block";
+      errorMsg.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    // ✅ Form valid → lock UI immediately
+    submitBtn.disabled = true;
+    btnText.textContent = "Submitting…";
+    spinner.style.display = "inline";
+    submitMsg.style.display = "block";
+
+    // allow formsubmit.co to proceed naturally
+  });
+
 });
 </script>
 <script>

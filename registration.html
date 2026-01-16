@@ -101,6 +101,11 @@ button:hover{
   pointer-events:none;
   z-index:0;
 }
+button:disabled{
+  background:#999 !important;
+  cursor:not-allowed;
+  opacity:0.85;
+}
 </style>
 </head>
 
@@ -249,7 +254,14 @@ Aadhaar details will be kept confidential and used only for official admission p
   </select>
 
 </div>
-<button type="submit">Submit Registration</button>
+<button type="submit" id="submitBtn">
+  <span id="btnText">Submit Registration</span>
+  <span id="btnSpinner" style="display:none; margin-left:8px;">⏳</span>
+</button>
+
+<p id="submitMsg" style="display:none; margin-top:12px; font-weight:600; color:#004aad;">
+Please wait… Submitting your registration.
+</p>
 
 <input type="hidden" name="_subject" value="New Student Registration – Verchas Academy">
 <input type="hidden" name="_captcha" value="false">
@@ -397,6 +409,24 @@ function validateMarks(input) {
     }
   }
 }
+</script>
+<script>
+const form = document.querySelector("form");
+const submitBtn = document.getElementById("submitBtn");
+const btnText = document.getElementById("btnText");
+const spinner = document.getElementById("btnSpinner");
+const submitMsg = document.getElementById("submitMsg");
+
+form.addEventListener("submit", function () {
+
+  // Prevent multiple submissions
+  submitBtn.disabled = true;
+
+  // Visual feedback
+  btnText.textContent = "Submitting…";
+  spinner.style.display = "inline";
+  submitMsg.style.display = "block";
+});
 </script>
 </body>
 </html>

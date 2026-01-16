@@ -404,16 +404,13 @@ scholarshipForm.addEventListener("submit", function (e) {
     method: "POST",
     body: formData
   })
-  .then(res => res.text())
-  .then(result => {
-    if (result === "DUPLICATE_AADHAAR") {
-      alert("This Aadhaar number is already registered.");
-    } else if (result === "AADHAAR_MISSING") {
-      alert("Aadhaar number is required.");
-    } else {
-      window.location.href = "thankyou.html";
-    }
-  });
+  .then(res => res.json())
+.then(data => {
+  if (data.status === "SUCCESS") {
+    window.open(data.pdfUrl, "_blank");
+    window.location.href = "thankyou.html";
+  }
+});
 });
 </script>
 </body>

@@ -388,29 +388,50 @@ function validateMarks(input) {
 }
 </script>
 <script>
-const scholarshipForm = document.getElementById("scholarshipForm");
+document.addEventListener("DOMContentLoaded", function () {
 
-scholarshipForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  if (!scholarshipForm.checkValidity()) {
-    scholarshipForm.reportValidity();
+  const scholarshipForm = document.getElementById("scholarshipForm");
+  if (!scholarshipForm) {
+    alert("Form not found");
     return;
   }
 
-  const formData = new FormData(scholarshipForm);
+  scholarshipForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  fetch("https://script.google.com/macros/s/AKfycbxgiHG0awmnN4m0wNpDS-AwbpjDQ6kbo3KuGwB6h97-PmuWoptIbzArExIHD3te_BZuLg/exec", {
-    method: "POST",
-    body: formData
-  })
-  .then(res => res.json())
-.then(data => {
-  if (data.status === "SUCCESS") {
-    window.open(data.pdfUrl, "_blank");
-    window.location.href = "thankyou.html";
-  }
-});
+    if (!scholarshipForm.checkValidity()) {
+      scholarshipForm.reportValidity();
+      return;
+    }
+
+    const submitBtn = scholarshipForm.querySelector("button[type='submit']");
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    const formData = new FormData(scholarshipForm);
+
+    fetch("https://script.google.com/macros/s/AKfycbxgiHG0awmnN4m0wNpDS-AwbpjDQ6kbo3KuGwB6h97-PmuWoptIbzArExIHD3te_BZuLg/exec", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "SUCCESS") {
+        window.open(data.pdfUrl, "_blank");
+        window.location.href = "thankyou.html";
+      } else {
+        alert("Submission failed: " + JSON.stringify(data));
+      }
+    })
+    .catch(err => {
+      alert("Network / server error. Please try again.");
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit Registration";
+    });
+  });
+
 });
 </script>
 </body>

@@ -190,7 +190,14 @@ Write <b>NA</b> if the exam has not been appeared yet.
 <input type="email" name="email" placeholder="Email Address">
 <textarea name="address" rows="3" placeholder="Full Address" required></textarea>
 
-<input type="tel" name="aadhaar_number" placeholder="Aadhaar Number (12 digits)" required>
+<input
+  type="tel"
+  name="aadhaar_number"
+  maxlength="12"
+  pattern="[0-9]{12}"
+  inputmode="numeric"
+  required
+>
 <div class="note">
 Aadhaar details will be kept confidential and used only for official admission purposes.
 </div>
@@ -392,13 +399,19 @@ scholarshipForm.addEventListener("submit", function (e) {
 
   const formData = new FormData(scholarshipForm);
 
-  fetch("https://script.google.com/macros/s/AKfycbwpVx7spMAYSR0xc6AoJzhf-ol1tsVc82mY4OBg-8pSi158jV_2925bRGoFPEAF8fsJBQ/exec", {
+  fetch("YOUR_WEB_APP_URL_HERE", {
     method: "POST",
     body: formData
   })
-  .finally(() => {
-    // Always redirect – local file OR GitHub Pages
-    window.location.href = "thankyou.html";
+  .then(res => res.text())
+  .then(result => {
+    if (result === "DUPLICATE_AADHAAR") {
+      alert("This Aadhaar number is already registered.");
+    } else if (result === "AADHAAR_MISSING") {
+      alert("Aadhaar number is required.");
+    } else {
+      window.location.href = "thankyou.html";
+    }
   });
 });
 </script>

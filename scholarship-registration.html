@@ -117,7 +117,7 @@ button:hover{
   Test Timing: <b>05 Apr 26 at 10:00 AM</b>
 </p>
 
-<form action="https://formsubmit.co/verchas@outlook.com" method="POST">
+<form id="scholarshipForm">
 
 <h3>Student Details</h3>
 <input type="text" name="Student Name" placeholder="Student Name" required>
@@ -254,9 +254,6 @@ Aadhaar details will be kept confidential and used only for official admission p
 </div>
 <button type="submit">Submit Registration</button>
 
-<input type="hidden" name="_subject" value="New Student Registration – Verchas Academy">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://verchasacademy.in/thankyou.html">
 <p id="formError" style="color:red; font-weight:600; display:none; margin-top:10px;">
 Please check the highlighted fields. Some information is invalid or missing.
 </p>
@@ -344,18 +341,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
-const form = document.querySelector("form");
-const errorMsg = document.getElementById("formError");
-
-form.addEventListener("submit", function(e){
-  if(!form.checkValidity()){
-    e.preventDefault();
-    errorMsg.style.display = "block";
-    errorMsg.scrollIntoView({behavior:"smooth"});
-  }
-});
-</script>
-<script>
 function validateMarks(input) {
   let value = input.value;
 
@@ -400,6 +385,38 @@ function validateMarks(input) {
     }
   }
 }
+</script>
+<script>
+const scholarshipForm = document.getElementById("scholarshipForm");
+
+scholarshipForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  if (!scholarshipForm.checkValidity()) {
+    scholarshipForm.reportValidity();
+    return;
+  }
+
+  const data = {};
+  new FormData(scholarshipForm).forEach((value, key) => {
+    data[key] = value;
+  });
+
+  fetch("https://script.google.com/macros/s/AKfycbzfS5nRaeiCOppIUmouY7W_WdLCfI3Qqc7CmoD373ohAYtxm1IWKap0yhYnSGLoWhtWdw/exec", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(() => {
+    window.location.href = "thankyou.html";
+  })
+  .catch(() => {
+    alert("Submission failed. Please try again.");
+  });
+});
 </script>
 </body>
 </html>

@@ -8,158 +8,116 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background: #f4f6f9;
       margin: 0;
+      padding: 0;
     }
 
-    .card {
-      background: #ffffff;
-      padding: 25px;
-      width: 100%;
+    .container {
       max-width: 420px;
+      margin: 60px auto;
+      background: #ffffff;
+      padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
       text-align: center;
     }
 
-    /* HEADER WITH LOGO */
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
-
-    .header img {
-      height: 45px;
-      width: auto;
-    }
-
-    .title h2 {
-      margin: 0;
-      color: #0a3d62;
-    }
-
-    .title p {
-      margin: 0;
-      font-size: 14px;
-      font-weight: bold;
+    h1 {
+      color: #004aad;
+      margin-bottom: 25px;
     }
 
     input {
       width: 100%;
-      padding: 11px;
-      font-size: 16px;
-      margin: 18px 0;
-      border-radius: 6px;
+      padding: 14px;
+      font-size: 1em;
+      margin-bottom: 15px;
+      border-radius: 8px;
       border: 1px solid #ccc;
     }
 
     button {
       width: 100%;
-      padding: 11px;
-      font-size: 16px;
-      background: #0a3d62;
+      padding: 14px;
+      background: #004aad;
       color: #fff;
+      font-size: 1.05em;
+      font-weight: bold;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
     }
 
     button:hover {
-      background: #075985;
+      background: #003080;
     }
 
     .result {
       margin-top: 20px;
-      font-size: 15px;
+      font-size: 1.05em;
+      font-weight: 600;
     }
 
     .error {
-      color: red;
-      font-weight: bold;
+      color: #e53935;
     }
 
     .success {
-      color: green;
-      font-weight: bold;
-    }
-
-    .contact {
-      margin-top: 18px;
-      font-size: 14px;
-      color: #333;
+      color: #2e7d32;
     }
   </style>
 </head>
 
 <body>
 
-<div class="card">
+  <div class="container">
+    <h1>School Test Result</h1>
 
-  <!-- HEADER -->
-  <div class="header">
-    <img src="verchas-logo.png" alt="Verchas Academy Logo">
-    <div class="title">
-      <h2>Verchas Academy</h2>
-      <p>School Test Result</p>
-    </div>
+    <input
+      type="text"
+      id="mobile"
+      placeholder="Enter Registered Mobile Number"
+      maxlength="10"
+    >
+
+    <button onclick="getResult()">View Result</button>
+
+    <div id="result" class="result"></div>
   </div>
 
-  <!-- INPUT -->
-  <input type="text" id="mobile" placeholder="Enter Registered Mobile Number">
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycby8SoT8eKPKcvm2nvQmXH1L4ynBC4EmA08zIhfWxed_OWQ4YCEwTB3Y7iF9RTJUiZwIrw/exec";
 
-  <button onclick="checkResult()">View Result</button>
+    function getResult() {
+      const mobile = document.getElementById("mobile").value.trim();
+      const resultDiv = document.getElementById("result");
 
-  <!-- RESULT -->
-  <div class="result" id="result"></div>
+      resultDiv.innerHTML = "";
 
-  <!-- CONTACT -->
-  <div class="contact">
-    📞 8756591001 | 8347658985<br>
-    🌐 www.verchasacademy.in
-  </div>
-
-</div>
-
-<script>
-function checkResult() {
-  const mobile = document.getElementById("mobile").value.trim();
-  const resultDiv = document.getElementById("result");
-
-  if (mobile.length !== 10) {
-    resultDiv.innerHTML = "<p class='error'>Please enter valid 10-digit mobile number</p>";
-    return;
-  }
-
-  const apiUrl =
-    "https://script.google.com/macros/s/AKfycbxAl3He7ZSWYKR4zGKW7rYj7T52Yizt4nVXrORFzqqKEvrHSQ003LWoYbfqhcjwktw7/exec?mobile="
-    + mobile;
-
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        resultDiv.innerHTML = "<p class='error'>Result not found</p>";
-      } else {
-        resultDiv.innerHTML = `
-          <p class="success">Result Found ✅</p>
-          <p><b>Name:</b> ${data.name}</p>
-          <p><b>Marks:</b> ${data.marks} / 20</p>
-          <p><b>Scholarship:</b> ${data.scholarship}</p>
-        `;
+      if (mobile.length !== 10) {
+        resultDiv.innerHTML = "<span class='error'>Please enter a valid 10-digit mobile number</span>";
+        return;
       }
-    })
-    .catch(() => {
-      resultDiv.innerHTML = "<p class='error'>Something went wrong. Please try again.</p>";
-    });
-}
-</script>
+
+      fetch(API_URL + "?mobile=" + mobile)
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            resultDiv.innerHTML = "<span class='error'>No result found</span>";
+          } else {
+            resultDiv.innerHTML =
+              "<div class='success'>" +
+              "Name: <b>" + data.name + "</b><br>" +
+              "Marks: <b>" + data.marks + "</b>" +
+              "</div>";
+          }
+        })
+        .catch(() => {
+          resultDiv.innerHTML = "<span class='error'>Something went wrong. Please try again.</span>";
+        });
+    }
+  </script>
 
 </body>
 </html>

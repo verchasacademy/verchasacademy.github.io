@@ -117,7 +117,11 @@ button:hover{
   Test Timing: <b>05 Apr 26 at 10:00 AM</b>
 </p>
 
-<form id="scholarshipForm">
+<form
+  id="scholarshipForm"
+  action="https://script.google.com/macros/s/AKfycbwyKakZspzd9VL49C3zTxadT4Yu9Whu4U3Aix4SatFbR9LP5IM5lFErC4nTAx7ViMDN5Q/exec"
+  method="POST"
+>
 
 <h3>Student Details</h3>
 <input type="text" name="student_name" placeholder="Student Name" required>
@@ -264,6 +268,52 @@ Please check the highlighted fields. Some information is invalid or missing.
 </div>
 
 <script>
+function validateMarks(input) {
+  let value = input.value;
+
+  // Allow only digits, decimal point, or letters N/A
+  if (!/^[0-9NAna.]*$/.test(value)) {
+    input.value = "";
+    return;
+  }
+
+  // Handle NA / na
+  if (/^[A-Za-z]/.test(value)) {
+    if (!/^NA$/i.test(value)) {
+      // Allow partial typing: N or n
+      if (!/^N$/i.test(value)) {
+        input.value = "";
+      }
+    }
+    return;
+  }
+
+  // Handle numbers (including decimals)
+  if (/^[0-9.]+$/.test(value)) {
+
+    // More than one decimal → invalid
+    if ((value.match(/\./g) || []).length > 1) {
+      input.value = "";
+      return;
+    }
+
+    // Prevent starting with just "."
+    if (value === ".") {
+      input.value = "";
+      return;
+    }
+
+    const num = parseFloat(value);
+
+    // Must be <= 100
+    if (!isNaN(num) && num > 100) {
+      input.value = "";
+      return;
+    }
+  }
+}
+</script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const dob = document.getElementById("dob");
 
@@ -319,119 +369,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     dob.value = formatted;
   });
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const siblingSelect = document.getElementById("siblingRegistered");
-  const siblingDetails = document.getElementById("siblingDetails");
-  const siblingInputs = siblingDetails.querySelectorAll("input, select");
-
-  siblingSelect.addEventListener("change", function () {
-    if (this.value === "Yes") {
-      siblingDetails.style.display = "block";
-      siblingInputs.forEach(el => el.required = true);
-    } else {
-      siblingDetails.style.display = "none";
-      siblingInputs.forEach(el => {
-        el.required = false;
-        el.value = "";
-      });
-    }
-  });
-});
-</script>
-<script>
-function validateMarks(input) {
-  let value = input.value;
-
-  // Allow only digits, decimal point, or letters N/A
-  if (!/^[0-9NAna.]*$/.test(value)) {
-    input.value = "";
-    return;
-  }
-
-  // Handle NA / na
-  if (/^[A-Za-z]/.test(value)) {
-    if (!/^NA$/i.test(value)) {
-      // Allow partial typing: N or n
-      if (!/^N$/i.test(value)) {
-        input.value = "";
-      }
-    }
-    return;
-  }
-
-  // Handle numbers (including decimals)
-  if (/^[0-9.]+$/.test(value)) {
-
-    // More than one decimal → invalid
-    if ((value.match(/\./g) || []).length > 1) {
-      input.value = "";
-      return;
-    }
-
-    // Prevent starting with just "."
-    if (value === ".") {
-      input.value = "";
-      return;
-    }
-
-    const num = parseFloat(value);
-
-    // Must be <= 100
-    if (!isNaN(num) && num > 100) {
-      input.value = "";
-      return;
-    }
-  }
-}
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  const scholarshipForm = document.getElementById("scholarshipForm");
-  if (!scholarshipForm) {
-    alert("Form not found");
-    return;
-  }
-
-  scholarshipForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    if (!scholarshipForm.checkValidity()) {
-      scholarshipForm.reportValidity();
-      return;
-    }
-
-    const submitBtn = scholarshipForm.querySelector("button[type='submit']");
-    submitBtn.disabled = true;
-    submitBtn.innerText = "Submitting...";
-
-    const formData = new FormData(scholarshipForm);
-
-    fetch("https://script.google.com/macros/s/AKfycbxgiHG0awmnN4m0wNpDS-AwbpjDQ6kbo3KuGwB6h97-PmuWoptIbzArExIHD3te_BZuLg/exec", {
-      method: "POST",
-      body: formData
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.status === "SUCCESS") {
-        window.open(data.pdfUrl, "_blank");
-        window.location.href = "thankyou.html";
-      } else {
-        alert("Submission failed: " + JSON.stringify(data));
-      }
-    })
-    .catch(err => {
-      alert("Network / server error. Please try again.");
-    })
-    .finally(() => {
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Submit Registration";
-    });
-  });
-
 });
 </script>
 </body>

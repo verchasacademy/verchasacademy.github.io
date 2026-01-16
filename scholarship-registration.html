@@ -120,8 +120,8 @@ button:hover{
 <form id="scholarshipForm">
 
 <h3>Student Details</h3>
-<input type="text" name="Student Name" placeholder="Student Name" required>
-<input type="text" name="Father Name" placeholder="Father's Name" required>
+<input type="text" name="student_name" placeholder="Student Name" required>
+<input type="text" name="father_name" placeholder="Father's Name" required>
 <input
   type="text"
   id="dob"
@@ -130,7 +130,7 @@ button:hover{
   maxlength="10"
   required
 >
-<select name="Gender" required>
+<select name="gender" required>
   <option value="">Gender</option>
   <option>Male</option>
   <option>Female</option>
@@ -138,7 +138,7 @@ button:hover{
 </select>
 
 <h3>Academic Information</h3>
-<select name="Standard" required>
+<select name="standard" required>
   <option value="">Standard / Class</option>
   <option>Class 8th</option>
   <option>Class 9th</option>
@@ -148,7 +148,7 @@ button:hover{
   <option>Graduation</option>
 </select>
 
-<select name="Board" required>
+<select name="board" required>
   <option value="">Board</option>
   <option>CBSE</option>
   <option>ICSE</option>
@@ -156,13 +156,13 @@ button:hover{
   <option>Other</option>
 </select>
 
-<select name="Medium" required>
+<select name="medium" required>
   <option value="">Medium of Education</option>
   <option>English</option>
   <option>Hindi</option>
 </select>
 
-<input type="text" name="Current School/College" placeholder="Current School / College" required>
+<input type="text" name="current_school" placeholder="Current School / College" required>
 
 <h3>Academic Performance</h3>
 <input
@@ -185,14 +185,14 @@ button:hover{
 Write <b>NA</b> if the exam has not been appeared yet.
 </div>
 <h3>Contact Information</h3>
-<input type="tel" name="Mobile Number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
-<input type="tel" name="Emergency Contact Number" placeholder="Emergency Contact Number" pattern="[0-9]{10}" required>
-<input type="email" name="Email" placeholder="Email Address">
-<textarea name="Address" rows="3" placeholder="Full Address" required></textarea>
+<input type="tel" name="mobile Number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+<input type="tel" name="emergency Contact Number" placeholder="Emergency Contact Number" pattern="[0-9]{10}" required>
+<input type="email" name="email" placeholder="Email Address">
+<textarea name="address" rows="3" placeholder="Full Address" required></textarea>
 
 <input
   type="tel"
-  name="Aadhaar Number"
+  name="aadhaar Number"
   placeholder="Aadhaar Number (12 digits)"
   maxlength="12"
   inputmode="numeric"
@@ -203,7 +203,7 @@ Aadhaar details will be kept confidential and used only for official admission p
 </div>
 
 <h3>Course & Other Details</h3>
-<select name="Course Opted For" required>
+<select name="course Opted For" required>
   <option value="">Course Opted For</option>
   <option>NEET</option>
   <option>IIT-JEE</option>
@@ -212,7 +212,7 @@ Aadhaar details will be kept confidential and used only for official admission p
   <option>Other</option>
 </select>
 
-<select name="How did you get to know about Verchas Academy?" required>
+<select name="source" required>
   <option value="">How did you get to know about us?</option>
   <option>Friends / Seniors</option>
   <option>Parents / Relatives</option>

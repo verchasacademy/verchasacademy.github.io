@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- FORCE BUILD 2026 -->
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KP1HYGJL04"></script>
 <script>
@@ -394,7 +392,7 @@ nav a:hover{
 .dropdown .cta{
   pointer-events: auto;
 }
-/* ===== Scholarship Result Flash Link ===== */
+/* ===== School Test Result Flash Link ===== */
 .result-link {
   display: inline-block;
   background: #ffcc00;
@@ -436,17 +434,28 @@ nav a:hover{
     <a href="#founders">Know the Founders</a>
     <a href="#hods">Our HODs</a>
     <a href="registration.html" class="cta">Enroll Now</a>
+    <a href="result.html" class="cta blink-result">
+    School Test Result
+</a>
   </div>
 </nav>
 <div class="hero">
   <img src="webpic1.png" alt="Verchas Academy Classroom">
   <div class="hero-overlay">
     <div class="hero-content">
+    <div class="scholarship-banner">
+  <div class="scholarship-text blink">
+    📢 SCHOLARSHIP TEST – 05 APRIL 2026  
+    <br>
+    <span class="sub-text">
+      Get up to <b>75% Fee Waiver</b> for Top Performers
+    </span>
+  </div>
 
-  <a href="result.html" class="result-link">
-  Scholarship Test Result
+  <a href="scholarship-registration.html" class="scholarship-btn">
+    Scholarship Test Registration
   </a>
-
+</div>
 
   <h2>Igniting Minds, Shaping Futures</h2>
 
@@ -706,29 +715,83 @@ a[href^="tel"]{
 #contact p{
   margin: 8px 0;
 }
-/* ===== FLOATING REGISTER NOW BUTTON ===== */
-.register-float-btn {
-  position: fixed;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  background: #ffcc00;
-  color: #004aad;
-  font-weight: bold;
-  padding: 14px 18px;
-  border-radius: 10px 0 0 10px;
-  text-decoration: none;
-  font-size: 1em;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  z-index: 9999;
+/* ===== SCHOLARSHIP ANNOUNCEMENT BANNER ===== */
+
+.scholarship-banner{
+  width:100%;
+  margin-top:20px;
+  padding:22px 15px;
+  text-align:center;
+  background: rgba(0,0,0,0.55);
+  border-radius:12px;
+}
+
+.scholarship-text{
+  font-size:1.9em;
+  font-weight:800;
+  color:#ffeb3b;
+  line-height:1.4;
+}
+
+.scholarship-text .sub-text{
+  display:block;
+  font-size:0.95em;
+  font-weight:600;
+  color:#ffffff;
+  margin-top:6px;
+}
+
+/* Blinking animation */
+.blink{
+  animation: blinkText 1.2s infinite;
+}
+
+@keyframes blinkText{
+  0%{ opacity:1; }
+  50%{ opacity:0.35; }
+  100%{ opacity:1; }
+}
+
+/* Registration Button */
+.scholarship-btn{
+  display:inline-block;
+  margin-top:16px;
+  padding:14px 34px;
+  background:#ffcc00;
+  color:#004aad;
+  font-weight:800;
+  font-size:1.1em;
+  border-radius:10px;
+  text-decoration:none;
+  box-shadow:0 6px 18px rgba(0,0,0,0.35);
   transition: all 0.3s ease;
 }
 
-/* Hover effect */
-.register-float-btn:hover {
-  background: #004aad;
-  color: #ffffff;
-  transform: translateY(-50%) translateX(-6px);
+.scholarship-btn:hover{
+  background:#004aad;
+  color:#ffffff;
+  transform: scale(1.05);
+}
+
+/* Mobile optimization */
+@media(max-width:600px){
+  .scholarship-text{
+    font-size:1.35em;
+  }
+  .scholarship-btn{
+    font-size:1em;
+    padding:12px 24px;
+  }
+}
+/* ===== FORCE BLINK FOR SCHOOL TEST RESULT BUTTON ===== */
+.blink-result {
+  animation: schoolBlink 1s infinite !important;
+}
+
+@keyframes schoolBlink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.3; }
+  100% { opacity: 1; }
 }
 </style>
 
@@ -771,8 +834,5 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 </footer>
 
 </div>  <!-- ✅ site-container yahin close hoga -->
-<a href="registration.html" class="register-float-btn">
-  Register Now
-</a>
 </body>
 </html>

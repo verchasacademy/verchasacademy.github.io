@@ -417,7 +417,13 @@ doc.text(
 submitMsg.textContent = "Your admit card is opening…";
 
 // 🔹 Open PDF in same tab (popup-safe)
-window.location.href = doc.output("bloburl");
+// Generate PDF blob URL safely
+const pdfUrl = doc.output("bloburl");
+
+// Give mobile browsers time to finish rendering
+setTimeout(() => {
+  window.location.href = pdfUrl;
+}, 300);
 
     // Reset button
     submitBtn.disabled = false;

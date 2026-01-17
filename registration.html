@@ -172,9 +172,6 @@ button:disabled{
 <p id="submitMsg" style="display:none; margin-top:12px; font-weight:600; color:#004aad;">
 Please wait… Submitting your registration.
 </p>
-<p id="lockMsg" style="display:none; margin-top:12px; font-weight:600; color:#d32f2f;">
-This registration has already been submitted. Please wait for confirmation.
-</p>
 <input type="hidden" name="_subject" value="New Student Registration – Verchas Academy">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_next" value="https://verchasacademy.in/thankyou.html">
@@ -253,15 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const lockMsg = document.getElementById("lockMsg");
   const errorMsg = document.getElementById("formError");
 
-  /* 🔒 Already submitted (back / refresh) */
-  if (localStorage.getItem("verchasAdmissionFormSubmitted")) {
-  submitBtn.disabled = true;
-  btnText.textContent = "Submitted";
-  spinner.style.display = "none";
-  submitMsg.style.display = "none";
-  lockMsg.style.display = "block";
-}
-
+  
   form.addEventListener("submit", function (e) {
 
     /* ❌ Invalid form */
@@ -272,9 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    /* ✅ Lock submission */
-    localStorage.setItem("verchasAdmissionFormSubmitted", "true");
-
+    
     submitBtn.disabled = true;
     btnText.textContent = "Submitting…";
     spinner.style.display = "inline";

@@ -101,6 +101,11 @@ button:hover{
   pointer-events:none;
   z-index:0;
 }
+button:disabled{
+  background:#999 !important;
+  cursor:not-allowed;
+  opacity:0.85;
+}
 </style>
 </head>
 
@@ -112,20 +117,13 @@ button:hover{
   <img src="verchas-logo.png" alt="Verchas Academy Logo">
   <h2 class="academy-name">Verchas Academy</h2>
 </div>
-<h1>Scholarship Registration Form</h1>
-<p style="text-align:center; font-size:1.05em; font-weight:600; color:#004aad; margin-top:-15px; margin-bottom:25px;">
-  Test Timing: <b>05 Apr 26 at 10:00 AM</b>
-</p>
+<h1>Student Registration Form</h1>
 
-<form
-  id="scholarshipForm"
-  action="https://script.google.com/macros/s/AKfycbwyKakZspzd9VL49C3zTxadT4Yu9Whu4U3Aix4SatFbR9LP5IM5lFErC4nTAx7ViMDN5Q/exec"
-  method="POST"
->
+<form action="https://formsubmit.co/verchas@outlook.com" method="POST">
 
 <h3>Student Details</h3>
-<input type="text" name="student_name" placeholder="Student Name" required>
-<input type="text" name="father_name" placeholder="Father's Name" required>
+<input type="text" name="Student Name" placeholder="Student Name" required>
+<input type="text" name="Father Name" placeholder="Father's Name" required>
 <input
   type="text"
   id="dob"
@@ -134,81 +132,30 @@ button:hover{
   maxlength="10"
   required
 >
-<select name="gender" required>
+<select name="Gender" required>
   <option value="">Gender</option>
   <option>Male</option>
   <option>Female</option>
   <option>Other</option>
 </select>
 
-<h3>Academic Information</h3>
-<select name="standard" required>
-  <option value="">Standard / Class</option>
-  <option>Class 8th</option>
-  <option>Class 9th</option>
-  <option>Class 10th</option>
-  <option>Class 11th</option>
-  <option>Class 12th</option>
-  <option>Graduation</option>
-</select>
+<input type="text" name="Current School/College" placeholder="Current School / College" required>
 
-<select name="board" required>
-  <option value="">Board</option>
-  <option>CBSE</option>
-  <option>ICSE</option>
-  <option>UP Board</option>
-  <option>Other</option>
-</select>
-
-<select name="medium" required>
+<select name="Medium" required>
   <option value="">Medium of Education</option>
   <option>English</option>
   <option>Hindi</option>
 </select>
 
-<input type="text" name="current_school" placeholder="Current School / College" required>
-
-<h3>Academic Performance</h3>
-<input
-  type="text"
-  name="High_School_Marks"
-  placeholder="High School Marks (0–100, decimal allowed, or NA)"
-  oninput="validateMarks(this)"
-  required
->
-
-<input
-  type="text"
-  name="Inter_Marks"
-  placeholder="Intermediate Marks (0–100, decimal allowed, or NA)"
-  oninput="validateMarks(this)"
-  required
->
-
-<div class="note">
-Write <b>NA</b> if the exam has not been appeared yet.
-</div>
 <h3>Contact Information</h3>
-<input type="tel" name="mobile_number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
-<input type="tel" name="emergency_contact" placeholder="Emergency Contact Number" pattern="[0-9]{10}" required>
-<input type="email" name="email" placeholder="Email Address">
-<textarea name="address" rows="3" placeholder="Full Address" required></textarea>
 
-<input
-  type="text"
-  name="aadhaar_number"
-  placeholder="Enter Aadhaar Number"
-  maxlength="12"
-  pattern="[0-9]{12}"
-  inputmode="numeric"
-  required
->
-<div class="note">
-Aadhaar details will be kept confidential and used only for official admission purposes.
-</div>
+<input type="tel" name="Mobile Number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+<input type="tel" name="Emergency Contact Number" placeholder="Emergency Contact Number" pattern="[0-9]{10}" required>
+<input type="email" name="Email" placeholder="Email Address">
+<textarea name="Address" rows="3" placeholder="Full Address" required></textarea>
 
-<h3>Course & Other Details</h3>
-<select name="course_opted" required>
+<h3>Course Details</h3>
+<select name="Course Opted For" required>
   <option value="">Course Opted For</option>
   <option>NEET</option>
   <option>IIT-JEE</option>
@@ -217,48 +164,20 @@ Aadhaar details will be kept confidential and used only for official admission p
   <option>Other</option>
 </select>
 
-<select name="source" required>
-  <option value="">How did you get to know about us?</option>
-  <option>Friends / Seniors</option>
-  <option>Parents / Relatives</option>
-  <option>Teachers / School</option>
-  <option>Social Media</option>
-  <option>Website / Google</option>
-  <option>Poster / Banner</option>
-</select>
+<button type="submit" id="submitBtn">
+  <span id="btnText">Submit Registration</span>
+  <span id="btnSpinner" style="display:none; margin-left:8px;">⏳</span>
+</button>
 
-<select name="Sibling_Registered" id="siblingRegistered" required>
-  <option value="">Any sibling already registered?</option>
-  <option value="Yes">Yes</option>
-  <option value="No">No</option>
-</select>
-<div id="siblingDetails" style="display:none; margin-top:12px;">
-
-  <input
-    type="text"
-    name="Sibling_Name"
-    placeholder="Sibling Name"
-  >
-
-  <select name="Sibling_Gender">
-    <option value="">Sibling Gender</option>
-    <option>Male</option>
-    <option>Female</option>
-    <option>Other</option>
-  </select>
-
-  <select name="Sibling_Course">
-    <option value="">Sibling Course</option>
-    <option>NEET</option>
-    <option>IIT-JEE</option>
-    <option>Pre-Foundation</option>
-    <option>Foundation</option>
-    <option>Other</option>
-  </select>
-
-</div>
-<button type="submit">Submit Registration</button>
-
+<p id="submitMsg" style="display:none; margin-top:12px; font-weight:600; color:#004aad;">
+Please wait… Submitting your registration.
+</p>
+<p id="lockMsg" style="display:none; margin-top:12px; font-weight:600; color:#d32f2f;">
+This registration has already been submitted. Please wait for confirmation.
+</p>
+<input type="hidden" name="_subject" value="New Student Registration – Verchas Academy">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://verchasacademy.in/thankyou.html">
 <p id="formError" style="color:red; font-weight:600; display:none; margin-top:10px;">
 Please check the highlighted fields. Some information is invalid or missing.
 </p>
@@ -267,52 +186,6 @@ Please check the highlighted fields. Some information is invalid or missing.
 
 </div>
 
-<script>
-function validateMarks(input) {
-  let value = input.value;
-
-  // Allow only digits, decimal point, or letters N/A
-  if (!/^[0-9NAna.]*$/.test(value)) {
-    input.value = "";
-    return;
-  }
-
-  // Handle NA / na
-  if (/^[A-Za-z]/.test(value)) {
-    if (!/^NA$/i.test(value)) {
-      // Allow partial typing: N or n
-      if (!/^N$/i.test(value)) {
-        input.value = "";
-      }
-    }
-    return;
-  }
-
-  // Handle numbers (including decimals)
-  if (/^[0-9.]+$/.test(value)) {
-
-    // More than one decimal → invalid
-    if ((value.match(/\./g) || []).length > 1) {
-      input.value = "";
-      return;
-    }
-
-    // Prevent starting with just "."
-    if (value === ".") {
-      input.value = "";
-      return;
-    }
-
-    const num = parseFloat(value);
-
-    // Must be <= 100
-    if (!isNaN(num) && num > 100) {
-      input.value = "";
-      return;
-    }
-  }
-}
-</script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const dob = document.getElementById("dob");
@@ -370,6 +243,44 @@ document.addEventListener("DOMContentLoaded", function () {
     dob.value = formatted;
   });
 });
+</script>
+<script>
+  const form = document.querySelector("form");
+  const submitBtn = document.getElementById("submitBtn");
+  const btnText = document.getElementById("btnText");
+  const spinner = document.getElementById("btnSpinner");
+  const submitMsg = document.getElementById("submitMsg");
+  const lockMsg = document.getElementById("lockMsg");
+  const errorMsg = document.getElementById("formError");
+
+  /* 🔒 Already submitted (back / refresh) */
+  if (localStorage.getItem("verchasFormSubmitted")) {
+    submitBtn.disabled = true;
+    btnText.textContent = "Submitted";
+    spinner.style.display = "none";
+    submitMsg.style.display = "none";
+    lockMsg.style.display = "block";
+  }
+
+  form.addEventListener("submit", function (e) {
+
+    /* ❌ Invalid form */
+    if (!form.checkValidity()) {
+      e.preventDefault();
+      errorMsg.style.display = "block";
+      errorMsg.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    /* ✅ Lock submission */
+    localStorage.setItem("verchasFormSubmitted", "true");
+
+    submitBtn.disabled = true;
+    btnText.textContent = "Submitting…";
+    spinner.style.display = "inline";
+    submitMsg.style.display = "block";
+
+  });
 </script>
 </body>
 </html>

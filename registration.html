@@ -268,7 +268,7 @@ form.addEventListener("submit", async function (e) {
   btnText.textContent = "Generating Registration Slip…";
   spinner.style.display = "inline";
   submitMsg.style.display = "block";
-  submitMsg.textContent = "Please wait… Generating your registration slip.";
+  submitMsg.textContent = "Please wait… Generating your Registration Slip.";
 
   // 🔹 Send form data to backend
   const formData = new FormData(form);
@@ -381,22 +381,20 @@ submitMsg.textContent = "Your Registration Slip is opening…";
 // Step 1: open a blank window immediately (gesture-safe)
 const newWin = window.open("", "_blank");
 
-// Step 2: generate PDF
+// Generate PDF blob
 const pdfBlob = doc.output("blob");
 const pdfUrl = URL.createObjectURL(pdfBlob);
 
-// Step 3: inject PDF into the new window
-if (newWin) {
-  newWin.location.href = pdfUrl;
-} else {
-  // fallback: force download
-  const a = document.createElement("a");
-  a.href = pdfUrl;
-  a.download = "RegistrationSlip.pdf";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
+// 🔹 Force direct download (no about:blank)
+const a = document.createElement("a");
+a.href = pdfUrl;
+a.download = "RegistrationSlip.pdf";  // filename shown to user
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+
+// 🔹 After download, redirect to thankyou.html
+window.location.href = "thankyou.html";
 
 // Reset button
 submitBtn.disabled = false;

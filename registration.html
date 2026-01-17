@@ -374,18 +374,14 @@ doc.text(
   { maxWidth: 170 }
 );
 
-// 🔹 Inform user before opening PDF
-submitMsg.textContent = "Your Registration Slip is opening…";
+// 🔹 Inform user before download
+submitMsg.textContent = "Your Registration Slip is downloading…";
 
-// 🔹 Open PDF in new tab (mobile-safe)
-// Step 1: open a blank window immediately (gesture-safe)
-const newWin = window.open("", "_blank");
-
-// Generate PDF blob
+// 🔹 Generate PDF blob
 const pdfBlob = doc.output("blob");
 const pdfUrl = URL.createObjectURL(pdfBlob);
 
-// 🔹 Force direct download (no about:blank)
+// 🔹 Force direct download (mobile-safe)
 const a = document.createElement("a");
 a.href = pdfUrl;
 a.download = "RegistrationSlip.pdf";  // filename shown to user
@@ -393,7 +389,7 @@ document.body.appendChild(a);
 a.click();
 document.body.removeChild(a);
 
-// 🔹 After download, redirect to thankyou.html
+// 🔹 Redirect to thankyou.html after download
 window.location.href = "thankyou.html";
 
 // Reset button

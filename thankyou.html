@@ -31,6 +31,66 @@
     }
     h1{color:#004aad}
     p{font-size:1.1em}
+.download-btn{
+  margin-top:22px;
+  padding:14px 26px;
+  font-size:1.15em;
+  font-weight:600;
+  background:linear-gradient(135deg, #004aad, #0066ff);
+  color:#fff;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,74,173,0.35);
+  transition:all 0.25s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Hover effect (desktop) */
+.download-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 30px rgba(0,74,173,0.45);
+  background:linear-gradient(135deg, #003366, #004aad);
+}
+
+/* Tap feedback (mobile) */
+.download-btn:active{
+  transform:scale(0.97);
+  box-shadow:0 6px 16px rgba(0,74,173,0.35);
+}
+/* 🔒 Official badge */
+.official-badge{
+  display:inline-block;
+  padding:6px 14px;
+  margin-bottom:14px;
+  font-size:0.85em;
+  font-weight:600;
+  color:#0a5c2f;
+  background:#e8f7ee;
+  border-radius:20px;
+}
+
+/* 📄 Meta info text */
+.download-meta{
+  margin-top:10px;
+  font-size:0.9em;
+  color:#555;
+}
+.download-meta span{
+  color:#777;
+}
+
+/* ✨ One-time pulse animation */
+@keyframes pulse {
+  0% { transform:scale(1); box-shadow:0 0 0 rgba(0,74,173,0.4); }
+  50% { transform:scale(1.04); box-shadow:0 0 20px rgba(0,74,173,0.45); }
+  100% { transform:scale(1); box-shadow:0 0 0 rgba(0,74,173,0); }
+}
+.pulse-once{
+  animation:pulse 1.2s ease-out 1;
+}
   </style>
 </head>
 
@@ -40,10 +100,19 @@
   <p>Your registration has been submitted successfully.</p>
   <p>Our team will contact you shortly.</p>
 
-  <!-- ✅ POINT 2 GOES HERE -->
-  <button id="downloadBtn">Download Registration Slip</button>
+  <div class="official-badge">🔒 Official Document</div>
 
-  <p><small>You will be redirected to the homepage after download.</small></p>
+  <button id="downloadBtn" class="download-btn pulse-once">
+    ⬇️ Download Registration Slip
+  </button>
+
+  <p class="download-meta">
+    📄 Official Registration Slip PDF · 1 page
+  </p>
+
+  <p style="font-size:0.9em;color:#555;margin-top:14px;">
+    You will be redirected to the homepage after download.
+  </p>
 </div>
 
   <!-- Enrollment conversion event -->
@@ -68,36 +137,83 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
   }
 
   // 2️⃣ Create PDF
+  <script>
+document.getElementById("downloadBtn").addEventListener("click", async function () {
+
+  const data = JSON.parse(sessionStorage.getItem("registrationData"));
+  if (!data) {
+    alert("Registration data not found.");
+    return;
+  }
+
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
+  // 🔹 Load logo as DataURL (mobile-safe)
+  async function loadImage(url) {
+    const res = await fetch(url, { cache: "no-store" });
+    const blob = await res.blob();
+    return new Promise(resolve => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  const logoUrl = "https://verchasacademy.in/verchas-logo.png";
+  const logoData = await loadImage(logoUrl);
+
+  /* ================= WATERMARK ================= */
+  doc.saveGraphicsState();
+  doc.setGState(new doc.GState({ opacity: 0.06 }));
+  doc.addImage(logoData, "PNG", 15, 40, 180, 180);
+  doc.restoreGraphicsState();
+
+  /* ================= HEADER ================= */
+  doc.addImage(logoData, "PNG", 75, 10, 55, 40);
+
   doc.setFontSize(18);
-  doc.text("VERCHAS ACADEMY", 105, 20, { align: "center" });
+  doc.text("VERCHAS ACADEMY", 105, 60, { align: "center" });
 
   doc.setFontSize(14);
-  doc.text("Student Registration Slip", 105, 30, { align: "center" });
+  doc.text("Student Registration Slip", 105, 70, { align: "center" });
 
+  doc.line(20, 75, 190, 75);
+
+  /* ================= DETAILS ================= */
   doc.setFontSize(12);
-  doc.text("Registration No: " + data.registrationNo, 20, 50);
-  doc.text("Student Name: " + data.studentName, 20, 60);
-  doc.text("Father Name: " + data.fatherName, 20, 70);
-  doc.text("Mobile: " + data.mobile, 20, 80);
+  doc.text("Registration No :", 20, 95);
+  doc.text(data.registrationNo, 70, 95);
 
+  doc.text("Student Name :", 20, 105);
+  doc.text(data.studentName, 70, 105);
+
+  doc.text("Father's Name :", 20, 115);
+  doc.text(data.fatherName, 70, 115);
+
+  doc.text("Mobile Number :", 20, 125);
+  doc.text(data.mobile, 70, 125);
+
+  /* ================= FOOTER ================= */
   doc.setFontSize(10);
+  doc.text("Authorised Signatory", 20, 190);
+  doc.text("Verchas Academy", 20, 195);
+
   doc.text(
-    "Please bring this slip along with a valid photo ID.",
+    "Note: Please bring this Registration Slip to the Academy Office along with a valid photo ID.",
     20,
-    100
+    215,
+    { maxWidth: 170 }
   );
 
-  // 3️⃣ Download PDF (mobile-safe)
+  /* ================= DOWNLOAD ================= */
   doc.save("RegistrationSlip.pdf");
 
-  // 4️⃣ Redirect to home AFTER download starts
+  /* ================= REDIRECT ================= */
   setTimeout(() => {
     window.location.href = "index.html";
-  }, 600);
+  }, 700);
 });
-</script>
+</script>  
 </body>
 </html>

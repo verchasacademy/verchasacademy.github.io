@@ -328,80 +328,91 @@ form.addEventListener("submit", async function (e) {
   logoImg.src = logoUrl;
 
   logoImg.onload = function () {
-  // 🔹 Watermark (full-page, light)
+  // 🔹 Watermark (full-page, safely below header)
   doc.saveGraphicsState();
-  doc.setGState(new doc.GState({ opacity: 0.08 }));
+  doc.setGState(new doc.GState({ opacity: 0.05 }));
 
   doc.addImage(
   logoImg,
   "PNG",
   20,   // X
-  40,   // Y
+  70,   // Y  ← pushed DOWN
   170,  // Width
   170   // Height
 );
 
   doc.restoreGraphicsState();
 
+  // Logo (keep exactly as you want)
+  doc.addImage(logoImg, "PNG", 75, 10, 55, 45);
 
-  // Logo: reduce width, keep height
-  doc.addImage(logoImg, "PNG", 75, 10, 55, 40);
+  // ---- TEXT STARTS BELOW LOGO ----
 
-  // Move main heading DOWN
-  doc.setFontSize(18);
-  doc.text("VERCHAS ACADEMY", 105, 56, { align: "center" });
+  // Main heading
+ doc.setFontSize(18);
+ doc.text("VERCHAS ACADEMY", 105, 62, { align: "center" });
 
-  doc.setFontSize(14);
-  doc.text("Scholarship Test 2026", 105, 58, { align: "center" });
+ // Subheading
+ doc.setFontSize(14);
+ doc.text("Scholarship Test 2026", 105, 72, { align: "center" });
 
-  doc.setFontSize(16);
-  doc.text("ADMIT CARD", 105, 68, { align: "center" });
+ // Admit card title
+ doc.setFontSize(16);
+ doc.text("ADMIT CARD", 105, 84, { align: "center" });
 
-  doc.line(20, 72, 190, 72);
+ // ---------------- HEADER DIVIDER ----------------
+doc.line(20, 88, 190, 88);
 
-    // Exam details
-    doc.setFontSize(12);
-    doc.text("Exam Date : 05 April 2026", 20, 75);
-    doc.text("Exam Time : 11:00 AM", 20, 82);
-    doc.text("Venue :", 20, 89);
-    doc.text(
-      "Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya",
-      20,
-      96,
-      { maxWidth: 120 }
-    );
+// ---------------- EXAM DETAILS ----------------
+doc.setFontSize(12);
 
-    // Student details
-    doc.setFontSize(12);
-    doc.text("Registration No :", 20, 115);
-    doc.setFontSize(14);
-    doc.text(result.registrationNo, 65, 115);
+doc.text("Exam Date : 05 April 2026", 20, 102);
+doc.text("Exam Time : 11:00 AM", 20, 110);
 
-    doc.setFontSize(12);
-    doc.text("Student Name :", 20, 125);
-    doc.text(result.studentName, 65, 125);
+doc.setFontSize(11);
+doc.text(
+  "Venue : Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya",
+  20,
+  126
+);
 
-    doc.text("Father's Name :", 20, 135);
-    doc.text(result.fatherName, 65, 135);
+// ---------------- EXAM DETAILS DIVIDER ----------------
+doc.line(20, 138, 190, 138);
 
-    doc.text("Mobile Number :", 20, 145);
-    doc.text(result.mobile, 65, 145);
+    // ---------------- STUDENT DETAILS ----------------
+doc.setFontSize(12);
+doc.text("Registration No :", 20, 150);
+
+doc.setFontSize(14);
+doc.text(result.registrationNo, 65, 150);
+
+doc.setFontSize(12);
+doc.text("Student Name :", 20, 162);
+doc.text(result.studentName, 65, 162);
+
+doc.text("Father's Name :", 20, 174);
+doc.text(result.fatherName, 65, 174);
+
+doc.text("Mobile Number :", 20, 186);
+doc.text(result.mobile, 65, 186);
+
 
     // QR Code
-    doc.addImage(qrImg.src, "PNG", 150, 115, 35, 35);
+    doc.addImage(qrImg, "PNG", 150, 96, 38, 38);
 
     // Footer
     doc.setFontSize(10);
-    doc.text(
-      "Please bring this Admit Card to the examination centre along with a valid photo ID.",
-      105,
-      180,
-      { align: "center", maxWidth: 170 }
-    );
-
+    
     doc.text("Authorised Signatory", 20, 195);
     doc.text("Verchas Academy", 20, 200);
-
+doc.setFontSize(10);
+doc.text(
+  "Note: Please bring this Admit Card to the examination centre along with a valid photo ID.",
+  20,
+  220,
+  { maxWidth: 170 }
+);
+    
     // 🔹 Open PDF in new tab
     window.open(doc.output("bloburl"), "_blank");
 

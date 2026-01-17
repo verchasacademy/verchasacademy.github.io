@@ -388,7 +388,7 @@ const pdfUrl = doc.output("bloburl");
 
 // Give mobile browsers time to finish rendering
 setTimeout(() => {
-  window.location.href = pdfUrl;
+  window.open(pdfUrl, "_blank");
 }, 300);
 
     // Reset button

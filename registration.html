@@ -374,26 +374,42 @@ doc.text(
   { maxWidth: 170 }
 );
 
-// 🔹 Inform user before download
-submitMsg.textContent = "Your Registration Slip is downloading…";
+// Show success message + download button
+submitMsg.style.display = "block";
+submitMsg.innerHTML = `
+  <p>✅ Registered successfully</p>
+  <button id="downloadBtn">Download Slip</button>
+`;
 
-// 🔹 Generate PDF blob
-const pdfBlob = doc.output("blob");
-const pdfUrl = URL.createObjectURL(pdfBlob);
+// Attach click handler for download
+document.getElementById("downloadBtn").addEventListener("click", () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
 
-// 🔹 Create a hidden link and trigger download immediately
-const a = document.createElement("a");
-a.style.display = "none";
-a.href = pdfUrl;
-a.download = "RegistrationSlip.pdf";
-document.body.appendChild(a);
+  // Build PDF content
+  doc.setFontSize(18);
+  doc.text("VERCHAS ACADEMY", 105, 30, { align: "center" });
+  doc.setFontSize(14);
+  doc.text("Student Registration Slip", 105, 40, { align: "center" });
 
-// Use requestAnimationFrame to ensure the click is treated as user gesture
-requestAnimationFrame(() => {
+  doc.setFontSize(12);
+  doc.text("Registration No: " + result.registrationNo, 20, 60);
+  doc.text("Student Name: " + result.studentName, 20, 70);
+  doc.text("Father's Name: " + result.fatherName, 20, 80);
+  doc.text("Mobile Number: " + result.mobile, 20, 90);
+
+  // Generate blob and force download
+  const pdfBlob = doc.output("blob");
+  const pdfUrl = URL.createObjectURL(pdfBlob);
+
+  const a = document.createElement("a");
+  a.href = pdfUrl;
+  a.download = "RegistrationSlip.pdf";
+  document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
 
-  // 🔹 Redirect after download
+  // Redirect after download
   window.location.href = "thankyou.html";
 });
 

@@ -375,13 +375,21 @@ doc.text(
 );
 
 // 🔹 Inform user before opening PDF
-submitMsg.textContent = "Your registration slip is opening…";
+submitMsg.textContent = "Your Registration Slip is opening…";
 
 // 🔹 Open PDF in new tab (mobile-safe)
+// Step 1: open a blank window immediately (gesture-safe)
+const newWin = window.open("", "_blank");
+
+// Step 2: generate PDF
 const pdfBlob = doc.output("blob");
 const pdfUrl = URL.createObjectURL(pdfBlob);
-const opened = window.open(pdfUrl, "_blank");
-if (!opened) {
+
+// Step 3: inject PDF into the new window
+if (newWin) {
+  newWin.location.href = pdfUrl;
+} else {
+  // fallback: force download
   const a = document.createElement("a");
   a.href = pdfUrl;
   a.download = "RegistrationSlip.pdf";

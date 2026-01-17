@@ -11,7 +11,6 @@
   </script>
 
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="5;url=index.html">
   <title>Thank You | Verchas Academy</title>
 
   <style>
@@ -37,11 +36,15 @@
 
 <body>
   <div class="box">
-    <h1>Thank You!</h1>
-    <p>Your registration has been submitted successfully.</p>
-    <p>Our team will contact you shortly.</p>
-    <p><small>Redirecting to homepage…</small></p>
-  </div>
+  <h1>Thank You!</h1>
+  <p>Your registration has been submitted successfully.</p>
+  <p>Our team will contact you shortly.</p>
+
+  <!-- ✅ POINT 2 GOES HERE -->
+  <button id="downloadBtn">Download Registration Slip</button>
+
+  <p><small>You will be redirected to the homepage after download.</small></p>
+</div>
 
   <!-- Enrollment conversion event -->
   <script>
@@ -50,6 +53,51 @@
       'event_label': 'Thank You Page'
     });
   </script>
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+<script>
+document.getElementById("downloadBtn").addEventListener("click", function () {
+
+  // 1️⃣ Get saved registration data
+  const data = JSON.parse(sessionStorage.getItem("registrationData"));
+
+  if (!data) {
+    alert("Registration data not found. Please contact the academy.");
+    return;
+  }
+
+  // 2️⃣ Create PDF
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFontSize(18);
+  doc.text("VERCHAS ACADEMY", 105, 20, { align: "center" });
+
+  doc.setFontSize(14);
+  doc.text("Student Registration Slip", 105, 30, { align: "center" });
+
+  doc.setFontSize(12);
+  doc.text("Registration No: " + data.registrationNo, 20, 50);
+  doc.text("Student Name: " + data.studentName, 20, 60);
+  doc.text("Father Name: " + data.fatherName, 20, 70);
+  doc.text("Mobile: " + data.mobile, 20, 80);
+
+  doc.setFontSize(10);
+  doc.text(
+    "Please bring this slip along with a valid photo ID.",
+    20,
+    100
+  );
+
+  // 3️⃣ Download PDF (mobile-safe)
+  doc.save("RegistrationSlip.pdf");
+
+  // 4️⃣ Redirect to home AFTER download starts
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 600);
+});
+</script>
 </body>
 </html>

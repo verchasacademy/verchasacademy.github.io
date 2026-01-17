@@ -124,7 +124,7 @@ button:disabled{
 </div>
 <h1>Student Registration Form</h1>
 
-<form action="https://script.google.com/macros/s/AKfycbw5mr__udM0mcHRx05QABAZ4QjgL6gtCu_vzpRYJ_xLT8eGKFfXInXHE5Qx4b0ikcqknw/exec" method="POST">
+<form id="regForm" action="https://script.google.com/macros/s/AKfycbw5mr__udM0mcHRx05QABAZ4QjgL6gtCu_vzpRYJ_xLT8eGKFfXInXHE5Qx4b0ikcqknw/exec">
 
 <h3>Student Details</h3>
 <input type="text" name="Student Name" placeholder="Student Name" required>
@@ -169,14 +169,11 @@ button:disabled{
   <option>Other</option>
 </select>
 
-<button type="submit" id="submitBtn">
+<button type="button" id="submitBtn">
   <span id="btnText">Submit Registration</span>
   <span id="btnSpinner" style="display:none; margin-left:8px;">⏳</span>
 </button>
 
-<p id="submitMsg" style="display:none; margin-top:12px; font-weight:600; color:#004aad;">
-Please wait… Submitting your registration.
-</p>
 <p id="formError" style="color:red; font-weight:600; display:none; margin-top:10px;">
 Please check the highlighted fields. Some information is invalid or missing.
 </p>
@@ -243,196 +240,55 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-<!-- jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<!-- QR Code -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-const form = document.querySelector("form");
+document.addEventListener("DOMContentLoaded", function () {
 
-form.addEventListener("submit", async function (e) {
-  e.preventDefault();
-
-  if (!form.checkValidity()) {
-    document.getElementById("formError").style.display = "block";
-    return;
-  }
-
+  const form = document.getElementById("regForm");
   const submitBtn = document.getElementById("submitBtn");
   const btnText = document.getElementById("btnText");
   const spinner = document.getElementById("btnSpinner");
-  const submitMsg = document.getElementById("submitMsg");
+  const formError = document.getElementById("formError");
 
-  submitBtn.disabled = true;
-  btnText.textContent = "Generating Registration Slip…";
-  spinner.style.display = "inline";
-  submitMsg.style.display = "block";
-  submitMsg.textContent = "Please wait… Generating your Registration Slip.";
+  submitBtn.addEventListener("click", async function () {
 
-  // 🔹 Send form data to backend
-  const formData = new FormData(form);
-  const response = await fetch(form.action, {
-    method: "POST",
-    body: formData
+    if (submitBtn.disabled) return;
+
+    if (!form.checkValidity()) {
+      formError.style.display = "block";
+      return;
+    }
+
+    formError.style.display = "none";
+    submitBtn.disabled = true;
+    btnText.textContent = "Submitting…";
+    spinner.style.display = "inline";
+
+    try {
+      const formData = new FormData(form);
+
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: formData
+      });
+
+      if (!res.ok) throw new Error("Request failed");
+
+      const result = await res.json();
+
+      sessionStorage.setItem(
+        "registrationData",
+        JSON.stringify(result)
+      );
+
+      window.location.href = "thankyou.html";
+
+    } catch (err) {
+      alert("Network error. Please try again.");
+      submitBtn.disabled = false;
+      btnText.textContent = "Submit Registration";
+      spinner.style.display = "none";
+    }
   });
-
-  if (!response.ok) {
-    document.getElementById("formError").style.display = "block";
-    submitBtn.disabled = false;
-    btnText.textContent = "Submit Registration";
-    spinner.style.display = "none";
-    submitMsg.style.display = "none";
-    return;
-  }
-
-  const result = await response.json();
-
-  // 🔹 QR Code text (plain readable)
-  const qrText =
-    "Registration No: " + result.registrationNo + "\n" +
-    "Student Name: " + result.studentName + "\n" +
-    "Father Name: " + result.fatherName + "\n" +
-    "Mobile: " + result.mobile;
-
-  // 🔹 Generate QR in memory
-  const qrDiv = document.createElement("div");
-  new QRCode(qrDiv, {
-    text: qrText,
-    width: 120,
-    height: 120
-  });
-
-  await new Promise(r => setTimeout(r, 300));
-  const qrImg = qrDiv.querySelector("img");
-
-  // 🔹 Generate PDF
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-
-  // 🔹 Preload logo as Data URL (mobile-safe)
-async function getLogoDataUrl(url) {
-  const response = await fetch(url, { cache: "no-store" });
-  const blob = await response.blob();
-  return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result);
-    reader.readAsDataURL(blob);
-  });
-}
-
-const logoUrl = "https://verchasacademy.in/verchas-logo.png";
-const logoDataUrl = await getLogoDataUrl(logoUrl);
-
-// ================= FULL PAGE WATERMARK =================
-doc.saveGraphicsState();
-doc.setGState(new doc.GState({ opacity: 0.05 }));
-doc.addImage(logoDataUrl, "PNG", 10, 40, 190, 190);
-doc.restoreGraphicsState();
-
-// Logo (KEEP AS-IS – do not change size)
-doc.addImage(logoDataUrl, "PNG", 75, 10, 55, 45);
-
-// Headings
-doc.setFontSize(18);
-doc.text("VERCHAS ACADEMY", 105, 62, { align: "center" });
-doc.setFontSize(14);
-doc.text("Student Registration Slip", 105, 72, { align: "center" });
-doc.line(20, 78, 190, 78);
-
-// Centre line
-doc.setFontSize(12);
-doc.text("Centre : Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya", 20, 95);
-
-// Student details
-doc.setFontSize(12);
-doc.text("Registration No :", 20, 115);
-doc.setFontSize(14);
-doc.text(result.registrationNo, 65, 115);
-
-doc.setFontSize(12);
-doc.text("Student Name :", 20, 125);
-doc.text(result.studentName, 65, 125);
-
-doc.text("Father's Name :", 20, 135);
-doc.text(result.fatherName, 65, 135);
-
-doc.text("Mobile Number :", 20, 145);
-doc.text(result.mobile, 65, 145);
-
-// QR Code
-doc.addImage(qrImg.src, "PNG", 150, 115, 35, 35);
-
-// Footer
-doc.setFontSize(10);
-doc.text("Authorised Signatory", 20, 195);
-doc.text("Verchas Academy", 20, 200);
-doc.text(
-  "Note: Please bring this Student Registration Slip to the Academy Office along with a valid photo ID.",
-  20,
-  220,
-  { maxWidth: 170 }
-);
-
-form.addEventListener("submit", async function (e) {
-  e.preventDefault();
-
-  // 1) Collect values BEFORE any async work (so we don't depend on 'result')
-  const slipData = {
-    registrationNo: document.getElementById("registrationNo").value.trim(),
-    studentName: document.getElementById("studentName").value.trim(),
-    fatherName: document.getElementById("fatherName").value.trim(),
-    mobile: document.getElementById("mobile").value.trim()
-  };
-
-  // 2) (Optional) send to Google Apps Script
-  try {
-    const formData = new FormData(form);
-    const resp = await fetch(form.action, { method: "POST", body: formData });
-    if (!resp.ok) throw new Error("Submit failed");
-  } catch (err) {
-    submitMsg.style.display = "block";
-    submitMsg.textContent = "Submission failed. Please try again.";
-    return;
-  }
-
-  // 3) Show success + a real button (fresh gesture for mobile)
-  submitMsg.style.display = "block";
-  submitMsg.innerHTML = `
-    <p>✅ Registered successfully</p>
-    <button id="downloadBtn">Download Slip</button>
-  `;
-
-  // 4) On click, generate and download via jsPDF's built-in save (no blob URLs)
-  document.getElementById("downloadBtn").addEventListener("click", () => {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    // Build PDF content
-    doc.setFontSize(18);
-    doc.text("VERCHAS ACADEMY", 105, 30, { align: "center" });
-    doc.setFontSize(14);
-    doc.text("Student Registration Slip", 105, 40, { align: "center" });
-
-    doc.setFontSize(12);
-    doc.text("Registration No: " + slipData.registrationNo, 20, 60);
-    doc.text("Student Name: " + slipData.studentName, 20, 70);
-    doc.text("Father's Name: " + slipData.fatherName, 20, 80);
-    doc.text("Mobile Number: " + slipData.mobile, 20, 90);
-
-    // 🔹 Use jsPDF's native save (more reliable than blob on mobile)
-    doc.save("RegistrationSlip.pdf");
-
-    setTimeout(() => {
-  window.location.href = "thankyou.html";
-}, 2000);
-  });
-});
-// Reset button
-submitBtn.disabled = false;
-btnText.textContent = "Submit Registration";
-spinner.style.display = "none";
-submitMsg.style.display = "none";
 });
 </script>
 </body>

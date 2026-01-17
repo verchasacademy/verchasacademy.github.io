@@ -139,24 +139,7 @@ button:disabled{
   <option>Other</option>
 </select>
 
-<h3>Academic Information</h3>
-<select name="Standard" required>
-  <option value="">Standard / Class</option>
-  <option>Class 8th</option>
-  <option>Class 9th</option>
-  <option>Class 10th</option>
-  <option>Class 11th</option>
-  <option>Class 12th</option>
-  <option>Graduation</option>
-</select>
-
-<select name="Board" required>
-  <option value="">Board</option>
-  <option>CBSE</option>
-  <option>ICSE</option>
-  <option>UP Board</option>
-  <option>Other</option>
-</select>
+<input type="text" name="Current School/College" placeholder="Current School / College" required>
 
 <select name="Medium" required>
   <option value="">Medium of Education</option>
@@ -164,47 +147,14 @@ button:disabled{
   <option>Hindi</option>
 </select>
 
-<input type="text" name="Current School/College" placeholder="Current School / College" required>
-
-<h3>Academic Performance</h3>
-<input
-  type="text"
-  name="High_School_Marks"
-  placeholder="High School Marks (0–100, decimal allowed, or NA)"
-  oninput="validateMarks(this)"
-  required
->
-
-<input
-  type="text"
-  name="Inter_Marks"
-  placeholder="Intermediate Marks (0–100, decimal allowed, or NA)"
-  oninput="validateMarks(this)"
-  required
->
-
-<div class="note">
-Write <b>NA</b> if the exam has not been appeared yet.
-</div>
 <h3>Contact Information</h3>
+
 <input type="tel" name="Mobile Number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
 <input type="tel" name="Emergency Contact Number" placeholder="Emergency Contact Number" pattern="[0-9]{10}" required>
 <input type="email" name="Email" placeholder="Email Address">
 <textarea name="Address" rows="3" placeholder="Full Address" required></textarea>
 
-<input
-  type="tel"
-  name="Aadhaar Number"
-  placeholder="Aadhaar Number (12 digits)"
-  maxlength="12"
-  inputmode="numeric"
-  required
->
-<div class="note">
-Aadhaar details will be kept confidential and used only for official admission purposes.
-</div>
-
-<h3>Course & Other Details</h3>
+<h3>Course Details</h3>
 <select name="Course Opted For" required>
   <option value="">Course Opted For</option>
   <option>NEET</option>
@@ -214,46 +164,6 @@ Aadhaar details will be kept confidential and used only for official admission p
   <option>Other</option>
 </select>
 
-<select name="How did you get to know about Verchas Academy?" required>
-  <option value="">How did you get to know about us?</option>
-  <option>Friends / Seniors</option>
-  <option>Parents / Relatives</option>
-  <option>Teachers / School</option>
-  <option>Social Media</option>
-  <option>Website / Google</option>
-  <option>Poster / Banner</option>
-</select>
-
-<select name="Sibling_Registered" id="siblingRegistered" required>
-  <option value="">Any sibling already registered?</option>
-  <option value="Yes">Yes</option>
-  <option value="No">No</option>
-</select>
-<div id="siblingDetails" style="display:none; margin-top:12px;">
-
-  <input
-    type="text"
-    name="Sibling_Name"
-    placeholder="Sibling Name"
-  >
-
-  <select name="Sibling_Gender">
-    <option value="">Sibling Gender</option>
-    <option>Male</option>
-    <option>Female</option>
-    <option>Other</option>
-  </select>
-
-  <select name="Sibling_Course">
-    <option value="">Sibling Course</option>
-    <option>NEET</option>
-    <option>IIT-JEE</option>
-    <option>Pre-Foundation</option>
-    <option>Foundation</option>
-    <option>Other</option>
-  </select>
-
-</div>
 <button type="submit" id="submitBtn">
   <span id="btnText">Submit Registration</span>
   <span id="btnSpinner" style="display:none; margin-left:8px;">⏳</span>
@@ -335,30 +245,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const siblingSelect = document.getElementById("siblingRegistered");
-  const siblingDetails = document.getElementById("siblingDetails");
-  const siblingInputs = siblingDetails.querySelectorAll("input, select");
-
-  siblingSelect.addEventListener("change", function () {
-    if (this.value === "Yes") {
-      siblingDetails.style.display = "block";
-      siblingInputs.forEach(el => el.required = true);
-    } else {
-      siblingDetails.style.display = "none";
-      siblingInputs.forEach(el => {
-        el.required = false;
-        el.value = "";
-      });
-    }
-  });
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
   const form = document.querySelector("form");
   const submitBtn = document.getElementById("submitBtn");
   const btnText = document.getElementById("btnText");
@@ -395,72 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
     submitMsg.style.display = "block";
 
   });
-
-});
-</script>
-<script>
-function validateMarks(input) {
-  let value = input.value;
-
-  // Allow only digits, decimal point, or letters N/A
-  if (!/^[0-9NAna.]*$/.test(value)) {
-    input.value = "";
-    return;
-  }
-
-  // Handle NA / na
-  if (/^[A-Za-z]/.test(value)) {
-    if (!/^NA$/i.test(value)) {
-      // Allow partial typing: N or n
-      if (!/^N$/i.test(value)) {
-        input.value = "";
-      }
-    }
-    return;
-  }
-
-  // Handle numbers (including decimals)
-  if (/^[0-9.]+$/.test(value)) {
-
-    // More than one decimal → invalid
-    if ((value.match(/\./g) || []).length > 1) {
-      input.value = "";
-      return;
-    }
-
-    // Prevent starting with just "."
-    if (value === ".") {
-      input.value = "";
-      return;
-    }
-
-    const num = parseFloat(value);
-
-    // Must be <= 100
-    if (!isNaN(num) && num > 100) {
-      input.value = "";
-      return;
-    }
-  }
-}
-</script>
-<script>
-const form = document.querySelector("form");
-const submitBtn = document.getElementById("submitBtn");
-const btnText = document.getElementById("btnText");
-const spinner = document.getElementById("btnSpinner");
-const submitMsg = document.getElementById("submitMsg");
-
-form.addEventListener("submit", function () {
-
-  // Prevent multiple submissions
-  submitBtn.disabled = true;
-
-  // Visual feedback
-  btnText.textContent = "Submitting…";
-  spinner.style.display = "inline";
-  submitMsg.style.display = "block";
-});
 </script>
 </body>
 </html>

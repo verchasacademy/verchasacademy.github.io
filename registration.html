@@ -312,26 +312,39 @@ const result = await response.json();
   logoImg.src = logoUrl;
 
   logoImg.onload = function () {
+// ================= FULL PAGE WATERMARK =================
+doc.saveGraphicsState();
+doc.setGState(new doc.GState({ opacity: 0.05 }));
 
-    doc.addImage(logoImg, "PNG", 65, 10, 80, 30);
+doc.addImage(
+  logoImg,
+  "PNG",
+  10,   // X
+  40,   // Y
+  190,  // Width (almost full A4)
+  190   // Height
+);
 
-    doc.setFontSize(18);
-    doc.text("VERCHAS ACADEMY", 105, 40, { align: "center" });
+doc.restoreGraphicsState();
+  
+    // Logo (KEEP AS-IS – do not change size)
+  doc.addImage(logoImg, "PNG", 75, 10, 55, 45);
 
-    doc.setFontSize(14);
-    doc.text("Student Registration", 105, 48, { align: "center" });
+   // Move headings BELOW logo
+  doc.setFontSize(18);
+  doc.text("VERCHAS ACADEMY", 105, 62, { align: "center" });
 
-    doc.setFontSize(16);
-    doc.text("Registration Slip", 105, 58, { align: "center" });
+  doc.setFontSize(14);
+  doc.text("Student Registration Slip", 105, 72, { align: "center" });
 
-    doc.line(20, 62, 190, 62);
+  // Divider line below headings
+  doc.line(20, 78, 190, 78);
 
-    doc.text("Centre :", 20, 75);
-    doc.text(
-      "Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya",
-      20,
-      82,
-      { maxWidth: 120 }
+    doc.setFontSize(12);
+doc.text(
+  "Centre : Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya",
+  20,
+  95
 );
 
     // Student details
@@ -355,18 +368,22 @@ const result = await response.json();
 
     // Footer
     doc.setFontSize(10);
-    doc.text(
-      "Please bring this Registration Slip to the Academy Office along with a valid photo ID.",
-      105,
-      180,
-      { align: "center", maxWidth: 170 }
-    );
-
+    
     doc.text("Authorised Signatory", 20, 195);
     doc.text("Verchas Academy", 20, 200);
+doc.setFontSize(10);
+doc.text(
+  "Note: Please bring this Student Registration Slip to the Academy Office along with a valid photo ID.",
+  20,
+  220,
+  { maxWidth: 170 }
+);
+    
+    // 🔹 Inform user before opening PDF
+submitMsg.textContent = "Your registration Slip is opening…";
 
-    // 🔹 Open PDF in new tab
-    window.open(doc.output("bloburl"), "_blank");
+// 🔹 Open PDF in same tab (popup-safe)
+window.location.href = doc.output("bloburl");
 
     // Reset button
     submitBtn.disabled = false;

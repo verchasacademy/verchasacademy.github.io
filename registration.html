@@ -311,107 +311,90 @@ form.addEventListener("submit", async function (e) {
   const doc = new jsPDF();
 
   // 🔹 Preload logo as Data URL (mobile-safe)
-  async function getLogoDataUrl(url) {
-    const response = await fetch(url, { cache: "no-store" });
-    const blob = await response.blob();
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result);
-      reader.readAsDataURL(blob);
-    });
-  }
+async function getLogoDataUrl(url) {
+  const response = await fetch(url, { cache: "no-store" });
+  const blob = await response.blob();
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+}
 
-  const logoUrl = "https://verchasacademy.in/verchas-logo.png";
-  const logoDataUrl = await getLogoDataUrl(logoUrl);
+const logoUrl = "https://verchasacademy.in/verchas-logo.png";
+const logoDataUrl = await getLogoDataUrl(logoUrl);
 
-  // ================= FULL PAGE WATERMARK =================
-  doc.saveGraphicsState();
-  doc.setGState(new doc.GState({ opacity: 0.05 }));
+// ================= FULL PAGE WATERMARK =================
+doc.saveGraphicsState();
+doc.setGState(new doc.GState({ opacity: 0.05 }));
+doc.addImage(logoDataUrl, "PNG", 10, 40, 190, 190);
+doc.restoreGraphicsState();
 
-  doc.addImage(
-    logoDataUrl,
-    "PNG",
-    10,   // X
-    40,   // Y
-    190,  // Width (almost full A4)
-    190   // Height
-  );
+// Logo (KEEP AS-IS – do not change size)
+doc.addImage(logoDataUrl, "PNG", 75, 10, 55, 45);
 
-  doc.restoreGraphicsState();
+// Headings
+doc.setFontSize(18);
+doc.text("VERCHAS ACADEMY", 105, 62, { align: "center" });
+doc.setFontSize(14);
+doc.text("Student Registration Slip", 105, 72, { align: "center" });
+doc.line(20, 78, 190, 78);
 
-  // Logo (KEEP AS-IS – do not change size)
-  doc.addImage(logoDataUrl, "PNG", 75, 10, 55, 45);
+// Centre line
+doc.setFontSize(12);
+doc.text("Centre : Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya", 20, 95);
 
-  // Move headings BELOW logo
-  doc.setFontSize(18);
-  doc.text("VERCHAS ACADEMY", 105, 62, { align: "center" });
+// Student details
+doc.setFontSize(12);
+doc.text("Registration No :", 20, 115);
+doc.setFontSize(14);
+doc.text(result.registrationNo, 65, 115);
 
-  doc.setFontSize(14);
-  doc.text("Student Registration Slip", 105, 72, { align: "center" });
+doc.setFontSize(12);
+doc.text("Student Name :", 20, 125);
+doc.text(result.studentName, 65, 125);
 
-  // Divider line below headings
-  doc.line(20, 78, 190, 78);
+doc.text("Father's Name :", 20, 135);
+doc.text(result.fatherName, 65, 135);
 
-  doc.setFontSize(12);
-  doc.text(
-    "Centre : Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya",
-    20,
-    95
-  );
+doc.text("Mobile Number :", 20, 145);
+doc.text(result.mobile, 65, 145);
 
-  // Student details
-  doc.setFontSize(12);
-  doc.text("Registration No :", 20, 115);
-  doc.setFontSize(14);
-  doc.text(result.registrationNo, 65, 115);
+// QR Code
+doc.addImage(qrImg.src, "PNG", 150, 115, 35, 35);
 
-  doc.setFontSize(12);
-  doc.text("Student Name :", 20, 125);
-  doc.text(result.studentName, 65, 125);
+// Footer
+doc.setFontSize(10);
+doc.text("Authorised Signatory", 20, 195);
+doc.text("Verchas Academy", 20, 200);
+doc.text(
+  "Note: Please bring this Student Registration Slip to the Academy Office along with a valid photo ID.",
+  20,
+  220,
+  { maxWidth: 170 }
+);
 
-  doc.text("Father's Name :", 20, 135);
-  doc.text(result.fatherName, 65, 135);
+// 🔹 Inform user before opening PDF
+submitMsg.textContent = "Your registration slip is opening…";
 
-  doc.text("Mobile Number :", 20, 145);
-  doc.text(result.mobile, 65, 145);
+// 🔹 Open PDF in new tab (mobile-safe)
+const pdfBlob = doc.output("blob");
+const pdfUrl = URL.createObjectURL(pdfBlob);
+const opened = window.open(pdfUrl, "_blank");
+if (!opened) {
+  const a = document.createElement("a");
+  a.href = pdfUrl;
+  a.download = "RegistrationSlip.pdf";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
 
-  // QR Code
-  doc.addImage(qrImg.src, "PNG", 150, 115, 35, 35);
-
-  // Footer
-  doc.setFontSize(10);
-  doc.text("Authorised Signatory", 20, 195);
-  doc.text("Verchas Academy", 20, 200);
-  doc.setFontSize(10);
-  doc.text(
-    "Note: Please bring this Student Registration Slip to the Academy Office along with a valid photo ID.",
-    20,
-    220,
-    { maxWidth: 170 }
-  );
-
-  // 🔹 Inform user before opening PDF
-  submitMsg.textContent = "Your registration slip is opening…";
-
-  // 🔹 Open PDF in new tab (mobile-safe) with fallback
-  const pdfBlob = doc.output("blob");
-  const pdfUrl = URL.createObjectURL(pdfBlob);
-
-  const opened = window.open(pdfUrl, "_blank");
-  if (!opened) {
-    const a = document.createElement("a");
-    a.href = pdfUrl;
-    a.download = "RegistrationSlip.pdf";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-
-  // Reset button
-  submitBtn.disabled = false;
-  btnText.textContent = "Submit Registration";
-  spinner.style.display = "none";
-  submitMsg.style.display = "none";
+// Reset button
+submitBtn.disabled = false;
+btnText.textContent = "Submit Registration";
+spinner.style.display = "none";
+submitMsg.style.display = "none";
 });
 </script>
 </body>

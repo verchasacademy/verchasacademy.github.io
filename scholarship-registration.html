@@ -274,13 +274,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const errorMsg = document.getElementById("formError");
 
   /* 🔒 Already submitted (back / refresh) */
-  if (localStorage.getItem("verchasFormSubmitted")) {
-    submitBtn.disabled = true;
-    btnText.textContent = "Submitted";
-    spinner.style.display = "none";
-    submitMsg.style.display = "none";
-    lockMsg.style.display = "block";
-  }
+ if (localStorage.getItem("verchasScholarshipFormSubmitted")) {
+  submitBtn.disabled = true;
+  btnText.textContent = "Submitted";
+  spinner.style.display = "none";
+  submitMsg.style.display = "none";
+  lockMsg.style.display = "block";
+}
 
   form.addEventListener("submit", function (e) {
 
@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* ✅ Lock submission */
-    localStorage.setItem("verchasFormSubmitted", "true");
+    localStorage.setItem("verchasScholarshipFormSubmitted", "true");
 
     submitBtn.disabled = true;
     btnText.textContent = "Submitting…";

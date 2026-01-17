@@ -413,8 +413,11 @@ doc.text(
   { maxWidth: 170 }
 );
     
-    // 🔹 Open PDF in new tab
-    window.open(doc.output("bloburl"), "_blank");
+    // 🔹 Inform user before opening PDF
+submitMsg.textContent = "Your admit card is opening…";
+
+// 🔹 Open PDF in same tab (popup-safe)
+window.location.href = doc.output("bloburl");
 
     // Reset button
     submitBtn.disabled = false;

@@ -329,18 +329,20 @@ form.addEventListener("submit", async function (e) {
 
   logoImg.onload = function () {
 
-    doc.addImage(logoImg, "PNG", 65, 10, 80, 30);
+  // Logo: reduce width, keep height
+  doc.addImage(logoImg, "PNG", 75, 10, 55, 30);
 
-    doc.setFontSize(18);
-    doc.text("VERCHAS ACADEMY", 105, 40, { align: "center" });
+  // Move main heading DOWN
+  doc.setFontSize(18);
+  doc.text("VERCHAS ACADEMY", 105, 50, { align: "center" });
 
-    doc.setFontSize(14);
-    doc.text("Scholarship Test 2026", 105, 48, { align: "center" });
+  doc.setFontSize(14);
+  doc.text("Scholarship Test 2026", 105, 58, { align: "center" });
 
-    doc.setFontSize(16);
-    doc.text("ADMIT CARD", 105, 58, { align: "center" });
+  doc.setFontSize(16);
+  doc.text("ADMIT CARD", 105, 68, { align: "center" });
 
-    doc.line(20, 62, 190, 62);
+  doc.line(20, 72, 190, 72);
 
     // Exam details
     doc.setFontSize(12);

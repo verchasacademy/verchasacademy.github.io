@@ -381,16 +381,21 @@ submitMsg.textContent = "Your Registration Slip is downloading…";
 const pdfBlob = doc.output("blob");
 const pdfUrl = URL.createObjectURL(pdfBlob);
 
-// 🔹 Force direct download (mobile-safe)
+// 🔹 Create a hidden link and trigger download immediately
 const a = document.createElement("a");
+a.style.display = "none";
 a.href = pdfUrl;
-a.download = "RegistrationSlip.pdf";  // filename shown to user
+a.download = "RegistrationSlip.pdf";
 document.body.appendChild(a);
-a.click();
-document.body.removeChild(a);
 
-// 🔹 Redirect to thankyou.html after download
-window.location.href = "thankyou.html";
+// Use requestAnimationFrame to ensure the click is treated as user gesture
+requestAnimationFrame(() => {
+  a.click();
+  document.body.removeChild(a);
+
+  // 🔹 Redirect after download
+  window.location.href = "thankyou.html";
+});
 
 // Reset button
 submitBtn.disabled = false;

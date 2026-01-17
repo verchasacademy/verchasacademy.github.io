@@ -126,94 +126,64 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-document.getElementById("downloadBtn").addEventListener("click", function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-  // 1️⃣ Get saved registration data
-  const data = JSON.parse(sessionStorage.getItem("registrationData"));
+  const btn = document.getElementById("downloadBtn");
 
-  if (!data) {
-    alert("Registration data not found. Please contact the academy.");
-    return;
-  }
+  btn.addEventListener("click", function () {
 
-  // 2️⃣ Create PDF
-  <script>
-document.getElementById("downloadBtn").addEventListener("click", async function () {
+    const dataRaw = sessionStorage.getItem("registrationData");
+    if (!dataRaw) {
+      alert("Registration data not found.");
+      return;
+    }
 
-  const data = JSON.parse(sessionStorage.getItem("registrationData"));
-  if (!data) {
-    alert("Registration data not found.");
-    return;
-  }
+    const data = JSON.parse(dataRaw);
 
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-  // 🔹 Load logo as DataURL (mobile-safe)
-  async function loadImage(url) {
-    const res = await fetch(url, { cache: "no-store" });
-    const blob = await res.blob();
-    return new Promise(resolve => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result);
-      reader.readAsDataURL(blob);
-    });
-  }
+    /* ===== HEADER ===== */
+    doc.setFontSize(18);
+    doc.text("VERCHAS ACADEMY", 105, 20, { align: "center" });
 
-  const logoUrl = "https://verchasacademy.in/verchas-logo.png";
-  const logoData = await loadImage(logoUrl);
+    doc.setFontSize(14);
+    doc.text("Student Registration Slip", 105, 30, { align: "center" });
 
-  /* ================= WATERMARK ================= */
-  doc.saveGraphicsState();
-  doc.setGState(new doc.GState({ opacity: 0.06 }));
-  doc.addImage(logoData, "PNG", 15, 40, 180, 180);
-  doc.restoreGraphicsState();
+    doc.line(20, 35, 190, 35);
 
-  /* ================= HEADER ================= */
-  doc.addImage(logoData, "PNG", 75, 10, 55, 40);
+    /* ===== DETAILS ===== */
+    doc.setFontSize(12);
+    doc.text("Registration No :", 20, 55);
+    doc.text(data.registrationNo || "-", 80, 55);
 
-  doc.setFontSize(18);
-  doc.text("VERCHAS ACADEMY", 105, 60, { align: "center" });
+    doc.text("Student Name :", 20, 65);
+    doc.text(data.studentName || "-", 80, 65);
 
-  doc.setFontSize(14);
-  doc.text("Student Registration Slip", 105, 70, { align: "center" });
+    doc.text("Father Name :", 20, 75);
+    doc.text(data.fatherName || "-", 80, 75);
 
-  doc.line(20, 75, 190, 75);
+    doc.text("Mobile Number :", 20, 85);
+    doc.text(data.mobile || "-", 80, 85);
 
-  /* ================= DETAILS ================= */
-  doc.setFontSize(12);
-  doc.text("Registration No :", 20, 95);
-  doc.text(data.registrationNo, 70, 95);
+    /* ===== FOOTER ===== */
+    doc.setFontSize(10);
+    doc.text(
+      "Please bring this Registration Slip to the Academy Office.",
+      20,
+      110
+    );
 
-  doc.text("Student Name :", 20, 105);
-  doc.text(data.studentName, 70, 105);
+    /* ===== DOWNLOAD ===== */
+    doc.save("RegistrationSlip.pdf");
 
-  doc.text("Father's Name :", 20, 115);
-  doc.text(data.fatherName, 70, 115);
+    /* ===== REDIRECT ===== */
+    setTimeout(function () {
+      window.location.href = "index.html";
+    }, 600);
 
-  doc.text("Mobile Number :", 20, 125);
-  doc.text(data.mobile, 70, 125);
-
-  /* ================= FOOTER ================= */
-  doc.setFontSize(10);
-  doc.text("Authorised Signatory", 20, 190);
-  doc.text("Verchas Academy", 20, 195);
-
-  doc.text(
-    "Note: Please bring this Registration Slip to the Academy Office along with a valid photo ID.",
-    20,
-    215,
-    { maxWidth: 170 }
-  );
-
-  /* ================= DOWNLOAD ================= */
-  doc.save("RegistrationSlip.pdf");
-
-  /* ================= REDIRECT ================= */
-  setTimeout(() => {
-    window.location.href = "index.html";
-  }, 700);
+  });
 });
-</script>  
+</script>
 </body>
 </html>

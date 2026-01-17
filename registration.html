@@ -374,45 +374,60 @@ doc.text(
   { maxWidth: 170 }
 );
 
-// Show success message + download button
-submitMsg.style.display = "block";
-submitMsg.innerHTML = `
-  <p>✅ Registered successfully</p>
-  <button id="downloadBtn">Download Slip</button>
-`;
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-// Attach click handler for download
-document.getElementById("downloadBtn").addEventListener("click", () => {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
+  // 1) Collect values BEFORE any async work (so we don't depend on 'result')
+  const slipData = {
+    registrationNo: document.getElementById("registrationNo").value.trim(),
+    studentName: document.getElementById("studentName").value.trim(),
+    fatherName: document.getElementById("fatherName").value.trim(),
+    mobile: document.getElementById("mobile").value.trim()
+  };
 
-  // Build PDF content
-  doc.setFontSize(18);
-  doc.text("VERCHAS ACADEMY", 105, 30, { align: "center" });
-  doc.setFontSize(14);
-  doc.text("Student Registration Slip", 105, 40, { align: "center" });
+  // 2) (Optional) send to Google Apps Script
+  try {
+    const formData = new FormData(form);
+    const resp = await fetch(form.action, { method: "POST", body: formData });
+    if (!resp.ok) throw new Error("Submit failed");
+  } catch (err) {
+    submitMsg.style.display = "block";
+    submitMsg.textContent = "Submission failed. Please try again.";
+    return;
+  }
 
-  doc.setFontSize(12);
-  doc.text("Registration No: " + result.registrationNo, 20, 60);
-  doc.text("Student Name: " + result.studentName, 20, 70);
-  doc.text("Father's Name: " + result.fatherName, 20, 80);
-  doc.text("Mobile Number: " + result.mobile, 20, 90);
+  // 3) Show success + a real button (fresh gesture for mobile)
+  submitMsg.style.display = "block";
+  submitMsg.innerHTML = `
+    <p>✅ Registered successfully</p>
+    <button id="downloadBtn">Download Slip</button>
+  `;
 
-  // Generate blob and force download
-  const pdfBlob = doc.output("blob");
-  const pdfUrl = URL.createObjectURL(pdfBlob);
+  // 4) On click, generate and download via jsPDF's built-in save (no blob URLs)
+  document.getElementById("downloadBtn").addEventListener("click", () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-  const a = document.createElement("a");
-  a.href = pdfUrl;
-  a.download = "RegistrationSlip.pdf";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+    // Build PDF content
+    doc.setFontSize(18);
+    doc.text("VERCHAS ACADEMY", 105, 30, { align: "center" });
+    doc.setFontSize(14);
+    doc.text("Student Registration Slip", 105, 40, { align: "center" });
 
-  // Redirect after download
+    doc.setFontSize(12);
+    doc.text("Registration No: " + slipData.registrationNo, 20, 60);
+    doc.text("Student Name: " + slipData.studentName, 20, 70);
+    doc.text("Father's Name: " + slipData.fatherName, 20, 80);
+    doc.text("Mobile Number: " + slipData.mobile, 20, 90);
+
+    // 🔹 Use jsPDF's native save (more reliable than blob on mobile)
+    doc.save("RegistrationSlip.pdf");
+
+    setTimeout(() => {
   window.location.href = "thankyou.html";
+}, 2000);
+  });
 });
-
 // Reset button
 submitBtn.disabled = false;
 btnText.textContent = "Submit Registration";

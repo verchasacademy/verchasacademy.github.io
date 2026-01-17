@@ -252,6 +252,9 @@ document.addEventListener("DOMContentLoaded", function () {
 const form = document.querySelector("form");
 
 form.addEventListener("submit", async function (e) {
+  // 🔹 Pre-open window (MOBILE SAFE)
+  const pdfWindow = window.open("", "_self");
+
   e.preventDefault();
 
   if (!form.checkValidity()) {
@@ -386,16 +389,14 @@ submitMsg.textContent = "Your registration Slip is opening…";
 // Generate PDF blob URL safely
 const pdfUrl = doc.output("bloburl");
 
-// Give mobile browsers time to finish rendering
-setTimeout(() => {
-  window.location.href = pdfUrl;
-}, 300);
-
     // Reset button
     submitBtn.disabled = false;
     btnText.textContent = "Submit Registration";
     spinner.style.display = "none";
     document.getElementById("submitMsg").style.display = "none";
+    // 🔹 Load PDF into pre-opened window (works on mobile)
+    const pdfUrl = doc.output("bloburl");
+    pdfWindow.location.href = pdfUrl;
   };
 });
 </script>

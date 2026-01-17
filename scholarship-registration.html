@@ -328,13 +328,28 @@ form.addEventListener("submit", async function (e) {
   logoImg.src = logoUrl;
 
   logoImg.onload = function () {
+  // 🔹 Watermark (full-page, light)
+  doc.saveGraphicsState();
+  doc.setGState(new doc.GState({ opacity: 0.08 }));
+
+  doc.addImage(
+  logoImg,
+  "PNG",
+  20,   // X
+  40,   // Y
+  170,  // Width
+  170   // Height
+);
+
+  doc.restoreGraphicsState();
+
 
   // Logo: reduce width, keep height
-  doc.addImage(logoImg, "PNG", 75, 10, 55, 30);
+  doc.addImage(logoImg, "PNG", 75, 10, 55, 40);
 
   // Move main heading DOWN
   doc.setFontSize(18);
-  doc.text("VERCHAS ACADEMY", 105, 50, { align: "center" });
+  doc.text("VERCHAS ACADEMY", 105, 56, { align: "center" });
 
   doc.setFontSize(14);
   doc.text("Scholarship Test 2026", 105, 58, { align: "center" });

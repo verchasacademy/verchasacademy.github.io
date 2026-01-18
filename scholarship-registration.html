@@ -267,11 +267,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-<!-- jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<!-- QR Code -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 const form = document.querySelector("form");
 
@@ -298,139 +293,16 @@ form.addEventListener("submit", async function (e) {
   });
 
   const result = await response.json();
+// ✅ identify this as scholarship form
+sessionStorage.setItem("form_type", "scholarship");
 
-  // 🔹 QR Code text (plain readable)
-  const qrText =
-    "Registration No: " + result.registrationNo + "\n" +
-    "Student Name: " + result.studentName + "\n" +
-    "Father Name: " + result.fatherName + "\n" +
-    "Mobile: " + result.mobile;
+// ✅ store data for thankyou page
+sessionStorage.setItem("reg_data", JSON.stringify(result));
 
-  // 🔹 Generate QR in memory
-  const qrDiv = document.createElement("div");
-  new QRCode(qrDiv, {
-    text: qrText,
-    width: 120,
-    height: 120
-  });
+// ✅ redirect to common thankyou page
+window.location.href = "thankyou.html";
+return;
 
-  await new Promise(r => setTimeout(r, 300));
-  const qrImg = qrDiv.querySelector("img");
-
-  // 🔹 Generate PDF
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-
-  // Logo (optional – ensure logo URL is public)
-  const logoUrl = "https://verchasacademy.in/verchas-logo.png";
-
-  const logoImg = new Image();
-  logoImg.src = logoUrl;
-
-  logoImg.onload = function () {
-  // 🔹 Watermark (full-page, safely below header)
-  doc.saveGraphicsState();
-  doc.setGState(new doc.GState({ opacity: 0.05 }));
-
-  doc.addImage(
-  logoImg,
-  "PNG",
-  20,   // X
-  70,   // Y  ← pushed DOWN
-  170,  // Width
-  170   // Height
-);
-
-  doc.restoreGraphicsState();
-
-  // Logo (keep exactly as you want)
-  doc.addImage(logoImg, "PNG", 75, 10, 55, 45);
-
-  // ---- TEXT STARTS BELOW LOGO ----
-
-  // Main heading
- doc.setFontSize(18);
- doc.text("VERCHAS ACADEMY", 105, 62, { align: "center" });
-
- // Subheading
- doc.setFontSize(14);
- doc.text("Scholarship Test 2026", 105, 72, { align: "center" });
-
- // Admit card title
- doc.setFontSize(16);
- doc.text("ADMIT CARD", 105, 84, { align: "center" });
-
- // ---------------- HEADER DIVIDER ----------------
-doc.line(20, 88, 190, 88);
-
-// ---------------- EXAM DETAILS ----------------
-doc.setFontSize(12);
-
-doc.text("Exam Date : 05 April 2026", 20, 102);
-doc.text("Exam Time : 11:00 AM", 20, 110);
-
-doc.setFontSize(11);
-doc.text(
-  "Venue : Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya",
-  20,
-  126
-);
-
-// ---------------- EXAM DETAILS DIVIDER ----------------
-doc.line(20, 138, 190, 138);
-
-    // ---------------- STUDENT DETAILS ----------------
-doc.setFontSize(12);
-doc.text("Registration No :", 20, 150);
-
-doc.setFontSize(14);
-doc.text(result.registrationNo, 65, 150);
-
-doc.setFontSize(12);
-doc.text("Student Name :", 20, 162);
-doc.text(result.studentName, 65, 162);
-
-doc.text("Father's Name :", 20, 174);
-doc.text(result.fatherName, 65, 174);
-
-doc.text("Mobile Number :", 20, 186);
-doc.text(result.mobile, 65, 186);
-
-
-    // QR Code
-    doc.addImage(qrImg, "PNG", 150, 96, 38, 38);
-
-    // Footer
-    doc.setFontSize(10);
-    
-    doc.text("Authorised Signatory", 20, 195);
-    doc.text("Verchas Academy", 20, 200);
-doc.setFontSize(10);
-doc.text(
-  "Note: Please bring this Admit Card to the examination centre along with a valid photo ID.",
-  20,
-  220,
-  { maxWidth: 170 }
-);
-    
-    // 🔹 Inform user before opening PDF
-submitMsg.textContent = "Your admit card is opening…";
-
-// 🔹 Open PDF in same tab (popup-safe)
-// Generate PDF blob URL safely
-const pdfUrl = doc.output("bloburl");
-
-// Give mobile browsers time to finish rendering
-setTimeout(() => {
-  window.location.href = pdfUrl;
-}, 300);
-
-    // Reset button
-    submitBtn.disabled = false;
-    btnText.textContent = "Submit Registration";
-    spinner.style.display = "none";
-    document.getElementById("submitMsg").style.display = "none";
-  };
 });
 </script>
 </body>

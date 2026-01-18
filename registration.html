@@ -289,6 +289,16 @@ try {
   spinner.style.display = "none";
   return;
 }
+// ✅ identify this as normal registration form
+sessionStorage.setItem("form_type", "registration");
+
+// ✅ store data for thankyou page
+sessionStorage.setItem("reg_data", JSON.stringify(result));
+
+// ✅ redirect to common thankyou page
+window.location.href = "thankyou.html";
+return;
+
 // ✅ store registration data for thankyou page
 sessionStorage.setItem("reg_data", JSON.stringify(result));
 

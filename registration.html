@@ -281,7 +281,16 @@ if (!response.ok) {
   return;
 }
 
-const result = await response.json();
+let result;
+try {
+  result = await response.json();
+} catch (err) {
+  alert("Server error: Invalid response. Please contact academy.");
+  submitBtn.disabled = false;
+  btnText.textContent = "Submit Registration";
+  spinner.style.display = "none";
+  return;
+}
 
   // 🔹 QR Code text (plain readable)
   const qrText =
@@ -384,12 +393,7 @@ submitMsg.textContent = "Your registration Slip is opening…";
 
 // 🔹 Open PDF in same tab (popup-safe)
 // Generate PDF blob URL safely
-const pdfUrl = doc.output("bloburl");
-
-// Give mobile browsers time to finish rendering
-setTimeout(() => {
-  window.location.href = pdfUrl;
-}, 300);
+doc.save("Verchas_Registration_Slip.pdf");
 
     // Reset button
     submitBtn.disabled = false;

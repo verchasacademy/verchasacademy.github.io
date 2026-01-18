@@ -372,6 +372,11 @@ function generatePDF() {
 
   doc.save("Verchas_Registration_Slip.pdf");
 
+// 🔁 redirect to thank you page after short delay
+setTimeout(() => {
+  window.location.href = "thankyou.html";
+}, 800);
+
   submitBtn.disabled = false;
   btnText.textContent = "Submit Registration";
   spinner.style.display = "none";

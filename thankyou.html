@@ -1,55 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KP1HYGJL04"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-KP1HYGJL04');
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Successful | Verchas Academy</title>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="5;url=index.html">
-  <title>Thank You | Verchas Academy</title>
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:#f2f4f8;
+}
+.container{
+  max-width:700px;
+  margin:40px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+h1{
+  text-align:center;
+  color:#004aad;
+}
+.slip{
+  margin-top:25px;
+  padding:20px;
+  border:2px dashed #004aad;
+  border-radius:10px;
+}
+.slip p{
+  font-size:1.05em;
+  margin:10px 0;
+}
+.label{
+  font-weight:600;
+  color:#333;
+}
+#qrcode{
+  margin-top:15px;
+  text-align:center;
+}
+button{
+  width:100%;
+  margin-top:25px;
+  padding:14px;
+  font-size:1.1em;
+  background:#004aad;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+button:hover{
+  background:#003366;
+}
+.note{
+  margin-top:15px;
+  font-size:0.9em;
+  color:#555;
+  text-align:center;
+}
+.slip-flex{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
 
-  <style>
-    body{
-      font-family: Arial, sans-serif;
-      background:#f2f4f8;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-    }
-    .box{
-      background:#fff;
-      padding:40px;
-      border-radius:12px;
-      text-align:center;
-      box-shadow:0 10px 30px rgba(0,0,0,.15);
-    }
-    h1{color:#004aad}
-    p{font-size:1.1em}
-  </style>
+.slip-left{
+  flex:2;
+}
+
+.slip-right{
+  flex:1;
+  text-align:center;
+}
+
+.slip-right img{
+  max-width:160px;
+  opacity:0.9;
+}
+@media (max-width:600px){
+  .slip-flex{
+    flex-direction:column;
+    text-align:center;
+  }
+  .slip-right{
+    margin-top:15px;
+  }
+}
+</style>
 </head>
 
 <body>
-  <div class="box">
-    <h1>Thank You!</h1>
-    <p>Your registration has been submitted successfully.</p>
-    <p>Our team will contact you shortly.</p>
-    <p><small>Redirecting to homepage…</small></p>
+
+<div class="container">
+  <h1>Registration Successful</h1>
+
+  <div class="slip slip-flex">
+
+  <!-- LEFT SIDE -->
+  <div class="slip-left">
+    <p><span class="label">Registration No:</span> <span id="regNo"></span></p>
+    <p><span class="label">Student Name:</span> <span id="studentName"></span></p>
+    <p><span class="label">Father Name:</span> <span id="fatherName"></span></p>
+    <p><span class="label">Mobile:</span> <span id="mobile"></span></p>
+
+    <div id="qrcode"></div>
   </div>
 
-  <!-- Enrollment conversion event -->
-  <script>
-    gtag('event', 'enroll_complete', {
-      'event_category': 'Enrollment',
-      'event_label': 'Thank You Page'
-    });
-  </script>
+  <!-- RIGHT SIDE (LOGO) -->
+  <div class="slip-right">
+    <img src="verchas-logo.png" alt="Verchas Academy Logo">
+  </div>
+
+</div>
+
+  <button id="downloadBtn">Download Registration Slip (PDF)</button>
+
+  <div class="note">
+    Please keep this registration slip for future reference.
+  </div>
+</div>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const stored = sessionStorage.getItem("reg_data");
+  if (!stored) {
+    document.body.innerHTML = "<h3 style='text-align:center'>Invalid access</h3>";
+    return;
+  }
+
+  const result = JSON.parse(stored);
+
+  // Fill slip info
+  document.getElementById("regNo").textContent = result.registrationNo;
+  document.getElementById("studentName").textContent = result.studentName;
+  document.getElementById("fatherName").textContent = result.fatherName;
+  document.getElementById("mobile").textContent = result.mobile;
+
+  // QR Code
+  new QRCode(document.getElementById("qrcode"), {
+    text:
+      "Registration No: " + result.registrationNo + "\n" +
+      "Student Name: " + result.studentName + "\n" +
+      "Father Name: " + result.fatherName + "\n" +
+      "Mobile: " + result.mobile,
+    width:120,
+    height:120
+  });
+
+  // Download PDF (same design as earlier)
+  document.getElementById("downloadBtn").onclick = function () {
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const logoImg = new Image();
+    logoImg.src = "https://verchasacademy.in/verchas-logo.png";
+
+    logoImg.onload = generatePDF;
+    logoImg.onerror = generatePDF;
+
+    function generatePDF(){
+
+      if (logoImg.complete && logoImg.naturalWidth) {
+        doc.addImage(logoImg, "PNG", 75, 10, 55, 45);
+      }
+
+      doc.setFontSize(18);
+      doc.text("VERCHAS ACADEMY", 105, 62, { align:"center" });
+
+      doc.setFontSize(14);
+      doc.text("Student Registration Slip", 105, 72, { align:"center" });
+
+      doc.line(20, 78, 190, 78);
+
+      doc.setFontSize(12);
+      doc.text(
+        "Centre : Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya",
+        20, 95
+      );
+
+      doc.text("Registration No :", 20, 115);
+      doc.setFontSize(14);
+      doc.text(result.registrationNo, 65, 115);
+
+      doc.setFontSize(12);
+      doc.text("Student Name :", 20, 125);
+      doc.text(result.studentName, 65, 125);
+
+      doc.text("Father's Name :", 20, 135);
+      doc.text(result.fatherName, 65, 135);
+
+      doc.text("Mobile Number :", 20, 145);
+      doc.text(result.mobile, 65, 145);
+
+      const qrImg = document.querySelector("#qrcode img");
+      if (qrImg) {
+        doc.addImage(qrImg.src, "PNG", 150, 115, 35, 35);
+      }
+
+      doc.setFontSize(10);
+      doc.text("Authorised Signatory", 20, 195);
+      doc.text("Verchas Academy", 20, 200);
+
+      doc.save("Verchas_Registration_Slip.pdf");
+    }
+  };
+});
+</script>
 
 </body>
 </html>

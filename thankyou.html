@@ -166,6 +166,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     doc.text("Mobile Number :", 20, 85);
     doc.text(data.mobile || "-", 80, 85);
+/* ===== QR CODE ===== */
+const qrText =
+  "Verchas Academy\n" +
+  "Reg No: " + (data.registrationNo || "") + "\n" +
+  "Student Name: " + (data.studentName || "") + "\n" +
+  "Father's Name: " + (data.fatherName || "") + "\n" +
+  "Mobile: " + (data.mobile || "");
+
+doc.addQRCode(qrText, {
+  x: 140,   // right side
+  y: 55,
+  width: 40
+});
 
     /* ===== FOOTER ===== */
     doc.setFontSize(10);

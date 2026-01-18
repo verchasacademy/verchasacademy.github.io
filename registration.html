@@ -174,9 +174,6 @@ button:disabled{
   <span id="btnSpinner" style="display:none; margin-left:8px;">⏳</span>
 </button>
 
-<p id="submitMsg" style="display:none; margin-top:12px; font-weight:600; color:#004aad;">
-Please wait… Submitting your registration.
-</p>
 <p id="formError" style="color:red; font-weight:600; display:none; margin-top:10px;">
 Please check the highlighted fields. Some information is invalid or missing.
 </p>
@@ -256,14 +253,12 @@ form.addEventListener("submit", async function (e) {
   const submitBtn = document.getElementById("submitBtn");
   const btnText = document.getElementById("btnText");
   const spinner = document.getElementById("btnSpinner");
-  const submitMsg = document.getElementById("submitMsg"); // ✅ FIX 1
-
+  
 
   submitBtn.disabled = true;
   btnText.textContent = "Generating Registration Slip…";
   spinner.style.display = "inline";
-  submitMsg.style.display = "block"; // ✅ SHOW MESSAGE
-
+  
   // 🔹 Send form data to backend
   const formData = new FormData(form);
   const response = await fetch(form.action, {
@@ -297,15 +292,6 @@ sessionStorage.setItem("reg_data", JSON.stringify(result));
 
 // ✅ redirect to common thankyou page
 window.location.href = "thankyou.html";
-return;
-
-// ✅ store registration data for thankyou page
-sessionStorage.setItem("reg_data", JSON.stringify(result));
-
-// ✅ redirect to thankyou page (mobile-safe)
-window.location.href = "thankyou.html";
-
-// ⛔ stop further execution on this page
 return;
 
 });

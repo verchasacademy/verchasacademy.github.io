@@ -117,7 +117,7 @@ button:hover{
 
 </div>
 
-  <button id="downloadBtn">Download PDF</button>
+  <button type="button" id="downloadBtn">Download PDF</button>
 
   <div class="note">
     Please keep this registration slip for future reference.
@@ -195,8 +195,7 @@ function generateRegistrationPDF(data) {
   const logo = new Image();
   logo.src = "verchas-logo.png";
 
-  logo.onload = build;
-  logo.onerror = build;
+  build(); // ✅ MUST be synchronous for mobile
 
   function build() {
 
@@ -254,8 +253,7 @@ function generateScholarshipPDF(data) {
   const logo = new Image();
   logo.src = "verchas-logo.png";
 
-  logo.onload = build;
-  logo.onerror = build;
+  build(); // ✅ MUST be synchronous for mobile
 
   function build() {
 

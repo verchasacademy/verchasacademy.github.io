@@ -848,12 +848,20 @@ a[href^="tel"]{
 /* ===== HERO MOBILE HEIGHT FIX ===== */
 @media(max-width:600px){
   .hero{
-    min-height: 520px;   /* 🔑 ensures full banner fits */
+    min-height: auto;   /* 🔑 allow natural height */
   }
 
   .hero img{
-    height: 520px;
-    object-fit: cover;
+    height: auto;       /* 🔑 no forced height */
+    width: 100%;
+    object-fit: contain; /* 🔑 SHOW FULL IMAGE */
+    background: #000;    /* subtle bars if needed */
+  }
+
+  .hero-overlay{
+    position:absolute;
+    inset:0;
+    padding-top:20px;
   }
 }
 </style>

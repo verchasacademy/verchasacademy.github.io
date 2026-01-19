@@ -49,18 +49,21 @@ header{
   text-align:left;
 }
 .header-content img{
-  height:168px; /* Change 4 */
+  height:200px;
 }
 .header-text h1{
   margin:0;
-  font-size:3.875em; /* Change 4 */
-  letter-spacing:1px;
+  font-size:4.5em;
+  letter-spacing:1.2px;
   text-align:center;
 }
 .header-text p{
-  margin-top:6px;
-  font-size:1.15em;
+  margin-top:10px;
+  font-size:1.55em;
+  font-weight:800;
   text-align:center;
+  color:#ffeb3b;             
+  letter-spacing:0.5px;
 }
 
 /* NAV BAR */
@@ -101,7 +104,7 @@ nav{
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  padding-top:10px;
+  padding-top:30px;   /* 🔑 moves scholarship box to TOP */
 }
 .hero-content{
   max-width:900px;
@@ -240,8 +243,22 @@ footer p{margin:5px 0}
 }
 @media(max-width:600px){
   .course-card{width:100%}
-  .header-content{flex-direction:column;text-align:center}
-  .header-text h1{font-size:2.775em}
+  .header-content{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .header-content img{
+    height:140px;          /* 🔑 mobile logo size */
+  }
+
+  .header-text h1{
+    font-size:2.9em;       /* 🔑 mobile title size */
+  }
+
+  .header-text p{
+    font-size:1.25em;      /* 🔑 mobile tagline size */
+  }
 }
 
 /* Watermark background for main content */
@@ -421,45 +438,49 @@ nav a:hover{
     <img src="verchas-logo.png" alt="Verchas Academy Logo">
     <div class="header-text">
       <h1>Verchas Academy</h1>
-      <p>Your Gateway to NEET & IIT-JEE Success</p>
+      <p>Igniting Minds, Shaping Futures</p>
     </div>
   </div>
 </header>
 
 <nav>
   <div class="nav-links">
-    <a href="#about">About Us</a>
-    <a href="#courses">Our Courses</a>
-    <a href="#contact">Contact Us</a>
-    <a href="#founders">Know the Founders</a>
-    <a href="#hods">Our HODs</a>
-    <a href="registration.html" class="cta">Enroll Now</a>
-    <a href="result.html" class="cta">
-    School Test Result
+    <a href="#about"><span>About</span><span>Us</span></a>
+    <a href="#courses"><span>Our</span><span>Courses</span></a>
+    <a href="#contact"><span>Contact</span><span>Us</span></a>
+    <a href="#founders"><span>Know the</span><span>Founders</span></a>
+    <a href="#hods"><span>Our</span><span>HODs</span></a>
+    <a href="registration.html" class="cta"><span>Enroll</span><span>Now</span></a>
+    <a href="result.html" class="cta"><span>School Test</span><span>Result</span></a>
+
 </a>
   </div>
 </nav>
 <div class="hero">
   <img src="webpic1.png" alt="Verchas Academy Classroom">
+
   <div class="hero-overlay">
     <div class="hero-content">
-    <div class="scholarship-banner">
-  <div class="scholarship-text blink">
-    📢 SCHOLARSHIP TEST – 05 APRIL 2026  
-    <br>
-    <span class="sub-text">
-      Get up to <b>75% Fee Waiver</b> for Top Performers
-    </span>
-  </div>
 
-  <a href="scholarship-registration.html" class="scholarship-btn">
-    Scholarship Test Registration
-  </a>
-</div>
+      <div class="scholarship-banner">
+        <div class="scholarship-text blink">
+          <span class="sch-title">📢 SCHOLARSHIP TEST – 05 APRIL 2026</span>
+          <br>
+          <span style="display:block; font-size:0.9em; color:#ffffff; margin-top:4px;">
+            Sunday 11:00 AM
+          </span>
+          <span class="sub-text single-line">
+          Get up to <b>75% Fee Waiver</b> for Top Performers
+          </span>
 
-  <h2>Igniting Minds, Shaping Futures</h2>
+        </div>
 
-</div>
+        <a href="scholarship-registration.html" class="scholarship-btn">
+          Scholarship Test Registration
+        </a>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -638,13 +659,19 @@ nav{
 
 .nav-links a,
 .nav-links .cta {
-  display: flex;                 /* 🔑 enables perfect centering */
-  align-items: center;           /* vertical center */
-  justify-content: center;       /* horizontal center */
-  text-align: center;            /* multiline text center */
-  line-height: 1.2;              /* balanced line spacing */
-  padding: 14px 22px;            /* keeps box size nice */
-  white-space: normal;           /* allow line breaks */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 150px;            /* 🔑 FIXED WIDTH = visual centering */
+  min-height: 64px;
+
+  text-align: center;
+  line-height: 1.25;
+  padding: 10px 12px;
+
+  white-space: normal;     /* allow wrapping */
 }
 
 /* Ensure dropdown button text also aligns perfectly */
@@ -718,12 +745,13 @@ a[href^="tel"]{
 /* ===== SCHOLARSHIP ANNOUNCEMENT BANNER ===== */
 
 .scholarship-banner{
-  width:100%;
-  margin-top:20px;
-  padding:22px 15px;
-  text-align:center;
-  background: rgba(0,0,0,0.55);
-  border-radius:12px;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 22px 40px;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+  border-radius: 14px;
 }
 
 .scholarship-text{
@@ -782,6 +810,37 @@ a[href^="tel"]{
     font-size:1em;
     padding:12px 24px;
   }
+}
+/* ===== FORCE SINGLE LINE TEXT IN SCHOLARSHIP BANNER ===== */
+
+.sch-title{
+  white-space: nowrap;     /* keeps 2026 in same line */
+  display: inline-block;
+}
+
+.single-line{
+  white-space: nowrap;     /* keeps 'Performers' in same line */
+}
+/* ===== DESKTOP: keep single line ===== */
+@media (min-width: 901px){
+  .sch-title,
+  .single-line{
+    white-space: nowrap;
+  }
+}
+
+/* ===== MOBILE: allow wrapping ===== */
+@media (max-width: 900px){
+  .sch-title,
+  .single-line{
+    white-space: normal;
+    text-align: center;
+  }
+}
+.nav-links a span,
+.nav-links .cta span{
+  display:block;          /* 🔑 forces perfect vertical stacking */
+  text-align:center;
 }
 </style>
 

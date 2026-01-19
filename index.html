@@ -859,10 +859,13 @@ a[href^="tel"]{
   }
 
   .hero-overlay{
-    position:absolute;
-    inset:0;
-    padding-top:20px;
-  }
+  position:absolute;
+  inset:0;
+
+  padding:20px 10px 40px;  /* 🔑 extra space at bottom */
+  overflow-y:auto;        /* 🔑 allows scroll instead of cut */
+  box-sizing:border-box;
+}
 }
 </style>
 

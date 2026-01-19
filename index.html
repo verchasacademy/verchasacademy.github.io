@@ -243,24 +243,38 @@ footer p{margin:5px 0}
 }
 @media(max-width:600px){
   .course-card{width:100%}
+
   .header-content{
     flex-direction:column;
     text-align:center;
   }
 
   .header-content img{
-    height:140px;          /* 🔑 mobile logo size */
+    height:140px;
   }
 
   .header-text h1{
-    font-size:2.9em;       /* 🔑 mobile title size */
+    font-size:2.9em;
   }
 
   .header-text p{
-    font-size:1.25em;      /* 🔑 mobile tagline size */
+    font-size:1.25em;
+  }
+
+  /* 🔑 THIS IS THE OVERRIDE */
+  .hero{
+    min-height:520px;
+  }
+
+  .hero img{
+    height:520px;
+    object-fit:cover;
+  }
+
+  .hero-overlay{
+    padding-top:20px;
   }
 }
-
 /* Watermark background for main content */
 .watermark-section{
   position: relative;
@@ -445,13 +459,14 @@ nav a:hover{
 
 <nav>
   <div class="nav-links">
-    <a href="#about"><span>About</span><span>Us</span></a>
-    <a href="#courses"><span>Our</span><span>Courses</span></a>
-    <a href="#contact"><span>Contact</span><span>Us</span></a>
-    <a href="#founders"><span>Know the</span><span>Founders</span></a>
-    <a href="#hods"><span>Our</span><span>HODs</span></a>
-    <a href="registration.html" class="cta"><span>Enroll</span><span>Now</span></a>
-    <a href="result.html" class="cta"><span>School Test</span><span>Result</span></a>
+    <a href="#about">About Us</a>
+    <a href="#courses">Our Courses</a>
+    <a href="#contact">Contact Us</a>
+    <a href="#founders">Know the Founders</a>
+    <a href="#hods">Our HODs</a>
+    <a href="registration.html" class="cta">Enroll Now</a>
+    <a href="result.html" class="cta">
+    School Test Result
 
 </a>
   </div>
@@ -659,20 +674,13 @@ nav{
 
 .nav-links a,
 .nav-links .cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 150px;            /* 🔑 FIXED WIDTH = visual centering */
-  min-height: 64px;
-
-  text-align: center;
-  line-height: 1.25;
-  padding: 10px 12px;
-
-  white-space: normal;     /* allow wrapping */
-}
+  display: flex;                 /* 🔑 enables perfect centering */
+  align-items: center;           /* vertical center */
+  justify-content: center;       /* horizontal center */
+  text-align: center;            /* multiline text center */
+  line-height: 1.2;              /* balanced line spacing */
+  padding: 14px 22px;            /* keeps box size nice */
+  white-space: normal;           /* allow line breaks */}
 
 /* Ensure dropdown button text also aligns perfectly */
 .nav-links .dropdown > a {
@@ -837,10 +845,16 @@ a[href^="tel"]{
     text-align: center;
   }
 }
-.nav-links a span,
-.nav-links .cta span{
-  display:block;          /* 🔑 forces perfect vertical stacking */
-  text-align:center;
+/* ===== HERO MOBILE HEIGHT FIX ===== */
+@media(max-width:600px){
+  .hero{
+    min-height: 520px;   /* 🔑 ensures full banner fits */
+  }
+
+  .hero img{
+    height: 520px;
+    object-fit: cover;
+  }
 }
 </style>
 

@@ -858,13 +858,22 @@ a[href^="tel"]{
     background: #000;    /* subtle bars if needed */
   }
 
-  .hero-overlay{
-  position:absolute;
-  inset:0;
+  .hero{
+  position: relative;
+}
 
-  padding:20px 10px 40px;  /* 🔑 extra space at bottom */
-  overflow-y:auto;        /* 🔑 allows scroll instead of cut */
-  box-sizing:border-box;
+.hero-overlay{
+  position: absolute;
+  top: 0;              /* 🔑 bilkul upar chipka diya */
+  left: 0;
+  right: 0;
+
+  padding: 10px 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  overflow: visible;   /* 🔑 koi internal scroll nahi */
 }
 }
 </style>

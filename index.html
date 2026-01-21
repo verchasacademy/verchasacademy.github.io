@@ -286,37 +286,41 @@ footer p{margin:5px 0}
   
 }
 
-@media(max-width:600px){
-  .course-card{width:100%}
+@media (max-width:600px){
+
+  .course-card{
+    width:100%;
+  }
 
   .header-content{
-  flex-direction:column;
-  text-align:center;
-  align-items: center;
-}
+    flex-direction:column;
+    text-align:center;
+    align-items:center;
+  }
 
-.header-content img{
-  height:160px;
-}
+  .header-content img{
+    height:160px;
+  }
 
-/* 🔧 FIX 1: Force VERCHAS ACADEMY into ONE ROW */
-.header-text h1{
-  font-size:2.2em;        /* ⬇ reduced from 2.8em */
-  letter-spacing:1px;
-  white-space: nowrap;   /* 🔑 one line only */
-  margin-top:6px;
-}
+  /* 🔑 MAIN HEADING FIX */
+  .header-text h1{
+    font-size:2em;
+    line-height:1.15;
+    letter-spacing:0.6px;
+    white-space:nowrap;
+    overflow:visible;
+    text-rendering:optimizeLegibility;
+  }
 
-/* 🔧 FIX 2: Force tagline into ONE ROW & move it up */
-.header-text p{
-  font-size:1.35em;      /* ⬇ reduced from 1.6em */
-  margin-top:2px;        /* ⬆ closer to heading */
-  letter-spacing:0.7px;
-  white-space: nowrap;   /* 🔑 one line only */
+  /* 🔑 TAGLINE FIX */
+  .header-text p{
+    font-size:1.35em;
+    margin-top:2px;
+    letter-spacing:0.7px;
+    white-space:nowrap;
+  }
 
-}
-
-  /* 🔑 THIS IS THE OVERRIDE */
+  /* 🔑 HERO OVERRIDE */
   .hero{
     min-height:520px;
   }

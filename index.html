@@ -872,6 +872,19 @@ header{
 .google-check img:hover{
   transform: scale(1.1);
 }
+/* ===== Mobile optimization for Google.png ===== */
+@media (max-width:600px){
+
+  .google-check img{
+    width:70px;     /* 👌 mobile balanced */
+    height:auto;    /* 🔑 aspect ratio safe */
+    margin-left:6px;
+  }
+
+  .google-check img:hover{
+    transform: none; /* mobile me hover avoid */
+  }
+}
 
 </style>
 <script type="application/ld+json">

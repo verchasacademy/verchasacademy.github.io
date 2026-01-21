@@ -821,29 +821,6 @@ a[href^="tel"]{
     text-align: center;
   }
 }
-.google-qr{
-  margin-top: 18px;
-  text-align: center;
-}
-
-.google-qr-img{
-  width: 220px;
-  max-width: 85%;
-  margin-top: 10px;
-
-  background: #ffffff;
-  padding: 10px;
-  border-radius: 14px;
-
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-/* Mobile adjustment */
-@media (max-width: 600px){
-  .google-qr-img{
-    width: 240px;
-  }
-}
 .seo-text{
   position: absolute;
   left: -9999px;
@@ -871,6 +848,29 @@ header{
     white-space:nowrap;
   }
 
+}
+.google-check{
+  margin-top:14px;
+  margin-bottom:6px;
+  text-align:center;
+}
+
+.google-text{
+  font-weight:600;
+  font-size:1em;
+}
+
+.google-check img{
+  width:120px;
+  height:85px;
+  margin-left:8px;
+  vertical-align:middle;
+  cursor:pointer;
+  transition: transform 0.2s ease;
+}
+
+.google-check img:hover{
+  transform: scale(1.1);
 }
 
 </style>
@@ -1079,12 +1079,14 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 <p>Email: verchas@outlook.com</p>
 <p>Contact Us: <a href="tel:+918756591001">+91 8756591001</a> <a href="tel:+918347658985">+91 8347658985</a></p>
 <p>Address: Saketpuri Road, Devkali Bypass, Ayodhya, Uttar Pradesh</p>
-<!-- Google QR Code -->
-<div class="google-qr">
-  <p style="font-weight:600; margin-top:18px;">
-  </p>
-  <img src="Google QR.png" alt="Verchas Academy Google QR"
-       class="google-qr-img">
+
+<!-- Check us out on Google -->
+<div class="google-check">
+  <span class="google-text">Check us out on Google:</span>
+  <a href="https://www.google.com/search?sca_esv=cc34ee859529854e&q=Verchas+Academy&nfpr=1&sa=X&ved=2ahUKEwjljODNvJ2SAxUbzjgGHeV5AAMQvgUoAXoECA8QAg&biw=1528&bih=779&dpr=1.25&aic=0"
+     target="_blank" rel="noopener">
+    <img src="Google.png" alt="Verchas Academy on Google">
+  </a>
 </div>
 
 <div class="contact-social">

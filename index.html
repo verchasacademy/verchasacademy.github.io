@@ -916,10 +916,17 @@ header{
   }
 @media (max-width:600px){
 
-  /* 🔑 phone number ko beech me tootne se roko */
+  /* 🎯 ONLY the Contact Us line with phone numbers */
+  #contact p:has(a[href^="tel"]){
+    text-align: center;
+    padding-left: 8.8em;     /* width of "Contact Us:" */
+    text-indent: -8.8em;     /* pull first line back */
+    line-height: 1.6;
+  }
+
+  /* 🔒 keep each phone number intact */
   #contact a[href^="tel"]{
     white-space: nowrap;
-    display: inline-block;
   }
 
 }
@@ -1162,17 +1169,16 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
       <img src="facebook.png" alt="Facebook">
     </a>
 
-    <a href="https://wa.me/918756591001?text=I%20want%20to%20enquire%20about%20admission%20at%20Verchas%20Academy"
-       target="_blank">
-      <img src="whatsapp.png" alt="WhatsApp">
-    </a>
-
     <a href="https://www.instagram.com/verchas.academy/" target="_blank">
       <img src="instagram.png" alt="Instagram">
     </a>
 
     <a href="https://www.youtube.com/channel/UCkq2_eaocfAdiY4hwj03Stw" target="_blank">
       <img src="youtube.png" alt="YouTube">
+    </a>
+   <a href="https://wa.me/918756591001?text=I%20want%20to%20enquire%20about%20admission%20at%20Verchas%20Academy"
+       target="_blank">
+      <img src="whatsapp.png" alt="WhatsApp">
     </a>
   </div>
 

@@ -576,28 +576,98 @@ a[href^="tel"]{
   font-weight: 600;
   text-decoration: none;
 }
-.contact-social{
+.google-social-row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  width: 100%;
   margin-top: 12px;
+}
+.google-text,
+.follow-text{
+  font-family: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.05em;
+  letter-spacing: 0.2px;
+  color: #000;
+}
+
+/* === Google section === */
+.google-check{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.google-check img{
+  width: 120px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.google-check img:hover{
+  transform: scale(1.1);
+}
+
+/* === Follow us section === */
+.contact-social{
   display: flex;
   align-items: center;
   gap: 16px;
-}
-
-.follow-text{
-  font-weight: 600;
-  font-size: 1.05em;
+  margin: 0;
 }
 
 .contact-social img{
-  width: 44px;      /* increased size */
-  height: 48px;
+  width: 48px;
+  height: 36px;
   cursor: pointer;
   transition: transform 0.25s ease;
 }
 
 .contact-social img:hover{
-  transform: scale(1.2);
+ transform: scale(1.25);
+ filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
 }
+
+/* === Mobile handling === */
+@media (max-width: 700px){
+  .google-social-row{
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+  }
+}
+/* ===== Mobile handling for Google + Social ===== */
+@media (max-width:600px){
+
+  .google-social-row{
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .google-check{
+    justify-content: center;
+  }
+
+  .contact-social{
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .follow-text{
+    margin-right: 6px;
+  }
+.contact-social img:hover{
+    transform: scale(1.1);
+    filter: none;
+  }
+}
+
 #contact{
   text-align: center;
 }
@@ -606,9 +676,6 @@ a[href^="tel"]{
   text-align: center;
 }
 
-.contact-social{
-  justify-content: center;   /* centers icons horizontally */
-}
 #contact p{
   margin: 8px 0;
 }
@@ -849,43 +916,6 @@ header{
   }
 
 }
-.google-check{
-  margin-top:14px;
-  margin-bottom:6px;
-  text-align:center;
-}
-
-.google-text{
-  font-weight:600;
-  font-size:1em;
-}
-
-.google-check img{
-  width:120px;
-  height:85px;
-  margin-left:8px;
-  vertical-align:middle;
-  cursor:pointer;
-  transition: transform 0.2s ease;
-}
-
-.google-check img:hover{
-  transform: scale(1.1);
-}
-/* ===== Mobile optimization for Google.png ===== */
-@media (max-width:600px){
-
-  .google-check img{
-    width:70px;     /* 👌 mobile balanced */
-    height:auto;    /* 🔑 aspect ratio safe */
-    margin-left:6px;
-  }
-
-  .google-check img:hover{
-    transform: none; /* mobile me hover avoid */
-  }
-}
-
 </style>
 <script type="application/ld+json">
 {
@@ -1091,36 +1121,53 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 <h2>Contact Us</h2>
 <p>Email: verchas@outlook.com</p>
 <p>Contact Us: <a href="tel:+918756591001">+91 8756591001</a> <a href="tel:+918347658985">+91 8347658985</a></p>
-<p>Address: Saketpuri Road, Devkali Bypass, Ayodhya, Uttar Pradesh</p>
-
-<!-- Check us out on Google -->
-<div class="google-check">
-  <span class="google-text">Check us out on Google:</span>
-  <a href="https://www.google.com/search?sca_esv=cc34ee859529854e&q=Verchas+Academy&nfpr=1&sa=X&ved=2ahUKEwjljODNvJ2SAxUbzjgGHeV5AAMQvgUoAXoECA8QAg&biw=1528&bih=779&dpr=1.25&aic=0"
-     target="_blank" rel="noopener">
-    <img src="Google.png" alt="Verchas Academy on Google">
-  </a>
+<p>Address: Saketpuri Road, Deokali Bypass, Ayodhya, Uttar Pradesh</p>
+<div class="map-section" style="margin:18px auto; max-width:750px;">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3562.2078185046084!2d82.1746081!3d26.769644699999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x49cb68c0e740f4c5%3A0xb32d46e686e15ead!2sVerchas%20Academy!5e0!3m2!1sen!2sin!4v1769104698577!5m2!1sen!2sin"
+    width="100%"
+    height="250"
+    style="border:0; border-radius:14px;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
 </div>
 
-<div class="contact-social">
-  <span class="follow-text">Follow Us:</span>
+<!-- Google + Social Row -->
+<div class="google-social-row">
 
-  <a href="https://www.facebook.com/share/14Qz4YCwXY2/?mibextid=wwXIfr" target="_blank">
-    <img src="facebook.png" alt="Verchas Academy Facebook">
-  </a>
+  <!-- Check us out on Google -->
+  <div class="google-check">
+    <span class="google-text">Check us out on Google:</span>
+    <a href="https://www.google.com/search?sca_esv=cc34ee859529854e&q=Verchas+Academy&nfpr=1"
+       target="_blank" rel="noopener">
+      <img src="Google.png" alt="Verchas Academy on Google">
+    </a>
+  </div>
 
-  <a href="https://wa.me/918756591001?text=I%20want%20to%20enquire%20about%20admission%20at%20Verchas%20Academy"
-     target="_blank">
-    <img src="whatsapp.png" alt="Verchas Academy WhatsApp">
-  </a>
+  <!-- Follow Us -->
+  <div class="contact-social">
+    <span class="follow-text">Follow Us:</span>
 
-  <a href="https://www.instagram.com/verchas.academy/" target="_blank">
-    <img src="instagram.png" alt="Verchas Academy Instagram">
-  </a>
+    <a href="https://www.facebook.com/share/14Qz4YCwXY2/?mibextid=wwXIfr" target="_blank">
+      <img src="facebook.png" alt="Facebook">
+    </a>
 
-  <a href="https://www.youtube.com/channel/UCkq2_eaocfAdiY4hwj03Stw" target="_blank">
-    <img src="youtube.png" alt="Verchas Academy YouTube">
-  </a>
+    <a href="https://wa.me/918756591001?text=I%20want%20to%20enquire%20about%20admission%20at%20Verchas%20Academy"
+       target="_blank">
+      <img src="whatsapp.png" alt="WhatsApp">
+    </a>
+
+    <a href="https://www.instagram.com/verchas.academy/" target="_blank">
+      <img src="instagram.png" alt="Instagram">
+    </a>
+
+    <a href="https://www.youtube.com/channel/UCkq2_eaocfAdiY4hwj03Stw" target="_blank">
+      <img src="youtube.png" alt="YouTube">
+    </a>
+  </div>
+
 </div>
 
 </section>

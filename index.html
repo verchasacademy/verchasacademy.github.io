@@ -919,14 +919,27 @@ header{
   /* 🎯 ONLY the Contact Us line with phone numbers */
   #contact p:has(a[href^="tel"]){
     text-align: center;
-    padding-left: 8.8em;     /* width of "Contact Us:" */
-    text-indent: -8.8em;     /* pull first line back */
+    padding-left: 8.2em;     /* width of "Contact Us:" */
+    text-indent: -8.2em;     /* pull first line back */
     line-height: 1.6;
   }
 
   /* 🔒 keep each phone number intact */
   #contact a[href^="tel"]{
     white-space: nowrap;
+  }
+
+@media (max-width:600px){
+
+  /* 📱 Mobile: social media icons smaller */
+  .contact-social img{
+    width: 32px;     /* pehle 48px tha */
+    height: 24px;
+  }
+
+  .contact-social img:hover{
+    transform: scale(1.05);  /* subtle hover on mobile */
+    filter: none;
   }
 
 }
@@ -1154,7 +1167,7 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 
   <!-- Check us out on Google -->
   <div class="google-check">
-    <span class="google-text">Check us out on Google:</span>
+    <span class="google-text">Check us out on:</span>
     <a href="https://www.google.com/search?sca_esv=cc34ee859529854e&q=Verchas+Academy&nfpr=1"
        target="_blank" rel="noopener">
       <img src="Google.png" alt="Verchas Academy on Google">

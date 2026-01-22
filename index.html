@@ -659,19 +659,11 @@ a[href^="tel"]{
     flex-wrap: wrap;
     gap: 14px;
   }
-
   .follow-text{
     margin-right: 6px;
   }
-
-  /* 🔑 MOBILE icon size */
-  .contact-social img{
-    width: 34px;      /* 👌 compact mobile size */
-    height: 26px;
-  }
-
-  .contact-social img:hover{
-    transform: scale(1.05);
+.contact-social img:hover{
+    transform: scale(1.1);
     filter: none;
   }
 }
@@ -922,8 +914,16 @@ header{
     padding:6px 0;
     white-space:nowrap;
   }
+@media (max-width:600px){
+
+  /* 🔑 phone number ko beech me tootne se roko */
+  #contact a[href^="tel"]{
+    white-space: nowrap;
+    display: inline-block;
+  }
 
 }
+
 </style>
 <script type="application/ld+json">
 {
@@ -1147,7 +1147,7 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 
   <!-- Check us out on Google -->
   <div class="google-check">
-    <span class="google-text">Check us out on:</span>
+    <span class="google-text">Check us out on Google:</span>
     <a href="https://www.google.com/search?sca_esv=cc34ee859529854e&q=Verchas+Academy&nfpr=1"
        target="_blank" rel="noopener">
       <img src="Google.png" alt="Verchas Academy on Google">

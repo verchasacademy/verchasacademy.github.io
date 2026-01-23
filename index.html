@@ -942,8 +942,21 @@ header{
     filter: none;
   }
 
-}
+/* ===== FINAL TAGLINE CLIPPING FIX ===== */
+@media (max-width:900px){
 
+  .header-content{
+    align-items: center !important;
+  }
+
+  .header-text p{
+    white-space: nowrap !important;   /* ek hi line */
+    display: inline-block !important;
+    line-height: 1.6 !important;      /* I & s safe */
+    padding: 0.3em 0 !important;      /* breathing space */
+    overflow: visible !important;     /* hard safety */
+  }
+}
 </style>
 <script type="application/ld+json">
 {

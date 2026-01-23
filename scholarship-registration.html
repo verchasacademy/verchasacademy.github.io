@@ -85,6 +85,7 @@ button:hover{
   font-size:3.1em;
   font-weight:800;
   color:#003366;
+  white-space: nowrap;
 }
 .container > *{
   position:relative;
@@ -110,6 +111,11 @@ button:disabled{
   background:#999 !important;
   cursor:not-allowed;
   opacity:0.85;
+}
+@media (max-width: 600px){
+  .academy-name{
+    font-size: 2.4em;    /* thoda chhota, but single line */
+  }
 }
 </style>
 </head>
@@ -191,6 +197,9 @@ button:disabled{
 <li>
   <b>Reporting Time:</b> 10:30 AM on <b>05 April 2026 (Sunday)</b>.  
   Exam will start at <b>11:00 AM</b>.
+<br>
+  <b>रिपोर्टिंग समय:</b> 05 अप्रैल 2026 (रविवार) सुबह <b>10:30 बजे</b>।  
+  परीक्षा <b>11:00 बजे</b> प्रारंभ होगी।
 
   <!-- 🔵 VENUE HIGHLIGHT BOX -->
   <div style="
@@ -209,10 +218,7 @@ button:disabled{
     आरएसएस भवन (साकेत निलयम) के सामने, अयोध्या, उत्तर प्रदेश
   </div>
 
-  <br>
-  <b>रिपोर्टिंग समय:</b> 05 अप्रैल 2026 (रविवार) सुबह <b>10:30 बजे</b>।  
-  परीक्षा <b>11:00 बजे</b> प्रारंभ होगी।
-</li>
+  </li>
 
 <li>
   <b>No unfair means</b> are allowed during the exam.  

@@ -281,8 +281,11 @@ footer p{margin:5px 0}
   }
 
   .header-text p{
-    white-space: nowrap;
-    font-size:1.35em;
+    white-space: nowrap;     /* ✅ one row */
+    display: inline-block;  /* 🔑 prevents clipping */
+    line-height: 1.5;       /* 🔑 I & s safe */
+    padding: 0.18em 0;      /* 🔑 top-bottom space */
+    font-size: 1.35em;      /* tablet friendly */
   }
   
 }
@@ -306,11 +309,11 @@ footer p{margin:5px 0}
 
 /* 🔧 FIX 2: Force tagline into ONE ROW & move it up */
 .header-text p{
-  font-size:1.35em;      /* ⬇ reduced from 1.6em */
-  margin-top:2px;        /* ⬆ closer to heading */
-  letter-spacing:0.7px;
-  white-space: nowrap;   /* 🔑 one line only */
-
+    white-space: nowrap;     /* ✅ still one row */
+    display: inline-block;  /* 🔑 clipping fix */
+    line-height: 1.55;      /* 🔑 I & s safe */
+    padding: 0.18em 0;      /* 🔑 top-bottom space */
+    font-size: 1.3em;       /* balanced mobile size */  
 }
 
   /* 🔑 THIS IS THE OVERRIDE */

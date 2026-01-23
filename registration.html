@@ -170,21 +170,21 @@ button:disabled{
     transform: scale(1.7);
   }
 }
-/* ===== MOBILE FIX: Verchas Academy ONE LINE ===== */
+/* ---------- MOBILE: Header Font Balance ---------- */
 @media (max-width:600px){
 
-  /* reduce horizontal pressure */
-  .container{
-    padding-left:20px;
-    padding-right:20px;
+  /* Verchas Academy (main heading) */
+  .academy-name{
+    font-size:1.7em;        /* ⬆️ bigger than before */
+    letter-spacing:-0.5px; /* natural spacing */
+    white-space:nowrap;    /* single line */
+    line-height:1.2;
   }
 
-  .academy-name{
-    font-size:1.55em;        /* smaller for mobile */
-    letter-spacing:-1.2px;  /* tighter spacing */
-    white-space:nowrap;     /* FORCE single line */
-    line-height:1.1;
-    max-width:100%;
+  /* Student Registration Form (secondary heading) */
+  .form-title{
+    font-size:1.25em;      /* ⬇️ slightly smaller */
+    line-height:1.25;
   }
 
 }

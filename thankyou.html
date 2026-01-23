@@ -86,12 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const btn = document.getElementById("downloadBtn");
-  let fired = false; // 🔑 prevents double fire
 
-  function handleDownload(e){
-    e.preventDefault();
-    if (fired) return;
-    fired = true;
+  btn.addEventListener("click", function () {
 
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
@@ -127,18 +123,22 @@ document.addEventListener("DOMContentLoaded", function () {
       doc.addImage(qrImg.src, "PNG", 150, 55, 35, 35);
     }
 
-    doc.save(
+    // 🔥 Blob-based download (mobile ultimate fix)
+    const blob = doc.output("blob");
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download =
       type === "scholarship"
         ? "Scholarship_Admit_Card.pdf"
-        : "Verchas_Registration_Slip.pdf"
-    );
+        : "Verchas_Registration_Slip.pdf";
 
-    // allow re-download after short pause
-    setTimeout(() => fired = false, 1000);
-  }
-
-  btn.addEventListener("touchstart", handleDownload, { passive:false });
-  btn.addEventListener("click", handleDownload);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
 
 });
 </script>

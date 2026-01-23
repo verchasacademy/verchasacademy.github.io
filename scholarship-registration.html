@@ -117,33 +117,29 @@ button:disabled{
 <body>
 
 <div class="container">
-<!-- Form Header : Logo + Academy Name -->
-<div class="form-header">
-  <img src="verchas-logo.png" alt="Verchas Academy Logo">
-  <h2 class="academy-name">Verchas Academy</h2>
-</div>
-<div style="
-  border:2px solid #004aad;
-  background:#f0f6ff;
-  padding:18px 15px;
-  border-radius:10px;
-  text-align:center;
-  margin:15px 0 25px 0;
-">
-  <div style="font-size:1.7em; font-weight:700; color:#003366; margin-bottom:8px;">
+
+  <!-- Form Header : Logo + Academy Name -->
+  <div class="form-header">
+    <img src="verchas-logo.png" alt="Verchas Academy Logo">
+    <h2 class="academy-name">Verchas Academy</h2>
+  </div>
+
+  <div style="
+    text-align:center;
+    font-size:1.25em;
+    font-weight:600;
+    color:#003366;
+    margin:4px 0 18px 0;
+  ">
     Scholarship Test Registration
+    <div style="
+      width:44px;
+      height:3px;
+      background:#004aad;
+      margin:8px auto 0 auto;
+      border-radius:2px;
+    "></div>
   </div>
-
-  <div style="font-size:1.25em; font-weight:600; color:#004aad; margin-bottom:6px;">
-    Date: 05 April 2026 at 11:00 AM
-  </div>
-
-  <div style="font-size:1.15em; font-weight:600; color:#333;">
-    Venue: Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya
-  </div>
-</div>
-
-
 <form action="https://script.google.com/macros/s/AKfycbxBmrm7Mh1SBASQ0cthR2urWrFO7e9XVfphVJtQcrvSmtM_brlnpgrXt128xgvnRghT/exec" method="POST">
 
 
@@ -178,8 +174,104 @@ button:disabled{
 <input type="tel" name="Mobile Number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
 <input type="email" name="Email" placeholder="Email Address">
 <textarea name="Address" rows="3" placeholder="Full Address" required></textarea>
+<h3>Exam Guidelines / परीक्षा निर्देश</h3>
 
-<button type="submit" id="submitBtn">
+<div style="
+  border:1.5px solid #004aad;
+  background:#f7fbff;
+  padding:14px 16px;
+  border-radius:10px;
+  font-size:0.95em;
+  line-height:1.55;
+  color:#333;
+">
+
+<ol style="padding-left:18px; margin:0;">
+
+<li>
+  <b>Reporting Time:</b> 10:30 AM on <b>05 April 2026 (Sunday)</b>.  
+  Exam will start at <b>11:00 AM</b>.
+
+  <!-- 🔵 VENUE HIGHLIGHT BOX -->
+  <div style="
+    margin-top:8px;
+    padding:10px 12px;
+    border:2px dashed #004aad;
+    background:#eef5ff;
+    border-radius:8px;
+    font-weight:600;
+    color:#003366;
+  ">
+    📍 <b>Venue / परीक्षा स्थल:</b><br>
+    Verchas Academy Campus, Saketpuri Road, Deokali Bypass,<br>
+    Opposite RSS Bhavan (Saket Nilyam), Ayodhya, Uttar Pradesh<br><br>
+    वर्चस अकादमी परिसर, सकेतपुरी रोड, देवकाली बाईपास,<br>
+    आरएसएस भवन (साकेत निलयम) के सामने, अयोध्या, उत्तर प्रदेश
+  </div>
+
+  <br>
+  <b>रिपोर्टिंग समय:</b> 05 अप्रैल 2026 (रविवार) सुबह <b>10:30 बजे</b>।  
+  परीक्षा <b>11:00 बजे</b> प्रारंभ होगी।
+</li>
+
+<li>
+  <b>No unfair means</b> are allowed during the exam.  
+  If found, the student will be <b>barred from the examination</b>.<br>
+  परीक्षा के दौरान <b>किसी भी प्रकार की अनुचित गतिविधि</b> वर्जित है।  
+  ऐसा पाए जाने पर छात्र को परीक्षा से <b>वंचित</b> कर दिया जाएगा।
+</li>
+
+<li>
+  Students must strictly <b>follow the instructions</b> given by the examiners.<br>
+  छात्रों को परीक्षकों द्वारा दिए गए सभी <b>निर्देशों का पालन</b> करना अनिवार्य है।
+</li>
+
+<li>
+  <b>Verchas Academy</b> reserves full rights to <b>postpone or cancel</b> the examination due to unavoidable circumstances.<br>
+  अपरिहार्य परिस्थितियों में <b>Verchas Academy</b> को परीक्षा <b>स्थगित या रद्द</b> करने का पूर्ण अधिकार है।
+</li>
+
+<li>
+  <b>Result Declaration:</b>  
+  Results will be uploaded on the official website on <b>10 April 2026</b>.<br>
+  <b>परिणाम घोषणा:</b>  
+  परीक्षा का परिणाम <b>10 अप्रैल 2026</b> को आधिकारिक वेबसाइट पर जारी किया जाएगा।
+</li>
+
+</ol>
+</div>
+
+<!-- ✅ ACCEPTANCE CHECKBOX -->
+<label style="
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin-top:20px;
+  font-size:1.2em;
+  font-weight:600;
+  cursor:pointer;
+  text-align:left;
+  width:100%;
+">
+  <input 
+    type="checkbox" 
+    id="acceptGuidelines"
+    style="
+      width:26px;
+      height:26px;
+      cursor:pointer;
+      accent-color:#004aad;
+    "
+  >
+  <span style="line-height:1.5;">
+    I have read and agree to all the above guidelines.
+    <br>
+    मैंने उपरोक्त सभी निर्देशों को पढ़ लिया है और उनसे सहमत हूँ।
+  </span>
+</label>
+
+<button type="submit" id="submitBtn" disabled>
   <span id="btnText">Submit Registration</span>
   <span id="btnSpinner" style="display:none; margin-left:8px;">⏳</span>
 </button>
@@ -293,6 +385,42 @@ window.location.href = "thankyou.html";
 return;
 
 });
+</script>
+<script>
+const acceptBox = document.getElementById("acceptGuidelines");
+const submitBtn = document.getElementById("submitBtn");
+
+if (acceptBox && submitBtn) {
+  acceptBox.addEventListener("change", function () {
+    submitBtn.disabled = !this.checked;
+  });
+}
+</script>
+<script>
+(function () {
+  // ⏰ Exam Date & Time (05 April 2026, 11:00 AM)
+  const examDate = new Date("2026-04-05T10:30:00");
+  const now = new Date();
+
+  if (now >= examDate) {
+    const form = document.querySelector("form");
+    form.innerHTML = `
+      <div style="
+        padding:25px;
+        border:2px solid #cc0000;
+        background:#fff1f1;
+        border-radius:12px;
+        text-align:center;
+        color:#900;
+        font-weight:600;
+      ">
+        🚫 <h2 style="margin-top:0;color:#900;">Registration Closed</h2>
+        The Scholarship Test registration has been closed as the exam date has passed.<br><br>
+        छात्रवृत्ति परीक्षा का पंजीकरण बंद कर दिया गया है क्योंकि परीक्षा की तिथि समाप्त हो चुकी है।
+      </div>
+    `;
+  }
+})();
 </script>
 </body>
 </html>

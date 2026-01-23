@@ -52,6 +52,29 @@ input, select, textarea, button{
   margin-top:12px;
   font-size:1em;
 }
+/* 🔴 Highlight invalid fields after user interaction */
+input:invalid,
+select:invalid,
+textarea:invalid{
+  border: 2px solid #d32f2f;
+  background: #fff6f6;
+}
+
+/* ✅ Valid fields (optional but clean UX) */
+input:valid,
+select:valid,
+textarea:valid{
+  border: 2px solid #2e7d32;
+  background: #f6fff8;
+}
+
+/* ❌ Remove ugly default browser outline */
+input:focus,
+select:focus,
+textarea:focus{
+  outline: none;
+}
+
 textarea{resize:none}
 button{
   background:#004aad;
@@ -193,6 +216,9 @@ button:disabled{
     font-size:1.4em;
   }
 }
+textarea{
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
 
 </style>
 </head>
@@ -224,6 +250,14 @@ button:disabled{
   <option value="">Gender</option>
   <option>Male</option>
   <option>Female</option>
+  <option>Other</option>
+</select>
+<select name="Current Standard" required>
+  <option value="">Current Standard</option>
+  <option>9th</option>
+  <option>10th</option>
+  <option>11th</option>
+  <option>12th</option>
   <option>Other</option>
 </select>
 

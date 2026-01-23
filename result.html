@@ -84,7 +84,22 @@
   margin-bottom: 22px;
   font-weight: 700;
 }
-  </style>
+/* 🔄 Loading Spinner */
+.loader {
+  width: 42px;
+  height: 42px;
+  border: 4px solid #e0e0e0;
+  border-top: 4px solid #004aad;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin: 18px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
 </head>
 
 <body>
@@ -107,37 +122,39 @@
   </div>
 
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycby8SoT8eKPKcvm2nvQmXH1L4ynBC4EmA08zIhfWxed_OWQ4YCEwTB3Y7iF9RTJUiZwIrw/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycby8SoT8eKPKcvm2nvQmXH1L4ynBC4EmA08zIhfWxed_OWQ4YCEwTB3Y7iF9RTJUiZwIrw/exec";
 
-    function getResult() {
-      const mobile = document.getElementById("mobile").value.trim();
-      const resultDiv = document.getElementById("result");
+function getResult() {
+  const mobile = document.getElementById("mobile").value.trim();
+  const resultDiv = document.getElementById("result");
 
-      resultDiv.innerHTML = "";
+  resultDiv.innerHTML = "";
 
-      if (mobile.length !== 10) {
-        resultDiv.innerHTML = "<span class='error'>Please enter a valid 10-digit mobile number</span>";
-        return;
+  if (mobile.length !== 10) {
+    resultDiv.innerHTML = "<span class='error'>Please enter a valid 10-digit mobile number</span>";
+    return;
+  }
+
+  // 🔄 Show loading spinner
+  resultDiv.innerHTML = "<div class='loader'></div><div>Fetching result…</div>";
+
+  fetch(API_URL + "?mobile=" + mobile)
+    .then(res => res.json())
+    .then(data => {
+      if (data.error) {
+        resultDiv.innerHTML = "<span class='error'>No result found</span>";
+      } else {
+        resultDiv.innerHTML =
+          "<div class='success'>" +
+          "Name: <b>" + data.name + "</b><br>" +
+          "Marks Out of 20: <b>" + data.marks + "</b>" +
+          "</div>";
       }
-
-      fetch(API_URL + "?mobile=" + mobile)
-        .then(res => res.json())
-        .then(data => {
-          if (data.error) {
-            resultDiv.innerHTML = "<span class='error'>No result found</span>";
-          } else {
-            resultDiv.innerHTML =
-              "<div class='success'>" +
-              "Name: <b>" + data.name + "</b><br>" +
-              "Marks Out of 20: <b>" + data.marks + "</b>" +
-              "</div>";
-          }
-        })
-        .catch(() => {
-          resultDiv.innerHTML = "<span class='error'>Something went wrong. Please try again.</span>";
-        });
-    }
-  </script>
-
+    })
+    .catch(() => {
+      resultDiv.innerHTML = "<span class='error'>Something went wrong. Please try again.</span>";
+    });
+}
+</script>
 </body>
 </html>

@@ -31,6 +31,7 @@ body{
   border:8px solid #2e7d32;
   border-radius:15px;
   background:#e0e0e0;
+  padding:6px;   /* 🔑 internal breathing space */
   box-shadow:0 6px 20px rgba(0,0,0,.2);
   
 }
@@ -39,7 +40,7 @@ body{
 header{
   background: linear-gradient(135deg, #0f4c75, #3282b8);
   color:#ffffff;
-  padding:18px 20px;
+  padding:22px 24px;
 }
 .header-content{
   display:flex;
@@ -888,9 +889,9 @@ a[href^="tel"]{
 header{
   background: linear-gradient(135deg, #0f4c75, #3282b8) !important;
 }
-/* ===== SIMPLE MOBILE HEADER FIX ===== */
 @media (max-width:600px){
 
+  /* Header spacing */
   header{
     padding-top:30px;
     padding-bottom:30px;
@@ -898,53 +899,35 @@ header{
 
   .header-text h1{
     font-size:1.9em;
-    line-height:1.35;   /* 🔑 V & Y SAFE */
+    line-height:1.35;
     padding:6px 0;
     white-space:nowrap;
   }
-@media (max-width:600px){
 
-  /* 🎯 ONLY the Contact Us line with phone numbers */
+  /* Contact phone alignment */
   #contact p:has(a[href^="tel"]){
     text-align: center;
-    padding-left: 4.5em;     /* width of "Contact Us:" */
-    text-indent: -4.5em;     /* pull first line back */
+    padding-left: 4.5em;
+    text-indent: -4.5em;
     line-height: 1.6;
   }
 
-  /* 🔒 keep each phone number intact */
   #contact a[href^="tel"]{
     white-space: nowrap;
   }
 
-@media (max-width:600px){
-
-  /* 📱 Mobile: social media icons smaller */
+  /* Social icons */
   .contact-social img{
-    width: 32px;     /* pehle 48px tha */
+    width: 32px;
     height: 24px;
   }
 
   .contact-social img:hover{
-    transform: scale(1.05);  /* subtle hover on mobile */
+    transform: scale(1.05);
     filter: none;
   }
-
-/* ===== FINAL TAGLINE CLIPPING FIX ===== */
-@media (max-width:900px){
-
-  .header-content{
-    align-items: center !important;
-  }
-
-  .header-text p{
-    white-space: nowrap !important;   /* ek hi line */
-    display: inline-block !important;
-    line-height: 1.6 !important;      /* I & s safe */
-    padding: 0.3em 0 !important;      /* breathing space */
-    overflow: visible !important;     /* hard safety */
-  }
 }
+
 </style>
 <script type="application/ld+json">
 {

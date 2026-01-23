@@ -111,18 +111,77 @@ button:disabled{
   cursor:not-allowed;
   opacity:0.85;
 }
+/* ---------- Column Header (New Layout) ---------- */
+.form-header-column{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  margin-bottom:22px;
+}
+
+.academy-logo{
+  height:65px;          /* desktop default */
+  margin-bottom:8px;
+}
+
+.form-title{
+  font-size:1.5em;
+  font-weight:600;
+  color:#003366;
+  margin-top:6px;
+}
+
+/* ---------- MOBILE ONLY ---------- */
+@media (max-width:600px){
+  .academy-logo{
+    height:120px;       /* 🔥 requested mobile size */
+  }
+}
+/* ---------- Acceptance Center Fix ---------- */
+.accept-wrapper{
+  text-align:center;   /* 🔥 KEY LINE */
+  margin-top:16px;
+}
+
+.accept-box{
+  display:inline-flex; /* 🔥 keeps checkbox + text together */
+  align-items:flex-start;
+  gap:12px;
+  text-align:left;     /* text readable rahe */
+}
+
+#acceptRules{
+  transform: scale(1.5);
+  margin-top:4px;
+  cursor:pointer;
+}
+
+.accept-box label{
+  font-size:1.1em;
+  line-height:1.6;
+  cursor:pointer;
+}
+
+/* Mobile enhancement */
+@media (max-width:600px){
+  #acceptRules{
+    transform: scale(1.7);
+  }
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-<!-- Form Header : Logo + Academy Name -->
-<div class="form-header">
-  <img src="verchas-logo.png" alt="Verchas Academy Logo">
-  <h2 class="academy-name">Verchas Academy</h2>
+<!-- Form Header : Logo (top), Academy Name, Form Title -->
+<div class="form-header-column">
+  <img src="verchas-logo.png" alt="Verchas Academy Logo" class="academy-logo">
+  <div class="academy-name">Verchas Academy</div>
+  <div class="form-title">Student Registration Form</div>
 </div>
-<h1>Student Registration Form</h1>
 
 <form action="https://script.google.com/macros/s/AKfycbw5mr__udM0mcHRx05QABAZ4QjgL6gtCu_vzpRYJ_xLT8eGKFfXInXHE5Qx4b0ikcqknw/exec" method="POST">
 
@@ -162,7 +221,6 @@ button:disabled{
 
 <strong>Instructions in English:</strong><br><br>
 
-<strong>English:</strong><br>
 1. Filling up of this form does not guarantee admission. Students must visit the Academy Office for final registration.<br>
 2. Registration at the Academy Office begins from <strong>15 March 2026</strong>.<br>
 3. Students are not required to submit fees at the time of office registration. They may avail up to <strong>15 days of demo classes</strong> to assess the academy, faculty, and curriculum before submitting fees as per academy instructions.<br>
@@ -173,7 +231,8 @@ button:disabled{
 &nbsp;&nbsp;&nbsp;<em>Original documents must be produced for verification.</em><br>
 5. In case any wrong, misleading, or false information or documents are submitted, the admission may be cancelled at any time.<br><br>
 
-<strong>हिंदी में निर्देश:</strong><br>
+<strong>हिंदी में निर्देश:</strong><br><br>
+
 1. इस फॉर्म को भरने से प्रवेश की गारंटी नहीं मिलती है। अंतिम पंजीकरण के लिए अकादमी कार्यालय में आना अनिवार्य है।<br>
 2. अकादमी कार्यालय में पंजीकरण <strong>15 मार्च 2026</strong> से प्रारंभ होगा।<br>
 3. कार्यालय में पंजीकरण के समय किसी भी प्रकार की फीस जमा करना आवश्यक नहीं है। विद्यार्थी अधिकतम <strong>15 दिनों की डेमो क्लास</strong> ले सकते हैं।<br>
@@ -184,16 +243,35 @@ button:disabled{
 &nbsp;&nbsp;&nbsp;<em>सत्यापन हेतु मूल दस्तावेज़ प्रस्तुत करना अनिवार्य है।</em><br>
 5. यदि किसी भी प्रकार की गलत अथवा फर्जी जानकारी या दस्तावेज़ प्रस्तुत किए जाते हैं, तो किसी भी समय प्रवेश रद्द किया जा सकता है।
 
-</div>
-
-<!-- ---------- Acceptance Checkbox ---------- -->
-<div style="margin-top:12px; display:flex; align-items:flex-start; gap:8px;">
-  <input type="checkbox" id="acceptRules" style="width:auto; transform:scale(0.9); margin-top:3px;">
-  <label for="acceptRules" style="font-size:0.9em; cursor:pointer;">
-    I have read and accept the above instructions / मैंने उपरोक्त निर्देश पढ़ लिए हैं और स्वीकार करता/करती हूँ।
-  </label>
-</div>
-
+<!-- ✅ ACCEPTANCE CHECKBOX -->
+<label style="
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin-top:20px;
+  font-size:1.2em;
+  font-weight:600;
+  cursor:pointer;
+  text-align:left;
+  width:100%;
+">
+  <input 
+    type="checkbox" 
+    id="acceptGuidelines"
+    style="
+      width:26px;
+      height:26px;
+      cursor:pointer;
+      accent-color:#004aad;
+    "
+  >
+  <span style="line-height:1.5;">
+    I have read and agree to all the above guidelines.
+    <br>
+    मैंने उपरोक्त सभी निर्देशों को पढ़ लिया है और उनसे सहमत हूँ।
+  </span>
+</label>
 <button type="submit" id="submitBtn" disabled>
   <span id="btnText">Submit Registration</span>
   <span id="btnSpinner" style="display:none; margin-left:8px;">⏳</span>

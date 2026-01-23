@@ -40,6 +40,7 @@ button{
   border:none;
   border-radius:8px;
 }
+.note{margin-top:12px;font-size:0.9em;color:#555;text-align:center}
 </style>
 </head>
 
@@ -55,7 +56,11 @@ button{
   <div id="qrcode"></div>
 </div>
 
-<button id="downloadBtn">Download PDF</button>
+<button id="downloadBtn">Open / Download PDF</button>
+
+<div class="note">
+  Firefox Android users: PDF will open in a new tab. Use ⬇️ to save.
+</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -85,9 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     height:120
   });
 
-  const btn = document.getElementById("downloadBtn");
-
-  btn.addEventListener("click", function () {
+  document.getElementById("downloadBtn").addEventListener("click", function () {
 
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
@@ -123,21 +126,9 @@ document.addEventListener("DOMContentLoaded", function () {
       doc.addImage(qrImg.src, "PNG", 150, 55, 35, 35);
     }
 
-    // 🔥 Blob-based download (mobile ultimate fix)
-    const blob = doc.output("blob");
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download =
-      type === "scholarship"
-        ? "Scholarship_Admit_Card.pdf"
-        : "Verchas_Registration_Slip.pdf";
-
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    // 🔥 FIREFOX ANDROID FIX
+    const pdfDataUrl = doc.output("dataurlstring");
+    window.open(pdfDataUrl, "_blank");
   });
 
 });

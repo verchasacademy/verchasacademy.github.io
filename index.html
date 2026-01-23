@@ -72,21 +72,22 @@ header{
 }
 
 .header-text p{
-  margin-top:1px;
-  font-size:2.4em;            /* 🔥 BIGGER */
-  font-weight:600;
-  
+  margin-top: 4px;
+  font-size: 2.4em;
+  font-weight: 600;
 
-  font-family:'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-style: italic;
 
-  color:#ffeb3b;
-  letter-spacing:1px;
+  color: #ffeb3b;
+  letter-spacing: 1px;
 
-  display:block;
-  width:100%;
-  text-align:center;          /* 🔑 force center */
-  text-shadow:0 3px 10px rgba(0,0,0,0.3);
+  display: inline-block;   /* 🔑 FIX */
+  text-align: center;
+  white-space: nowrap;     /* one row */
+  padding: 0 0.6em;        /* 🔑 left–right breathing space */
+
+  text-shadow: 0 3px 10px rgba(0,0,0,0.3);
 }
 
 /* NAV BAR */
@@ -279,19 +280,15 @@ footer p{margin:5px 0}
     white-space: nowrap;
     font-size:2.2em;
   }
-
-  .header-text p{
-    white-space: nowrap;     /* ✅ one row */
-    display: inline-block;  /* 🔑 prevents clipping */
-    line-height: 1.5;       /* 🔑 I & s safe */
-    padding: 0.18em 0;      /* 🔑 top-bottom space */
-    font-size: 1.35em;      /* tablet friendly */
-  }
   
 }
 
 @media(max-width:600px){
   .course-card{width:100%}
+
+.header-text p{
+font-size: 1.3em;
+  }
 
   .header-content{
   flex-direction:column;
@@ -307,16 +304,7 @@ footer p{margin:5px 0}
   margin-top:6px;
 }
 
-/* 🔧 FIX 2: Force tagline into ONE ROW & move it up */
-.header-text p{
-    white-space: nowrap;     /* ✅ still one row */
-    display: inline-block;  /* 🔑 clipping fix */
-    line-height: 1.55;      /* 🔑 I & s safe */
-    padding: 0.18em 0;      /* 🔑 top-bottom space */
-    font-size: 1.3em;       /* balanced mobile size */  
-}
-
-  /* 🔑 THIS IS THE OVERRIDE */
+/* 🔑 THIS IS THE OVERRIDE */
   .hero{
     min-height:520px;
   }

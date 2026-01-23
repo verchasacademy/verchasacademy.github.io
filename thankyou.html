@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,17 +101,14 @@ button:hover{
 
   <div class="slip slip-flex">
 
-  <!-- LEFT SIDE -->
   <div class="slip-left">
     <p><span class="label">Registration No:</span> <span id="regNo"></span></p>
     <p><span class="label">Student Name:</span> <span id="studentName"></span></p>
     <p><span class="label">Father Name:</span> <span id="fatherName"></span></p>
     <p><span class="label">Mobile:</span> <span id="mobile"></span></p>
-
     <div id="qrcode"></div>
   </div>
 
-  <!-- RIGHT SIDE (LOGO) -->
   <div class="slip-right">
     <img src="verchas-logo.png" alt="Verchas Academy Logo">
   </div>
@@ -128,7 +126,6 @@ button:hover{
   </div>
 </div>
 
-<!-- Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -146,13 +143,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const data = JSON.parse(stored);
 
-  // -------- COMMON FIELDS ----------
   document.getElementById("regNo").textContent = data.registrationNo;
   document.getElementById("studentName").textContent = data.studentName;
   document.getElementById("fatherName").textContent = data.fatherName;
   document.getElementById("mobile").textContent = data.mobile;
 
-  // -------- PAGE TEXT BASED ON FORM ----------
   if (type === "registration") {
     document.getElementById("pageTitle").textContent =
       "Registration Successful";
@@ -167,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "Download Admit Card (PDF)";
   }
 
-  // -------- QR CODE ----------
   new QRCode(document.getElementById("qrcode"), {
     text:
       "Registration No: " + data.registrationNo + "\n" +
@@ -178,27 +172,26 @@ document.addEventListener("DOMContentLoaded", function () {
     height:120
   });
 
-  // -------- DOWNLOAD BUTTON ----------
+  // ✅ MOBILE SAFE DOWNLOAD (300ms delay)
   document.getElementById("downloadBtn").onclick = function () {
-  if (type === "registration") {
-    generateRegistrationPDF(data);
-  }
-  if (type === "scholarship") {
-    generateScholarshipPDF(data);
-  }
-};
+    setTimeout(() => {
+      if (type === "registration") {
+        generateRegistrationPDF(data);
+      }
+      if (type === "scholarship") {
+        generateScholarshipPDF(data);
+      }
+    }, 300);
+  };
 
 });
 </script>
+
 <script>
 function generateRegistrationPDF(data) {
 
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-
-  // 🔒 NO async image
-  // 🔒 NO onload
-  // 🔒 NO delay
 
   doc.setFontSize(18);
   doc.text("VERCHAS ACADEMY", 105, 20, { align:"center" });
@@ -232,11 +225,10 @@ function generateRegistrationPDF(data) {
   doc.text("Authorised Signatory", 20, 120);
   doc.text("Verchas Academy", 20, 126);
 
-  // 🔥 THIS LINE MUST RUN DIRECTLY
   doc.save("Verchas_Registration_Slip.pdf");
 }
-
 </script>
+
 <script>
 function generateScholarshipPDF(data) {
 
@@ -288,7 +280,7 @@ function generateScholarshipPDF(data) {
 
   doc.save("Scholarship_Admit_Card.pdf");
 }
-
 </script>
+
 </body>
 </html>

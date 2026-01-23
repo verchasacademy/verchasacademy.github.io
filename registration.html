@@ -157,8 +157,44 @@ button:disabled{
 <input type="tel" name="Mobile Number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
 <input type="email" name="Email" placeholder="Email Address">
 <textarea name="Address" rows="3" placeholder="Full Address" required></textarea>
+<!-- ---------- Instructions ---------- -->
+<div class="instructions-box" style="margin-top:20px; font-size:0.9em; color:#333; line-height:1.45;">
 
-<button type="submit" id="submitBtn">
+<strong>Instructions in English:</strong><br><br>
+
+<strong>English:</strong><br>
+1. Filling up of this form does not guarantee admission. Students must visit the Academy Office for final registration.<br>
+2. Registration at the Academy Office begins from <strong>15 March 2026</strong>.<br>
+3. Students are not required to submit fees at the time of office registration. They may avail up to <strong>15 days of demo classes</strong> to assess the academy, faculty, and curriculum before submitting fees as per academy instructions.<br>
+4. Documents required for registration at the Academy Office:<br>
+&nbsp;&nbsp;&nbsp;(i) Passport size photographs – Qty: 02<br>
+&nbsp;&nbsp;&nbsp;(ii) Copy of Aadhar Card<br>
+&nbsp;&nbsp;&nbsp;(iii) Copy of 10th or 12th Marksheet (or both, whichever is applicable)<br>
+&nbsp;&nbsp;&nbsp;<em>Original documents must be produced for verification.</em><br>
+5. In case any wrong, misleading, or false information or documents are submitted, the admission may be cancelled at any time.<br><br>
+
+<strong>हिंदी में निर्देश:</strong><br>
+1. इस फॉर्म को भरने से प्रवेश की गारंटी नहीं मिलती है। अंतिम पंजीकरण के लिए अकादमी कार्यालय में आना अनिवार्य है।<br>
+2. अकादमी कार्यालय में पंजीकरण <strong>15 मार्च 2026</strong> से प्रारंभ होगा।<br>
+3. कार्यालय में पंजीकरण के समय किसी भी प्रकार की फीस जमा करना आवश्यक नहीं है। विद्यार्थी अधिकतम <strong>15 दिनों की डेमो क्लास</strong> ले सकते हैं।<br>
+4. कार्यालय में पंजीकरण हेतु आवश्यक दस्तावेज़:<br>
+&nbsp;&nbsp;&nbsp;(i) पासपोर्ट साइज फोटो – 02 नग<br>
+&nbsp;&nbsp;&nbsp;(ii) आधार कार्ड की प्रति<br>
+&nbsp;&nbsp;&nbsp;(iii) 10वीं या 12वीं की मार्कशीट की प्रति (या दोनों, जो लागू हो)<br>
+&nbsp;&nbsp;&nbsp;<em>सत्यापन हेतु मूल दस्तावेज़ प्रस्तुत करना अनिवार्य है।</em><br>
+5. यदि किसी भी प्रकार की गलत अथवा फर्जी जानकारी या दस्तावेज़ प्रस्तुत किए जाते हैं, तो किसी भी समय प्रवेश रद्द किया जा सकता है।
+
+</div>
+
+<!-- ---------- Acceptance Checkbox ---------- -->
+<div style="margin-top:12px; display:flex; align-items:flex-start; gap:8px;">
+  <input type="checkbox" id="acceptRules" style="width:auto; transform:scale(0.9); margin-top:3px;">
+  <label for="acceptRules" style="font-size:0.9em; cursor:pointer;">
+    I have read and accept the above instructions / मैंने उपरोक्त निर्देश पढ़ लिए हैं और स्वीकार करता/करती हूँ।
+  </label>
+</div>
+
+<button type="submit" id="submitBtn" disabled>
   <span id="btnText">Submit Registration</span>
   <span id="btnSpinner" style="display:none; margin-left:8px;">⏳</span>
 </button>
@@ -285,6 +321,23 @@ return;
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const checkbox = document.getElementById("acceptRules");
+  const submitBtn = document.getElementById("submitBtn");
+  const form = document.querySelector("form");
 
+  function updateSubmitState() {
+    // checkbox + form validity dono check honge
+    submitBtn.disabled = !(checkbox.checked && form.checkValidity());
+  }
+
+  // checkbox change
+  checkbox.addEventListener("change", updateSubmitState);
+
+  // form ke kisi bhi input me change ho
+  form.addEventListener("input", updateSubmitState);
+});
+</script>
 </body>
 </html>

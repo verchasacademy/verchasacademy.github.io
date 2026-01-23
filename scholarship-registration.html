@@ -123,7 +123,7 @@ button:disabled{
   }
 
   .form-header img{
-    height: 70px;             /* mobile ke liye safe size */
+    height: 120px;             /* mobile ke liye safe size */
   }
 
   .academy-name{
@@ -411,14 +411,23 @@ return;
 });
 </script>
 <script>
-const acceptBox = document.getElementById("acceptGuidelines");
-const submitBtn = document.getElementById("submitBtn");
+document.addEventListener("DOMContentLoaded", function () {
+  const acceptBox = document.getElementById("acceptGuidelines");
+  const submitBtn = document.getElementById("submitBtn");
+  const form = document.querySelector("form");
 
-if (acceptBox && submitBtn) {
-  acceptBox.addEventListener("change", function () {
-    submitBtn.disabled = !this.checked;
-  });
-}
+  function updateSubmitState() {
+    // ✔ checkbox checked
+    // ✔ form valid (required fields filled)
+    submitBtn.disabled = !(acceptBox.checked && form.checkValidity());
+  }
+
+  // checkbox toggle
+  acceptBox.addEventListener("change", updateSubmitState);
+
+  // kisi bhi input/select/textarea me change
+  form.addEventListener("input", updateSubmitState);
+});
 </script>
 <script>
 (function () {

@@ -180,13 +180,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // -------- DOWNLOAD BUTTON ----------
   document.getElementById("downloadBtn").onclick = function () {
-    if (type === "registration") {
-      generateRegistrationPDF(data);
-    }
-    if (type === "scholarship") {
-      generateScholarshipPDF(data);
-    }
-  };
+  if (type === "registration") {
+    generateRegistrationPDF(data);
+  }
+  if (type === "scholarship") {
+    generateScholarshipPDF(data);
+  }
+};
 
 });
 </script>
@@ -196,57 +196,46 @@ function generateRegistrationPDF(data) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  const logo = new Image();
-  logo.src = "verchas-logo.png";
+  // 🔒 NO async image
+  // 🔒 NO onload
+  // 🔒 NO delay
 
-  build(); // ✅ MUST be synchronous for mobile
+  doc.setFontSize(18);
+  doc.text("VERCHAS ACADEMY", 105, 20, { align:"center" });
 
-  function build() {
+  doc.setFontSize(14);
+  doc.text("Student Registration Slip", 105, 30, { align:"center" });
 
-    if (logo.complete && logo.naturalWidth) {
-      doc.addImage(logo, "PNG", 75, 10, 55, 45);
-    }
+  doc.line(20, 36, 190, 36);
 
-    doc.setFontSize(18);
-    doc.text("VERCHAS ACADEMY", 105, 62, { align:"center" });
+  doc.setFontSize(12);
+  doc.text("Centre : Verchas Academy, Ayodhya", 20, 50);
 
-    doc.setFontSize(14);
-    doc.text("Student Registration Slip", 105, 72, { align:"center" });
+  doc.text("Registration No :", 20, 65);
+  doc.text(data.registrationNo, 65, 65);
 
-    doc.line(20, 78, 190, 78);
+  doc.text("Student Name :", 20, 75);
+  doc.text(data.studentName, 65, 75);
 
-    doc.setFontSize(12);
-    doc.text(
-      "Centre : Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya",
-      20, 95
-    );
+  doc.text("Father's Name :", 20, 85);
+  doc.text(data.fatherName, 65, 85);
 
-    doc.text("Registration No :", 20, 115);
-    doc.setFontSize(14);
-    doc.text(data.registrationNo, 65, 115);
+  doc.text("Mobile Number :", 20, 95);
+  doc.text(data.mobile, 65, 95);
 
-    doc.setFontSize(12);
-    doc.text("Student Name :", 20, 125);
-    doc.text(data.studentName, 65, 125);
-
-    doc.text("Father's Name :", 20, 135);
-    doc.text(data.fatherName, 65, 135);
-
-    doc.text("Mobile Number :", 20, 145);
-    doc.text(data.mobile, 65, 145);
-
-    const qrImg = document.querySelector("#qrcode img");
-    if (qrImg) {
-      doc.addImage(qrImg.src, "PNG", 150, 115, 35, 35);
-    }
-
-    doc.setFontSize(10);
-    doc.text("Authorised Signatory", 20, 195);
-    doc.text("Verchas Academy", 20, 200);
-
-    doc.save("Verchas_Registration_Slip.pdf");
+  const qrImg = document.querySelector("#qrcode img");
+  if (qrImg) {
+    doc.addImage(qrImg.src, "PNG", 150, 60, 35, 35);
   }
+
+  doc.setFontSize(10);
+  doc.text("Authorised Signatory", 20, 120);
+  doc.text("Verchas Academy", 20, 126);
+
+  // 🔥 THIS LINE MUST RUN DIRECTLY
+  doc.save("Verchas_Registration_Slip.pdf");
 }
+
 </script>
 <script>
 function generateScholarshipPDF(data) {
@@ -254,68 +243,52 @@ function generateScholarshipPDF(data) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  const logo = new Image();
-  logo.src = "verchas-logo.png";
+  doc.setFontSize(18);
+  doc.text("VERCHAS ACADEMY", 105, 20, { align:"center" });
 
-  build(); // ✅ MUST be synchronous for mobile
+  doc.setFontSize(16);
+  doc.text("SCHOLARSHIP TEST 2026", 105, 34, { align:"center" });
 
-  function build() {
+  doc.setFontSize(14);
+  doc.text("ADMIT CARD", 105, 46, { align:"center" });
 
-    if (logo.complete && logo.naturalWidth) {
-      doc.addImage(logo, "PNG", 75, 10, 55, 45);
-    }
+  doc.line(20, 52, 190, 52);
 
-    doc.setFontSize(18);
-    doc.text("VERCHAS ACADEMY", 105, 62, { align:"center" });
+  doc.setFontSize(12);
+  doc.text("Exam Date : 05 April 2026", 20, 65);
+  doc.text("Exam Time : 11:00 AM", 20, 73);
 
-    doc.setFontSize(16);
-    doc.text("SCHOLARSHIP TEST 2026", 105, 78, { align:"center" });
+  doc.text("Venue : Verchas Academy, Ayodhya", 20, 85);
 
-    doc.setFontSize(14);
-    doc.text("ADMIT CARD", 105, 90, { align:"center" });
+  doc.line(20, 92, 190, 92);
 
-    doc.line(20, 98, 190, 98);
+  doc.text("Registration No :", 20, 105);
+  doc.text(data.registrationNo, 65, 105);
 
-    doc.setFontSize(12);
-    doc.text("Exam Date : 05 April 2026", 20, 112);
-    doc.text("Exam Time : 11:00 AM", 20, 120);
+  doc.text("Student Name :", 20, 115);
+  doc.text(data.studentName, 65, 115);
 
-    doc.text(
-      "Venue : Verchas Academy, Saketpuri, Devkali Bypass, Ayodhya",
-      20, 136
-    );
+  doc.text("Father's Name :", 20, 125);
+  doc.text(data.fatherName, 65, 125);
 
-    doc.line(20, 144, 190, 144);
+  doc.text("Mobile Number :", 20, 135);
+  doc.text(data.mobile, 65, 135);
 
-    doc.text("Registration No :", 20, 156);
-    doc.setFontSize(14);
-    doc.text(data.registrationNo, 65, 156);
-
-    doc.setFontSize(12);
-    doc.text("Student Name :", 20, 168);
-    doc.text(data.studentName, 65, 168);
-
-    doc.text("Father's Name :", 20, 180);
-    doc.text(data.fatherName, 65, 180);
-
-    doc.text("Mobile Number :", 20, 192);
-    doc.text(data.mobile, 65, 192);
-
-    const qrImg = document.querySelector("#qrcode img");
-    if (qrImg) {
-      doc.addImage(qrImg.src, "PNG", 150, 112, 35, 35);
-    }
-
-    doc.setFontSize(10);
-    doc.text(
-      "Note: Please bring this Admit Card and a valid photo ID.",
-      20, 215,
-      { maxWidth:170 }
-    );
-
-    doc.save("Scholarship_Admit_Card.pdf");
+  const qrImg = document.querySelector("#qrcode img");
+  if (qrImg) {
+    doc.addImage(qrImg.src, "PNG", 150, 100, 35, 35);
   }
+
+  doc.setFontSize(10);
+  doc.text(
+    "Please bring this Admit Card and a valid photo ID.",
+    20, 155,
+    { maxWidth:170 }
+  );
+
+  doc.save("Scholarship_Admit_Card.pdf");
 }
+
 </script>
 </body>
 </html>

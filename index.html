@@ -1105,20 +1105,17 @@ html, body{
     margin-right: 0;
   }
 }
-/* ===== HERO IMAGE CLEAN (DESKTOP + MOBILE) ===== */
+/* ===== HERO: COMPLETELY FLAT (NO SHADOW / NO OVERLAY) ===== */
 .hero-overlay{
-  background: transparent !important;
+  background: none !important;
 }
 
-/* ===== MOBILE: REMOVE SHADOW & FILTER ===== */
-@media (max-width: 600px){
-  .site-container{
-    box-shadow: none;
-  }
+.hero img{
+  filter: none !important;
+}
 
-  .hero img{
-    filter: none;
-  }
+.site-container{
+  box-shadow: none !important;
 }
 
 </style>

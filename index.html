@@ -1196,8 +1196,25 @@ html, body{
 .scholarship-text{
     text-shadow: 0 3px 10px rgba(0,0,0,0.7);
   }
+}
+/* ===== MOBILE: FIX BROKEN DATE ===== */
+@media (max-width:600px){
+
+  .sch-title{
+    display: block;
+    text-align: center;
+    white-space: normal;   /* title wrap ho sakta hai */
+  }
+
+  .sch-date{
+    display: block;        /* 🔑 force new line */
+    margin-top: 4px;
+    white-space: nowrap;   /* 🔒 05 APRIL 2026 kabhi nahi tootega */
+    font-weight: 800;
+  }
 
 }
+
 </style>
 <script type="application/ld+json">
 {
@@ -1261,8 +1278,10 @@ html, body{
 
       <div class="scholarship-banner">
         <div class="scholarship-text blink">
-          <span class="sch-title">📢 SCHOLARSHIP TEST – 05 APRIL 2026</span>
-          <br>
+          <span class="sch-title">
+       📢 SCHOLARSHIP TEST – <span class="sch-date">05 APRIL 2026</span>
+      </span>
+      <br>
           <span style="display:block; font-size:0.9em; color:#ffffff; margin-top:4px;">
             Sunday 11:00 AM
           </span>

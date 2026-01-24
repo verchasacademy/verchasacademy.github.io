@@ -26,15 +26,12 @@ body{
   background:#f0f0f0;
 }
 .site-container{
-  max-width:1400px;
+  max-width:1200px;
   margin:10px auto;
-  border:4px solid #2e7d32;
+  border:8px solid #2e7d32;
   border-radius:15px;
   background:#e0e0e0;
   box-shadow:0 6px 20px rgba(0,0,0,.2);
-
-  padding: 0 35px 30px 35px;
-  overflow: hidden;   /* 🔥 IMPORTANT: stops blue overflow */
 }
 
 /* HEADER */
@@ -42,12 +39,6 @@ header{
   background: linear-gradient(135deg, #0f4c75, #3282b8);
   color:#ffffff;
   padding:22px 24px;
-
-  margin-left: -35px;    /* 🔥 exact cancel */
-  margin-right: -35px;
-
-  border-top-left-radius: 11px;
-  border-top-right-radius: 11px;
 }
 .header-content{
   display:flex;
@@ -101,11 +92,8 @@ header{
 
 /* NAV BAR */
 nav{
-  background:#ffd200;
-  padding:15px 10px;
-
-  margin-left: -35px;    /* 🔥 align with green border */
-  margin-right: -35px;
+  background:#ffcc00;
+  padding:12px;
 }
 .nav-links{
   display:flex;
@@ -129,19 +117,18 @@ nav{
 /* HERO */
 .hero{position:relative;}
 .hero img{
-  width: calc(100% + 120px);   /* 🔥 width increased */
-  margin-left: -60px;          /* center align after widening */
+  width:100%;
   display:block;
   filter: brightness(1.25) contrast(1.05);
 }
 .hero-overlay{
   position:absolute;
   inset:0;
-  background:transparent;   /* 🔥 DARK SHADE REMOVED */
+  background:rgba(0,0,0,.45);
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  padding-top:30px;
+  padding-top:30px;   /* 🔑 moves scholarship box to TOP */
 }
 .hero-content{
   max-width:900px;
@@ -377,16 +364,18 @@ footer p{margin:5px 0}
 
 /* Center align main content sections */
 #about, #courses, .features, .founder-cards {
-  width: 100%;          /* 🔥 allow full available width */
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
 
+
 /* Proper horizontal centering of sections (heading + content) */
 .section-center{
-  width: 100%;          /* 🔥 no artificial restriction */
-  margin: 0 auto;
+  max-width:1000px;
+  margin:0 auto;
 }
+
 
 /* Center section headings */
 .section-center > h2{
@@ -969,7 +958,7 @@ header{
   padding: 28px 30px;
   background: #f7f9fc;
   box-shadow: 0 8px 22px rgba(0,0,0,0.15);
-  margin: 20px -70px 0 -70px;   /* 🔥 much wider – near site border */
+  margin: 20px -120px 0 -120px;   /* 🔥 much wider – near site border */
 }
 
 /* Sub-headings inside standout box */

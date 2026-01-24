@@ -1143,7 +1143,61 @@ html, body{
   }
 
 }
+/* ===== DESKTOP & TABLET: FORCE SINGLE ROW ===== */
+@media (min-width:601px){
 
+  .sch-title{
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .sch-date{
+    display: inline;
+    white-space: nowrap;
+  }
+}
+
+/* ===== MOBILE: CLEAN TWO LINES ===== */
+@media (max-width:600px){
+
+  .sch-title{
+    display: block;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .sch-date{
+    display: block;
+    margin-top: 4px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+}
+
+/* ===== DESKTOP: INCREASE SCHOLARSHIP TEXT SIZE ===== */
+@media (min-width:901px){
+
+  .scholarship-text{
+    font-size: 2.2em;
+    line-height: 1.35;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+  }
+
+  .sch-date{
+    font-size: 1em;
+  }
+.scholarship-banner{
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+.scholarship-text{
+    text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+  }
+
+}
 </style>
 <script type="application/ld+json">
 {

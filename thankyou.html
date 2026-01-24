@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,16 +19,28 @@ body{
   border-radius:12px;
   box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
-h1{text-align:center;color:#004aad}
+h1{
+  text-align:center;
+  color:#004aad;
+}
 .slip{
   margin-top:25px;
   padding:20px;
   border:2px dashed #004aad;
   border-radius:10px;
 }
-.slip p{font-size:1.05em;margin:10px 0}
-.label{font-weight:600;color:#333}
-#qrcode{text-align:center;margin-top:10px}
+.slip p{
+  font-size:1.05em;
+  margin:10px 0;
+}
+.label{
+  font-weight:600;
+  color:#333;
+}
+#qrcode{
+  margin-top:15px;
+  text-align:center;
+}
 button{
   width:100%;
   margin-top:25px;
@@ -39,30 +50,85 @@ button{
   color:#fff;
   border:none;
   border-radius:8px;
+  cursor:pointer;
 }
-.note{margin-top:12px;font-size:0.9em;color:#555;text-align:center}
+button:hover{
+  background:#003366;
+}
+.note{
+  margin-top:15px;
+  font-size:0.9em;
+  color:#555;
+  text-align:center;
+}
+.slip-flex{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.slip-left{
+  flex:2;
+}
+
+.slip-right{
+  flex:1;
+  text-align:center;
+}
+
+.slip-right img{
+  max-width:160px;
+  opacity:0.9;
+}
+@media (max-width:600px){
+  .slip-flex{
+    flex-direction:column;
+    text-align:center;
+  }
+  .slip-right{
+    margin-top:15px;
+  }
+}
 </style>
 </head>
 
 <body>
+
 <div class="container">
-<h1 id="pageTitle">Registration Successful</h1>
+  <h1 id="pageTitle">Registration Successful</h1>
 
-<div class="slip">
-  <p><span class="label">Registration No:</span> <span id="regNo"></span></p>
-  <p><span class="label">Student Name:</span> <span id="studentName"></span></p>
-  <p><span class="label">Father Name:</span> <span id="fatherName"></span></p>
-  <p><span class="label">Mobile:</span> <span id="mobile"></span></p>
-  <div id="qrcode"></div>
+  <div class="slip slip-flex">
+
+  <!-- LEFT SIDE -->
+  <div class="slip-left">
+    <p><span class="label">Registration No:</span> <span id="regNo"></span></p>
+    <p><span class="label">Student Name:</span> <span id="studentName"></span></p>
+    <p><span class="label">Father Name:</span> <span id="fatherName"></span></p>
+    <p><span class="label">Mobile:</span> <span id="mobile"></span></p>
+
+    <div id="qrcode"></div>
+  </div>
+
+  <!-- RIGHT SIDE (LOGO) -->
+  <div class="slip-right">
+    <img src="verchas-logo.png" alt="Verchas Academy Logo">
+  </div>
+
 </div>
 
-<button id="downloadBtn">Open / Download PDF</button>
+<p style="margin-top:12px; font-size:0.9em; color:#555; text-align:center;">
+  📱 Mobile Users: Please take a screenshot of this slip for future reference.
+</p>
 
-<div class="note">
-  Firefox Android users: PDF will open in a new tab. Use ⬇️ to save.
-</div>
+  <button type="button" id="downloadBtn">Download PDF</button>
+
+  <div class="note">
+    Please keep this registration slip for future reference.
+  </div>
 </div>
 
+<!-- Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -71,15 +137,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const type = sessionStorage.getItem("form_type");
   const stored = sessionStorage.getItem("reg_data");
-  if (!type || !stored) return;
+
+  if (!type || !stored) {
+    document.body.innerHTML =
+      "<h3 style='text-align:center'>Invalid access</h3>";
+    return;
+  }
 
   const data = JSON.parse(stored);
 
-  document.getElementById("regNo").textContent = data.registrationNo || "";
-  document.getElementById("studentName").textContent = data.studentName || "";
-  document.getElementById("fatherName").textContent = data.fatherName || "";
-  document.getElementById("mobile").textContent = data.mobile || "";
+  // -------- COMMON FIELDS ----------
+  document.getElementById("regNo").textContent = data.registrationNo;
+  document.getElementById("studentName").textContent = data.studentName;
+  document.getElementById("fatherName").textContent = data.fatherName;
+  document.getElementById("mobile").textContent = data.mobile;
 
+  // -------- PAGE TEXT BASED ON FORM ----------
+  if (type === "registration") {
+    document.getElementById("pageTitle").textContent =
+      "Registration Successful";
+    document.getElementById("downloadBtn").textContent =
+      "Download Registration Slip (PDF)";
+  }
+
+  if (type === "scholarship") {
+    document.getElementById("pageTitle").textContent =
+      "Scholarship Test Registration Successful";
+    document.getElementById("downloadBtn").textContent =
+      "Download Admit Card (PDF)";
+  }
+
+  // -------- QR CODE ----------
   new QRCode(document.getElementById("qrcode"), {
     text:
       "Registration No: " + data.registrationNo + "\n" +
@@ -90,49 +178,117 @@ document.addEventListener("DOMContentLoaded", function () {
     height:120
   });
 
-  document.getElementById("downloadBtn").addEventListener("click", function () {
-
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    doc.setFontSize(18);
-    doc.text("VERCHAS ACADEMY", 105, 20, { align:"center" });
-
-    doc.setFontSize(14);
-    doc.text(
-      type === "scholarship"
-        ? "Scholarship Test Admit Card"
-        : "Student Registration Slip",
-      105, 32, { align:"center" }
-    );
-
-    doc.line(20, 38, 190, 38);
-
-    doc.setFontSize(12);
-    doc.text("Registration No :", 20, 55);
-    doc.text(data.registrationNo || "", 65, 55);
-
-    doc.text("Student Name :", 20, 65);
-    doc.text(data.studentName || "", 65, 65);
-
-    doc.text("Father Name :", 20, 75);
-    doc.text(data.fatherName || "", 65, 75);
-
-    doc.text("Mobile Number :", 20, 85);
-    doc.text(data.mobile || "", 65, 85);
-
-    const qrImg = document.querySelector("#qrcode img");
-    if (qrImg) {
-      doc.addImage(qrImg.src, "PNG", 150, 55, 35, 35);
-    }
-
-    // 🔥 FIREFOX ANDROID FIX
-    const pdfDataUrl = doc.output("dataurlstring");
-    window.open(pdfDataUrl, "_blank");
-  });
+  // -------- DOWNLOAD BUTTON ----------
+  document.getElementById("downloadBtn").onclick = function () {
+  if (type === "registration") {
+    generateRegistrationPDF(data);
+  }
+  if (type === "scholarship") {
+    generateScholarshipPDF(data);
+  }
+};
 
 });
 </script>
+<script>
+function generateRegistrationPDF(data) {
 
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  // 🔒 NO async image
+  // 🔒 NO onload
+  // 🔒 NO delay
+
+  doc.setFontSize(18);
+  doc.text("VERCHAS ACADEMY", 105, 20, { align:"center" });
+
+  doc.setFontSize(14);
+  doc.text("Student Registration Slip", 105, 30, { align:"center" });
+
+  doc.line(20, 36, 190, 36);
+
+  doc.setFontSize(12);
+  doc.text("Centre : Verchas Academy, Ayodhya", 20, 50);
+
+  doc.text("Registration No :", 20, 65);
+  doc.text(data.registrationNo, 65, 65);
+
+  doc.text("Student Name :", 20, 75);
+  doc.text(data.studentName, 65, 75);
+
+  doc.text("Father's Name :", 20, 85);
+  doc.text(data.fatherName, 65, 85);
+
+  doc.text("Mobile Number :", 20, 95);
+  doc.text(data.mobile, 65, 95);
+
+  const qrImg = document.querySelector("#qrcode img");
+  if (qrImg) {
+    doc.addImage(qrImg.src, "PNG", 150, 60, 35, 35);
+  }
+
+  doc.setFontSize(10);
+  doc.text("Authorised Signatory", 20, 120);
+  doc.text("Verchas Academy", 20, 126);
+
+  // 🔥 THIS LINE MUST RUN DIRECTLY
+  doc.save("Verchas_Registration_Slip.pdf");
+}
+
+</script>
+<script>
+function generateScholarshipPDF(data) {
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFontSize(18);
+  doc.text("VERCHAS ACADEMY", 105, 20, { align:"center" });
+
+  doc.setFontSize(16);
+  doc.text("SCHOLARSHIP TEST 2026", 105, 34, { align:"center" });
+
+  doc.setFontSize(14);
+  doc.text("ADMIT CARD", 105, 46, { align:"center" });
+
+  doc.line(20, 52, 190, 52);
+
+  doc.setFontSize(12);
+  doc.text("Exam Date : 05 April 2026", 20, 65);
+  doc.text("Exam Time : 11:00 AM", 20, 73);
+
+  doc.text("Venue : Verchas Academy, Ayodhya", 20, 85);
+
+  doc.line(20, 92, 190, 92);
+
+  doc.text("Registration No :", 20, 105);
+  doc.text(data.registrationNo, 65, 105);
+
+  doc.text("Student Name :", 20, 115);
+  doc.text(data.studentName, 65, 115);
+
+  doc.text("Father's Name :", 20, 125);
+  doc.text(data.fatherName, 65, 125);
+
+  doc.text("Mobile Number :", 20, 135);
+  doc.text(data.mobile, 65, 135);
+
+  const qrImg = document.querySelector("#qrcode img");
+  if (qrImg) {
+    doc.addImage(qrImg.src, "PNG", 150, 100, 35, 35);
+  }
+
+  doc.setFontSize(10);
+  doc.text(
+    "Please bring this Admit Card and a valid photo ID.",
+    20, 155,
+    { maxWidth:170 }
+  );
+
+  doc.save("Scholarship_Admit_Card.pdf");
+}
+
+</script>
 </body>
 </html>

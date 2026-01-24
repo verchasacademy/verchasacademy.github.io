@@ -156,7 +156,8 @@ nav{
 section { padding: 20px 45px;
 }
 section h2{
-  margin-top:0;
+  margin-top: 0;
+  text-transform: uppercase;   /* 🔥 force CAPITAL letters */
 }
 p{
   text-align:justify;
@@ -184,11 +185,26 @@ p{
 
 /* FEATURES */
 .features ul{
-  padding-left:20px;
-  margin-top:5px;
+  list-style: none;      /* remove dot bullets */
+  padding-left: 0;
+  margin-top: 5px;
 }
+
 .features li{
-  margin:6px 0;
+  margin: 10px 0;
+  color: #000;           /* normal text color */
+  position: relative;
+  padding-left: 28px;   /* space for tick */
+}
+
+.features li::before{
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #1b5e20;
+  font-weight: 800;
+  font-size: 1.25em;   /* 🔥 bigger tick */
 }
 
 /* FOUNDERS */
@@ -320,6 +336,12 @@ footer p{margin:5px 0}
   .hero-overlay{
     padding-top:20px;
   }
+/* ===== Mobile fix for Stand Out Box ===== */
+.standout-box{
+  margin: 20px -10px 0 -10px;     /* ❌ remove negative margins */
+  padding: 20px 18px;    /* tighter padding for mobile */
+}
+
 }
 /* Watermark background for main content */
 .watermark-section{
@@ -929,6 +951,54 @@ header{
     filter: none;
   }
 }
+/* ===== STAND OUT BOX ===== */
+.standout-box{
+  border: 2px solid #004aad;
+  border-radius: 14px;
+  padding: 28px 30px;
+  background: #f7f9fc;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+  margin: 20px -120px 0 -120px;   /* 🔥 much wider – near site border */
+}
+
+/* Sub-headings inside standout box */
+.standout-box h3{
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin: 35px 0 18px 0;
+
+  animation: subtlePulse 2.2s ease-in-out infinite;
+}
+
+/* Slightly different rhythm for second heading */
+.standout-box .solution-heading{
+  animation-delay: 1.1s;
+}
+
+/* Red: Problems */
+.standout-box .problem-heading{
+  color: #c62828;
+}
+
+/* Green: Solutions */
+.standout-box .solution-heading{
+  color: #1b5e20;
+}
+@keyframes subtlePulse{
+  0%{
+    transform: scale(1);
+    text-shadow: none;
+  }
+  50%{
+    transform: scale(1.03);
+    text-shadow: 0 0 8px rgba(0,0,0,0.15);
+  }
+  100%{
+    transform: scale(1);
+    text-shadow: none;
+  }
+}
 
 </style>
 <script type="application/ld+json">
@@ -1032,19 +1102,90 @@ Founded & Mentored by Dr. Ambrish, Mr. Nikhil & Mr. Satish, VERCHAS ACADEMY is a
 </div>
 </div></section>
 
-<section class="features"><div class="section-center">
-<h2>Salient Features</h2>
-<ul>
-<li>Founded and Run by Ex-Air Force, Doctors & Engineers.</li>
-<li>Most experienced faculty comprising of Doctors, Engineers & PhD.</li>
-<li>Most advanced and modern infrastructure of Ayodhya.</li>
-<li>Concept-Oriented Classroom Teaching.</li>
-<li>Discipline-Focused Academic Environment.</li>
-<li>Regular Tests & Performance Analysis.</li>
-<li>Separate Doubt Sessions & Personal Mentorship.</li>
-<li>Limited Batch Size for Individual Attention.</li>
-</ul>
-</div></section>
+<section class="features">
+  <div class="section-center">
+
+    <!-- MAIN HEADING ABOVE BOX -->
+    <h2>WHY VERCHAS ACADEMY STAND OUT IN THE SCENE</h2>
+
+    <!-- BOX START -->
+    <div class="standout-box">
+
+      <!-- SECTION 1 -->
+      <h3 class="problem-heading">
+      WHY STUDENTS STRUGGLE IN MOST COACHING INSTITUTES
+      </h3>
+      <p>
+        Despite hard work and dedication, many students fail to achieve their true
+        potential due to common institutional gaps:
+      </p>
+
+      <table style="width:100%; border-collapse:collapse;">
+  <tr>
+    <td style="width:50%; vertical-align:top; padding-right:20px;">
+      ❌ Difficulty in finding expert faculty for all subjects under one roof<br><br>
+      ❌ Coaching and test series not integrated into one system<br><br>
+      ❌ Lack of personal mentorship and academic monitoring<br><br>
+      ❌ No recorded classes for revision or absentees
+    </td>
+
+    <td style="width:50%; vertical-align:top; padding-left:20px;">
+      ❌ Frequent change of teachers, breaking academic continuity<br><br>
+      ❌ Fees charged even before students experience teaching quality<br><br>
+      ❌ No backup support if a student misses classes or falls behind<br><br>
+      ❌ Parents remain uncertain about the real classroom environment
+    </td>
+  </tr>
+</table>
+
+      <!-- SECTION 2 -->
+      <h3 class="solution-heading" style="margin-top:35px;">
+      WHY VERCHAS ACADEMY IS THE RIGHT CHOICE
+      </h3>
+
+      <table style="width:100%; border-collapse:collapse;">
+  <tr>
+    <td style="width:50%; vertical-align:top; padding-right:20px;">
+
+      <ul>
+        <li><strong>Top-Quality Faculty for Every Subject:</strong> Expert teachers for Physics, Chemistry, Mathematics & Biology — all under one roof.</li>
+
+        <li><strong>Teacher Continuity Guaranteed:</strong> We ensure that the best teacher stays. The same teachers from demo classes guide students throughout the academic year.</li>
+
+        <li><strong>Coaching + Test Series in One Integrated System:</strong> Complete preparation — teaching, practice, testing, and evaluation together.</li>
+
+        <li><strong>Personal Mentorship & Continuous Monitoring:</strong> Monthly feedback, academic reviews, and one-to-one guidance.</li>
+
+        <li><strong>Safe, Disciplined & Focused Learning Environment:</strong> Fully CCTV-Covered Campus, an atmosphere where students stay motivated and goal-oriented.</li>
+
+      </ul>
+
+    </td>
+
+    <td style="width:50%; vertical-align:top; padding-left:20px;">
+
+      <ul>
+        <li><strong>15 Days of Absolutely FREE Demo Classes:</strong> No registration fees. Experience our teaching before you decide.</li>
+
+        <li><strong>Hybrid Learning Model (Live + Recorded Classes):</strong> Missed a class? Want revision? Access recorded lectures anytime — zero learning loss with no extra cost.</li>
+
+        <li><strong>One of India’s Top Test Series (Offline + Online):</strong> Exam-pattern based tests with detailed analysis and performance tracking.</li>
+
+        <li><strong>Special Syllabus Backup Support:</strong> Extra classes and structured help for students who fall behind.</li>
+
+        <li><strong>Transparent & Parent-Friendly System:</strong> Parents can visit classrooms with prior permission and see learning in action.</li>
+
+      </ul>
+
+    </td>
+  </tr>
+</table>
+
+    </div>
+    <!-- BOX END -->
+
+  </div>
+</section>
 
 <section id="founders">
 <div class="section-center">

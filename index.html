@@ -1105,6 +1105,21 @@ html, body{
     margin-right: 0;
   }
 }
+/* ===== HERO IMAGE CLEAN (DESKTOP + MOBILE) ===== */
+.hero-overlay{
+  background: transparent !important;
+}
+
+/* ===== MOBILE: REMOVE SHADOW & FILTER ===== */
+@media (max-width: 600px){
+  .site-container{
+    box-shadow: none;
+  }
+
+  .hero img{
+    filter: none;
+  }
+}
 
 </style>
 <script type="application/ld+json">

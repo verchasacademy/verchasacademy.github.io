@@ -1091,6 +1091,20 @@ html, body{
     padding-right: 45px;
   }
 }
+/* ===== DESKTOP: ACTUALLY WIDEN STANDOUT BOX ===== */
+@media (min-width: 901px){
+  .standout-box{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: calc(100% + 280px);   /* 👈 adjust this number */
+    max-width: 1200px;          /* same as site-container */
+
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 
 </style>
 <script type="application/ld+json">

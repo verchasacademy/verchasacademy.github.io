@@ -1025,6 +1025,57 @@ header{
 html, body{
   overflow-x: hidden;
 }
+/* ===== CONS & PROS LIST SYSTEM ===== */
+
+.cons-list,
+.pros-list{
+  list-style: none;
+  padding: 0;
+  margin: 22px 0;
+}
+
+.cons-list li,
+.pros-list li{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  break-inside: avoid;
+}
+
+/* ❌ Cons */
+.cons-list li::before{
+  content: "✖";
+  color: #c62828;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* ✔ Pros */
+.pros-list li::before{
+  content: "✔";
+  color: #1b5e20;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* 🖥️ Desktop: 2-column (table-like) */
+@media (min-width: 901px){
+  .cons-list,
+  .pros-list{
+    column-count: 2;
+    column-gap: 40px;
+  }
+}
+
+/* 📱 Mobile: single column (automatic) */
+@media (max-width: 900px){
+  .cons-list,
+  .pros-list{
+    column-count: 1;
+  }
+}
 
 </style>
 <script type="application/ld+json">
@@ -1146,66 +1197,32 @@ Founded & Mentored by Dr. Ambrish, Mr. Nikhil & Mr. Satish, VERCHAS ACADEMY is a
         potential due to common institutional gaps:
       </p>
 
-      <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
-  <tr>
-    <td style="width:50%; vertical-align:top; padding-right:20px;">
-      ❌ Difficulty in finding expert faculty for all subjects under one roof<br><br>
-      ❌ Coaching and test series not integrated into one system<br><br>
-      ❌ Lack of personal mentorship and academic monitoring<br><br>
-      ❌ No recorded classes for revision or absentees
-    </td>
-
-    <td style="width:50%; vertical-align:top; padding-left:20px;">
-      ❌ Frequent change of teachers, breaking academic continuity<br><br>
-      ❌ Fees charged even before students experience teaching quality<br><br>
-      ❌ No backup support if a student misses classes or falls behind<br><br>
-      ❌ Parents remain uncertain about the real classroom environment
-    </td>
-  </tr>
-</table>
+      <ul class="cons-list">
+  <li>Difficulty in finding expert faculty for all subjects under one roof</li>
+  <li>Coaching and test series not integrated into one system</li>
+  <li>Lack of personal mentorship and academic monitoring</li>
+  <li>No recorded classes for revision or absentees</li>
+  <li>Frequent change of teachers, breaking academic continuity</li>
+  <li>Fees charged even before students experience teaching quality</li>
+  <li>No backup support if a student misses classes or falls behind</li>
+  <li>Parents remain uncertain about the real classroom environment</li>
+</ul>
 
       <!-- SECTION 2 -->
       <h3 class="solution-heading" style="margin-top:35px;">
       WHY VERCHAS ACADEMY IS THE RIGHT CHOICE
       </h3>
 
-      <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
-  <tr>
-    <td style="width:50%; vertical-align:top; padding-right:20px;">
-
-      <ul>
-        <li><strong>Top-Quality Faculty for Every Subject:</strong> Expert teachers for Physics, Chemistry, Mathematics & Biology — all under one roof.</li>
-
-        <li><strong>Teacher Continuity Guaranteed:</strong> We ensure that the best teacher stays. The same teachers from demo classes guide students throughout the academic year.</li>
-
-        <li><strong>Coaching + Test Series in One Integrated System:</strong> Complete preparation — teaching, practice, testing, and evaluation together.</li>
-
-        <li><strong>Personal Mentorship & Continuous Monitoring:</strong> Monthly feedback, academic reviews, and one-to-one guidance.</li>
-
-        <li><strong>Safe, Disciplined & Focused Learning Environment:</strong> Fully CCTV-Covered Campus, an atmosphere where students stay motivated and goal-oriented.</li>
-
-      </ul>
-
-    </td>
-
-    <td style="width:50%; vertical-align:top; padding-left:20px;">
-
-      <ul>
-        <li><strong>15 Days of Absolutely FREE Demo Classes:</strong> No registration fees. Experience our teaching before you decide.</li>
-
-        <li><strong>Hybrid Learning Model (Live + Recorded Classes):</strong> Missed a class? Want revision? Access recorded lectures anytime — zero learning loss with no extra cost.</li>
-
-        <li><strong>One of India’s Top Test Series (Offline + Online):</strong> Exam-pattern based tests with detailed analysis and performance tracking.</li>
-
-        <li><strong>Special Syllabus Backup Support:</strong> Extra classes and structured help for students who fall behind.</li>
-
-        <li><strong>Transparent & Parent-Friendly System:</strong> Parents can visit classrooms with prior permission and see learning in action.</li>
-
-      </ul>
-
-    </td>
-  </tr>
-</table>
+      <ul class="pros-list">
+  <li><strong>Top-Quality Faculty for Every Subject:</strong> Expert teachers for all subjects under one roof.</li>
+  <li><strong>Teacher Continuity Guaranteed:</strong> Same teachers from demo to final exams.</li>
+  <li><strong>Integrated Coaching + Test Series:</strong> Teaching, practice, testing & evaluation together.</li>
+  <li><strong>Personal Mentorship:</strong> Monthly reviews & one-to-one guidance.</li>
+  <li><strong>15 Days FREE Demo Classes:</strong> No fees before experiencing teaching quality.</li>
+  <li><strong>Hybrid Learning:</strong> Live + recorded classes for zero learning loss.</li>
+  <li><strong>Top National Test Series:</strong> Offline & online exam-pattern tests.</li>
+  <li><strong>Transparent Parent System:</strong> Parents can observe classrooms.</li>
+</ul>
 
     </div>
     <!-- BOX END -->

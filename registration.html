@@ -274,6 +274,7 @@ textarea{
 <input type="tel" name="Mobile Number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
 <input type="email" name="Email" placeholder="Email Address">
 <textarea name="Address" rows="3" placeholder="Full Address" required></textarea>
+<p id="msg"></p>
 <!-- ---------- Instructions ---------- -->
 <div class="instructions-box" style="margin-top:20px; font-size:0.9em; color:#333; line-height:1.45;">
 
@@ -473,6 +474,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // form ke kisi bhi input me change ho
   form.addEventListener("input", updateSubmitState);
+});
+</script>
+<script>
+document.querySelector("form").addEventListener("submit", function(e){
+  e.preventDefault(); // form ko default submit hone se rokta hai
+  fetch(this.action, { method:"POST", body:new FormData(this)})
+    .then(res => res.text())
+    .then(txt => document.getElementById("msg").innerText = txt);
 });
 </script>
 </body>

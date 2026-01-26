@@ -445,17 +445,25 @@ try {
   spinner.style.display = "none";
   return;
 }
-// ✅ identify this as normal registration form
-sessionStorage.setItem("form_type", "registration");
+if (result.status === "exists") {
+  alert(
+    "❌ You are already Registered with this Mobile Number\n\n" +
+    "Name: " + result.studentName
+  );
 
-// ✅ store data for thankyou page
-sessionStorage.setItem("reg_data", JSON.stringify(result));
+  submitBtn.disabled = false;
+  btnText.textContent = "Submit Registration";
+  spinner.style.display = "none";
+  return;
+}
 
-// ✅ redirect to common thankyou page
-window.location.href = "thankyou.html";
-return;
+if (result.status === "success") {
+  sessionStorage.setItem("form_type", "registration");
+  sessionStorage.setItem("reg_data", JSON.stringify(result));
+  window.location.href = "thankyou.html";
+  return;
+}
 
-});
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {

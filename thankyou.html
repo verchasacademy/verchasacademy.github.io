@@ -152,10 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("fatherName").textContent = data.fatherName;
   document.getElementById("mobile").textContent = data.mobile;
 
-// ✅ send to Google Sheet
-sendToGoogleAPI(data);
-
-
   // -------- PAGE TEXT BASED ON FORM ----------
   if (type === "registration") {
     document.getElementById("pageTitle").textContent =
@@ -293,34 +289,6 @@ function generateScholarshipPDF(data) {
   doc.save("Scholarship_Admit_Card.pdf");
 }
 
-</script>
-<script>
-function sendToGoogleAPI(data) {
-  fetch("YOUR_WEB_APP_URL", {   // <-- keep your existing URL here
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
-  })
-  .then(res => res.json())
-  .then(response => {
-    if (response.status === "exists") {
-      // 🚫 Duplicate found
-      alert("You are Already Registered with NAME: " + response.studentName +
-            " FATHER'S NAME: " + response.fatherName);
-      // Optional: disable PDF button so they can’t download again
-      document.getElementById("downloadBtn").disabled = true;
-    } else if (response.status === "success") {
-      // ✅ New registration saved
-      console.log("Saved to Google:", response);
-    } else {
-      alert("Unexpected response from server.");
-    }
-  })
-  .catch(err => {
-    console.error("Error:", err);
-    alert("There was a problem saving your registration. Please try again.");
-  });
-}
 </script>
 </body>
 </html>

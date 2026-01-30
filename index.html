@@ -70,9 +70,30 @@ header{
   text-align: center;          /* 🔑 forces proper alignment */
 }
 
-.header-text p{
+/* NEW: Academy location — match the main heading's font and scale responsively */
+.academy-location{
+  font-family: 'Poppins', sans-serif;
+  font-size: 4.2em;       /* desktop size */
+  font-weight: 500;
+  color: #FF6F00;
+  letter-spacing: 0.6px;
+  text-transform: none;   /* normal case keeps it friendlier */
+  margin-top: -9px;
+  line-height: 1;
+  text-align: center;
+}
+
+/* Tablet */
+@media (max-width:900px){
+  .academy-location{ font-size: 1.6em; }
+}
+
+/* Mobile */
+@media (max-width:600px){
+  .academy-location{ font-size: 1.15em; white-space: nowrap; }
+}.header-text p{
   margin-top: 4px;
-  font-size: 2.4em;
+  font-size: 2em;
   font-weight: 600;
 
   font-family: 'Poppins', sans-serif;
@@ -1251,11 +1272,15 @@ html, body{
   <div class="header-content">
     <img src="verchas-logo.png" alt="Verchas Academy Logo">
     <div class="header-text">
-      <h1>  Verchas Academy
-      <span class="seo-text"> – NEET & IIT-JEE Coaching in Ayodhya</span>
-      </h1>
-      <p>Igniting Minds, Shaping Futures</p>
-    </div>
+  <h1>Verchas Academy
+    <span class="seo-text"> – NEET & IIT-JEE Coaching in Ayodhya</span>
+  </h1>
+
+  <!-- NEW LINE ADDED HERE -->
+  <div class="academy-location">Ayodhya</div>
+
+  <p>Igniting Minds, Shaping Futures</p>
+</div>
   </div>
 </header>
 
@@ -1286,7 +1311,7 @@ html, body{
             Sunday 11:00 AM
           </span>
           <span class="sub-text single-line">
-          Get up to <b>75% Fee Waiver</b> for Top Performers
+          Get upto <b>75% Fee Waiver</b> for Top Performers
           </span>
 
         </div>
@@ -1305,7 +1330,7 @@ html, body{
 <section id="about"><div class="section-center">
 <h2>About Us</h2>
 <p>
-Founded & Mentored by Dr. Ambrish, Mr. Nikhil & Mr. Satish, VERCHAS ACADEMY is a premier institute for Board & Competitive Exam preparation. Inspired by the academic culture of Banaras Hindu University and discipline, dedication & sacrifice of Indian Air Force. We deliver metropolitan-level academic excellence. Concept-driven, result-oriented coaching for NEET-UG & IIT-JEE aspirants, focusing on fundamentals, consistent practice & scientific learning methods.
+Founded & Mentored by Dr Ambrish Mishra, Mr Satish Shukla and Mr Nikhil Mishra, VERCHAS ACADEMY is a premier institute for Board & Competitive Exam preparation. Inspired by Banaras Hindu University’s academic culture and the Indian Air Force’s ethos of discipline, dedication & sacrifice, We deliver metropolitan-level academic excellence. Concept-driven, result-oriented coaching for NEET-UG & IIT-JEE aspirants, focusing on fundamentals, consistent practice & scientific learning methods.
 </p>
 </div></section>
 
@@ -1354,13 +1379,13 @@ Founded & Mentored by Dr. Ambrish, Mr. Nikhil & Mr. Satish, VERCHAS ACADEMY is a
       </h3>
 
       <ul class="pros-list">
-  <li>15 Days FREE Demo Classes:No fees before experiencing teaching quality. Pay only when you are satisfied with the performance of Academy</li>
+  <li>15 Days FREE Demo Classes: No fees before experiencing teaching quality. Pay only when you are satisfied with the performance of Academy.</li>
   <li>Top-Quality Faculty for Every Subject: We commit to provide expert teachers for all subjects under one roof.</li>
-  <li>Teacher Continuity Guaranteed: Same teachers from demo to final exams. We will ensure that the best teachers stays with us</li>
+  <li>Teacher Continuity Guaranteed: Same teachers from demo to final exams. We ensure that the best teachers always stays with us.</li>
   <li>Integrated Coaching + Test Series: We have collaborated with one of the top Test Series providers in India so that Teaching, Practice, Testing & Evaluation are achieved altogether.</li>
-  <li>Personal Mentorship:Monthly reviews & one-to-one guidance.</li>
+  <li>Personal Mentorship: Monthly progress reviews & one-to-one guidance.</li>
   <li>Hybrid Learning Model (Offline + Recorded Classes): Missed a class? Want revision? Access recorded lectures anytime — zero learning loss.</li>
-  <li>Transparent Parent Review System: Parents can observe live classrooms.</li>
+  <li>Transparent Parent Review System: Parents can observe live classrooms environment anything (with the permission of the authorities).</li>
 </ul>
 
     </div>
@@ -1376,7 +1401,7 @@ Founded & Mentored by Dr. Ambrish, Mr. Nikhil & Mr. Satish, VERCHAS ACADEMY is a
 
 <div class="founder">
     <img src="founder1.png" alt="Dr Ambrish Sir Founder Verchas Academy">
-    <h4>Dr. Ambrish Sir</h4>
+    <h4>Dr Ambrish Sir</h4>
     <p class="founder-qualification">
       MD (Ay), Gold Medalist<br>
       Former Junior Resident Doctor<br>
@@ -1384,7 +1409,7 @@ Founded & Mentored by Dr. Ambrish, Mr. Nikhil & Mr. Satish, VERCHAS ACADEMY is a
       (7+ years of Teaching Experience)
     </p>
     <div class="founder-description">
-      Dr. Ambrish Sir is the proud recipient of 8 Gold Medals from the Institute of Medical Sciences, Banaras Hindu University, reflecting his academic brilliance and dedication to excellence. He has served as a Junior Resident Doctor at IMS BHU, gaining invaluable clinical and academic exposure. With over 7 years of teaching experience, he has mentored countless aspirants and under his mentorship many students have secured MBBS & other professional courses in government medical colleges across India.
+      Dr Ambrish Sir is the proud recipient of 8 Gold Medals from the Institute of Medical Sciences, Banaras Hindu University, reflecting his academic brilliance and dedication to excellence. He has served as a Junior Resident Doctor at IMS BHU, gaining invaluable clinical and academic exposure. With over 7 years of teaching experience, he has mentored countless aspirants and under his mentorship many students have secured MBBS & other professional courses in government medical colleges across India.
     </div>
   </div>
 
@@ -1392,7 +1417,7 @@ Founded & Mentored by Dr. Ambrish, Mr. Nikhil & Mr. Satish, VERCHAS ACADEMY is a
 
 <div class="founder">
     <img src="founder3.png" alt="Mr Nikhil Sir Founder Verchas Academy">
-    <h4>Mr. Satish Sir</h4>
+    <h4>Mr Satish Sir</h4>
     <p class="founder-qualification">
       Ex. Indian Air Force<br>
       MA (English),
@@ -1401,21 +1426,21 @@ Founded & Mentored by Dr. Ambrish, Mr. Nikhil & Mr. Satish, VERCHAS ACADEMY is a
       Cyber Security (NIELIT)
     </p>
     <div class="founder-description">
-      Mr. Satish Sir devoted 20 years of distinguished service to the Armed Forces. During his journey in the Indian Air Force, he closely observed diverse education policies and teaching methods across India, gaining deep insight into what truly shapes successful learners. Drawing from this vast experience, he brings a powerful vision of instilling military-grade discipline, resilience, and dedication in students. His guidance ensures that learners not only achieve academic excellence but also develop the mindset of warriors, prepared to face challenges, overcome obstacles, and succeed in every sphere of life.
+      Mr Satish Sir devoted 20 years of distinguished service to the Armed Forces. During his journey in the Indian Air Force, he closely observed diverse education policies and teaching methods across India, gaining deep insight into what truly shapes successful learners. Drawing from this vast experience, he brings a powerful vision of instilling military-grade discipline, resilience, and dedication in students. His guidance ensures that learners not only achieve academic excellence but also develop the mindset of warriors, prepared to face challenges, overcome obstacles, and succeed in every sphere of life.
     </div>
   </div>
 
 
 <div class="founder">
     <img src="founder2.png" alt="Mr Satish Sir Founder Verchas Academy">
-    <h4>Mr. Nikhil Sir</h4>
+    <h4>Mr Nikhil Sir</h4>
     <p class="founder-qualification">
       MSc (Chemistry) AU<br>
       (4+ Years of Teaching Experience)<br>
       Former Faculty at Prayagraj
     </p>
     <div class="founder-description">
-      Mr. Nikhil Sir brings with him a vast experience of teaching and mentoring students, shaping their academic journeys with clarity and confidence. Having faced challenges during his own school days where proper guidance and structured support were lacking, he now envisions providing every student with the essential guidelines and mentorship. His mission is to ensure that learners never feel directionless, but instead receive the right strategies and conceptual clarity to excel in their chosen fields.
+      Mr Nikhil Sir brings with him a vast experience of teaching and mentoring students, shaping their academic journeys with clarity and confidence. Having faced challenges during his own school days where proper guidance and structured support were lacking, he now envisions providing every student with the essential guidelines and mentorship. His mission is to ensure that learners never feel directionless, but instead receive the right strategies and conceptual clarity to excel in their chosen fields.
     </div>
   </div>
 
@@ -1509,7 +1534,7 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 </section>
 <footer>
   
-  <p>© 2026 Verchas Academy. All rights reserved.</p>
+  <p>Website Developed & Maintained by Sgt Satish Shukla (Retired) | © 2026 Verchas Academy. All rights reserved.</p>
 
 </footer>
 

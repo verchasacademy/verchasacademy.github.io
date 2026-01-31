@@ -1229,13 +1229,20 @@ html, body{
     text-align: center;
     white-space: normal;   /* title wrap ho sakta hai */
   }
-
+}
   .sch-date{
     display: block;        /* 🔑 force new line */
     margin-top: 4px;
     white-space: nowrap;   /* 🔒 05 APRIL 2026 kabhi nahi tootega */
     font-weight: 800;
   }
+/* Prevent line break for footer name */
+.no-break {
+  white-space: nowrap;
+}
+footer p{
+  font-size: 0.9em;
+  line-height: 1.5;
 
 }
 

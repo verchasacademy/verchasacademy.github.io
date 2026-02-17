@@ -548,9 +548,8 @@ nav a:hover{
 
 .hod-flex{
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 26px;
-  width: 100%;
 }
 .hod-card img{
   width: 100%;
@@ -564,17 +563,21 @@ nav a:hover{
 }
 
 /* Tablet */
-@media (max-width: 900px){
-  .hod-flex img{
-    width: 45%;
+@media (max-width: 992px){
+  .hod-flex{
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Mobile */
 @media (max-width: 600px){
-  .hod-flex img{
-    width: 45%;   /* 🔑 2 images per row */
-  
+  .hod-flex{
+    grid-template-columns: repeat(2, 1fr);  /* 🔥 2 cards per row */
+    gap: 16px;
+  }
+
+  .hod-card{
+    width: 100%;
   }
 }
 

@@ -1290,20 +1290,24 @@ footer p{
   text-transform: uppercase;
   margin-bottom: 14px;
 }
-
-/* Tablet */
-@media (max-width:900px){
-  .hod-card{
-    width:45%;
-  }
-}
-
-/* Mobile */
 @media (max-width:600px){
-  .hod-card{
-    width:45%;
+
+  #hods{
+    padding-left: 16px;
+    padding-right: 16px;
   }
+
+  .hod-card{
+    min-width: 0;       /* 🔥 remove 250px restriction */
+  }
+
+  .hod-flex{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
 }
+
 </style>
 <script type="application/ld+json">
 {

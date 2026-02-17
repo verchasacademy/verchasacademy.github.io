@@ -263,7 +263,7 @@ p{
   font-size:0.95em;
   line-height:1.3;        /* slightly tighter */
   margin:2px 0 14px 0;    /* 🔑 reduced top gap */
-  color:#1e5aa8;
+  color:#1b5e20;
   font-weight:600;
   min-height:110px;       /* keep alignment intact */
 }
@@ -547,21 +547,20 @@ nav a:hover{
 /* ===== HOD FLEX LAYOUT (4 + 2) ===== */
 
 .hod-flex{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 26px;
-  margin: 35px auto 25px auto;
-  max-width: 1200px;
+  width: 100%;
 }
-
-.hod-flex img{
-  width: 22%;          /* 4 in first row */
-  background: #ffffff;
-  padding: 12px;
-  border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
-  height: auto;
+.hod-card img{
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+#hods .section-center{
+  max-width: 1200px;
+  padding-left: 1px;
+  padding-right: 1px;
 }
 
 /* Tablet */
@@ -1245,7 +1244,63 @@ footer p{
   line-height: 1.5;
 
 }
+/* ===== HOD CARD SYSTEM ===== */
 
+.hod-card{
+  flex: 1 1 0;
+  min-width: 250px;
+  background: #ffffff;
+  padding: 22px 18px;
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.15);
+  text-align: center;              /* 🔥 ensures everything inside is centered */
+  display: flex;
+  flex-direction: column;
+  align-items: center;             /* 🔥 perfect horizontal center */
+  justify-content: flex-start;
+}
+
+.hod-card img{
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+.hod-card h4{
+  margin: 8px 0 8px 0;
+  color: #004aad;
+  font-size: 1.1em;
+}
+
+.hod-qualification{
+  text-align: center;              /* 🔥 force center */
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: #1b5e20;
+  font-weight: 600;
+  margin: 0;
+}
+.hod-department{
+  font-weight: 800;        /* 🔥 makes it bold */
+  font-size: 1.05em;       /* slightly larger */
+  letter-spacing: 1px;     /* premium spacing */
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* Tablet */
+@media (max-width:900px){
+  .hod-card{
+    width:45%;
+  }
+}
+
+/* Mobile */
+@media (max-width:600px){
+  .hod-card{
+    width:45%;
+  }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1414,6 +1469,7 @@ Founded & Mentored by Dr Ambrish Mishra, Mr Satish Shukla and Mr Nikhil Mishra, 
     <h4>Dr Ambrish Sir</h4>
     <p class="founder-qualification">
       MD (Ay), Gold Medalist<br>
+      PGDHCM<br>
       Former Junior Resident Doctor<br>
       IMS, BHU<br>
       (7+ years of Teaching Experience)
@@ -1464,16 +1520,98 @@ Founded & Mentored by Dr Ambrish Mishra, Mr Satish Shukla and Mr Nikhil Mishra, 
     <h2>Our Head of Departments</h2>
 
     <div class="hod-flex">
-  <img src="HOD1.png" alt="Head of Department- Biology">
-  <img src="HOD2.png" alt="Head of Department- Mathematics">
-  <img src="HOD3.png" alt="Head of Department- Physics">
-  <img src="HOD4.png" alt="Head of Department- Chemistry">
-  <img src="HOD5.png" alt="Head of Department- English">
-  <img src="HOD6.png" alt="Head of Department- Discipline & Student Wellness">
-  <img src="HOD7.png" alt="Head of Department- Digital Education Division">
 
-  
+  <!-- Biology -->
+  <div class="hod-card">
+
+  <div class="hod-department">BIOLOGY</div>
+
+  <img src="HOD1.png" alt="Dr Ambrish Sir - HOD Biology">
+
+    <h4>Dr Ambrish Sir</h4>
+    <p class="hod-qualification">
+      MD (Ay), Gold Medalist<br>
+      PGDHCM<br>
+      Former Resident Doctor IMS, BHU<br>
+      (7+ Years of Teaching Experience)
+    </p>
+  </div>
+
+  <!-- Mathematics -->
+  <div class="hod-card">
+<div class="hod-department">MATHEMATICS</div>
+    <img src="HOD2.png" alt="Dr Prashant Sir - HOD Mathematics">
+    <h4>Dr Prashant Sir</h4>
+    <p class="hod-qualification">
+      PhD, IITian<br>
+      SPM Fellow at IIT BHU<br>
+      Awarded Honorary Professor from Cypress University, USA<br>
+      (11+ Years of Teaching Experience)
+    </p>
+  </div>
+
+  <!-- Physics -->
+  <div class="hod-card">
+<div class="hod-department">PHYSICS</div>
+    <img src="HOD3.png" alt="Dr Rajan Sir - HOD Physics">
+    <h4>Dr Rajan Sir</h4>
+    <p class="hod-qualification">
+      PhD (Physics)<br>
+      (12+ Years of Teaching Experience)
+    </p>
+  </div>
+
+  <!-- Chemistry -->
+  <div class="hod-card">
+<div class="hod-department">CHEMISTRY</div>
+    <img src="HOD4.png" alt="Dr Dev Prakash Sir - HOD Chemistry">
+    <h4>Dr Dev Prakash Sir</h4>
+    <p class="hod-qualification">
+      BHMS, MSc (Chemistry)<br>
+      Former Faculty of Akash Institute<br>
+      (10+ Years of Teaching Experience)
+    </p>
+  </div>
+
+  <!-- English -->
+  <div class="hod-card">
+<div class="hod-department">ENGLISH</div>
+    <img src="HOD5.png" alt="Mr Abhishek Sir - HOD English">
+    <h4>Mr Abhishek Sir</h4>
+    <p class="hod-qualification">
+      MA (English), B.Ed, LLB<br>
+      (7+ Years of Teaching Experience)
+    </p>
+  </div>
+
+  <!-- Discipline -->
+  <div class="hod-card">
+<div class="hod-department">DISCIPLINE & WELLNESS</div>
+    <img src="HOD6.png" alt="Mr Satish Sir - HOD Discipline & Wellness">
+    <h4>Mr Satish Sir</h4>
+    <p class="hod-qualification">
+      Ex. Indian Air Force<br>
+      MA (English)<br>
+      BSc (Mathematics)<br>
+      Dip. in Electronics<br>
+      Cyber Security (NIELIT)<br>
+      QAS (Aeronautical)
+    </p>
+  </div>
+
+  <!-- Digital Education -->
+  <div class="hod-card">
+<div class="hod-department">DIGITAL EDUCATION</div>
+    <img src="HOD7.png" alt="Miss Usha Ma'am - HOD Digital Education">
+    <h4>Miss Usha Ma'am</h4>
+    <p class="hod-qualification">
+      MSc (Chemistry)<br>
+      (7+ Years of Teaching Experience)
+    </p>
+  </div>
+
 </div>
+
 
     <p class="hod-description">
       Our commitment is to always provide the best and most experienced faculty to our students. To ensure this, the quality of teaching and faculty performance is regularly reviewed. Teachers undergo a monthly evaluation test conducted by our expert academic panel from Kota, Delhi, and Lucknow, ensuring that teaching standards remain consistently high and up to national benchmarks. Feedback is taken not only from students, but parents/ guardians are always welcome to visit the academy and experience the live classroom teaching environment.

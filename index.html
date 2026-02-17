@@ -1307,17 +1307,6 @@ footer p{
   }
 
 }
-#visitor-counter{
-  padding: 30px 20px;
-  text-align: center;
-}
-
-.visitor-box{
-  font-size: 2.2em;
-  font-weight: 900;
-  color: #1b5e20;
-  text-shadow: 0 0 10px rgba(27,94,32,0.4);
-}
 
 </style>
 <script type="application/ld+json">
@@ -1697,15 +1686,6 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 </div>
 
 </section>
-<section id="visitor-counter">
-  <div class="section-center">
-    <h2>You are Visitor Number:</h2>
-    <div class="visitor-box">
-      <span id="visitor-count">Loading...</span>
-    </div>
-  </div>
-</section>
-
 <footer>
   
   <p>Website Developed & Maintained by 
@@ -1715,16 +1695,6 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 
 </div>
 <a href="registration.html" class="floating-enroll cta-animate">Enroll Now</a>
-<script>
-fetch('https://api.countapi.xyz/hit/verchasacademy.in/visits')
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('visitor-count').innerText = data.value;
-  })
-  .catch(error => {
-    document.getElementById('visitor-count').innerText = "Unavailable";
-  });
-</script>
 
 </body>
 </html>

@@ -247,6 +247,18 @@ p{
 img[src="founder3.png"]{
   width: 204px;   /* increase from 180px to 200px */
 }
+/* ===== PREMIUM SUBTLE HOVER EFFECT FOR ALL PHOTOS ===== */
+
+.founder img,
+.hod-card img{
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.founder img:hover,
+.hod-card img:hover{
+  transform: scale(1.05);   /* 5% subtle zoom */
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+}
 
 .founder h4{
   text-align:center;
@@ -1308,6 +1320,19 @@ footer p{
   }
 
 }
+/* ===== FADE-IN ON SCROLL ANIMATION ===== */
+
+.fade-in{
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -1399,14 +1424,16 @@ footer p{
 </div>
 
 <div class="watermark-section">
-<section id="about"><div class="section-center">
+<section id="about" class="fade-in">
+<div class="section-center">
 <h2>About Us</h2>
 <p>
 Founded & Mentored by Dr Ambrish Mishra, Mr Satish Shukla and Mr Nikhil Mishra, VERCHAS ACADEMY is a premier institute for Board & Competitive Exam preparation. Inspired by Banaras Hindu University’s academic culture and the Indian Air Force’s ethos of discipline, dedication & sacrifice, We deliver metropolitan-level academic excellence. Concept-driven, result-oriented coaching for NEET-UG & IIT-JEE aspirants, focusing on fundamentals, consistent practice & scientific learning methods.
 </p>
 </div></section>
 
-<section id="courses"><div class="section-center">
+<section id="courses" class="fade-in">
+<div class="section-center">
 <h2>Our Courses</h2>
 <div class="courses">
   <div class="course-card"><h3>NEET Preparation</h3><p>Complete medical entrance coaching with tests and mentorship.</p></div>
@@ -1416,7 +1443,7 @@ Founded & Mentored by Dr Ambrish Mishra, Mr Satish Shukla and Mr Nikhil Mishra, 
 </div>
 </div></section>
 
-<section class="features">
+<section class="features" class="fade-in">
   <div class="section-center">
 
     <!-- MAIN HEADING ABOVE BOX -->
@@ -1466,7 +1493,7 @@ Founded & Mentored by Dr Ambrish Mishra, Mr Satish Shukla and Mr Nikhil Mishra, 
   </div>
 </section>
 
-<section id="founders">
+<section id="founders" class="fade-in">
 <div class="section-center">
 <h2>Know the Founders</h2>
 <div class="founder-cards">
@@ -1522,7 +1549,7 @@ Founded & Mentored by Dr Ambrish Mishra, Mr Satish Shukla and Mr Nikhil Mishra, 
 </div></div>
 </section>
 
-<section id="hods">
+<section id="hods" class="fade-in">
   <div class="section-center">
     <h2>Our Head of Departments</h2>
 
@@ -1697,5 +1724,20 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 </div>
 <a href="registration.html" class="floating-enroll cta-animate">Enroll Now</a>
 <script>
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, {
+  threshold: 0.15
+});
+
+fadeElements.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>

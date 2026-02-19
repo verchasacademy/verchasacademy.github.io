@@ -17,6 +17,8 @@
 
 <meta name="keywords" content="Verchas Academy Ayodhya, NEET coaching Ayodhya, IIT-JEE coaching Ayodhya, Foundation (9th-12th), CUET coaching Ayodhya, BSc Nursing coaching Ayodhya">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box}
 body{
@@ -72,18 +74,13 @@ header{
 
 /* NEW: Academy location — match the main heading's font and scale responsively */
 .academy-location{
-  font-family: 'Poppins', sans-serif;
-  font-size: 4em;       /* desktop size */
-  font-weight: 400;
-  color: #ffffff;
-  letter-spacing: 0.6px;
-  text-transform: none;   /* normal case keeps it friendlier */
-  margin-top: -10px;
-  line-height: 1;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Cinzel', serif;
+  font-size: 3.8em;
+  font-weight: 650;
+  color: #ff9933;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 /* Tablet */
@@ -1307,6 +1304,17 @@ footer p{
   }
 
 }
+#visitor-counter{
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.visitor-box{
+  font-size: 2.2em;
+  font-weight: 900;
+  color: #1b5e20;
+  text-shadow: 0 0 10px rgba(27,94,32,0.4);
+}
 
 </style>
 <script type="application/ld+json">
@@ -1686,6 +1694,15 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 </div>
 
 </section>
+<section id="visitor-counter">
+  <div class="section-center">
+    <h2>You are Visitor Number:</h2>
+    <div class="visitor-box">
+      <span id="visitor-count">Loading...</span>
+    </div>
+  </div>
+</section>
+
 <footer>
   
   <p>Website Developed & Maintained by 
@@ -1695,6 +1712,16 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 
 </div>
 <a href="registration.html" class="floating-enroll cta-animate">Enroll Now</a>
+<script>
+fetch('https://api.countapi.xyz/hit/verchasacademy.in/visits')
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('visitor-count').innerText = data.value;
+  })
+  .catch(error => {
+    document.getElementById('visitor-count').innerText = "Unavailable";
+  });
+</script>
 
 </body>
 </html>

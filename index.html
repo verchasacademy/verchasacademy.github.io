@@ -1335,7 +1335,99 @@ footer p{
 html {
   scroll-behavior: smooth;
 }
+/* ===== FLOATING CONTACT BUTTONS WITH REAL PULSE ===== */
 
+.floating-contact{
+  position: fixed;
+  right: 26px;
+  z-index: 99999;
+
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: subtleBounce 15s infinite;
+  transition: transform 0.3s ease;
+}
+
+/* PNG icon */
+.floating-contact img{
+  width: 42px;
+  height: auto;
+  z-index: 2;
+}
+
+/* PULSE RING */
+.floating-contact::before{
+  content: "";
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: rgba(255, 204, 0, 0.5);
+  z-index: 1;
+
+  animation: pulseRing 2s infinite;
+}
+
+/* WhatsApp & Call position */
+.floating-whatsapp{ bottom: 120px; }
+.floating-call{ bottom: 195px; }
+
+/* Hover */
+.floating-contact:hover{
+  transform: scale(1.12);
+}
+
+/* Expanding Ring */
+@keyframes pulseRing{
+  0%{
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70%{
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100%{
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .floating-contact{
+    right: 18px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .floating-contact img{
+    width: 36px;
+  }
+
+  .floating-contact::before{
+    width: 54px;
+    height: 54px;
+  }
+
+  .floating-whatsapp{ bottom:100px; }
+  .floating-call{ bottom:165px; }
+}
+/* ===== Slightly Bigger WhatsApp (Aligned Properly) ===== */
+
+.floating-whatsapp img{
+  width: 60px;   /* increase only icon size */
+}
+
+/* Optional: slightly stronger pulse */
+.floating-whatsapp::before{
+  animation: pulseRing 2s infinite;
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1725,6 +1817,20 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 </footer>
 
 </div>
+<!-- Floating Call Button -->
+<a href="tel:+918756591001"
+   class="floating-contact floating-call"
+   title="Call Now">
+   <img src="call.png" alt="Call">
+</a>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/918756591001?text=I%20want%20to%20enquire%20about%20admission%20at%20Verchas%20Academy"
+   target="_blank"
+   class="floating-contact floating-whatsapp"
+   title="Chat on WhatsApp">
+   <img src="whatsapp.png" alt="WhatsApp">
+</a>
 <a href="registration.html" class="floating-enroll cta-animate">Enroll Now</a>
 <script>
 const fadeElements = document.querySelectorAll('.fade-in');

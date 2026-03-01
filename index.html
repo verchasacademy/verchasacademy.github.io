@@ -978,9 +978,6 @@ a[href^="tel"]{
   overflow: hidden;
 }
 /* ===== FINAL HEADER BACKGROUND FIX ===== */
-header{
-  background: linear-gradient(135deg, #0f4c75, #3282b8) !important;
-}
 @media (max-width:600px){
 
   /* Header spacing */
@@ -1335,12 +1332,13 @@ footer p{
 html {
   scroll-behavior: smooth;
 }
+
 /* ===== FLOATING CONTACT BUTTONS WITH REAL PULSE ===== */
 
 .floating-contact{
   position: fixed;
   right: 26px;
-  z-index: 99999;
+  z-index: 100000;   /* 🔥 ABOVE all enroll buttons */
 
   width: 62px;
   height: 62px;
@@ -1352,7 +1350,6 @@ html {
   animation: subtleBounce 15s infinite;
   transition: transform 0.3s ease;
 }
-
 /* PNG icon */
 .floating-contact img{
   width: 42px;
@@ -1374,9 +1371,15 @@ html {
 }
 
 /* WhatsApp & Call position */
-.floating-whatsapp{ bottom: 120px; }
-.floating-call{ bottom: 195px; }
+/* ===== CONTACT BUTTONS (TOP MOST) ===== */
 
+.floating-call{
+  bottom: 340px;   /* Highest */
+}
+
+.floating-whatsapp{
+  bottom: 265px;   /* Below Call */
+}
 /* Hover */
 .floating-contact:hover{
   transform: scale(1.12);
@@ -1415,8 +1418,8 @@ html {
     height: 54px;
   }
 
-  .floating-whatsapp{ bottom:100px; }
-  .floating-call{ bottom:165px; }
+  .floating-whatsapp{ bottom:225px; }
+  .floating-call{ bottom:290px; }
 }
 /* ===== Slightly Bigger WhatsApp (Aligned Properly) ===== */
 
@@ -1427,6 +1430,34 @@ html {
 /* Optional: slightly stronger pulse */
 .floating-whatsapp::before{
   animation: pulseRing 2s infinite;
+}
+/* ===== STACK ADDITIONAL FLOATING BUTTONS ===== */
+
+/* Scholarship Button Position */
+.floating-scholarship{
+  bottom: 95px;   /* just below Enroll */
+}
+
+/* Crash Course Button Position */
+.floating-crash{
+  bottom: 165px;  /* below Scholarship */
+}
+
+/* Mobile Optimization */
+@media(max-width:600px){
+
+  .floating-scholarship{
+    bottom: 85px;
+    font-size: 0.95em;
+    padding: 12px 22px;
+  }
+
+  .floating-crash{
+    bottom: 150px;
+    font-size: 0.95em;
+    padding: 12px 22px;
+  }
+
 }
 </style>
 <script type="application/ld+json">
@@ -1538,7 +1569,7 @@ Founded & Mentored by Dr Ambrish Mishra, Mr Satish Shukla and Mr Nikhil Mishra, 
 </div>
 </div></section>
 
-<section class="features" class="fade-in">
+<section class="features fade-in">
   <div class="section-center">
 
     <!-- MAIN HEADING ABOVE BOX -->
@@ -1831,7 +1862,19 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
    title="Chat on WhatsApp">
    <img src="whatsapp.png" alt="WhatsApp">
 </a>
+<!-- FLOATING ENROLL BUTTON -->
 <a href="registration.html" class="floating-enroll cta-animate">Enroll Now</a>
+<!-- Floating Scholarship Test Button -->
+<a href="scholarship-registration.html"
+   class="floating-enroll floating-scholarship cta-animate">
+   Scholarship Test
+</a>
+
+<!-- Floating NEET-26 Crash Course Button -->
+<a href="NEET-26 Crash Course.html"
+   class="floating-enroll floating-crash cta-animate">
+   NEET-26 Crash Course
+</a>
 <script>
 const fadeElements = document.querySelectorAll('.fade-in');
 

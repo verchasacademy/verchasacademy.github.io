@@ -1441,6 +1441,47 @@ html {
   }
 
 }
+.hindi-btn{
+position: fixed;
+bottom: 420px;   /* Call button ke upar */
+right: 26px;
+
+width: 72px;
+height: 72px;
+
+background:#ff9933;
+color:#fff;
+
+font-size:15px;
+font-weight:700;
+line-height:1.1;
+text-align:center;
+
+border-radius:50%;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+text-decoration:none;
+box-shadow:0 6px 16px rgba(0,0,0,0.35);
+
+animation:pulseRingHindi 2s infinite, subtleBounce 15s infinite;
+
+z-index:100000;
+}
+
+.hindi-btn:hover{
+transform:scale(1.1);
+background:#e67e22;
+}
+
+@keyframes pulseRingHindi{
+0%{box-shadow:0 0 0 0 rgba(255,153,51,0.7);}
+70%{box-shadow:0 0 0 18px rgba(255,153,51,0);}
+100%{box-shadow:0 0 0 0 rgba(255,153,51,0);}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1846,6 +1887,13 @@ Your career is your Mission - Ensure your navigation be in correct hands!”
 </footer>
 
 </div>
+<!-- Hindi Button -->
+<a href="#" 
+   class="hindi-btn" 
+   onclick="showHindiMessage()" 
+   title="हिंदी वेबसाइट तैयार की जा रही है। यह शीघ्र ही उपलब्ध होगी। आपके धैर्य के लिए धन्यवाद।">
+   हिंदी वेबसाइट
+</a>
 <!-- Floating Call Button -->
 <a href="tel:+918756591001"
    class="floating-contact floating-call"
@@ -1888,6 +1936,10 @@ const observer = new IntersectionObserver(entries => {
 
 fadeElements.forEach(el => observer.observe(el));
 </script>
-
+<script>
+function showHindiMessage(){
+  alert("हिंदी वेबसाइट पर कार्य प्रगति पर है।\n\nयह जल्द ही उपलब्ध होगी।\n\nआपके धैर्य के लिए धन्यवाद।");
+}
+</script>
 </body>
 </html>

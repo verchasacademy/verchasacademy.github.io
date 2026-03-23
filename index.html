@@ -1482,6 +1482,78 @@ background:#e67e22;
 70%{box-shadow:0 0 0 18px rgba(255,153,51,0);}
 100%{box-shadow:0 0 0 0 rgba(255,153,51,0);}
 }
+.hero-slider{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slide{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active{
+  opacity: 1;
+}
+.hero{
+  position: relative;
+  height: 520px;   /* 🔥 THIS FIXES VISIBILITY */
+}
+.news-section{
+  background: linear-gradient(135deg, #111, #1a237e);  /* 🔥 dark blue-black */
+  padding: 22px 10px;
+  border-top: 3px solid #ffcc00;
+  border-bottom: 3px solid #ffcc00;
+}
+.news-container{
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.news-item{
+  color: #ffeb3b;
+  font-size: 1.4em;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.news-item span{
+  display: block;
+  color: #ffffff;
+  font-size: 0.85em;
+  margin-top: 4px;
+}
+
+/* blinking effect */
+.blink{
+  animation: blinkText 1.2s infinite;
+}
+.news-title{
+  color: #ff9933;      /* 🔥 kesari / saffron */
+  font-size: 2em;      /* 👈 thoda bada */
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+.slider-title{
+  background: #111;
+  color: #ff9933;
+
+  text-align: center;
+  padding: 14px 10px;
+
+  font-size: 1.6em;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1542,52 +1614,42 @@ background:#e67e22;
   </div>
 </nav>
 <div class="hero">
-  <img src="webpic1.png" alt="Verchas Academy Classroom">
-
-  <div class="hero-overlay">
-    <div class="hero-content">
-      <!-- ===== FREE CRASH COURSE ANNOUNCEMENT ===== -->
-<div class="scholarship-banner">
-  <div class="scholarship-text blink">
-    <span class="sch-title">
-      🚀 FREE CRASH COURSE : NEET 2026
-    </span>
-    <span class="sub-text single-line">
-      Starting 16 March 26 – Limited Seats Available.
-    </span>
-  </div>
-
-  </div>
-
-      <div class="scholarship-banner">
-        <div class="scholarship-text blink">
-          <span class="sch-title">
-       📢 SCHOLARSHIP TEST : 05 APRIL 2026</span>
-      </span>
-      <br>
-          <span style="display:block; font-size:0.9em; color:#ffffff; margin-top:4px;">
-          </span>
-          <span class="sub-text single-line">
-          Get upto <b>75% Fee Waiver</b> for Toppers.
-          </span>
-
-        </div>
-        
-      </div>
-<div class="scholarship-banner">
-  <div class="scholarship-text blink">
-    <span class="sch-title">
-      🎉 FLAT 25% FEE CONCESSION
-    </span>
-    <span class="sub-text single-line">
-      For First 100 Admissions – Hurry Up !
-    </span>
+  <div class="hero-slider">
+  <img src="inaug1.jpg" class="slide active">
+  <img src="inaug2.jpg" class="slide">
+  <img src="inaug3.jpg" class="slide">
+  <img src="inaug4.jpg" class="slide">
+<img src="inaug5.jpg" class="slide">
+<img src="inaug6.jpg" class="slide">
+<img src="inaug7.jpg" class="slide">
   </div>
 </div>
+
+<!-- 👇 YAHAN ADD KARNA HAI -->
+<div class="slider-title">
+  INAUGURATION CEREMONY • 22 MARCH 2026
+</div>
+
+<section class="news-section">
+  <div class="news-container">
+<h2 class="news-title">⚡ FLASH NEWS</h2>
+    <div class="news-item blink">
+      🚀 FREE CRASH COURSE : NEET 2026  
+      <span>Starting 16 March 26 – Limited Seats Available.</span>
     </div>
-  </div>
-</div>
 
+    <div class="news-item blink">
+      📢 SCHOLARSHIP TEST : 05 APRIL 2026  
+      <span>Get upto 75% Fee Waiver for Toppers.</span>
+    </div>
+
+    <div class="news-item blink">
+      🎉 FLAT 25% FEE CONCESSION  
+      <span>For First 100 Admissions – Hurry Up!</span>
+    </div>
+
+  </div>
+</section>
 <div class="watermark-section">
 <section id="about" class="fade-in">
 <div class="section-center">
@@ -1936,10 +1998,31 @@ const observer = new IntersectionObserver(entries => {
 
 fadeElements.forEach(el => observer.observe(el));
 </script>
-<script>
+<<script>
 function showHindiMessage(){
   alert("हिंदी वेबसाइट पर कार्य प्रगति पर है।\n\nयह जल्द ही उपलब्ध होगी।\n\nआपके धैर्य के लिए धन्यवाद।");
 }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  let slides = document.querySelectorAll('.slide');
+  let index = 0;
+
+  function showSlide(){
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+    });
+
+    index++;
+    if(index >= slides.length) index = 0;
+
+    slides[index].classList.add('active');
+  }
+
+  setInterval(showSlide, 3000);
+
+});
 </script>
 </body>
 </html>

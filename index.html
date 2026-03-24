@@ -1485,8 +1485,36 @@ background:#e67e22;
 .hero-slider{
   position: relative;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16/9;
   overflow: hidden;
+}
+
+.slide{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 0;
+}
+
+/* 🔥 active slide ALWAYS visible */
+.slide.active{
+  opacity: 1;
+  z-index: 1;
+}
+.hero{
+  position: relative;
+  width: 100%;
+  height: auto;   /* 🔥 IMPORTANT */
+}
+
+.hero-slider{
+  position: relative;
+  width: 100%;
 }
 
 .slide{
@@ -1494,16 +1522,10 @@ background:#e67e22;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
 }
 
-.slide.active{
-  opacity: 1;
-}
-.hero{
-  position: relative;
-  height: 520px;   /* 🔥 THIS FIXES VISIBILITY */
+.hero-slider{
+  aspect-ratio: 16 / 9;
 }
 .news-section{
   background: linear-gradient(135deg, #111, #1a237e);  /* 🔥 dark blue-black */
@@ -1621,7 +1643,6 @@ background:#e67e22;
   <img src="inaug4.jpg" class="slide">
 <img src="inaug5.jpg" class="slide">
 <img src="inaug6.jpg" class="slide">
-<img src="inaug7.jpg" class="slide">
   </div>
 </div>
 
@@ -2006,18 +2027,28 @@ function showHindiMessage(){
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
-  let slides = document.querySelectorAll('.slide');
+  const slides = document.querySelectorAll('.slide');
   let index = 0;
 
+  // 🔥 Ensure first slide visible
+  slides[0].classList.add('active');
+
   function showSlide(){
-    slides.forEach((slide) => {
-      slide.classList.remove('active');
-    });
+    const current = slides[index];
 
-    index++;
-    if(index >= slides.length) index = 0;
+    index = (index + 1) % slides.length;
+    const next = slides[index];
 
-    slides[index].classList.add('active');
+    // wait until image is loaded
+    if(next.complete){
+      current.classList.remove('active');
+      next.classList.add('active');
+    } else {
+      next.onload = () => {
+        current.classList.remove('active');
+        next.classList.add('active');
+      };
+    }
   }
 
   setInterval(showSlide, 3000);

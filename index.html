@@ -1576,6 +1576,44 @@ background:#e67e22;
   font-weight: 800;
   letter-spacing: 1px;
 }
+/* ===== RUNNING NEWS TICKER ===== */
+
+.news-ticker-header{
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0,0,0,0.25);
+  padding: 6px 0;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+.ticker-track{
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 25s linear infinite;
+}
+
+.ticker-track span{
+  white-space: nowrap;
+  color: #ffeb3b;
+  font-weight: 600;
+  padding-right: 60px; /* gap between loops */
+}
+
+/* Hover = Pause */
+.news-ticker-header:hover .ticker-track{
+  animation-play-state: paused;
+}
+
+/* Animation */
+@keyframes tickerScroll{
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(-50%);
+  }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1619,8 +1657,19 @@ background:#e67e22;
   <div class="academy-location">Ayodhya</div>
 
   <p>Igniting Minds, Shaping Futures</p>
-</div>
+
+<!-- 🔴 RUNNING NEWS TICKER --> 
+
+<div class="news-ticker-header">
+  <div class="ticker-track">
+    <span>
+      🔴 New Batches Starting from 10 April 26 🔴 Fee Concessions valid upto 15 April 2026 🔴 Scholarship Test Results Live Now 🔴 Admissions Open for NEET, IIT-JEE, CUET, BSc Nursing & Foundation 🔴
+    </span>
+    <span>
+      🔴 New Batches Starting from 10 April 26 🔴 Fee Concessions valid upto 15 April 2026 🔴 Scholarship Test Results Live Now 🔴 Admissions Open for NEET, IIT-JEE, CUET, BSc Nursing & Foundation 🔴
+    </span>
   </div>
+</div>
 </header>
 
 <nav>

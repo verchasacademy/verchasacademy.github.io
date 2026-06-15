@@ -16,19 +16,31 @@
   <url>
     <loc>https://verchasacademy.in/registration.html</loc>
     <lastmod>2026-06-15</lastmod>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://verchasacademy.in/scholarship-registration.html</loc>
     <lastmod>2026-06-15</lastmod>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://verchasacademy.in/result.html</loc>
     <lastmod>2026-06-15</lastmod>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://verchasacademy.in/privacy-policy.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://verchasacademy.in/RE-NEET%202026%20Crash%20Course.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <priority>0.8</priority>
   </url>
 
 </urlset>

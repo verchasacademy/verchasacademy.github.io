@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -16,9 +16,48 @@ body{
 h1,h2{
     color:#004aad;
 }
+.policy-brand{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-bottom:24px;
+    text-align:center;
+}
+.policy-brand img{
+    width:110px;
+    height:auto;
+}
+.policy-brand-title{
+    font-size:2.1em;
+    font-weight:700;
+    color:#004aad;
+    line-height:1.2;
+}
+.policy-brand-location{
+    font-size:1.5em;
+    font-weight:700;
+    color:#ff9933;
+    line-height:1.1;
+}
+@media(max-width:600px){
+    .policy-brand-title{
+        font-size:1.6em;
+    }
+    .policy-brand-location{
+        font-size:1.25em;
+    }
+}
 </style>
 </head>
 <body>
+
+<div class="policy-brand">
+    <img src="verchas-logo.webp" alt="Verchas Academy Logo">
+    <div class="policy-brand-title">Verchas Academy</div>
+    <div class="policy-brand-location">Ayodhya</div>
+</div>
 
 <h1>Privacy Policy</h1>
 

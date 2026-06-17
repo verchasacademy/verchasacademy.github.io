@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="hi">
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KP1HYGJL04"></script>
@@ -12,8 +12,15 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>वर्चस अकेडमी – अयोध्या में NEET और IIT-JEE कोचिंग</title>
+<title>वर्चस अकेडमी - अयोध्या में NEET और IIT-JEE कोचिंग</title>
 <meta name="description" content="वर्चस अकेडमी अयोध्या, उत्तर प्रदेश में NEET और IIT-JEE की एक प्रमुख कोचिंग संस्था है। यहाँ CUET और BSc नर्सिंग की तैयारी भी अनुभवी शिक्षकों द्वारा कराई जाती है।">
+
+<link rel="canonical" href="https://verchasacademy.in/hindi.html">
+<meta property="og:title" content="वर्चस अकेडमी - अयोध्या में NEET और IIT-JEE कोचिंग">
+<meta property="og:description" content="वर्चस अकेडमी अयोध्या में NEET, IIT-JEE, CUET, BSc Nursing और Foundation की तैयारी के लिए अनुभवी शिक्षकों के साथ मार्गदर्शन प्रदान करती है।">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://verchasacademy.in/hindi.html">
+  <meta property="og:image" content="https://verchasacademy.in/verchas-logo.webp">
 
 <meta name="keywords" content="वर्चस अकेडमी अयोध्या, NEET कोचिंग अयोध्या, IIT-JEE कोचिंग अयोध्या, फाउंडेशन (9वीं-12वीं), CUET कोचिंग अयोध्या, BSc नर्सिंग कोचिंग अयोध्या">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
@@ -185,10 +192,15 @@ p{
 .course-card{
   width:23%;
   border:2px solid #004aad;
+  background:#eef6ff;
   border-radius:14px;
   padding:18px;
   text-align:center;
   box-shadow:0 4px 10px rgba(0,0,0,.15);
+  color:inherit;
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
 }
 .course-card h3{
   color:#004aad;
@@ -235,7 +247,7 @@ p{
   margin:0 auto;
   border-radius:10px;
 }
-img[src="founder3.png"]{
+img[src="founder3.webp"]{
   width: 204px;   /* increase from 180px to 200px */
 }
 /* ===== PREMIUM SUBTLE HOVER EFFECT FOR ALL PHOTOS ===== */
@@ -410,7 +422,7 @@ footer p{margin:5px 0}
   content:"";
   position:absolute;
   inset:0;
-  background:url('verchas-logo.png') no-repeat center center;
+  background:url('verchas-logo.webp') no-repeat center center;
   background-size:80%;
   opacity:0.10;
   pointer-events:none;
@@ -453,6 +465,14 @@ footer p{margin:5px 0}
   text-align:center;
 }
 
+.course-card .click-info{
+  display:block;
+  margin-top:auto;
+  font-weight:800;
+  color:#d66b00;
+  padding-top:14px;
+}
+
 
 /* Subtle premium animations for course boxes */
 .course-card{
@@ -461,7 +481,7 @@ footer p{margin:5px 0}
 .course-card:hover{
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 14px 28px rgba(0,0,0,0.18);
-  background-color:#f7f9fc;
+  background-color:#e1efff;
 }
 
 
@@ -1079,9 +1099,9 @@ html, body{
 
 .cons-list li,
 .pros-list li{
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  display: block;
+  position: relative;
+  padding-left: 46px;
   line-height: 1.6;
   margin-bottom: 14px;
   break-inside: avoid;
@@ -1090,17 +1110,25 @@ html, body{
 /* ❌ Cons */
 .cons-list li::before{
   content: "✖";
+  position: absolute;
+  left: 0;
+  top: 0.08em;
   color: #c62828;
   font-weight: 800;
-  flex-shrink: 0;
+  width: 30px;
+  text-align: center;
 }
 
 /* ✔ Pros */
 .pros-list li::before{
   content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0.08em;
   color: #1b5e20;
   font-weight: 800;
-  flex-shrink: 0;
+  width: 30px;
+  text-align: center;
 }
 
 /* 🖥️ Desktop: 2-column (table-like) */
@@ -1615,6 +1643,127 @@ background:#e67e22;
   }
 }
 
+/* ===== CLEAN MOBILE FLOATING ACTIONS ===== */
+/* ===== FINAL HEADER LOGO LEFT ALIGNMENT ===== */
+header{
+  position:relative;
+}
+
+.header-content{
+  position:relative;
+  display:grid;
+  grid-template-columns:310px minmax(0, auto) 310px;
+  align-items:center;
+  justify-content:center;
+  column-gap:28px;
+  min-height:330px;
+  transform:translateX(65px);
+}
+
+.header-content img{
+  position:static;
+  transform:translate(55px, -28px);
+  justify-self:end;
+  flex:0 0 auto;
+  height:300px;
+  width:auto;
+  z-index:2;
+}
+
+.header-text{
+  grid-column:2;
+  width:100%;
+  min-width:0;
+  text-align:center;
+}
+
+.header-text h1{
+  font-size:clamp(2.8em, 5vw, 4.6em);
+  white-space:nowrap;
+}
+
+@media(max-width:768px){
+  .header-content{
+    display:grid;
+    grid-template-columns:86px minmax(0, 1fr);
+    align-items:center;
+    justify-content:center;
+    column-gap:10px;
+    min-height:155px;
+    padding-left:0;
+  }
+
+  .header-content img{
+    position:static;
+    transform:none;
+    justify-self:end;
+    height:120px;
+  }
+
+  .header-text h1{
+    font-size:clamp(1.25em, 6vw, 1.75em);
+    white-space:normal;
+    line-height:1.15;
+  }
+
+  .academy-location{
+    font-size:1.1em;
+    letter-spacing:1.5px;
+  }
+
+  .header-text p{
+    font-size:0.95em;
+    white-space:normal;
+    padding:0;
+  }
+}
+
+.news-ticker-header{
+  position:relative;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  border-radius:0;
+}
+
+@media(max-width:600px){
+  body{
+    padding-bottom:74px;
+  }
+
+  .floating-enroll{
+    left:14px;
+    right:14px;
+    bottom:12px;
+    width:auto;
+    text-align:center;
+    border-radius:14px;
+    padding:13px 18px;
+    font-size:1em;
+  }
+
+  .floating-scholarship,
+  .floating-crash{
+    display:none;
+  }
+
+  .floating-call{
+    bottom:92px;
+  }
+
+  .floating-whatsapp{
+    bottom:158px;
+  }
+
+  .hindi-btn{
+    bottom:224px;
+    width:auto;
+    height:auto;
+    padding:9px 12px;
+    font-size:0.85em;
+    border-radius:10px;
+  }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1622,7 +1771,7 @@ background:#e67e22;
   "@type": "EducationalOrganization",
   "name": "वर्चस अकेडमी",
   "url": "https://www.verchasacademy.in",
-  "logo": "https://www.verchasacademy.in/verchas-logo.png",
+  "logo": "https://www.verchasacademy.in/verchas-logo.webp",
   "telephone": [
     "+919876543210",
     "+919812345678"
@@ -1648,38 +1797,37 @@ background:#e67e22;
 
 <header>
   <div class="header-content">
-    <img src="verchas-logo.png" alt="Verchas Academy Logo">
+    <img src="verchas-logo.webp" alt="Verchas Academy Logo">
     <div class="header-text">
   <h1>वर्चस अकेडमी
-    <span class="seo-text"> – अयोध्या में NEET और IIT-JEE कोचिंग</span>
+    <span class="seo-text"> - अयोध्या में NEET और IIT-JEE कोचिंग</span>
   </h1>
 
   <!-- NEW LINE ADDED HERE -->
   <div class="academy-location">अयोध्या</div>
 
   <p>Igniting Minds, Shaping Futures</p>
+    </div>
+  </div>
 
-<!-- 🔴 RUNNING NEWS TICKER --> 
-
+<!-- 🔴 RUNNING NEWS TICKER -->
 <div class="news-ticker-header">
   <div class="ticker-track">
     <span>
-🔴 NEET & IIT-JEE 2027 बैचेस 13 मई 2026 से प्रारम्भ 🔴
-🔴 शुल्क में रियायतें 30 जून 2026 तक मान्य 🔴
-🔴 छात्रवृत्ति परीक्षा : अधिकतम 70% तक शुल्क रियायत 🔴
-🔴 NEET, IIT-JEE, CUET, B.Sc Nursing एवं Foundation (9वीं-12वीं) हेतु प्रवेश प्रारम्भ 🔴
-🔴 शीघ्र प्रारम्भ होने वाले कोर्स : विशेषज्ञों द्वारा अंग्रेज़ी बोलना सीखें 🔴
-🔴 Verchas Academy में निःशुल्क करियर मार्गदर्शन उपलब्ध 🔴
+🔴 NEET & IIT-JEE 2027 बैचेस 13 मई 2026 से प्रारम्भ 
+🔴 शुल्क में रियायतें 30 जून 2026 तक मान्य 
+🔴 छात्रवृत्ति परीक्षा : अधिकतम 70% तक शुल्क रियायत 
+🔴 NEET, IIT-JEE, CUET, B.Sc Nursing एवं Foundation (9वीं-12वीं) हेतु प्रवेश प्रारम्भ 
+🔴 शीघ्र प्रारम्भ होने वाले कोर्स : विशेषज्ञों द्वारा अंग्रेज़ी बोलना सीखें 
+🔴 Verchas Academy में निःशुल्क करियर मार्गदर्शन उपलब्ध 
     </span>
 <span>
-🔴 NEET & IIT-JEE 2027 बैचेस 13 मई 2026 से प्रारम्भ 🔴
-🔴 शुल्क में रियायतें 30 जून 2026 तक मान्य 🔴
-🔴 छात्रवृत्ति परीक्षा : अधिकतम 70% तक शुल्क रियायत 🔴
-🔴 NEET, IIT-JEE, CUET, B.Sc Nursing एवं Foundation (9वीं-12वीं) हेतु प्रवेश प्रारम्भ 🔴
-🔴 शीघ्र प्रारम्भ होने वाले कोर्स : विशेषज्ञों द्वारा अंग्रेज़ी बोलना सीखें 🔴
-🔴 Verchas Academy में निःशुल्क करियर मार्गदर्शन उपलब्ध 🔴
-    <span>
-      
+🔴 NEET & IIT-JEE 2027 बैचेस 13 मई 2026 से प्रारम्भ 
+🔴 शुल्क में रियायतें 30 जून 2026 तक मान्य 
+🔴 छात्रवृत्ति परीक्षा : अधिकतम 70% तक शुल्क रियायत 
+🔴 NEET, IIT-JEE, CUET, B.Sc Nursing एवं Foundation (9वीं-12वीं) हेतु प्रवेश प्रारम्भ 
+🔴 शीघ्र प्रारम्भ होने वाले कोर्स : विशेषज्ञों द्वारा अंग्रेज़ी बोलना सीखें 
+🔴 Verchas Academy में निःशुल्क करियर मार्गदर्शन उपलब्ध 
     </span>
   </div>
 </div>
@@ -1698,13 +1846,13 @@ background:#e67e22;
 </nav>
 <div class="hero">
   <div class="hero-slider">
-  <img src="1.jpeg" class="slide active">
-  <img src="2.jpeg" class="slide">
-  <img src="3.jpeg" class="slide">
-  <img src="4.jpeg" class="slide">
-  <img src="5.jpeg" class="slide">
-  <img src="6.jpeg" class="slide">
-  <img src="7.jpeg" class="slide">
+  <img src="1.webp" class="slide active" alt="Verchas Academy campus and classroom highlights" fetchpriority="high">
+  <img src="2.webp" class="slide" alt="Verchas Academy student activities and academic environment" loading="lazy">
+  <img src="3.webp" class="slide" alt="Verchas Academy classroom learning and mentoring" loading="lazy">
+  <img src="4.webp" class="slide" alt="Verchas Academy coaching facilities" loading="lazy">
+  <img src="5.webp" class="slide" alt="Verchas Academy students and faculty interaction" loading="lazy">
+  <img src="6.webp" class="slide" alt="Verchas Academy academic session" loading="lazy">
+  <img src="7.webp" class="slide" alt="Verchas Academy learning environment" loading="lazy">
   </div>
 </div>
 
@@ -1718,12 +1866,12 @@ background:#e67e22;
 <h2 class="news-title">⚡ उपयोगी जानकारी</h2>
     <div class="news-item blink">
       🚀 निःशुल्क क्रैश कोर्स : RE-NEET 2026  
-      <span>प्रारंभ: 20 मई 2026 – सीमित सीटें उपलब्ध</span>
+      <span>प्रारंभ: 20 मई 2026 - सीमित सीटें उपलब्ध</span>
     </div>
 
     <div class="news-item blink">
       🎉 10% तक शुल्क में छूट  
-      <span>30 जून 2026 तक – जल्दी करें!</span>
+      <span>30 जून 2026 तक - जल्दी करें!</span>
     </div>
 
   </div>
@@ -1742,10 +1890,10 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 <div class="section-center">
 <h2>हमारे पाठ्यक्रम</h2>
 <div class="courses">
-  <div class="course-card"><h3>NEET तैयारी</h3><p>पूर्ण मेडिकल प्रवेश परीक्षा की तैयारी, नियमित टेस्ट एवं व्यक्तिगत मार्गदर्शन के साथ।</p></div>
-  <div class="course-card"><h3>IIT-JEE कोचिंग</h3><p>मजबूत अवधारणाओं के साथ उन्नत स्तर की समस्या समाधान क्षमता विकसित करना।</p></div>
-  <div class="course-card"><h3>फाउंडेशन<br><span style="font-size:0.95em;">(11वीं–12वीं)</span></h3><p>बोर्ड एवं प्रतियोगी परीक्षाओं की एकीकृत तैयारी।</p></div>
-  <div class="course-card"><h3>प्री-फाउंडेशन<br><span style="font-size:0.95em;">(9वीं–10वीं)</h3><p>प्रारंभिक स्तर से मजबूत नींव एवं ओलंपियाड उन्मुख अध्ययन।</p></div>
+  <a class="course-card" href="neet-information.html"><h3>NEET तैयारी</h3><p>पूर्ण मेडिकल प्रवेश परीक्षा की तैयारी, नियमित टेस्ट एवं व्यक्तिगत मार्गदर्शन के साथ।</p><span class="click-info">Click for More Info</span></a>
+  <a class="course-card" href="iit-jee-information.html"><h3>IIT-JEE कोचिंग</h3><p>मजबूत अवधारणाओं के साथ उन्नत स्तर की समस्या समाधान क्षमता विकसित करना।</p><span class="click-info">Click for More Info</span></a>
+  <div class="course-card"><h3>फाउंडेशन<br><span style="font-size:0.95em;">(11वीं एवं 12वीं)</span></h3><p>बोर्ड एवं प्रतियोगी परीक्षाओं की एकीकृत तैयारी।</p></div>
+  <div class="course-card"><h3>प्री-फाउंडेशन<br><span style="font-size:0.95em;">(9वीं एवं 10वीं)</span></h3><p>प्रारंभिक स्तर से मजबूत नींव एवं ओलंपियाड उन्मुख अध्ययन।</p></div>
 </div>
 </div></section>
 
@@ -1804,7 +1952,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 <div class="founder-cards">
 
 <div class="founder">
-    <img src="founder1.png" alt="Dr Ambrish Sir Founder Verchas Academy">
+    <img src="founder1.webp" loading="lazy" alt="Dr Ambrish Sir Founder Verchas Academy">
     <h4>डॉ. अम्बरीश सर</h4>
     <p class="founder-qualification">
       MD (Ay), Gold Medalist<br>
@@ -1821,7 +1969,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
   
 
 <div class="founder">
-    <img src="founder3.png" alt="Mr Nikhil Sir Founder Verchas Academy">
+    <img src="founder3.webp" loading="lazy" alt="Mr Nikhil Sir Founder Verchas Academy">
     <h4>श्री सतीश सर</h4>
     <p class="founder-qualification">
       Ex. Indian Air Force<br>
@@ -1838,7 +1986,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 
 
 <div class="founder">
-    <img src="founder2.png" alt="Mr Satish Sir Founder Verchas Academy">
+    <img src="founder2.webp" loading="lazy" alt="Mr Satish Sir Founder Verchas Academy">
     <h4>श्री निखिल सर</h4>
     <p class="founder-qualification">
       MSc (Chemistry) AU<br>
@@ -1865,7 +2013,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 
   <div class="hod-department">जीव विज्ञान</div>
 
-  <img src="HOD1.png" alt="डॉ अम्बरीश सर - विभागाध्यक्ष जीवविज्ञान">
+  <img src="HOD1.webp" loading="lazy" alt="डॉ अम्बरीश सर - विभागाध्यक्ष जीवविज्ञान">
 
     <h4>डॉ. अम्बरीश सर</h4>
     <p class="hod-qualification">
@@ -1879,7 +2027,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
   <!-- Mathematics -->
   <div class="hod-card">
 <div class="hod-department">गणित</div>
-    <img src="HOD2.png" alt="डॉ प्रशांत सर - विभागाध्यक्ष गणित">
+    <img src="HOD2.webp" loading="lazy" alt="डॉ प्रशांत सर - विभागाध्यक्ष गणित">
     <h4>डॉ. प्रशांत सर</h4>
     <p class="hod-qualification">
       PhD, IITian<br>
@@ -1891,8 +2039,8 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 
   <!-- Physics -->
   <div class="hod-card">
-<div class="hod-department">भौतिक विज्ञान</div>
-    <img src="HOD3.png" alt="डॉ राजन सर - विभागाध्यक्ष भौतिक विज्ञान">
+<div class="hod-department">भौतिक विज्ञान (NEET)</div>
+    <img src="HOD3.webp" loading="lazy" alt="डॉ राजन सर - विभागाध्यक्ष भौतिक विज्ञान">
     <h4>डॉ. राजन सर</h4>
     <p class="hod-qualification">
       PhD (Physics)<br>
@@ -1900,10 +2048,21 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
     </p>
   </div>
 
+<!-- Physics-2 -->
+  <div class="hod-card">
+<div class="hod-department">भौतिक विज्ञान (IIT-JEE)</div>
+    <img src="HOD8.webp" loading="lazy" alt="इंजी. प्रफुल्ल सर - विभागाध्यक्ष भौतिक विज्ञान (IIT-JEE)">
+    <h4>इंजी. प्रफुल्ल सर</h4>
+    <p class="hod-qualification">
+      B Tech (Electronics)<br>
+      (7+ Years of Teaching Experience)
+    </p>
+  </div>
+
   <!-- Chemistry -->
   <div class="hod-card">
 <div class="hod-department">रसायन विज्ञान</div>
-    <img src="HOD4.png" alt="डॉ देव प्रकाश सर - विभागाध्यक्ष रसायन विज्ञान">
+    <img src="HOD4.webp" loading="lazy" alt="डॉ देव प्रकाश सर - विभागाध्यक्ष रसायन विज्ञान">
     <h4>डॉ. देव प्रकाश सर</h4>
     <p class="hod-qualification">
       BHMS, MSc (Chemistry)<br>
@@ -1915,7 +2074,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 <!-- Botany -->
   <div class="hod-card">
 <div class="hod-department">वनस्पति विज्ञान</div>
-    <img src="HOD7.png" alt="डॉ. अवधेश सर - HOD Botany">
+    <img src="HOD7.webp" loading="lazy" alt="डॉ. अवधेश सर - HOD Botany">
     <h4>डॉ. अवधेश सर</h4>
     <p class="hod-qualification">
       PhD, MSc (Botany)<br>
@@ -1927,7 +2086,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
   <!-- Digital Education -->
   <div class="hod-card">
 <div class="hod-department">डिजिटल शिक्षा</div>
-    <img src="HOD6.png" alt="सुश्री उषा मैम - विभागाध्यक्ष डिजिटल शिक्षा">
+    <img src="HOD6.webp" loading="lazy" alt="सुश्री उषा मैम - विभागाध्यक्ष डिजिटल शिक्षा">
     <h4>सुश्री उषा मैम</h4>
     <p class="hod-qualification">
       MSc (Chemistry)<br>
@@ -1939,7 +2098,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 <!-- Discipline -->
   <div class="hod-card">
 <div class="hod-department">अंग्रेज़ी एवं अनुशासन</div>
-    <img src="HOD5.png" alt="श्री सतीश सर - विभागाध्यक्ष अंग्रेज़ी एवं अनुशासन">
+    <img src="HOD5.webp" loading="lazy" alt="श्री सतीश सर - विभागाध्यक्ष अंग्रेज़ी एवं अनुशासन">
     <h4>श्री सतीश सर</h4>
     <p class="hod-qualification">
       Ex. Indian Air Force<br>
@@ -2013,7 +2172,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
     </a>
    <a href="https://wa.me/918756591001?text=I%20want%20to%20enquire%20about%20admission%20at%20Verchas%20Academy"
        target="_blank">
-      <img src="whatsapp.png" alt="व्हाट्सएप">
+      <img src="whatsapp.webp" alt="व्हाट्सएप">
     </a>
   </div>
 
@@ -2031,22 +2190,25 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 <!-- English Button -->
 <a href="index.html" 
    class="hindi-btn" 
+   aria-label="Open English website"
    title="हिंदी वेबसाइट पर जाएं">
    English Website
 </a>
 <!-- Floating Call Button -->
 <a href="tel:+918756591001"
    class="floating-contact floating-call"
+   aria-label="Call Verchas Academy"
    title="अभी कॉल करें">
-   <img src="call.png" alt="कॉल करें">
+   <img src="call.webp" alt="कॉल करें">
 </a>
 
 <!-- Floating WhatsApp Button -->
 <a href="https://wa.me/918756591001?text=I%20want%20to%20enquire%20about%20admission%20at%20Verchas%20Academy"
    target="_blank"
    class="floating-contact floating-whatsapp"
+   aria-label="Chat with Verchas Academy on WhatsApp"
    title="व्हाट्सएप पर चैट करें">
-   <img src="whatsapp.png" alt="व्हाट्सएप">
+   <img src="whatsapp.webp" alt="व्हाट्सएप">
 </a>
 <!-- FLOATING ENROLL BUTTON -->
 <a href="registration.html" class="floating-enroll cta-animate">अभी प्रवेश लें</a>
@@ -2060,51 +2222,6 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
    class="floating-enroll floating-crash cta-animate">
    RE-NEET 2026 क्रैश कोर्स
 </a>
-<script>
-const fadeElements = document.querySelectorAll('.fade-in');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-}, {
-  threshold: 0.15
-});
-
-fadeElements.forEach(el => observer.observe(el));
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-
-  const slides = document.querySelectorAll('.slide');
-  let index = 0;
-
-  // 🔥 Ensure first slide visible
-  slides[0].classList.add('active');
-
-  function showSlide(){
-    const current = slides[index];
-
-    index = (index + 1) % slides.length;
-    const next = slides[index];
-
-    // wait until image is loaded
-    if(next.complete){
-      current.classList.remove('active');
-      next.classList.add('active');
-    } else {
-      next.onload = () => {
-        current.classList.remove('active');
-        next.classList.add('active');
-      };
-    }
-  }
-
-  setInterval(showSlide, 3000);
-
-});
-</script>
+<script src="site.js" defer></script>
 </body>
 </html>

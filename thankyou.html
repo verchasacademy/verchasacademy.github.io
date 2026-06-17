@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Registration Successful | Verchas Academy</title>
-
+<link rel="canonical" href="https://verchasacademy.in/thankyou.html">
 <style>
 body{
   margin:0;
@@ -112,13 +112,13 @@ button:hover{
 
   <!-- RIGHT SIDE (LOGO) -->
   <div class="slip-right">
-    <img src="verchas-logo.png" alt="Verchas Academy Logo">
+    <img src="verchas-logo.webp" alt="Verchas Academy Logo">
   </div>
 
 </div>
 
 <p style="margin-top:12px; font-size:0.9em; color:#555; text-align:center;">
-  📱 Mobile Users: Please take a screenshot of this slip for future reference.
+  ðŸ“± Mobile Users: Please take a screenshot of this slip for future reference.
 </p>
 
   <button type="button" id="downloadBtn">Download PDF</button>
@@ -196,9 +196,9 @@ function generateRegistrationPDF(data) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  // 🔒 NO async image
-  // 🔒 NO onload
-  // 🔒 NO delay
+  // ðŸ”’ NO async image
+  // ðŸ”’ NO onload
+  // ðŸ”’ NO delay
 
   doc.setFontSize(18);
   doc.text("VERCHAS ACADEMY", 105, 20, { align:"center" });
@@ -232,7 +232,7 @@ function generateRegistrationPDF(data) {
   doc.text("Authorised Signatory", 20, 120);
   doc.text("Verchas Academy", 20, 126);
 
-  // 🔥 THIS LINE MUST RUN DIRECTLY
+  // ðŸ”¥ THIS LINE MUST RUN DIRECTLY
   doc.save("Verchas_Registration_Slip.pdf");
 }
 

@@ -179,11 +179,12 @@ p{
 /* COURSES â€“ single line (Change 1) */
 .courses{
   display:flex;
+  flex-wrap:wrap;
   gap:18px;
   justify-content:space-between;
 }
 .course-card{
-  width:23%;
+  width:calc(33.333% - 12px);
   border:2px solid #004aad;
   background:#eef6ff;
   border-radius:14px;
@@ -1805,37 +1806,46 @@ header{
 
 @media(max-width:768px){
   .header-content{
-    display:grid;
-    grid-template-columns:86px minmax(0, 1fr);
+    display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    column-gap:10px;
-    min-height:155px;
-    padding-left:0;
+    gap:6px;
+    min-height:auto;
+    padding:8px 0 10px;
+    transform:none;
+    text-align:center;
   }
 
   .header-content img{
     position:static;
     transform:none;
-    justify-self:end;
-    height:120px;
+    justify-self:center;
+    height:118px;
+  }
+
+  .header-text{
+    grid-column:auto;
   }
 
   .header-text h1{
-    font-size:clamp(1.25em, 6vw, 1.75em);
+    font-size:clamp(1.8em, 7vw, 2.35em);
     white-space:normal;
     line-height:1.15;
+    margin:0;
   }
 
   .academy-location{
-    font-size:1.1em;
+    font-size:clamp(1.35em, 6vw, 1.8em);
     letter-spacing:1.5px;
+    margin-top:2px;
   }
 
   .header-text p{
     font-size:0.95em;
     white-space:normal;
     padding:0;
+    margin:6px 0 0;
   }
 }
 
@@ -1878,11 +1888,17 @@ header{
 
   .hindi-btn{
     bottom:224px;
-    width:auto;
-    height:auto;
-    padding:9px 12px;
-    font-size:0.85em;
-    border-radius:10px;
+    right:18px;
+    width:62px;
+    height:62px;
+    padding:0;
+    border-radius:50%;
+    font-size:0.72em;
+    line-height:1.1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
   }
 }
 </style>
@@ -1996,6 +2012,8 @@ Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS A
 <div class="courses">
   <a class="course-card" href="neet-information.html"><h3>NEET Preparation</h3><p>Complete medical entrance coaching with tests and mentorship.</p><span class="click-info">Click for More Info</span></a>
   <a class="course-card" href="iit-jee-information.html"><h3>IIT-JEE Coaching</h3><p>Advanced problem-solving with strong conceptual foundation.</p><span class="click-info">Click for More Info</span></a>
+  <div class="course-card"><h3>CUET Coaching</h3><p>Focused preparation for university entrance exams with concept clarity and regular practice.</p></div>
+  <div class="course-card"><h3>BSc Nursing Coaching</h3><p>Dedicated entrance exam preparation for nursing aspirants with guided study support.</p></div>
   <div class="course-card" role="button" tabindex="0" data-course="foundation" aria-controls="course-info" aria-expanded="false"><h3>Foundation<br><span style="font-size:0.95em;">(11th & 12th)</span></h3><p>Board + competitive exam integrated preparation.</p></div>
   <div class="course-card" role="button" tabindex="0" data-course="pre-foundation" aria-controls="course-info" aria-expanded="false"><h3>Pre-Foundation<br><span style="font-size:0.95em;">(9th & 10th)</span></h3><p>Early foundation and Olympiad orientation.</p></div>
 </div>

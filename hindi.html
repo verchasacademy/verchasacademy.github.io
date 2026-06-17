@@ -484,7 +484,65 @@ footer p{margin:5px 0}
   background-color:#e1efff;
 }
 
+.course-card{
+  cursor:pointer;
+}
 
+.course-card.active{
+  background:#004aad;
+  color:#ffffff;
+}
+
+.course-card.active h3{
+  color:#ffcc00;
+}
+
+.course-info{
+  display:none;
+  margin-top:24px;
+  padding:24px 28px;
+  border:2px solid #004aad;
+  border-radius:14px;
+  background:#ffffff;
+  box-shadow:0 8px 22px rgba(0,0,0,0.12);
+}
+
+.course-info.show{
+  display:block;
+}
+
+.course-info-panel{
+  display:none;
+}
+
+.course-info-panel.active{
+  display:block;
+}
+
+.course-info-panel h3{
+  margin-top:0;
+  color:#004aad;
+  text-align:center;
+}
+
+.course-info-panel p{
+  margin:8px 0;
+  text-align:justify;
+}
+
+.course-info-panel ul{
+  margin:14px 0 0;
+  padding-left:24px;
+}
+
+.course-info-panel li{
+  margin:8px 0;
+}
+@media(max-width:700px){
+  .course-info{
+    padding:18px;
+  }
+}
 /* Force center alignment for footer text */
 footer, footer p{
   text-align: center !important;
@@ -1902,8 +1960,31 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 <div class="courses">
   <a class="course-card" href="neet-information.html"><h3>NEET (UG)</h3><p>पूर्ण मेडिकल प्रवेश परीक्षा की तैयारी, नियमित टेस्ट एवं व्यक्तिगत मार्गदर्शन के साथ।</p><span class="click-info">अधिक जानकारी हेतु क्लिक करें</span></a>
   <a class="course-card" href="iit-jee-information.html"><h3>IIT-JEE <br><span style="font-size:0.95em;">(Mains एवं Advanced)</h3><p>मजबूत अवधारणाओं के साथ उन्नत स्तर की समस्या समाधान क्षमता विकसित करना।</p><span class="click-info">अधिक जानकारी हेतु क्लिक करें</span></a>
-  <div class="course-card"><h3>फाउंडेशन<br><span style="font-size:0.95em;">(11वीं एवं 12वीं)</span></h3><p>बोर्ड एवं प्रतियोगी परीक्षाओं की एकीकृत तैयारी।</p></div>
-  <div class="course-card"><h3>प्री-फाउंडेशन<br><span style="font-size:0.95em;">(9वीं एवं 10वीं)</span></h3><p>प्रारंभिक स्तर से मजबूत नींव एवं ओलंपियाड उन्मुख अध्ययन।</p></div>
+<div class="course-card"><h3>CUET (UG)</h3><p>Focused preparation for university entrance exams with concept clarity and regular practice.</p></div>
+  <div class="course-card"><h3>BSc Nursing</h3><p>Dedicated entrance exam preparation for nursing aspirants with guided study support.</p></div>
+  <div class="course-card" role="button" tabindex="0" data-course="foundation" aria-controls="course-info" aria-expanded="false"><h3>फाउंडेशन<br><span style="font-size:0.95em;">(11वीं एवं 12वीं)</span></h3><p>बोर्ड एवं प्रतियोगी परीक्षाओं की एकीकृत तैयारी।</p></div>
+  <div class="course-card" role="button" tabindex="0" data-course="pre-foundation" aria-controls="course-info" aria-expanded="false"><h3>प्री-फाउंडेशन<br><span style="font-size:0.95em;">(9वीं एवं 10वीं)</span></h3><p>प्रारंभिक स्तर से मजबूत नींव एवं ओलंपियाड उन्मुख अध्ययन।</p></div>
+</div>
+<div id="course-info" class="course-info" aria-live="polite">
+  <div class="course-info-panel" data-info="foundation">
+    <h3>Foundation Information</h3>
+    <p>Foundation preparation for Classes 11 and 12 builds strong board exam performance while gradually preparing students for NEET, IIT-JEE and other competitive examinations.</p>
+    <ul>
+      <li>Integrated learning for school boards and competitive exam basics.</li>
+      <li>Strong emphasis on concepts, revision, tests and doubt support.</li>
+      <li>Best suited for students who want early, structured preparation with academic discipline.</li>
+    </ul>
+  </div>
+
+  <div class="course-info-panel" data-info="pre-foundation">
+    <h3>Pre-Foundation Information</h3>
+    <p>Pre-Foundation preparation for Classes 9 and 10 strengthens the basics of Science and Mathematics and helps students develop confidence before entering senior secondary competitive preparation.</p>
+    <ul>
+      <li>Early concept building for Physics, Chemistry, Biology and Mathematics.</li>
+      <li>Useful for board exams, Olympiad orientation and future NEET/IIT-JEE readiness.</li>
+      <li>Best suited for students who want a strong academic base from the school level.</li>
+    </ul>
+  </div>
 </div>
 </div></section>
 
@@ -2233,5 +2314,38 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
    RE-NEET 2026 क्रैश कोर्स
 </a>
 <script src="site.js" defer></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const cards = document.querySelectorAll("[data-course]");
+  const infoBox = document.getElementById("course-info");
+  const panels = document.querySelectorAll(".course-info-panel");
+
+  cards.forEach(card => {
+
+    card.addEventListener("click", function(){
+
+      const course = this.dataset.course;
+
+      cards.forEach(c => c.classList.remove("active"));
+      panels.forEach(p => p.classList.remove("active"));
+
+      this.classList.add("active");
+
+      infoBox.classList.add("show");
+
+      const panel = document.querySelector(
+        '.course-info-panel[data-info="' + course + '"]'
+      );
+
+      if(panel){
+        panel.classList.add("active");
+      }
+    });
+
+  });
+
+});
+</script>
 </body>
 </html>

@@ -721,8 +721,14 @@ nav{
   .hero-content h1{ font-size:1.9em; }
   .hero-content p{ white-space:normal; font-size:1em; }
   section{ padding:18px 20px; }
-  .courses{ flex-direction:column; }
-  .course-card{ width:100%; }
+  .courses{
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:12px;
+}
+  .course-card{
+    width:48%;
+  }
   .founder-cards{ flex-direction:column; gap:25px; }
   .founder img{ width:160px; }
   .quote{ font-size:1.05em; padding:22px; }
@@ -1962,8 +1968,11 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
   <a class="course-card" href="iit-jee-information.html"><h3>IIT-JEE <br><span style="font-size:0.95em;">(Mains एवं Advanced)</h3><p>मजबूत अवधारणाओं के साथ उन्नत स्तर की समस्या समाधान क्षमता विकसित करना।</p><span class="click-info">अधिक जानकारी हेतु क्लिक करें</span></a>
 <div class="course-card"><h3>CUET (UG)</h3><p>Focused preparation for university entrance exams with concept clarity and regular practice.</p></div>
   <div class="course-card"><h3>BSc Nursing</h3><p>Dedicated entrance exam preparation for nursing aspirants with guided study support.</p></div>
-  <div class="course-card" role="button" tabindex="0" data-course="foundation" aria-controls="course-info" aria-expanded="false"><h3>फाउंडेशन<br><span style="font-size:0.95em;">(11वीं एवं 12वीं)</span></h3><p>बोर्ड एवं प्रतियोगी परीक्षाओं की एकीकृत तैयारी।</p></div>
-  <div class="course-card" role="button" tabindex="0" data-course="pre-foundation" aria-controls="course-info" aria-expanded="false"><h3>प्री-फाउंडेशन<br><span style="font-size:0.95em;">(9वीं एवं 10वीं)</span></h3><p>प्रारंभिक स्तर से मजबूत नींव एवं ओलंपियाड उन्मुख अध्ययन।</p></div>
+  <div class="course-card" role="button" tabindex="0" data-course="foundation" aria-controls="course-info" aria-expanded="false"><h3>फाउंडेशन<br><span style="font-size:0.95em;">(11वीं एवं 12वीं)</span></h3><p>बोर्ड एवं प्रतियोगी परीक्षाओं की एकीकृत तैयारी।</p>
+<span class="click-info">अधिक जानकारी हेतु क्लिक करें</span></div>
+  <div class="course-card" role="button" tabindex="0" data-course="pre-foundation" aria-controls="course-info" aria-expanded="false"><h3>प्री-फाउंडेशन<br><span style="font-size:0.95em;">(9वीं एवं 10वीं)</span></h3>
+<p>प्रारंभिक स्तर से मजबूत नींव एवं ओलंपियाड उन्मुख अध्ययन।</p>
+<span class="click-info">अधिक जानकारी हेतु क्लिक करें</span></div>
 </div>
 <div id="course-info" class="course-info" aria-live="polite">
   <div class="course-info-panel" data-info="foundation">

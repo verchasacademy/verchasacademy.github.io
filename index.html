@@ -63,7 +63,7 @@ header{
   text-align: center;          /* ðŸ”‘ forces proper alignment */
 }
 
-/* NEW: Academy location â€” match the main heading's font and scale responsively */
+/* Academy location */
 .academy-location{
   font-family: 'Cinzel', serif;
   font-size: 3.8em;
@@ -164,7 +164,7 @@ nav{
   font-size:1.2em;
 }
 
-/* SECTIONS â€“ compact spacing (Change 3) */
+/* SECTIONS */
 section { padding: 20px 45px;
 }
 section h2{
@@ -176,7 +176,6 @@ p{
   line-height:1.6;
 }
 
-/* COURSES â€“ single line (Change 1) */
 /* COURSES – single row */
 .courses{
   display:flex;
@@ -277,15 +276,6 @@ img[src="founder3.webp"]{
   color:#1b5e20;
   font-weight:600;
   min-height:110px;       /* keep alignment intact */
-}
-
-/* QUOTE */
-.quote{
-  background:linear-gradient(90deg,#ffcc00,#ff9900);
-  padding:35px;
-  text-align:center;
-  font-size:1.35em;
-  font-style:italic;
 }
 
 /* CONTACT */
@@ -471,9 +461,6 @@ footer p{margin:5px 0}
     justify-content:space-between;
   }
 
-  .course-card{
-    width:48%;
-  }
   .header-text p{
     font-size: 1.1em;
     font-weight: 500;
@@ -843,11 +830,6 @@ nav a:hover{
   margin-left: auto;
   margin-right: auto;
 }
-.hod-card img{
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 14px;
-}
 #hods .section-center {
   max-width: none;
   padding-left: 0;
@@ -934,12 +916,8 @@ nav{
     gap:12px;
   }
 
-  .course-card{
-    width:48%;
-  }
  .founder-cards{ flex-direction:column; gap:25px; }
   .founder img{ width:160px; }
-  .quote{ font-size:1.05em; padding:22px; }
   #contact p{ font-size:1em; text-align:center; }
   .cta{ font-size:1em; padding:12px; }
 }
@@ -1903,23 +1881,7 @@ header{
 }
 
 @media(max-width:600px){
-  body{
-    padding-bottom:74px;
-  }
-
   .floating-enroll{
-    left:14px;
-    right:14px;
-    bottom:12px;
-    width:auto;
-    text-align:center;
-    border-radius:14px;
-    padding:13px 18px;
-    font-size:1em;
-  }
-
-  .floating-scholarship,
-  .floating-crash{
     display:none;
   }
 
@@ -1945,11 +1907,88 @@ header{
     justify-content:center;
     text-align:center;
   }
-.floating-enroll,
-  .floating-result,
-  .floating-crash-course {
-    display: none !important;
-  }
+}
+
+
+/* ===== PREMIUM TESTIMONIALS ===== */
+/* ===== MOVING COURSE CARDS ===== */
+#courses{overflow:hidden;}
+.courses{width:100vw;margin-left:50%;transform:translateX(-50%);overflow:hidden;display:block;padding:4px 0 10px;}
+.courses-track{display:flex;width:max-content;animation:courseScroll 46s linear infinite;}
+.courses:hover .courses-track{animation-play-state:paused;}
+.courses-set{display:flex;gap:18px;padding-right:18px;}
+.courses .course-card{width:240px;min-width:240px;}
+@keyframes courseScroll{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+@media(max-width:600px){
+.courses{display:block;gap:0;padding-bottom:8px;}
+.courses-set{gap:12px;padding-right:12px;}
+.courses .course-card{width:220px;min-width:220px;}
+}
+
+.testimonial-section{padding:50px 0 18px;overflow:hidden;text-align:center;}
+.testimonial-section .section-center{max-width:1180px;margin:0 auto;padding:0 16px;}
+.testimonial-intro{margin:0 auto 24px;padding:0 8px;max-width:100%;}
+.testimonial-stars-top{color:#d4af37;font-size:clamp(.62rem,2.65vw,1.1em);font-weight:700;letter-spacing:clamp(.2px,.35vw,2px);line-height:1.25;white-space:nowrap;}
+.testimonial-main-title{font-family:'Cinzel',serif;font-size:clamp(1.45rem,7.2vw,3em);color:#004aad;margin:8px 0;line-height:1.05;white-space:nowrap;}
+.testimonial-divider{display:flex;align-items:center;justify-content:center;gap:15px;color:#d4af37;margin:10px 0 15px;}
+.testimonial-divider:before,.testimonial-divider:after{content:'';width:120px;height:2px;background:#d4af37;}
+.testimonial-subtitle{font-size:clamp(.78rem,3.5vw,1em);color:#555;margin:0 0 18px;line-height:1.25;white-space:nowrap;}
+.testimonial-slider{width:100vw;margin-left:50%;transform:translateX(-50%);overflow:hidden;}
+.testimonial-track{display:flex;gap:16px;width:max-content;animation:testimonialScroll 55s linear infinite;}
+.testimonial-card{width:240px;min-width:240px;background:#fff;border-radius:14px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,.12);}
+.testimonial-card img{width:65px;height:65px;border-radius:50%;display:block;margin:auto;}
+.testimonial-card h4{font-size:.95em;color:#004aad;margin:8px 0;}
+.review-text{font-size:.86em;line-height:1.5;}
+.quote-banner-testimonial{
+margin:30px auto 8px;
+max-width:calc(100vw - 24px);
+background:none;
+color:#8B6508;
+text-shadow:
+0 1px 0 #f7e6a8,
+0 2px 3px rgba(0,0,0,0.18);
+text-align:center;
+padding:8px 12px 0;
+font-family:'Cinzel',serif;
+font-size:clamp(1.1rem,2.6vw,2.1rem);
+letter-spacing:clamp(.2px,.25vw,1px);
+line-height:1.15;
+white-space:nowrap;
+box-shadow:none;
+border:none;
+}
+
+
+
+@keyframes testimonialScroll{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+
+.quote-banner-testimonial .decor{
+display:block;
+font-size:clamp(.5rem,2.4vw,.55em);
+margin-top:8px;
+opacity:.95;
+color:#d4af37;
+line-height:1.2;
+white-space:normal;
+}
+.quote-break{display:inline;}
+
+@media (max-width:600px){
+.testimonial-section{padding:34px 0 14px;}
+.testimonial-section .section-center{padding:0 10px;}
+.testimonial-intro{margin-bottom:18px;padding:0;}
+.testimonial-divider{gap:8px;margin:8px 0 10px;}
+.testimonial-divider:before,.testimonial-divider:after{width:60px;}
+.quote-banner-testimonial{font-size:clamp(.76rem,4.3vw,1.25rem);letter-spacing:0;padding-left:4px;padding-right:4px;}
+.quote-break{display:block;}
+.quote-banner-testimonial .decor{font-size:clamp(.48rem,2.35vw,.82rem);letter-spacing:0;}
+.testimonial-card{width:220px;min-width:220px;}
 }
 </style>
 <script type="application/ld+json">
@@ -1990,7 +2029,6 @@ header{
     <span class="seo-text"> Best NEET, IIT-JEE & Foundation (9th-12th) Coaching in Ayodhya</span>
   </h1>
 
-  <!-- NEW LINE ADDED HERE -->
   <div class="academy-location">Ayodhya</div>
 
   <p>Igniting Minds, Shaping Futures</p>
@@ -2061,12 +2099,16 @@ header{
 <p>
 Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS ACADEMY is a premier institute for Board & Competitive Exam preparation. Inspired by Banaras Hindu University's academic culture and the Indian Air Force's ethos of discipline, dedication & sacrifice, We deliver metropolitan-level academic excellence. Concept-driven, result-oriented coaching for NEET-UG & IIT-JEE aspirants, focusing on fundamentals, consistent practice & scientific learning methods.
 </p>
-</div></section>
+</div>
+<div class="quote" style="margin-top:25px;">
+“Success doesn't come from what you do occasionally, it comes from what you do consistently.”
+</div>
+</section>
 
 <section id="courses" class="fade-in">
 <div class="section-center">
 <h2>Our Courses</h2>
-<div class="courses">
+<div class="courses"><div class="courses-track"><div class="courses-set">
   <a class="course-card" href="neet-information.html"><h3>NEET (UG)</h3><p>Complete medical entrance coaching with tests and personal mentorship.</p><span class="click-info">Click for More Information</span></a>
   <a class="course-card" href="iit-jee-information.html"><h3>IIT-JEE (Mains & Advanced)</h3><p>Advanced problem-solving with strong conceptual foundation.</p><span class="click-info">Click for More Information</span></a>
   <a class="course-card" href="cuet-information.html"><h3>CUET (UG)</h3><p>Focused preparation for university entrance exams with concept clarity and regular practice.</p><span class="click-info">Click for More Information</span></a>
@@ -2075,7 +2117,16 @@ Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS A
 <span class="click-info">Click for More Information</span></div>
   <div class="course-card" role="button" tabindex="0" data-course="pre-foundation" aria-controls="course-info" aria-expanded="false"><h3>Pre-Foundation<br><span style="font-size:0.95em;">(9th & 10th)</span></h3><p>Early foundation and Olympiad orientation.</p>
 <span class="click-info">Click for More Information</span></div>
-</div>
+</div><div class="courses-set" aria-hidden="true">
+  <a class="course-card" href="neet-information.html" tabindex="-1"><h3>NEET (UG)</h3><p>Complete medical entrance coaching with tests and personal mentorship.</p><span class="click-info">Click for More Information</span></a>
+  <a class="course-card" href="iit-jee-information.html" tabindex="-1"><h3>IIT-JEE (Mains & Advanced)</h3><p>Advanced problem-solving with strong conceptual foundation.</p><span class="click-info">Click for More Information</span></a>
+  <a class="course-card" href="cuet-information.html" tabindex="-1"><h3>CUET (UG)</h3><p>Focused preparation for university entrance exams with concept clarity and regular practice.</p><span class="click-info">Click for More Information</span></a>
+  <a class="course-card" href="bsc-nursing-information.html" tabindex="-1"><h3>BSc Nursing</h3><p>Dedicated entrance exam preparation for nursing aspirants with guided study support.</p><span class="click-info">Click for More Information</span></a>
+  <div class="course-card" role="button" tabindex="-1" data-course="foundation" aria-controls="course-info" aria-expanded="false"><h3>Foundation<br><span style="font-size:0.95em;">(11th & 12th)</span></h3><p>Board + competitive exam integrated preparation.</p>
+<span class="click-info">Click for More Information</span></div>
+  <div class="course-card" role="button" tabindex="-1" data-course="pre-foundation" aria-controls="course-info" aria-expanded="false"><h3>Pre-Foundation<br><span style="font-size:0.95em;">(9th & 10th)</span></h3><p>Early foundation and Olympiad orientation.</p>
+<span class="click-info">Click for More Information</span></div>
+</div></div></div>
 
 <div id="course-info" class="course-info" aria-live="polite">
   <div class="course-info-panel" data-info="foundation">
@@ -2200,8 +2251,7 @@ Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS A
   </div>
 
   
-</div></div>
-</section>
+</div></div></section>
 
 <section id="hods" class="fade-in">
   <div class="section-center">
@@ -2320,10 +2370,18 @@ Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS A
 </section>
 
 
-<section class="quote">
-“In the Mission, even 1˚ error in navigation leads you miles away from the target.
-Your career is your Mission - Ensure your navigation be in correct hands!”
-</section>
+
+<section class="testimonial-section fade-in">
+<div class="section-center">
+<div class="testimonial-intro"><div class="testimonial-stars-top">★★★★★ WHAT OUR STUDENTS SAY ★★★★★</div><div class="testimonial-main-title">STUDENT TESTIMONIALS</div><div class="testimonial-divider">❝</div><p class="testimonial-subtitle" style="text-align:center;font-weight:600;">Real reviews from our students on <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></p></div>
+<div class="testimonial-slider"><div class="testimonial-track">
+<div class="testimonial-card"><img src="student1.webp"><h4>AYUSH TRIPATHI</h4><div class="stars">★★★★★</div><div class="review-text">Amazing Experience. Faculties are Highly Experienced, Updated Modules, DPP, Test level is Osm. Thank you Verchas Academy for providing the amazing ambience.</div></div>
+<div class="testimonial-card"><img src="student2.webp"><h4>Aditya Mishra</h4><div class="stars">★★★★★</div><div class="review-text">Verchas Academy has played a vital role in producing All India Rank holders through its strong focus on rigorous question practice, regular tests and detailed performance analysis.</div></div>
+<div class="testimonial-card"><img src="student3.webp"><h4>Atulya Shukla</h4><div class="stars">★★★★☆</div><div class="review-text">The best thing I like is the counselling session by Satish Sir. The foundation classes are really fantastic and my grades are improving.</div></div>
+<div class="testimonial-card"><img src="student4.webp"><h4>Dr Forever</h4><div class="stars">★★★★★</div><div class="review-text">Very good coaching institute for NEET, IIT-JEE and Foundation classes. Best faculty, doubt clearing classes and peaceful discipline environment.</div></div>
+<div class="testimonial-card"><img src="student5.webp"><h4>ALOK MISHRA</h4><div class="stars">★★★★★</div><div class="review-text">One of the Best Faculty in Ayodhya.</div></div>
+<div class="testimonial-card"><img src="student6.webp"><h4>Anand Pandey</h4><div class="stars">★★★★★</div><div class="review-text">It's a very good academy, good teacher and very good behaviour of all staff.</div></div>
+</div></div><div class="quote-banner-testimonial">❝ EXCELLENCE IS NOT AN ACT,<span class="quote-break"> IT IS A HABIT ❞</span><span class="decor">✧───────────── ☆ ─────────────✧</span></div></div></section>
 
 <section id="contact">
 <h2>Contact Us</h2>

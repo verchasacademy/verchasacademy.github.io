@@ -28,7 +28,24 @@ document.addEventListener("DOMContentLoaded", function(){
       }
     });
   });
+document.addEventListener("click", function(event){
 
+  if(event.target.closest(".course-card[data-course]")) return;
+
+  if(event.target.closest("#course-info")) return;
+
+  courseInfo.classList.remove("show");
+
+  courseCards.forEach(card => {
+    card.classList.remove("active");
+    card.setAttribute("aria-expanded","false");
+  });
+
+  coursePanels.forEach(panel => {
+    panel.classList.remove("active");
+  });
+
+});
   const fadeElements = document.querySelectorAll(".fade-in");
   if("IntersectionObserver" in window){
     const observer = new IntersectionObserver(entries => {
@@ -69,4 +86,32 @@ document.addEventListener("DOMContentLoaded", function(){
 
     setInterval(showSlide, 3000);
   }
+const courses = document.querySelector(".courses");
+const track = document.querySelector(".courses-track");
+
+if(courses && track){
+
+  courses.addEventListener("touchstart", () => {
+    track.style.animationPlayState = "paused";
+  }, { passive:true });
+
+  courses.addEventListener("touchend", () => {
+    track.style.animationPlayState = "running";
+  }, { passive:true });
+
+}
+const testimonialSlider = document.querySelector(".testimonial-slider");
+const testimonialTrack = document.querySelector(".testimonial-track");
+
+if(testimonialSlider && testimonialTrack){
+
+  testimonialSlider.addEventListener("touchstart", () => {
+    testimonialTrack.style.animationPlayState = "paused";
+  }, { passive:true });
+
+  testimonialSlider.addEventListener("touchend", () => {
+    testimonialTrack.style.animationPlayState = "running";
+  }, { passive:true });
+
+}
 });

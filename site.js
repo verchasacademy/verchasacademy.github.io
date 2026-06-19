@@ -114,4 +114,107 @@ if(testimonialSlider && testimonialTrack){
   }, { passive:true });
 
 }
+/* =========================
+   AUTO SCROLL + DRAG
+========================= */
+
+function setupInfiniteCarousel(wrapperSelector, trackSelector, speed){
+
+  const wrapper = document.querySelector(wrapperSelector);
+  const track = document.querySelector(trackSelector);
+
+  if(!wrapper || !track) return;
+
+  let position = 0;
+  let isDragging = false;
+  let isPaused = false;
+  let lastX = 0;
+
+  function animate(){
+
+    if(!isDragging && !isPaused){
+
+      position -= speed;
+
+      const halfWidth = track.scrollWidth / 2;
+
+      if(Math.abs(position) >= halfWidth){
+        position = 0;
+      }
+
+      track.style.transform = `translateX(${position}px)`;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+
+  /* Desktop hover pause */
+  wrapper.addEventListener("mouseenter", () => {
+    isPaused = true;
+  });
+
+  wrapper.addEventListener("mouseleave", () => {
+    isPaused = false;
+  });
+
+  function dragStart(x){
+    isDragging = true;
+    lastX = x;
+  }
+
+  function dragMove(x){
+
+    if(!isDragging) return;
+
+    const delta = x - lastX;
+
+    position += delta;
+
+    track.style.transform = `translateX(${position}px)`;
+
+    lastX = x;
+  }
+
+  function dragEnd(){
+    isDragging = false;
+  }
+
+  /* Mobile */
+  wrapper.addEventListener("touchstart", e => {
+    dragStart(e.touches[0].clientX);
+  }, {passive:true});
+
+  wrapper.addEventListener("touchmove", e => {
+    dragMove(e.touches[0].clientX);
+  }, {passive:true});
+
+  wrapper.addEventListener("touchend", dragEnd);
+
+  /* Desktop drag */
+  wrapper.addEventListener("mousedown", e => {
+    dragStart(e.clientX);
+  });
+
+  window.addEventListener("mousemove", e => {
+    dragMove(e.clientX);
+  });
+
+  window.addEventListener("mouseup", dragEnd);
+}
+
+/* Courses */
+setupInfiniteCarousel(
+  ".courses",
+  ".courses-track",
+  0.4
+);
+
+/* Testimonials */
+setupInfiniteCarousel(
+  ".testimonial-slider",
+  ".testimonial-track",
+  0.25
+);
 });

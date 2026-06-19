@@ -218,3 +218,10 @@ setupInfiniteCarousel(
   0.25
 );
 });
+window.addEventListener("pageshow", function(event){
+
+  if(event.persisted){
+    window.location.reload();
+  }
+
+});

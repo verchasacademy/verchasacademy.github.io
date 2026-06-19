@@ -306,7 +306,7 @@ footer p{margin:5px 0}
 .exam-countdown-section{
   max-width:1200px;
   width:calc(100% - 48px);
-  margin:60px auto 0;
+  margin:0 auto;
   padding:28px 30px;
   text-align:center;
   border:2px solid #004aad;
@@ -535,6 +535,7 @@ footer p{margin:5px 0}
 .watermark-section{
   position: relative;
   background:#e0e0e0;
+  padding-top:40px;
 }
 .watermark-section::before{
   content:"";
@@ -597,9 +598,8 @@ footer p{margin:5px 0}
   transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
 }
 .course-card:hover{
-  transform: translateY(-8px) scale(1.03);
+  transform: scale(1.03);
   box-shadow: 0 14px 28px rgba(0,0,0,0.18);
-  background-color:#e1efff;
 }
 
 .course-card{
@@ -1915,7 +1915,7 @@ header{
 /* ===== PREMIUM TESTIMONIALS ===== */
 /* ===== MOVING COURSE CARDS ===== */
 #courses{overflow:hidden;}
-.courses{width:100vw;margin-left:50%;transform:translateX(-50%);overflow:hidden;display:block;padding:4px 0 10px;}
+.courses{width:100vw;margin-left:50%;transform:translateX(-50%);overflow:hidden;display:block;padding:20px 0 20px;}
 .courses-track{display:flex;width:max-content;animation:courseScroll 46s linear infinite;}
 .courses:hover .courses-track{animation-play-state:paused;}
 .courses-set{display:flex;gap:18px;padding-right:18px;}
@@ -2493,6 +2493,21 @@ Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS A
    RE-NEET 2026 Crash Course
 </a>
 <script src="site.js" defer></script>
+<script>
+document.querySelectorAll('.course-card').forEach(card => {
+
+  card.addEventListener('click', function() {
+
+    document.querySelectorAll('.course-card').forEach(c=>{
+      c.classList.remove('active');
+    });
+
+    this.classList.add('active');
+
+  });
+
+});
+</script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
   function firstSunday(year, monthIndex){

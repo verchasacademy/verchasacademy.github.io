@@ -1,0 +1,59 @@
+<script>
+document.querySelectorAll('.course-card').forEach(card => {
+
+  card.addEventListener('click', function() {
+
+    document.querySelectorAll('.course-card').forEach(c=>{
+      c.classList.remove('active');
+    });
+
+    this.classList.add('active');
+
+  });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const cards = document.querySelectorAll("[data-course]");
+  const infoBox = document.getElementById("course-info");
+  const panels = document.querySelectorAll(".course-info-panel");
+
+  cards.forEach(card => {
+
+    card.addEventListener("click", function(){
+
+      const course = this.dataset.course;
+
+      cards.forEach(c => c.classList.remove("active"));
+      panels.forEach(p => p.classList.remove("active"));
+
+      this.classList.add("active");
+
+      infoBox.classList.add("show");
+
+      const panel = document.querySelector(
+        '.course-info-panel[data-info="' + course + '"]'
+      );
+
+      if(panel){
+        panel.classList.add("active");
+      }
+    });
+
+  });
+document.addEventListener("click", function(e){
+
+    if(e.target.closest("[data-course]")) return;
+    if(e.target.closest("#course-info")) return;
+
+    infoBox.classList.remove("show");
+
+    cards.forEach(c => c.classList.remove("active"));
+    panels.forEach(p => p.classList.remove("active"));
+
+  });
+
+  });
+</script>

@@ -1936,6 +1936,93 @@ white-space:normal;
     font-size:0.85em;
     margin-top:3px;
 }
+/* Career Guidance Button Animation */
+.career-btn {
+  animation: careerPulse 2.5s infinite;
+}
+
+@keyframes careerPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+.career-banner{
+    background:linear-gradient(135deg,#4facfe,#00c6fb);
+    color:#ffffff;
+    text-align:center;
+    padding:15px 25px;
+    border-radius:14px;
+    margin:0 auto 15px;
+    max-width:1200px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.20);
+    position:relative;
+    overflow:hidden;
+}
+.career-banner::before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:radial-gradient(
+        circle,
+        rgba(255,255,255,0.08) 0%,
+        transparent 60%
+    );
+    pointer-events:none;
+}
+.career-banner h2{
+  color:#ffcc00;
+  margin-top:0;
+  margin-bottom:15px;
+  font-size:2rem;
+  font-weight:700;
+}
+
+.career-banner p{
+  text-align:center;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.career-banner-btn{
+  display:inline-block;
+  margin-top:22px;
+
+  background:#ffcc00;
+  color:#003366;
+
+  padding:14px 32px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:700;
+
+  transition:all 0.3s ease;
+  animation:careerPulse 2.5s infinite;
+}
+.career-banner-btn:hover{
+  transform:translateY(-3px);
+}
+@keyframes careerPulse{
+  0%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.06);
+  }
+  100%{
+    transform:scale(1);
+  }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -2013,7 +2100,8 @@ white-space:normal;
     <a href="#contact" class="cta-animate">संपर्क करें</a>
     <a href="#founders" class="cta-animate">संस्थापकों को जानें</a>
     <a href="#hods" class="cta-animate">हमारे शिक्षकगण</a>
-    <a href="registration.html" class="cta cta-animate">अभी प्रवेश लें</a>
+    <a href="career-guidance-cell-hindi.html" class="nav-btn career-btn">
+  🎯करियर मार्गदर्शन</a>
     <a href="faq-hindi.html" class="cta cta-animate">सामान्य प्रश्न</a>
     <a href="result.html" class="cta cta-animate">छात्रवृत्ति परीक्षा परिणाम</a>
   </div>
@@ -2059,7 +2147,26 @@ white-space:normal;
 डॉ. अम्बरीश मिश्रा, श्री सतीश शुक्ला एवं श्री निखिल मिश्रा द्वारा स्थापित एवं मार्गदर्शित, वर्चस अकेडमी बोर्ड एवं प्रतियोगी परीक्षाओं की तैयारी के लिए एक उत्कृष्ट संस्थान है। बनारस हिन्दू विश्वविद्यालय की शैक्षणिक परंपरा तथा भारतीय वायु सेना के अनुशासन, समर्पण एवं त्याग के आदर्शों से प्रेरित होकर, हम महानगर स्तर की शैक्षणिक उत्कृष्टता प्रदान करते हैं।  
 NEET एवं IIT-JEE अभ्यर्थियों के लिए हमारा कोचिंग मॉडल संकल्पनात्मक स्पष्टता, निरंतर अभ्यास एवं वैज्ञानिक अध्ययन पद्धति पर आधारित है।
 </p>
-</div></section>
+</div>
+</section>
+<section class="career-banner fade-in">
+
+<h2>करियर मार्गदर्शन केंद्र</h2>
+
+<p class="career-tagline">
+आपके उज्ज्वल भविष्य की सही दिशा
+</p>
+
+<p>
+कक्षा 10, कक्षा 12 या स्नातक के बाद सही करियर चुनने को लेकर असमंजस में हैं?
+चिकित्सा, इंजीनियरिंग, वाणिज्य, कला, विधि, रक्षा सेवाएँ, सिविल सेवाएँ, अनुसंधान, उद्यमिता तथा उभरते हुए करियर विकल्पों के लिए निःशुल्क विशेषज्ञ मार्गदर्शन प्राप्त करें।
+</p>
+
+<a href="career-guidance-cell-hindi.html" class="career-banner-btn">
+निःशुल्क करियर परामर्श बुक करें
+</a>
+
+</section>
 
 <section id="courses" class="fade-in">
 <div class="section-center">

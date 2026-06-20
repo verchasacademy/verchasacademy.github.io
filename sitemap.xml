@@ -61,6 +61,19 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://verchasacademy.in/career-guidance-cell.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://verchasacademy.in/career-guidance-cell-hindi.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
   <loc>https://verchasacademy.in/faq.html</loc>
   <lastmod>2026-06-18</lastmod>
   <changefreq>monthly</changefreq>

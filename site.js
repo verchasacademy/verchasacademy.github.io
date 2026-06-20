@@ -225,3 +225,33 @@ window.addEventListener("pageshow", function(event){
   }
 
 });
+
+
+// Career Guidance Cell Read More
+
+document.addEventListener("DOMContentLoaded", function () {
+
+const btn = document.getElementById("readMoreBtn");
+const intro = document.getElementById("careerIntro");
+
+if(btn && intro){
+
+if(window.innerWidth <= 768){
+    intro.classList.add("collapsed");
+}
+
+btn.addEventListener("click", function(){
+
+if(intro.classList.contains("collapsed")){
+    intro.classList.remove("collapsed");
+    btn.innerText = "Read Less";
+}else{
+    intro.classList.add("collapsed");
+    btn.innerText = "Read More";
+}
+
+});
+
+}
+
+});

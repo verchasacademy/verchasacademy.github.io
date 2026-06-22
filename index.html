@@ -1846,6 +1846,105 @@ background:#e67e22;
     border-radius:12px;
   }
 }
+
+.re-neet-lead-modal[hidden]{
+  display:none;
+}
+
+.re-neet-lead-modal{
+  position:fixed;
+  inset:0;
+  z-index:100001;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(0,0,0,0.62);
+}
+
+.re-neet-lead-card{
+  position:relative;
+  width:min(430px,100%);
+  padding:24px;
+  border-radius:12px;
+  border:2px solid #ff9933;
+  background:#ffffff;
+  box-shadow:0 24px 70px rgba(0,0,0,0.34);
+}
+
+.re-neet-lead-card h3{
+  margin:0 36px 8px 0;
+  color:#004aad;
+  font-size:1.45rem;
+  line-height:1.2;
+}
+
+.re-neet-lead-card p{
+  margin:0 0 18px;
+  color:#333;
+  font-weight:600;
+}
+
+.re-neet-lead-card label{
+  display:block;
+  margin:12px 0 6px;
+  color:#111;
+  font-weight:800;
+}
+
+.re-neet-lead-card input{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 13px;
+  border:1px solid #cfcfcf;
+  border-radius:8px;
+  font:inherit;
+}
+
+.re-neet-lead-card input:focus{
+  outline:3px solid rgba(255,153,51,0.28);
+  border-color:#ff9933;
+}
+
+.re-neet-lead-submit{
+  width:100%;
+  margin-top:18px;
+  padding:12px 16px;
+  border:0;
+  border-radius:8px;
+  color:#003366;
+  background:#ffcc00;
+  font:inherit;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.re-neet-lead-submit:hover,
+.re-neet-lead-submit:focus-visible{
+  background:#ff9933;
+}
+
+.re-neet-lead-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:50%;
+  color:#111;
+  background:#f1f1f1;
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.re-neet-lead-note{
+  margin-top:10px;
+  color:#666;
+  font-size:.86rem;
+  line-height:1.35;
+}
 /* ===== RUNNING NEWS TICKER ===== */
 
 .news-ticker-header{
@@ -2260,10 +2359,22 @@ white-space:normal;
     </span>
   </div>
 </div>
-<a href="re-neet26.pdf" class="re-neet-answer-key-btn" aria-label="Open RE-NEET 26 Detailed Solutions and Answer Key PDF">
-  <span class="re-neet-answer-key-title">RE-NEET 26 ANSWER KEY</span>
-  <span class="re-neet-answer-key-desc">RE-NEET 26- Detailed Solutions &amp; Answer Key PDF</span>
+<a href="re-neet26.html" class="re-neet-answer-key-btn" data-re-neet-lead-open aria-label="Download RE-NEET 26 Detailed Answer Key PDF">
+  <span class="re-neet-answer-key-title">RE-NEET 26: Detailed Sloutions &amp; Answer Key PDF</span>
 </a>
+<div class="re-neet-lead-modal" data-re-neet-lead-modal hidden>
+  <form class="re-neet-lead-card" data-re-neet-lead-form>
+    <button type="button" class="re-neet-lead-close" data-re-neet-lead-close aria-label="Close form">&times;</button>
+    <h3>Download Answer Key</h3>
+    <p>Fill Detyails to Download the PDF.</p>
+    <label for="re-neet-name">Name</label>
+    <input id="re-neet-name" name="name" type="text" autocomplete="name" required>
+    <label for="re-neet-mobile">Mobile No.</label>
+    <input id="re-neet-mobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel" pattern="[0-9]{10,15}" title="Enter a valid mobile number" required>
+    <button type="submit" class="re-neet-lead-submit">Submit &amp; Download PDF</button>
+    <div class="re-neet-lead-note">Your PDF will open after submitting this short form.</div>
+  </form>
+</div>
 </header>
 
 <nav>
@@ -2822,6 +2933,82 @@ document.addEventListener("DOMContentLoaded", function(){
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     element.textContent = Math.ceil((exams[key] - today) / 86400000);
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const openButton = document.querySelector("[data-re-neet-lead-open]");
+  const modal = document.querySelector("[data-re-neet-lead-modal]");
+  const form = document.querySelector("[data-re-neet-lead-form]");
+  const closeButton = document.querySelector("[data-re-neet-lead-close]");
+  const targetUrl = "re-neet26.html";
+  const sheetApiUrl = "https://script.google.com/macros/s/AKfycbwD_zDDiOodeiICvleRuHgYqgPLewVlyBWt_ws4P0jAf_jKwfkv_1Nc6UuQNW2vWss_/exec";
+
+  if(!openButton || !modal || !form || !closeButton) return;
+
+  function openModal(event){
+    event.preventDefault();
+    modal.hidden = false;
+    const firstInput = form.querySelector("input");
+    if(firstInput) firstInput.focus();
+  }
+
+  function closeModal(){
+    modal.hidden = true;
+    openButton.focus();
+  }
+
+  openButton.addEventListener("click", openModal);
+  closeButton.addEventListener("click", closeModal);
+  modal.addEventListener("click", function(event){
+    if(event.target === modal) closeModal();
+  });
+  document.addEventListener("keydown", function(event){
+    if(event.key === "Escape" && !modal.hidden) closeModal();
+  });
+
+  form.addEventListener("submit", async function(event){
+    event.preventDefault();
+    if(!form.reportValidity()) return;
+
+    const formData = new FormData(form);
+    const submitButton = form.querySelector(".re-neet-lead-submit");
+    const lead = {
+      name: String(formData.get("name") || "").trim(),
+      mobile: String(formData.get("mobile") || "").trim(),
+      source: "RE-NEET 26 Answer Key",
+      createdAt: new Date().toISOString()
+    };
+
+    if(submitButton){
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+    }
+
+    try{
+      const leads = JSON.parse(localStorage.getItem("reNeet26Leads") || "[]");
+      leads.push(lead);
+      localStorage.setItem("reNeet26Leads", JSON.stringify(leads));
+    }catch(error){}
+
+    try{
+      await Promise.race([
+        fetch(sheetApiUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(lead)
+        }),
+        new Promise(function(resolve){
+          setTimeout(resolve, 3500);
+        })
+      ]);
+    }catch(error){}
+
+    window.location.href = targetUrl;
   });
 });
 </script>

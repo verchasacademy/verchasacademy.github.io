@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Career Guidance Registration | Verchas Academy Ayodhya</title>
+<meta name="description" content="Register for a free career guidance appointment at Verchas Academy Ayodhya.">
+<link rel="canonical" href="https://verchasacademy.in/register-career.html">
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:#f2f4f8;
+  color:#263238;
+}
+.container{
+  position:relative;
+  max-width:700px;
+  margin:40px auto;
+  background:#fff;
+  padding:35px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  overflow:hidden;
+}
+.container > *{
+  position:relative;
+  z-index:1;
+}
+.container::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:100%;
+  height:100%;
+  background:url("verchas-logo.webp") no-repeat center;
+  background-size:contain;
+  opacity:.06;
+  transform:translate(-50%, -50%);
+  pointer-events:none;
+  z-index:0;
+}
+.form-header-column{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  margin-bottom:22px;
+}
+.academy-logo{
+  height:120px;
+  margin-bottom:10px;
+}
+.academy-name{
+  font-size:2.4em;
+  font-weight:700;
+  color:#003366;
+  line-height:1.15;
+}
+.form-title{
+  font-size:1.5em;
+  font-weight:600;
+  color:#003366;
+  margin-top:6px;
+}
+h3{
+  margin-top:25px;
+  color:#004aad;
+}
+input, select, button{
+  box-sizing:border-box;
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  font-size:1em;
+  border:2px solid #cfd8dc;
+  border-radius:6px;
+  background:#fff;
+}
+input:invalid,
+select:invalid{
+  border-color:#d32f2f;
+  background:#fff6f6;
+}
+input:valid,
+select:valid{
+  border-color:#2e7d32;
+  background:#f6fff8;
+}
+input:focus,
+select:focus{
+  outline:none;
+  border-color:#004aad;
+  box-shadow:0 0 0 3px rgba(0,74,173,.12);
+}
+.field-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.instructions-box{
+  margin-top:20px;
+  padding:16px;
+  font-size:.94em;
+  color:#333;
+  line-height:1.5;
+  background:rgba(0,74,173,.06);
+  border-left:4px solid #004aad;
+  border-radius:8px;
+}
+.accept-label{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin-top:20px;
+  font-size:1.1em;
+  font-weight:600;
+  cursor:pointer;
+  text-align:left;
+  width:100%;
+}
+#acceptRules{
+  width:26px;
+  height:26px;
+  margin:0;
+  cursor:pointer;
+  accent-color:#004aad;
+  flex:0 0 auto;
+}
+button{
+  background:#004aad;
+  color:#fff;
+  border:none;
+  font-size:1.1em;
+  cursor:pointer;
+}
+button:hover{
+  background:#003366;
+}
+button:disabled{
+  background:#999 !important;
+  cursor:not-allowed;
+  opacity:.85;
+}
+.back-link{
+  display:block;
+  width:max-content;
+  margin:18px auto 0;
+  color:#004aad;
+  font-weight:700;
+  text-decoration:none;
+}
+.back-link:hover{
+  text-decoration:underline;
+}
+#formError{
+  color:#d32f2f;
+  font-weight:600;
+  display:none;
+  margin-top:10px;
+}
+@media(max-width:600px){
+  .container{
+    margin:18px 10px;
+    padding:24px 18px;
+  }
+  .academy-logo{
+    height:140px;
+  }
+  .academy-name{
+    font-size:1.7em;
+    white-space:nowrap;
+  }
+  .form-title{
+    font-size:1.25em;
+  }
+  .field-row{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+}
+@media(max-width:360px){
+  .academy-name{
+    font-size:1.4em;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="form-header-column">
+    <img src="verchas-logo.webp" alt="Verchas Academy Logo" class="academy-logo">
+    <div class="academy-name">Verchas Academy</div>
+    <div class="form-title">Career Guidance Registration</div>
+  </div>
+
+  <form action="https://script.google.com/macros/s/AKfycbytZirTRdFmrvKSWWp7tsAHiCv--46W54XC749xmAhsGZ-2kFGryYf2Q4JT_KRvoqfp/exec" method="POST">
+    <h3>Appointment Details</h3>
+    <input type="text" name="Name" placeholder="Name" required>
+    <input type="tel" name="Contact" placeholder="Contact Number" pattern="[0-9]{10}" required>
+    <input type="date" name="DOB" required>
+
+    <select name="Interested Category" required>
+      <option value="">Interested Category</option>
+      <option>Career Counselling</option>
+      <option>NEET Guidance</option>
+      <option>IIT-JEE Guidance</option>
+      <option>CUET Guidance</option>
+      <option>Defence / Government Exams</option>
+      <option>Commerce / Arts Guidance</option>
+      <option>Scholarship Guidance</option>
+      <option>Other</option>
+    </select>
+
+    <div class="field-row">
+      <input type="date" id="appointmentDate" required>
+      <select id="appointmentSlot" required>
+        <option value="">Time Slot</option>
+        <option>10:00 AM - 11:00 AM</option>
+        <option>11:00 AM - 12:00 PM</option>
+        <option>12:00 PM - 01:00 PM</option>
+        <option>02:00 PM - 03:00 PM</option>
+        <option>03:00 PM - 04:00 PM</option>
+        <option>04:00 PM - 05:00 PM</option>
+      </select>
+    </div>
+    <input type="hidden" name="Appointment Date & Time" id="appointmentDateTime">
+
+    <div class="instructions-box">
+      <strong>Guidelines:</strong><br><br>
+      1. This form is for booking a career guidance appointment only.<br>
+      2. Appointment confirmation may depend on availability of the selected date and time slot.<br>
+      3. Please enter a valid 10-digit contact number so the academy team can contact you if required.<br>
+      4. Verchas Academy may reschedule the appointment in case of unavoidable circumstances.<br><br>
+      <strong>हिंदी में निर्देश:</strong><br><br>
+      1. यह फॉर्म केवल करियर मार्गदर्शन अपॉइंटमेंट बुकिंग के लिए है।<br>
+      2. चुनी गई तारीख और समय स्लॉट उपलब्धता के अनुसार कन्फर्म होगा।<br>
+      3. कृपया सही 10 अंकों का संपर्क नंबर भरें।<br>
+      4. आवश्यकता पड़ने पर वर्चस अकादमी अपॉइंटमेंट को पुनर्निर्धारित कर सकती है।
+    </div>
+
+    <label class="accept-label">
+      <input type="checkbox" id="acceptRules">
+      <span>
+        I have read and agree to all the above guidelines.<br>
+        मैंने उपरोक्त सभी निर्देशों को पढ़ लिया है और उनसे सहमत हूँ।
+      </span>
+    </label>
+
+    <button type="submit" id="submitBtn" disabled>
+      <span id="btnText">Submit Career Registration</span>
+      <span id="btnSpinner" style="display:none; margin-left:8px;">...</span>
+    </button>
+    <p id="formError">Please check the highlighted fields. Some information is invalid or missing.</p>
+  </form>
+
+  <a href="career-guidance-cell.html" class="back-link">Back to Career Guidance</a>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const form = document.querySelector("form");
+  const checkbox = document.getElementById("acceptRules");
+  const submitBtn = document.getElementById("submitBtn");
+  const formError = document.getElementById("formError");
+  const dateField = document.getElementById("appointmentDate");
+  const slotField = document.getElementById("appointmentSlot");
+  const combinedField = document.getElementById("appointmentDateTime");
+  const btnText = document.getElementById("btnText");
+  const spinner = document.getElementById("btnSpinner");
+
+  function updateAppointmentDateTime(){
+    combinedField.value = dateField.value && slotField.value
+      ? dateField.value + " " + slotField.value
+      : "";
+  }
+
+  function updateSubmitState(){
+    updateAppointmentDateTime();
+    submitBtn.disabled = !(checkbox.checked && form.checkValidity() && combinedField.value);
+  }
+
+  dateField.addEventListener("input", updateSubmitState);
+  slotField.addEventListener("change", updateSubmitState);
+  checkbox.addEventListener("change", updateSubmitState);
+  form.addEventListener("input", updateSubmitState);
+
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    updateAppointmentDateTime();
+
+    if(!form.checkValidity() || !checkbox.checked || !combinedField.value){
+      formError.style.display = "block";
+      return;
+    }
+
+    formError.style.display = "none";
+    submitBtn.disabled = true;
+    btnText.textContent = "Submitting...";
+    spinner.style.display = "inline";
+
+    try{
+      await fetch(form.action, {
+        method: "POST",
+        mode: "no-cors",
+        body: new FormData(form)
+      });
+
+      alert("Career guidance registration submitted successfully. Verchas Academy will contact you soon.");
+      form.reset();
+      combinedField.value = "";
+      btnText.textContent = "Submit Career Registration";
+      spinner.style.display = "none";
+      updateSubmitState();
+    }catch(err){
+      alert("Submission failed. Please try again or contact Verchas Academy.");
+      btnText.textContent = "Submit Career Registration";
+      spinner.style.display = "none";
+      updateSubmitState();
+    }
+  });
+
+  updateSubmitState();
+});
+</script>
+</body>
+</html>

@@ -914,7 +914,19 @@ nav .result-toggle{
 
 .floating-result-dropdown .result-menu{
   top:auto;
-  bottom:calc(100% + 10px);
+  bottom:calc(100% + 6px);
+}
+
+/* Hover bridge for floating result dropdown */
+.floating-result-dropdown .result-menu::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:auto;
+  bottom:-10px;
+  height:10px;
+  background:transparent;
 }
 
 @keyframes flash {
@@ -2515,8 +2527,9 @@ white-space:normal;
   align-items:center !important;
   justify-content:center !important;
   padding:8px 14px !important;
-  border:2px solid #004aad !important;
-  border-radius:8px !important;
+  background:rgba(255, 255, 255, 0.28) !important;
+  border:1px solid rgba(0, 74, 173, 0.45) !important;
+  border-radius:999px !important;
   background:transparent !important;
   color:#004aad !important;
   text-decoration:none !important;

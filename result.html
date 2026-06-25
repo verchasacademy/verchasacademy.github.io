@@ -54,6 +54,23 @@
       background: #003080;
     }
 
+    .home-btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 24px;
+      background: #ffcc00;
+      color: #004aad;
+      font-weight: 800;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+    }
+
+    .home-btn:hover {
+      background: #004aad;
+      color: #fff;
+    }
+
     .result {
       margin-top: 20px;
       font-size: 1.05em;
@@ -118,7 +135,7 @@
   <div class="container">
     <img src="verchas-logo.webp" alt="Verchas Academy Logo" class="logo">
     <h1 class="academy-name">Verchas Academy</h1>
-    <h2 class="page-title">Scholarship Test Result</h2>
+    <h2 class="page-title" id="pageTitle">Test Result</h2>
 
     <input
       type="text"
@@ -130,10 +147,21 @@
     <button onclick="getResult()">View Result</button>
 
     <div id="result" class="result"></div>
+    <a href="index.html" id="homeBtn" class="home-btn">Home</a>
   </div>
 
   <script>
-const API_URL = "https://script.google.com/macros/s/AKfycby8SoT8eKPKcvm2nvQmXH1L4ynBC4EmA08zIhfWxed_OWQ4YCEwTB3Y7iF9RTJUiZwIrw/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxwCM3PcFUxXSX2rcM5vCKyutcqf6FLBH-OYKQ7i67Uxo_Uh7nOIUpQJwZOu9fySPHSbg/exec";
+const TESTS = {
+  misc: "Miscellaneous Result",
+  minor1: "1st Minor Test Result",
+  minor2: "2nd Minor Test Result"
+};
+const params = new URLSearchParams(window.location.search);
+const selectedTest = TESTS[params.get("test")] ? params.get("test") : "misc";
+document.getElementById("pageTitle").textContent = TESTS[selectedTest];
+const returnPage = params.get("lang") === "hi" ? "hindi.html" : "index.html";
+document.getElementById("homeBtn").href = returnPage;
 
 function getResult() {
   const mobile = document.getElementById("mobile").value.trim();
@@ -149,7 +177,7 @@ function getResult() {
   // 🔄 Show loading spinner
   resultDiv.innerHTML = "<div class='loader'></div><div>Fetching result…</div>";
 
-  fetch(API_URL + "?mobile=" + mobile)
+  fetch(API_URL + "?test=" + encodeURIComponent(selectedTest) + "&mobile=" + encodeURIComponent(mobile))
     .then(res => res.json())
     .then(data => {
       if (data.error) {

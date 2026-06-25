@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="hi">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -123,10 +123,15 @@ nav{
   gap:18px;
 }
 .nav-links a{
+  display:inline-flex;
+  align-items:center;
   text-decoration:none;
   color:#004aad;
   font-weight:bold;
   font-size:1.05em;
+  padding:8px 12px;
+  border-radius:6px;
+  transition: all 0.35s ease;
 }
 .nav-links .cta{
   background:#004aad;
@@ -134,7 +139,6 @@ nav{
   padding:8px 22px;
   border-radius:6px;
 }
-
 /* HERO */
 .hero{position:relative;}
 .hero img{
@@ -726,6 +730,103 @@ nav a:hover{
   animation: flash 1.2s infinite;
 }
 
+.result-dropdown{
+  position:relative;
+  display:inline-block;
+}
+
+.result-toggle{
+  border:0;
+  cursor:pointer;
+  font:inherit;
+  line-height:normal;
+}
+
+nav .result-toggle{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:6px;
+  background:transparent;
+  color:#004aad;
+  text-decoration:none;
+  font-size:1.05em;
+  font-weight:bold;
+  line-height:normal;
+  transition: all 0.35s ease;
+}
+.result-menu{
+  position:absolute;
+  top:100%;
+  right:0;
+  min-width:210px;
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  padding:8px;
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 10px 26px rgba(0,0,0,.22);
+  z-index:100000;
+}
+
+.result-menu::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:-10px;
+  height:10px;
+}
+
+.result-dropdown:hover .result-menu,
+.result-dropdown:focus-within .result-menu{
+  display:flex;
+}
+
+.result-menu a{
+  color:#004aad;
+  background:#f4f7fb;
+  padding:10px 12px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.result-menu a:hover,
+.result-menu a:focus-visible{
+  color:#fff;
+  background:#004aad;
+}
+
+.floating-result-dropdown{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 36px;
+  box-sizing:border-box;
+  width:auto;
+}
+
+.floating-result-dropdown .result-toggle{
+  width:auto;
+  height:auto;
+  margin:0;
+  padding:0;
+  border-radius:50px;
+  background:transparent;
+  color:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+  white-space:nowrap;
+}
+
+.floating-result-dropdown .result-menu{
+  top:auto;
+  bottom:calc(100% + 10px);
+}
+
 @keyframes flash {
   0% { opacity: 1; }
   50% { opacity: 0.35; }
@@ -734,11 +835,6 @@ nav a:hover{
 .cta-animate{
   transition: all 0.35s ease;
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-.cta-animate:hover{
-  transform: translateY(-6px) scale(1.06);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
 }
 
 /* ===== HOD FLEX LAYOUT (4 + 2) ===== */
@@ -807,22 +903,13 @@ nav{
 
 /* ===== NAV BUTTON TEXT ALIGNMENT FIX ===== */
 
-.nav-links a,
 .nav-links .cta {
-  display: flex;                 /* 🔑 enables perfect centering */
-  align-items: center;           /* vertical center */
-  justify-content: center;       /* horizontal center */
-  text-align: center;            /* multiline text center */
-  line-height: 1.2;              /* balanced line spacing */
-  padding: 14px 22px;            /* keeps box size nice */
-  white-space: normal;           /* allow line breaks */}
-
-/* Ensure dropdown button text also aligns perfectly */
-.nav-links .dropdown > a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;                      /* space between text & arrow */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1.2;
+  white-space:normal;
 }
 /* ================= MOBILE RESPONSIVE FIX ================= */
 @media (max-width: 768px){
@@ -1563,24 +1650,13 @@ html {
 
 /* Scholarship Button Position */
 .floating-scholarship{
-  bottom: 165px;   /* just below Enroll */
-}
-
-/* Crash Course Button Position */
-.floating-crash{
-  bottom: 95px;  /* below Scholarship */
+  bottom: 95px;
 }
 
 /* Mobile Optimization */
 @media(max-width:600px){
 
   .floating-scholarship{
-    bottom: 150px;
-    font-size: 0.95em;
-    padding: 12px 22px;
-  }
-
-  .floating-crash{
     bottom: 85px;
     font-size: 0.95em;
     padding: 12px 22px;
@@ -2341,6 +2417,58 @@ white-space:normal;
     transform:scale(1);
   }
 }
+/* FINAL NAV BUTTON BORDER + HOVER */
+.nav-links a,
+.nav-links .result-toggle{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:8px 14px !important;
+  border:2px solid #004aad !important;
+  border-radius:8px !important;
+  background:transparent !important;
+  color:#004aad !important;
+  text-decoration:none !important;
+  font-weight:800 !important;
+  box-shadow:none !important;
+  box-sizing:border-box !important;
+  transition:all 0.35s ease !important;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links .result-toggle:hover,
+.nav-links .result-toggle:focus-visible{
+  background:linear-gradient(135deg, #004aad, #002f6c) !important;
+  border-color:#002f6c !important;
+  color:#ffffff !important;
+  transform:translateY(-4px) scale(1.06) !important;
+  box-shadow:0 10px 24px rgba(0,0,0,0.28) !important;
+}
+
+.nav-links .career-btn:hover,
+.nav-links .career-btn:focus-visible{
+  animation:none !important;
+}
+
+/* Keep result dropdown menu items clean */
+.nav-links .result-menu a{
+  border:0 !important;
+  padding:10px 12px !important;
+  border-radius:6px !important;
+  background:#f4f7fb !important;
+  color:#004aad !important;
+  transform:none !important;
+  box-shadow:none !important;
+}
+
+.nav-links .result-menu a:hover,
+.nav-links .result-menu a:focus-visible{
+  background:#004aad !important;
+  color:#ffffff !important;
+  transform:none !important;
+  box-shadow:none !important;
+}
 </style>
 <script type="application/ld+json">
 {
@@ -2397,7 +2525,7 @@ white-space:normal;
 🔴 छात्रवृत्ति परीक्षा : अधिकतम 70% तक शुल्क रियायत 
 🔴 NEET, IIT-JEE, CUET, B.Sc Nursing एवं Foundation (9वीं-12वीं) हेतु प्रवेश प्रारम्भ 
 🔴 शीघ्र प्रारम्भ होने वाले कोर्स : विशेषज्ञों द्वारा अंग्रेज़ी बोलना सीखें 
-🔴 Verchas Academy में निःशुल्क करियर मार्गदर्शन उपलब्ध 
+🔴 वर्चस अकेडमी में निःशुल्क करियर मार्गदर्शन उपलब्ध 
     </span>
 <span>
 🔴 NEET & IIT-JEE 2027 बैचेस 13 मई 2026 से प्रारम्भ 
@@ -2436,8 +2564,15 @@ white-space:normal;
     <a href="#hods" class="cta-animate">हमारे शिक्षकगण</a>
     <a href="career-guidance-cell-hindi.html" class="nav-btn career-btn">
   🎯करियर मार्गदर्शन</a>
-    <a href="faq-hindi.html" class="cta cta-animate">सामान्य प्रश्न</a>
-    <a href="result.html" class="cta cta-animate">छात्रवृत्ति परीक्षा परिणाम</a>
+    <a href="faq-hindi.html" class="cta-animate">सामान्य प्रश्न</a>
+    <div class="result-dropdown">
+      <a href="#" class="cta-animate result-toggle">परीक्षा परिणाम</a>
+      <div class="result-menu">
+        <a href="result.html?test=misc&lang=hi">विविध</a>
+        <a href="result.html?test=minor1&lang=hi">प्रथम माइनर टेस्ट</a>
+        <a href="result.html?test=minor2&lang=hi">द्वितीय माइनर टेस्ट</a>
+      </div>
+    </div>
   </div>
 </nav>
 <div class="hero">
@@ -2638,7 +2773,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
     <h4>श्री निखिल सर</h4>
     <p class="founder-qualification">
       MSc (Chemistry) AU<br>
-      (4+ Years of Teaching Experience)<br>
+      (5+ Years of Teaching Experience)<br>
       Former Faculty at Prayagraj
     </p>
     <div class="founder-description">
@@ -2736,7 +2871,7 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
     <p class="hod-qualification">
       MSc (Chemistry), AU<br>
       Former Faculty of Prayagraj<br>
-      (4+ Years of Teaching Experience)
+      (5+ Years of Teaching Experience)
     </p>
   </div>
 
@@ -2930,16 +3065,15 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 </a>
 <!-- FLOATING ENROLL BUTTON -->
 <a href="registration.html" class="floating-enroll cta-animate">अभी प्रवेश लें</a>
-<!-- Floating Scholarship Result Button -->
-<a href="result.html"
-   class="floating-enroll floating-scholarship cta-animate">
-   छात्रवृत्ति परीक्षा परिणाम
-</a>
-<!-- Floating RE-NEET 2026 Crash Course Button -->
-<a href="RE-NEET 2026 Crash Course.html"
-   class="floating-enroll floating-crash cta-animate">
-   RE-NEET 2026 क्रैश कोर्स
-</a>
+<!-- Floating Result Button -->
+<div class="result-dropdown floating-result-dropdown floating-enroll floating-scholarship cta-animate">
+  <button type="button" class="result-toggle">परीक्षा परिणाम</button>
+  <div class="result-menu">
+    <a href="result.html?test=misc&lang=hi">विविध</a>
+    <a href="result.html?test=minor1&lang=hi">प्रथम माइनर टेस्ट</a>
+    <a href="result.html?test=minor2&lang=hi">द्वितीय माइनर टेस्ट</a>
+  </div>
+</div>
 <script src="site.js" defer></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
@@ -3052,3 +3186,4 @@ document.addEventListener("DOMContentLoaded", function(){
 </script>
 </body>
 </html>
+

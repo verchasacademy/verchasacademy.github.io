@@ -2124,10 +2124,15 @@ header{
 
 @media(max-width:768px){
 .career-banner{
-  margin:15px;
+  width:calc(100% - 32px);
+  margin:15px auto;
   padding:22px 16px;
 }
-
+.career-banner .career-tagline{
+  font-size:1.02em;
+  padding:6px 14px;
+  margin-bottom:12px;
+}
 .career-banner h2{
   font-size:1.5em;
 }
@@ -2360,7 +2365,7 @@ white-space:normal;
   margin-top:0;
   margin-bottom:15px;
   font-size:2rem;
-  font-weight:700;
+  font-weight:800;
 }
 
 .career-banner p{
@@ -2368,7 +2373,16 @@ white-space:normal;
   max-width:1000px;
   margin:0 auto;
 }
-
+.career-banner .career-tagline{
+  display:inline-block;
+  margin:0 auto 14px;
+  color:#ffffff;
+  font-size:1em;
+  font-weight:800;
+  letter-spacing:0.4px;
+  line-height:1.35;
+  text-align:center;
+}
 .career-banner-btn{
   display:inline-block;
   margin-top:22px;
@@ -2594,7 +2608,7 @@ Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS A
 
 <h2>Career Guidance Cell</h2>
 <p class="career-tagline">
-Your Pathway to the Right Career
+"Your Pathway to the Right Career"
 </p>
 
 <p>

@@ -147,17 +147,29 @@ button:disabled{
   cursor:not-allowed;
   opacity:.85;
 }
+
+/* Back Button Restyled to Match Previous Pages */
 .back-link{
-  display:block;
-  width:max-content;
-  margin:18px auto 0;
-  color:#004aad;
-  font-weight:700;
-  text-decoration:none;
+  display: inline-block;
+  background: #ffcc00;
+  color: #004aad;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 1.05em;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  margin: 30px auto 0;
+  text-align: center;
 }
 .back-link:hover{
-  text-decoration:underline;
+  background: #e6b800;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  text-decoration: none;
 }
+
 #formError{
   color:#d32f2f;
   font-weight:600;
@@ -253,14 +265,14 @@ button:disabled{
 </script>
 </head>
 <body>
-<div class="container">
+<div class="container" style="text-align: center;">
   <div class="form-header-column">
     <img src="verchas-logo.webp" alt="Verchas Academy Logo" class="academy-logo">
     <div class="academy-name">Verchas Academy</div>
     <div class="form-title">Career Guidance Registration</div>
   </div>
 
-  <form action="https://script.google.com/macros/s/AKfycbytZirTRdFmrvKSWWp7tsAHiCv--46W54XC749xmAhsGZ-2kFGryYf2Q4JT_KRvoqfp/exec" method="POST">
+  <form action="https://script.google.com/macros/s/AKfycbytZirTRdFmrvKSWWp7tsAHiCv--46W54XC749xmAhsGZ-2kFGryYf2Q4JT_KRvoqfp/exec" method="POST" style="text-align: left;">
     <h3>Appointment Details</h3>
     <input type="text" name="Name" placeholder="Name" required>
     <input type="tel" name="Contact" placeholder="Contact Number" pattern="[0-9]{10}" required>
@@ -320,8 +332,10 @@ button:disabled{
     <p id="formError">Please check the highlighted fields. Some information is invalid or missing.</p>
   </form>
 
+  <!-- RE-STYLED HOME-STYLE BUTTON -->
   <a href="career-guidance-cell.html" class="back-link">Back to Career Guidance</a>
 </div>
+
 <div class="success-overlay" id="successOverlay" role="dialog" aria-modal="true" aria-labelledby="successTitle">
   <div class="success-box">
     <h2 id="successTitle">Registration Submitted</h2>

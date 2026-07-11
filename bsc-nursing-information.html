@@ -44,6 +44,31 @@ p{line-height:1.65;text-align:justify}
   line-height: 1.5;
 }
 
+/* Home Button Styling */
+.home-btn-container {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+.home-btn {
+  display: inline-block;
+  background: #ffcc00;
+  color: #004aad;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 1.05em;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+.home-btn:hover {
+  background: #e6b800;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
 footer{background:#222;color:#fff;text-align:center;padding:18px}
 @media(max-width:700px){
   header h1{font-size:1.8em}
@@ -282,17 +307,22 @@ footer{background:#222;color:#fff;text-align:center;padding:18px}
   </section>
 
   <p class="source-note">Sources checked: <a href="https://www.aiimsexams.ac.in/">AIIMS Examination Portal</a>, <a href="https://neet.nta.nic.in/">NEET UG official website</a>, and the official <strong><a href="https://abvmuup.edu.in/">Atal Bihari Vajpayee Medical University</a></strong> portal.</p>
-<section class="exam-section">
-  <h2>Related Resources</h2>
+  
+  <section class="exam-section">
+    <h2>Related Resources</h2>
+    <p>
+      <a href="faq.html">Frequently Asked Questions</a> |
+      <a href="neet-information.html">NEET Coaching</a> |
+      <a href="iit-jee-information.html">IIT-JEE Coaching</a> |
+      <a href="cuet-information.html">CUET Preparation</a> |
+      <a href="registration.html">Enroll Now</a>
+    </p>
+  </section>
 
-  <p>
-    <a href="faq.html">Frequently Asked Questions</a> |
-    <a href="neet-information.html">NEET Coaching</a> |
-    <a href="iit-jee-information.html">IIT-JEE Coaching</a> |
-    <a href="cuet-information.html">CUET Preparation</a> |
-    <a href="registration.html">Enroll Now</a>
-  </p>
-</section>
+  <!-- HOME BUTTON SECTION -->
+  <div class="home-btn-container">
+    <a href="index.html" class="home-btn">Go to Main Page</a>
+  </div>
 </main>
 
 <footer>© Verchas Academy Ayodhya</footer>

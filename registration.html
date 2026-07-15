@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://maps.googleapis.com https://*.googleapis.com https://*.gstatic.com https://www.googletagmanager.com; script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-ancestors 'none';">
@@ -271,30 +271,16 @@ textarea{
 <h3>Student Details</h3>
 <input type="text" name="Student Name" placeholder="Student Name" required>
 <input type="text" name="Father Name" placeholder="Father's Name" required>
-<input
-  type="text"
-  id="dob"
-  name="Date_of_Birth"
-  placeholder="Date of Birth (DD/MM/YYYY)"
-  maxlength="10"
-  required
->
+
 <select name="Gender" required>
   <option value="">Gender</option>
   <option>Male</option>
   <option>Female</option>
   <option>Other</option>
 </select>
-<select name="Current Standard" required>
-  <option value="">Current Standard</option>
-  <option>9th</option>
-  <option>10th</option>
-  <option>11th</option>
-  <option>12th</option>
-  <option>Other</option>
-</select>
 
-<input type="text" name="Current School/College" placeholder="Current School / College" required>
+
+
 
 <select name="Medium" required>
   <option value="">Medium of Education</option>
@@ -305,32 +291,22 @@ textarea{
 <h3>Contact Information</h3>
 
 <input type="tel" name="Mobile Number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
-<input type="email" name="Email" placeholder="Email Address">
-<textarea name="Address" rows="3" placeholder="Full Address" required></textarea>
+
+
 <!-- ---------- Instructions ---------- -->
 <div class="instructions-box" style="margin-top:20px; font-size:0.9em; color:#333; line-height:1.45;">
 
 <strong>Instructions in English:</strong><br><br>
 
-1. Filling up of this form does not guarantee admission. Students must visit the Academy Office for final registration.<br>
+1. This form is for applying free demo classes upto 7 days.<br>
 2. Students are not required to submit fees at the time of office registration. They may avail up to <strong>7 days of demo classes</strong> to assess the academy, faculty, and curriculum before submitting fees as per academy instructions.<br>
-3. Documents required for registration at the Academy Office:<br>
-&nbsp;&nbsp;&nbsp;(i) Passport size photographs – Qty: 02<br>
-&nbsp;&nbsp;&nbsp;(ii) Copy of Aadhar Card<br>
-&nbsp;&nbsp;&nbsp;(iii) Copy of 10th or 12th Marksheet (or both, whichever is applicable)<br>
-&nbsp;&nbsp;&nbsp;<em>Original documents must be produced for verification.</em><br>
-4. In case any wrong, misleading, or false information or documents are submitted, the admission may be cancelled at any time.<br><br>
+3. In case any wrong, misleading, or false information, Demo Classes may be cancelled at any time.<br><br>
 
 <strong>हिंदी में निर्देश:</strong><br><br>
 
-1. इस फॉर्म को भरने से प्रवेश की गारंटी नहीं मिलती है। अंतिम पंजीकरण के लिए अकेडमी कार्यालय में आना अनिवार्य है।<br>
+1. यह फॉर्म 7 दिनों तक की फ्री डेमो क्लास के लिए आवेदन करने हेतु है।<br>
 2. कार्यालय में पंजीकरण के समय किसी भी प्रकार की फीस जमा करना आवश्यक नहीं है। विद्यार्थी अधिकतम <strong>7 दिनों की डेमो क्लास</strong> ले सकते हैं।<br>
-3. कार्यालय में पंजीकरण हेतु आवश्यक दस्तावेज़:<br>
-&nbsp;&nbsp;&nbsp;(i) पासपोर्ट साइज फोटो – 02 नग<br>
-&nbsp;&nbsp;&nbsp;(ii) आधार कार्ड की प्रति<br>
-&nbsp;&nbsp;&nbsp;(iii) 10वीं या 12वीं की मार्कशीट की प्रति (या दोनों, जो लागू हो)<br>
-&nbsp;&nbsp;&nbsp;<em>सत्यापन हेतु मूल दस्तावेज़ प्रस्तुत करना अनिवार्य है।</em><br>
-4. यदि किसी भी प्रकार की गलत अथवा फर्जी जानकारी या दस्तावेज़ प्रस्तुत किए जाते हैं, तो किसी भी समय प्रवेश रद्द किया जा सकता है।
+3. यदि किसी भी प्रकार की गलत, भ्रामक अथवा फर्जी जानकारी प्रस्तुत की जाती है, तो डेमो क्लास किसी भी समय रद्द की जा सकती है।
 
 <!-- ✅ ACCEPTANCE CHECKBOX -->
 <label style="
@@ -374,64 +350,7 @@ Please check the highlighted fields. Some information is invalid or missing.
 
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const dob = document.getElementById("dob");
 
-  dob.addEventListener("input", function (e) {
-    let raw = dob.value.replace(/[^0-9]/g, "");
-
-    // limit to DDMMYYYY
-    if (raw.length > 8) raw = raw.slice(0, 8);
-
-    // ---------- VALIDATION ----------
-    if (raw.length >= 2) {
-      const dd = parseInt(raw.slice(0, 2), 10);
-      if (dd < 1 || dd > 31) {
-        dob.value = "";
-        return;
-      }
-    }
-
-    if (raw.length >= 4) {
-      const mm = parseInt(raw.slice(2, 4), 10);
-      if (mm < 1 || mm > 12) {
-        dob.value = "";
-        return;
-      }
-    }
-
-    if (raw.length === 8) {
-      const yyyy = parseInt(raw.slice(4, 8), 10);
-      const currentYear = new Date().getFullYear();
-      if (yyyy > currentYear) {
-        dob.value = "";
-        return;
-      }
-    }
-
-    // ---------- FORCE "/" INSERTION ----------
-    let formatted = "";
-
-    if (raw.length <= 2) {
-      formatted = raw;
-      if (raw.length === 2) formatted += "/";
-    } 
-    else if (raw.length <= 4) {
-      formatted = raw.slice(0, 2) + "/" + raw.slice(2);
-      if (raw.length === 4) formatted += "/";
-    } 
-    else {
-      formatted =
-        raw.slice(0, 2) + "/" +
-        raw.slice(2, 4) + "/" +
-        raw.slice(4);
-    }
-
-    dob.value = formatted;
-  });
-});
-</script>
 <script>
 const form = document.querySelector("form");
 

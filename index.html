@@ -2270,6 +2270,109 @@ white-space:normal;
   transform:none !important;
   box-shadow:none !important;
 }
+/* ===== ELEGANT CAPSULE BANNER ===== */
+.new-batch-capsule {
+  background: linear-gradient(135deg, #004aad, #3282b8); /* Premium Verchas Blue */
+  color: #ffffff;
+  padding: 12px 28px;
+  margin: 20px auto;
+  max-width: 90%;
+  width: fit-content;
+  
+  border-radius: 999px; /* Perfect Capsule Shape */
+  box-shadow: 0 8px 24px rgba(0, 74, 173, 0.25);
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  
+  font-family: 'Poppins', sans-serif;
+  animation: gentleFloat 4s ease-in-out infinite;
+  z-index: 99;
+  position: relative;
+}
+
+.capsule-badge {
+  background: #ffcc00;
+  color: #002f6c;
+  font-weight: 800;
+  font-size: 0.85em;
+  padding: 6px 16px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  animation: capsulePulse 2s infinite;
+}
+
+.capsule-text {
+  font-size: 1.05em;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.capsule-text strong {
+  color: #ffcc00;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.capsule-subtext {
+  font-size: 0.85em;
+  font-style: italic;
+  opacity: 0.95;
+}
+
+.capsule-btn {
+  background: #ffffff;
+  color: #004aad;
+  font-weight: 800;
+  font-size: 0.95em;
+  padding: 10px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.capsule-btn:hover {
+  background: #ffcc00;
+  color: #002f6c;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes capsulePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+  .new-batch-capsule {
+    flex-direction: column;
+    border-radius: 24px; /* Softer rounded rectangle for stacked mobile view */
+    padding: 16px 20px;
+    gap: 12px;
+  }
+  .capsule-text {
+    font-size: 0.95em;
+  }
+  .capsule-badge {
+    font-size: 0.75em;
+  }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -2366,6 +2469,14 @@ white-space:normal;
     </div>
   </div>
 </nav>
+<section class="new-batch-capsule">
+  <span class="capsule-badge">🔥 NEW BATCHES </span>
+  <span class="capsule-text">
+    <strong>Starting from 20 July 26:</strong> NEET • IIT-JEE • BSc Nursing <br>
+    <span class="capsule-subtext">Register Free Demo Classes Now. A few seats left!</span>
+  </span>
+  <a href="registration.html" class="capsule-btn">Book Now</a>
+</section>
 <div class="hero">
   <div class="hero-slider">
   <img src="1.webp" class="slide active" alt="Verchas Academy - Deokali Campus" fetchpriority="high">

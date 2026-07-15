@@ -1,8 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://maps.googleapis.com https://*.googleapis.com https://*.gstatic.com https://www.googletagmanager.com; script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-ancestors 'none';">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KP1HYGJL04"></script>
 <script>
@@ -223,37 +221,6 @@ textarea{
 }
 
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "RegisterAction",
-      "@id": "https://verchasacademy.in/registration.html#action",
-      "name": "Course Registration & Admission Enrollment",
-      "description": "The official online intake portal for students to register, enroll, and secure admission into batches at Verchas Academy.",
-      "provider": {
-        "@type": "EducationalOrganization",
-        "name": "Verchas Academy",
-        "url": "https://verchasacademy.in/"
-      },
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://verchasacademy.in/registration.html",
-        "actionPlatform": [
-          "http://schema.org/DesktopWebPlatform",
-          "http://schema.org/MobileWebPlatform"
-        ]
-      },
-      "object": {
-        "@type": "EducationalProgram",
-        "name": "Verchas Academy Entrance Coaching Program Array"
-      },
-      "actionStatus": "http://schema.org/PotentialActionStatus"
-    }
-  ]
-}
-</script>
 </head>
 
 <body>
@@ -271,17 +238,12 @@ textarea{
 <h3>Student Details</h3>
 <input type="text" name="Student Name" placeholder="Student Name" required>
 <input type="text" name="Father Name" placeholder="Father's Name" required>
-
 <select name="Gender" required>
   <option value="">Gender</option>
   <option>Male</option>
   <option>Female</option>
   <option>Other</option>
 </select>
-
-
-
-
 <select name="Medium" required>
   <option value="">Medium of Education</option>
   <option>English</option>
@@ -291,7 +253,6 @@ textarea{
 <h3>Contact Information</h3>
 
 <input type="tel" name="Mobile Number" placeholder="Mobile Number" pattern="[0-9]{10}" required>
-
 
 <!-- ---------- Instructions ---------- -->
 <div class="instructions-box" style="margin-top:20px; font-size:0.9em; color:#333; line-height:1.45;">
@@ -350,7 +311,64 @@ Please check the highlighted fields. Some information is invalid or missing.
 
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const dob = document.getElementById("dob");
 
+  dob.addEventListener("input", function (e) {
+    let raw = dob.value.replace(/[^0-9]/g, "");
+
+    // limit to DDMMYYYY
+    if (raw.length > 8) raw = raw.slice(0, 8);
+
+    // ---------- VALIDATION ----------
+    if (raw.length >= 2) {
+      const dd = parseInt(raw.slice(0, 2), 10);
+      if (dd < 1 || dd > 31) {
+        dob.value = "";
+        return;
+      }
+    }
+
+    if (raw.length >= 4) {
+      const mm = parseInt(raw.slice(2, 4), 10);
+      if (mm < 1 || mm > 12) {
+        dob.value = "";
+        return;
+      }
+    }
+
+    if (raw.length === 8) {
+      const yyyy = parseInt(raw.slice(4, 8), 10);
+      const currentYear = new Date().getFullYear();
+      if (yyyy > currentYear) {
+        dob.value = "";
+        return;
+      }
+    }
+
+    // ---------- FORCE "/" INSERTION ----------
+    let formatted = "";
+
+    if (raw.length <= 2) {
+      formatted = raw;
+      if (raw.length === 2) formatted += "/";
+    } 
+    else if (raw.length <= 4) {
+      formatted = raw.slice(0, 2) + "/" + raw.slice(2);
+      if (raw.length === 4) formatted += "/";
+    } 
+    else {
+      formatted =
+        raw.slice(0, 2) + "/" +
+        raw.slice(2, 4) + "/" +
+        raw.slice(4);
+    }
+
+    dob.value = formatted;
+  });
+});
+</script>
 <script>
 const form = document.querySelector("form");
 

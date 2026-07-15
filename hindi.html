@@ -2273,19 +2273,49 @@ white-space:normal;
   50% { transform: translateY(-4px); }
 }
 
-/* Mobile Adjustments */
+/* Mobile Adjustments (Forces 4-Row Layout) */
 @media (max-width: 900px) {
   .new-batch-capsule {
     flex-direction: column;
-    border-radius: 24px; /* Softer rounded rectangle for stacked mobile view */
-    padding: 16px 20px;
-    gap: 12px;
-  }
-  .capsule-text {
-    font-size: 0.95em;
+    border-radius: 24px;
+    padding: 18px 16px;
+    gap: 14px;
   }
   .capsule-badge {
-    font-size: 0.75em;
+    font-size: 0.8em;
+    margin-bottom: 2px;
+  }
+  .capsule-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Space between the rows */
+  }
+  .hide-mobile {
+    display: none !important; /* Hides desktop dividers/breaks */
+  }
+  .mob-block {
+    display: block !important;
+  }
+  
+  /* Specific Row Styling for Mobile */
+  .row-1 {
+    color: #ffcc00;
+    font-weight: 700;
+    font-size: 1.1em;
+  }
+  .row-2 {
+    font-weight: 800;
+    font-size: 1.15em;
+    letter-spacing: 0.5px;
+  }
+  .row-3 {
+    font-size: 0.95em;
+    margin-top: 4px;
+  }
+  .row-4 {
+    font-size: 1.05em;
+    font-weight: 700;
+    color: #ffeb3b; /* Bright yellow for urgency */
   }
 }
 </style>
@@ -2399,8 +2429,12 @@ white-space:normal;
 <section class="new-batch-capsule">
   <span class="capsule-badge">🔥 नए बैच </span>
   <span class="capsule-text">
-    <strong>20 जुलाई से प्रारंभ:</strong> NEET • IIT-JEE • BSc Nursing <br>
-    <span class="capsule-subtext">अभी फ्री डेमो क्लास बुक करें। कुछ ही सीटें शेष!</span>
+    <span class="mob-block row-1">20 जुलाई 26 से प्रारंभ <span class="hide-mobile">|</span></span>
+    <span class="mob-block row-2">NEET • IIT-JEE • BSc Nursing</span> <br class="hide-mobile">
+    <span class="capsule-subtext">
+      <span class="mob-block row-3">अभी फ्री डेमो क्लास बुक करें।</span>
+      <span class="mob-block row-4">जल्दी करें, कुछ ही सीटें शेष!</span>
+    </span>
   </span>
   <a href="registration.html" class="capsule-btn">अभी बुक करें</a>
 </section>

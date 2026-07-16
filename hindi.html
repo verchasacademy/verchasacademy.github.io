@@ -2443,6 +2443,178 @@ white-space:normal;
   .desktop-nowrap {
     white-space: nowrap;
   }
+}
+/* ===== NEET 2026 RESULT CAPSULE (LHS HERO) ===== */
+.neet-result-capsule {
+  position: absolute;
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  
+  background: linear-gradient(135deg, #d32f2f, #b71c1c);
+  color: #ffffff;
+  padding: 24px 36px;
+  border-radius: 999px; /* Perfect Capsule Shape */
+  box-shadow: 0 12px 35px rgba(183, 28, 28, 0.4);
+  border: 4px solid #ffcc00;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  
+  animation: floatCapsule 4s ease-in-out infinite, pulseGlowRed 2s infinite;
+}
+
+.neet-capsule-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4em;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+  color: #ffcc00;
+  text-transform: uppercase;
+}
+
+.neet-capsule-sub {
+  font-size: 0.95em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.neet-capsule-btn {
+  background: #ffffff;
+  color: #b71c1c;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.05em;
+  padding: 10px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.neet-capsule-btn:hover {
+  background: #ffcc00;
+  color: #000000;
+  transform: scale(1.08);
+}
+
+/* Animations for the Capsule */
+@keyframes floatCapsule {
+  0%, 100% { transform: translateY(-50%); }
+  50% { transform: translateY(calc(-50% - 10px)); }
+}
+@keyframes pulseGlowRed {
+  0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(255, 204, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
+}
+
+/* Responsive constraints for smaller screens */
+@media (max-width: 1350px) {
+  .neet-result-capsule {
+    left: 1%;
+    padding: 18px 24px;
+    transform: translateY(-50%) scale(0.85);
+    transform-origin: left center;
+  }
+}
+@media (max-width: 900px) {
+  .neet-result-capsule {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none !important;
+    margin: 10px auto 20px;
+    width: 90%;
+    border-radius: 50px;
+    animation: pulseGlowRed 2s infinite; /* Keep pulse, remove float */
+  }
+}
+
+/* ===== EXTERNAL REDIRECT MODAL (NTA STYLE) ===== */
+.nta-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999999;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  backdrop-filter: blur(2px);
+}
+
+.nta-modal-box {
+  background: #ffffff;
+  width: 420px;
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  overflow: hidden;
+  animation: popInNta 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nta-modal-content {
+  padding: 24px 28px;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.nta-modal-content strong {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 1.15rem;
+  color: #000;
+}
+
+.nta-modal-actions {
+  padding: 16px 28px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: #f9f9f9;
+  border-top: 1px solid #eee;
+}
+
+.nta-btn {
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #ffffff;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.nta-btn-ok {
+  background: #1b5e20; /* NTA green */
+  color: #ffffff;
+  border-color: #1b5e20;
+}
+
+.nta-btn-ok:hover {
+  background: #144d18;
+}
+
+.nta-btn-cancel:hover {
+  background: #ebebeb;
+}
+
+@keyframes popInNta {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }    
 </style>
 <script type="application/ld+json">
@@ -2584,6 +2756,11 @@ white-space:normal;
   <a href="registration.html" class="capsule-btn">फ्री डेमो बुक करें</a>
 </section>
 <div class="hero">
+<div class="neet-result-capsule">
+    <div class="neet-capsule-title">NEET 2026 परिणाम<br>घोषित</div>
+    <div class="neet-capsule-sub">अपना आधिकारिक स्कोरकार्ड देखें</div>
+    <button class="neet-capsule-btn" onclick="showNtaModal(event)">अभी देखें</button>
+  </div>
   <div class="hero-slider">
   <img src="1.webp" class="slide active" alt="Verchas Academy - Deokali Campus" fetchpriority="high">
   <img src="2.webp" class="slide" alt="Verchas Academy - Inside View" loading="lazy">
@@ -3152,6 +3329,31 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }
+});
+</script>
+<div id="ntaConfirmModal" class="nta-modal-overlay">
+  <div class="nta-modal-box">
+    <div class="nta-modal-content">
+      <strong>वर्चस अकेडमी का संदेश:</strong>
+      आपको एक बाहरी वेबसाइट पर निर्देशित किया जा रहा है। कृपया ध्यान दें कि वर्चस अकेडमी, अयोध्या बाहरी वेबसाइट की सामग्री और गोपनीयता नीतियों के लिए उत्तरदायी नहीं है।
+    </div>
+    <div class="nta-modal-actions">
+      <button class="nta-btn nta-btn-ok" id="ntaOkBtn">ठीक है</button>
+      <button class="nta-btn nta-btn-cancel" onclick="document.getElementById('ntaConfirmModal').style.display='none'">रद्द करें</button>
+    </div>
+  </div>
+</div>
+<script>
+// NTA External Redirect Modal Logic
+function showNtaModal(event) {
+  event.preventDefault();
+  document.getElementById('ntaConfirmModal').style.display = 'flex';
+}
+
+document.getElementById('ntaOkBtn').addEventListener('click', function() {
+  document.getElementById('ntaConfirmModal').style.display = 'none';
+  // Opens the official NTA login portal in a new secure tab
+  window.open("https://examinationservices.nic.in/ResultoService26/Ntnt/Login", "_blank", "noopener,noreferrer");
 });
 </script>
 </body>

@@ -2381,7 +2381,70 @@ white-space:normal;
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-    </style>
+/* ===== POP-UP OVERLAY SYSTEM ===== */
+.popup-overlay {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 999999; 
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px); 
+}
+
+.popup-wrapper {
+  position: relative;
+  max-width: 95%;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.popup-capsule {
+  margin: 0 !important; 
+}
+
+.popup-close-btn {
+  position: absolute;
+  top: -15px;
+  right: -5px;
+  background: #ffcc00;
+  color: #002f6c;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.popup-close-btn:hover {
+  background: #c62828;
+  color: #ffffff;
+  transform: scale(1.1) rotate(90deg);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+/* Forces the first text row to stay on a single line on Desktop */
+@media (min-width: 901px) {
+  .desktop-nowrap {
+    white-space: nowrap;
+  }
+}    
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -2430,7 +2493,23 @@ white-space:normal;
 </head>
 
 <body>
-
+<div id="newBatchPopup" class="popup-overlay">
+  <div class="popup-wrapper">
+    <button class="popup-close-btn" id="closePopupBtn" aria-label="Close Pop-up">&times;</button>
+    <section class="new-batch-capsule popup-capsule">
+      <span class="capsule-badge">🔥 नए बैच </span>
+      <span class="capsule-text">
+        <span class="mob-block row-1">20 जुलाई 26 से प्रारंभ <span class="hide-mobile"> * </span></span>
+        <span class="mob-block row-2" style="white-space: nowrap;">NEET • IIT-JEE • BSc Nursing</span> <br class="hide-mobile">
+        <span class="capsule-subtext">
+          <span class="mob-block row-3">अभी फ्री डेमो क्लास बुक करें।</span>
+          <span class="mob-block row-4">जल्दी करें, कुछ ही सीटें शेष!</span>
+        </span>
+      </span>
+      <a href="registration.html" class="capsule-btn">फ्री डेमो बुक करें</a>
+    </section>
+  </div>
+</div>
 <header>
   <div class="header-content">
     <img src="verchas-logo.webp" alt="Verchas Academy Logo">
@@ -2492,14 +2571,17 @@ white-space:normal;
 <section class="new-batch-capsule">
   <span class="capsule-badge">🔥 नए बैच </span>
   <span class="capsule-text">
-    <span class="mob-block row-1">20 जुलाई 26 से प्रारंभ <span class="hide-mobile">|</span></span>
-    <span class="mob-block row-2">NEET • IIT-JEE • BSc Nursing</span> <br class="hide-mobile">
-    <span class="capsule-subtext">
-      <span class="mob-block row-3">अभी फ्री डेमो क्लास बुक करें।</span>
-      <span class="mob-block row-4">जल्दी करें, कुछ ही सीटें शेष!</span>
-    </span>
-  </span>
-  <a href="registration.html" class="capsule-btn">अभी बुक करें</a>
+        <span class="desktop-nowrap">
+          <span class="mob-block row-1">20 जुलाई 26 से प्रारंभ <span class="hide-mobile"> </span></span>
+          <span class="mob-block row-2">NEET • IIT-JEE • BSc Nursing</span>
+        </span>
+        <br class="hide-mobile">
+        <span class="capsule-subtext">
+          <span class="mob-block row-3">अभी फ्री डेमो क्लास बुक करें।</span>
+          <span class="mob-block row-4">जल्दी करें, कुछ ही सीटें शेष!</span>
+        </span>
+      </span>
+  <a href="registration.html" class="capsule-btn">फ्री डेमो बुक करें</a>
 </section>
 <div class="hero">
   <div class="hero-slider">
@@ -2970,7 +3052,8 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 <a href="index.html" 
    class="hindi-btn" 
    aria-label="Open English website"
-   title="हिंदी वेबसाइट पर जाएं">
+   title="हिंदी वेबसाइट पर जाएं"
+   onclick="sessionStorage.removeItem('capsulePopupShown');">
    English Website
 </a>
 <!-- Floating Call Button -->
@@ -3044,6 +3127,31 @@ document.addEventListener('DOMContentLoaded', () => {
       this.classList.add('active');
     });
   });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const popup = document.getElementById("newBatchPopup");
+  const closeBtn = document.getElementById("closePopupBtn");
+
+  if (popup && closeBtn) {
+    if (!sessionStorage.getItem("capsulePopupShown")) {
+      setTimeout(() => {
+        popup.style.display = "flex";
+        sessionStorage.setItem("capsulePopupShown", "true");
+      }, 1500); 
+    }
+
+    closeBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === popup) {
+        popup.style.display = "none";
+      }
+    });
+  }
 });
 </script>
 </body>

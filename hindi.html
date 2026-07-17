@@ -2323,12 +2323,7 @@ white-space:normal;
     color: #ffeb3b; /* Bright yellow for urgency */
   }
 }
-
-    
-      100% { transform: translateX(-100%); }
-    }
-    
-    /* Mobile Nav: Compact, Non-bold, Smooth Horizontal Scroll */
+  /* Mobile Nav: Compact, Non-bold, Smooth Horizontal Scroll */
     @media (max-width: 768px) {
       .nav-links {
         display: flex;
@@ -2351,9 +2346,7 @@ white-space:normal;
         background: #004aad !important;
         color: #fff !important;
       }
-    }
     
-    @media (max-width: 768px) {
       .nav-links {
         display: flex;
         flex-direction: row !important;
@@ -2376,7 +2369,13 @@ white-space:normal;
         background: #004aad !important;
         color: #fff !important;
       }
-    }
+    /* ===== FOOTER MOBILE LAYOUT FIX ===== */
+      footer p .no-break {
+      display: block;
+      margin-top: 4px;
+      margin-bottom: 4px;
+  }
+}
     @keyframes navMarquee {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }

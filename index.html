@@ -2682,6 +2682,58 @@ white-space:normal;
   0% { transform: scale(0.8); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }   
+/* ===== SCROLL TO TOP BUTTON ===== */
+.scroll-to-top {
+  position: fixed;
+  bottom: 26px;
+  left: 26px; /* Placed on the left so it doesn't overlap your contact buttons */
+  z-index: 99999;
+  background: #004aad;
+  color: #ffcc00;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #ffcc00;
+  font-size: 1.5em;
+  cursor: pointer;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover {
+  background: #ffcc00;
+  color: #004aad;
+  border-color: #004aad;
+  transform: translateY(0) scale(1.1);
+}
+
+/* Class added via JavaScript when scrolling */
+.scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  .scroll-to-top {
+    bottom: 18px;
+    left: 18px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.15em;
+  }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -3330,6 +3382,11 @@ Book Free Career Counseling
   </div>
 </div>
 
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" class="scroll-to-top" aria-label="Scroll to top" title="Go to top">
+  &#9650;
+</button>
+
 <script src="site.js" defer></script>
 <script>
 document.querySelectorAll('.course-card').forEach(card => {
@@ -3439,6 +3496,28 @@ document.getElementById('ntaOkBtn').addEventListener('click', function() {
   document.getElementById('ntaConfirmModal').style.display = 'none';
   // Opens the official NTA login portal in a new secure tab
   window.open("https://examinationservices.nic.in/ResultoService26/Ntnt/Login", "_blank", "noopener,noreferrer");
+});
+
+// Scroll to Top Logic
+document.addEventListener("DOMContentLoaded", function() {
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+  // Show or hide the button based on scroll position
+  window.addEventListener("scroll", function() {
+    if (window.scrollY > 350) {
+      scrollToTopBtn.classList.add("show");
+    } else {
+      scrollToTopBtn.classList.remove("show");
+    }
+  });
+
+  // Scroll smoothly to top when clicked
+  scrollToTopBtn.addEventListener("click", function() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
 });
 </script>
 </body>

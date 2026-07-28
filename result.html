@@ -16,9 +16,9 @@
 
     .container {
       max-width: 420px;
-      margin: 8px auto;
+      margin: 60px auto;
       background: #ffffff;
-      padding:10px 14px;
+      padding: 30px;
       border-radius: 12px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
       text-align: center;
@@ -30,24 +30,18 @@
     }
 
     input {
-      width:78%;
-      box-sizing:border-box;
-      text-align:center;
+      align-items: center;
       
-      
-      padding:10px 14px;
-      font-size:0.98em;
-      margin-bottom:10px;
+      padding: 14px;
+      font-size: 1em;
+      margin-bottom: 15px;
       border-radius: 8px;
-      border:1px solid #cfd8dc;
-      display:block;
-      margin-left:auto;
-      margin-right:auto;
+      border: 1px solid #ccc;
     }
 
     button {
-      width:78%;
-      padding:10px 14px;
+      width: 100%;
+      padding: 14px;
       background: #004aad;
       color: #fff;
       font-size: 1.05em;
@@ -79,7 +73,7 @@
     }
 
     .result {
-      margin-top:12px;
+      margin-top: 20px;
       font-size: 1.05em;
       font-weight: 600;
     }
@@ -93,12 +87,12 @@
     }
 .logo {
   max-width: 120px;
-  margin-bottom:2px;
+  margin-bottom: 4px;
 }
 .academy-name{
   font-size: 2.1em;      /* BIGGER */
   color: #004aad;
-  margin:0;
+  margin: 2px 0 4px 0;
   font-weight: 800;
   letter-spacing: 1px;
 }
@@ -106,7 +100,7 @@
 .page-title{
   font-size: 1.8em;      /* smaller than academy name */
   color: #333;
-  margin:4px 0 10px;
+  margin-bottom: 22px;
   font-weight: 700;
 }
 /* 🔄 Loading Spinner */
@@ -125,7 +119,7 @@
   100% { transform: rotate(360deg); }
 }
 .note-box {
-  margin-top:12px;
+  margin-top: 10px;
   padding: 12px;
   background: #fff3cd;
   border-left: 5px solid #ff9800;
@@ -134,18 +128,7 @@
   line-height: 1.6;
   text-align: justify;   /* 👈 ye add karo */
 }
-  
-@media (max-width:600px){
-input,button{width:90%;}
-
-.container{margin:10px auto;padding:16px;}
-.logo{max-width:90px;}
-.academy-name{font-size:1.6em;}
-.page-title{font-size:1.25em;margin-bottom:14px;}
-.note-box{font-size:.8em;line-height:1.45;}
-}
-
-</style>
+  </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -179,20 +162,15 @@ input,button{width:90%;}
 
     <div id="result" class="result"></div>
     <a href="index.html" id="homeBtn" class="home-btn">Home</a>
-    <div class="note-box">
-<b>नोट:</b><br>
-1. कृपया सुनिश्चित करें कि आप सही श्रेणी (Misc / 1st Minor Test / 2nd Minor Test आदि) का परिणाम देख रहे हैं।<br>
-2. परिणाम देखने के लिए अपना पंजीकृत 10 अंकों का मोबाइल नंबर दर्ज करें। मोबाइल नंबर के पहले 0 या +91 न लगाएँ।
-    </div>
-
   </div>
 
   <script>
-const API_URL = "https://script.google.com/macros/s/AKfycbxwCM3PcFUxXSX2rcM5vCKyutcqf6FLBH-OYKQ7i67Uxo_Uh7nOIUpQJwZOu9fySPHSbg/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxffhVZm_nctVZJ09YlUx3FwQlq7eozkOJmr7wGFWrA5c1ZHawX85dUSMMiQJboZ00AFg/exec";
 const TESTS = {
-  misc: "Miscellaneous Results",
+  misc: "Miscellaneous Result",
   minor1: "1st Minor Test Result",
-  minor2: "2nd Minor Test Result"
+  minor2: "2nd Minor Test Result",
+  minor3: "3rd Minor Test Result"
 };
 const params = new URLSearchParams(window.location.search);
 const selectedTest = TESTS[params.get("test")] ? params.get("test") : "misc";
@@ -206,8 +184,8 @@ function getResult() {
 
   resultDiv.innerHTML = "";
 
-  if(!/^[1-9][0-9]{9}$/.test(mobile)){
-    resultDiv.innerHTML="<span class='error'>Please enter a valid 10-digit mobile number</span>";
+  if (mobile.length !== 10) {
+    resultDiv.innerHTML = "<span class='error'>Please enter a valid 10-digit mobile number</span>";
     return;
   }
 
@@ -224,8 +202,6 @@ function getResult() {
   "<div class='success'>" +
   "Name: <b>" + data.name + "</b><br>" +
   "Marks Obtained: <b>" + data.marks + "</b>" +
-  "</div>" +
-
   "</div>";
       }
     })

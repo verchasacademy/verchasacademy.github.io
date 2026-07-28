@@ -110,6 +110,8 @@ header{
 nav{
   background:#ffcc00;
   padding:12px;
+  position: relative;
+  z-index: 99999; /* Ensure nav is above banners */
 }
 .nav-links{
   display:flex;
@@ -143,6 +145,14 @@ nav{
   transform: translateY(-4px) scale(1.06);
   box-shadow: 0 10px 24px rgba(0,0,0,0.28);
 }
+
+/* Hide duplicated links on Desktop */
+@media (min-width: 769px) {
+  .nav-links > *:nth-child(n+9) {
+     display: none !important;
+  }
+}
+
 /* HERO */
 .hero{position:relative;}
 .hero img{
@@ -1013,12 +1023,6 @@ nav{
   .header-content{ flex-direction:column; text-align:center; }
   .header-content img{ height:250px; }
   .header-text h1{ font-size:2.2em; }
-  .nav-links{ flex-direction:row !important; overflow-x: auto !important; flex-wrap: nowrap !important; }
-  .nav-links a{ width: auto !important; white-space: nowrap !important; }
-  .nav-links .result-dropdown,
-  .nav-links .result-toggle{
-    width:100%;
-  }
   .hero-content h1{ font-size:1.9em; }
   .hero-content p{ white-space:normal; font-size:1em; }
   section{ padding:18px 20px; }
@@ -1234,16 +1238,6 @@ a[href^="tel"]{
     right: 18px;
     font-size: 1.05em;
     padding: 14px 26px;
-  }
-}
-@media (max-width: 768px){
-  .nav-links{
-    align-items: center;
-  }
-
-  .nav-links a{
-    justify-content: center;
-    text-align: center;
   }
 }
 .seo-text{
@@ -2190,7 +2184,7 @@ white-space:normal;
   display:inline-block;
   margin:0 auto 14px;
   color:#ffffff;
-  font-size:1em;
+  font-size:1.18em;
   font-weight:800;
   letter-spacing:0.4px;
   line-height:1.35;
@@ -2296,7 +2290,7 @@ white-space:normal;
   
   font-family: 'Poppins', sans-serif;
   animation: gentleFloat 4s ease-in-out infinite;
-  z-index: 99;
+  z-index: 1; /* Keeping standard z-index so nav dropdown can go above */
   position: relative;
 }
 
@@ -2410,63 +2404,64 @@ white-space:normal;
     color: #ffeb3b; /* Bright yellow for urgency */
   }
 }
-    /* Mobile Nav: Compact, Non-bold, Smooth Horizontal Scroll */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        white-space: nowrap;
-        gap: 6px;
-        padding: 8px;
-        -webkit-overflow-scrolling: touch;
-      }
-      .nav-links a, .nav-links .result-toggle {
-        padding: 4px 10px !important;
-        font-size: 0.85em !important;
-        font-weight: normal !important;
-        flex: 0 0 auto;
-        border-radius: 999px !important;
-      }
-      /* Active state: Keep blue without stopping flow */
-      .nav-links a.active, .nav-links .result-toggle.active {
-        background: #004aad !important;
-        color: #fff !important;
-      }
-    
-      .nav-links {
-        display: flex;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        overflow: hidden !important; 
-        animation: navMarquee 10s linear infinite;
-        width: max-content;
-        gap: 8px;
-        padding: 5px;
-      }
-      .nav-links a, .nav-links .result-toggle {
-        padding: 6px 12px !important;
-        font-size: 0.85em !important;
-        font-weight: normal !important;
-        white-space: nowrap;
-        flex: 0 0 auto;
-        border-radius: 999px !important;
-      }
-      .nav-links a.active, .nav-links .result-toggle.active {
-        background: #004aad !important;
-        color: #fff !important;
-      }
-    /* ===== FOOTER MOBILE LAYOUT FIX ===== */
-      footer p .no-break {
-      display: block;
-      margin-top: 4px;
-      margin-bottom: 4px;
+
+/* Mobile Nav: Compact, Non-bold, Smooth Horizontal Scroll */
+@media (max-width: 768px) {
+  nav {
+    overflow: visible !important; 
+    position: relative;
+    z-index: 9999; /* Ensure it stays above the banner */
+  }
+  .nav-links {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow: visible !important; /* Fixes dropdown hiding behind */
+    width: max-content;
+    gap: 8px;
+    padding: 8px 5px;
+    animation: navMarquee 20s linear infinite; 
+  }
+  /* Pause marquee on tap so user can click */
+  .nav-links:hover, 
+  .nav-links:active,
+  .nav-links:focus-within {
+    animation-play-state: paused !important;
+  }
+  .nav-links a, .nav-links .result-toggle {
+    padding: 6px 12px !important;
+    font-size: 0.85em !important;
+    font-weight: normal !important;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    border-radius: 999px !important;
+  }
+  .nav-links a.active, .nav-links .result-toggle.active {
+    background: #004aad !important;
+    color: #fff !important;
+  }
+  .nav-links .result-dropdown,
+  .nav-links .result-toggle {
+    width: auto !important; 
+  }
+  /* Keep dropdown menu on top */
+  .result-menu {
+    z-index: 100000 !important;
+  }
+  
+  /* ===== FOOTER MOBILE LAYOUT FIX ===== */
+  footer p .no-break {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
 }
-    @keyframes navMarquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+
+@keyframes navMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* ===== POP-UP OVERLAY SYSTEM ===== */
 .popup-overlay {
   display: none; 
@@ -2676,6 +2671,27 @@ white-space:normal;
 
 <nav>
   <div class="nav-links">
+    <!-- SET 1 -->
+    <a href="#about" class="cta-animate">About Us</a>
+    <a href="#courses" class="cta-animate">Our Courses</a>
+    <a href="#contact" class="cta-animate">Contact Us</a>
+    <a href="#founders" class="cta-animate">Know the Founders</a>
+    <a href="#hods" class="cta-animate">Our Educators</a>
+    <a href="career-guidance-cell.html" class="nav-btn career-btn">
+  🎯Career Guidance</a>
+    <a href="faq.html" class="cta-animate">FAQ</a>
+    <div class="result-dropdown">
+      <button type="button" class="cta-animate result-toggle">
+  Results</button>
+      <div class="result-menu">
+        <a href="result.html?test=misc">Miscellaneous</a>
+        <a href="result.html?test=minor1">1st Minor Test</a>
+        <a href="result.html?test=minor2">2nd Minor Test</a>
+	<a href="result.html?test=minor3">3rd Minor Test</a>
+      </div>
+    </div>
+    
+    <!-- SET 2 (DUPLICATED FOR ENDLESS LOOP) -->
     <a href="#about" class="cta-animate">About Us</a>
     <a href="#courses" class="cta-animate">Our Courses</a>
     <a href="#contact" class="cta-animate">Contact Us</a>
@@ -3307,6 +3323,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
+<script>
 // Scroll to Top Logic
 document.addEventListener("DOMContentLoaded", function() {
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");

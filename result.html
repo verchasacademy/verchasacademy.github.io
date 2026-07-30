@@ -31,12 +31,17 @@
 
     input {
       align-items: center;
-      
       padding: 14px;
       font-size: 1em;
       margin-bottom: 15px;
       border-radius: 8px;
       border: 1px solid #ccc;
+      width: 80%;
+      max-width: 250px;
+      display: block;
+      margin: 0 auto 15px auto;
+      text-align: center;
+      letter-spacing: 1px;
     }
 
     button {
@@ -85,49 +90,92 @@
     .success {
       color: #2e7d32;
     }
-.logo {
-  max-width: 120px;
-  margin-bottom: 4px;
-}
-.academy-name{
-  font-size: 2.1em;      /* BIGGER */
-  color: #004aad;
-  margin: 2px 0 4px 0;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
+    .logo {
+      max-width: 120px;
+      margin-bottom: 4px;
+    }
+    .academy-name{
+      font-size: 2.1em;
+      color: #004aad;
+      margin: 2px 0 4px 0;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
 
-.page-title{
-  font-size: 1.8em;      /* smaller than academy name */
-  color: #333;
-  margin-bottom: 22px;
-  font-weight: 700;
-}
-/* 🔄 Loading Spinner */
-.loader {
-  width: 42px;
-  height: 42px;
-  border: 4px solid #e0e0e0;
-  border-top: 4px solid #004aad;
-  border-radius: 50%;
-  animation: spin 0.9s linear infinite;
-  margin: 18px auto;
-}
+    .page-title{
+      font-size: 1.8em;
+      color: #333;
+      margin-bottom: 22px;
+      font-weight: 700;
+    }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-.note-box {
-  margin-top: 10px;
-  padding: 12px;
-  background: #fff3cd;
-  border-left: 5px solid #ff9800;
-  border-radius: 6px;
-  font-size: 0.9em;
-  line-height: 1.6;
-  text-align: justify;   /* 👈 ye add karo */
-}
+    /* 🔄 Loading Spinner */
+    .loader {
+      width: 42px;
+      height: 42px;
+      border: 4px solid #e0e0e0;
+      border-top: 4px solid #004aad;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      margin: 18px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .note-box {
+      margin-top: 10px;
+      padding: 12px;
+      background: #fff3cd;
+      border-left: 5px solid #ff9800;
+      border-radius: 6px;
+      font-size: 0.9em;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    /* ===== MARKS TABLE STYLING ===== */
+    .marks-table {
+      width: 100%;
+      margin-top: 15px;
+      border-collapse: collapse;
+      font-size: 0.95em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .marks-table th {
+      background-color: #004aad;
+      color: #ffffff;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .marks-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e0e0e0;
+      color: #333;
+      text-align: left;
+    }
+
+    .marks-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .marks-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* ⭐ UPDATED TOTAL ROW STYLING */
+    .total-row {
+      background-color: #e8f5e9 !important; 
+      font-weight: 900;
+      color: #2e7d32; 
+      font-size: 1.2em; 
+    }
   </style>
 <script type="application/ld+json">
 {
@@ -190,7 +238,7 @@ function getResult() {
   }
 
   // 🔄 Show loading spinner
-  resultDiv.innerHTML = "<div class='loader'></div><div>Fetching result…</div>";
+  resultDiv.innerHTML = "<div class='loader'></div><div style='color: #004aad;'>Fetching result…</div>";
 
   fetch(API_URL + "?test=" + encodeURIComponent(selectedTest) + "&mobile=" + encodeURIComponent(mobile))
     .then(res => res.json())
@@ -198,11 +246,57 @@ function getResult() {
       if (data.error) {
         resultDiv.innerHTML = "<span class='error'>No result found</span>";
       } else {
-        resultDiv.innerHTML =
-  "<div class='success'>" +
-  "Name: <b>" + data.name + "</b><br>" +
-  "Marks Obtained: <b>" + data.marks + "</b>" +
-  "</div>";
+        let rawMarks = data.marks; 
+        let tableHTML = "";
+
+        if (rawMarks.includes('(') && rawMarks.includes(')')) {
+          let parts = rawMarks.split('(');
+          let totalScore = parts[0].trim(); 
+          let subjectString = parts[1].replace(')', '').trim(); 
+          
+          tableHTML = `<table class="marks-table">
+                        <tr><th>Subject</th><th>Marks</th></tr>`;
+          
+          let subjects = subjectString.split(',');
+          subjects.forEach(sub => {
+            // Non-greedy matcher supporting decimals and negative signs
+            let match = sub.trim().match(/^(.*?)\s*-\s*(-?[\d.]+\/[\d.]+)$/);
+            
+            if (match) {
+              let subName = match[1].trim(); 
+              let marks = match[2].trim();   
+              tableHTML += `<tr>
+                              <td><b>${subName}</b></td>
+                              <td>${marks}</td>
+                            </tr>`;
+            } else {
+              // Fallback just in case format is entirely unrecognizable 
+              let subParts = sub.trim().split('-');
+              if (subParts.length >= 2) {
+                let marks = subParts.pop().trim();
+                let subName = subParts.join('-').trim();
+                tableHTML += `<tr>
+                                <td><b>${subName}</b></td>
+                                <td>${marks}</td>
+                              </tr>`;
+              }
+            }
+          });
+
+          tableHTML += `<tr class="total-row">
+                          <td>Total</td>
+                          <td>${totalScore}</td>
+                        </tr>
+                      </table>`;
+        } else {
+          tableHTML = `<div style='margin-top: 15px;'><b>${rawMarks}</b></div>`;
+        }
+
+        resultDiv.innerHTML = 
+          "<div class='success'>" +
+          "<div style='font-size: 1.15em; margin-bottom: 5px; color: #004aad;'>Name: <span style='color: #333;'><b>" + data.name + "</b></span></div>" +
+          tableHTML +
+          "</div>";
       }
     })
     .catch(() => {

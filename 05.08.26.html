@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verchas Academy - Present Tenses (Part 2)</title>
+    <style>
+        :root{--primary:#1a237e;--secondary:#ff8f00;--bg-color:#f4f7f6;--card-bg:#ffffff;--text-main:#333333;--border-color:#e0e0e0;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background-color:var(--bg-color);color:var(--text-main);line-height:1.6;margin:0;padding:0;}
+        header{background-color:var(--primary);color:white;padding:1.5rem 1rem;text-align:center;}
+        .logo-container{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:10px;flex-wrap:wrap;}
+        .logo-container img{height:90px;} header h1{margin:0;font-size:clamp(1.5rem,5vw,2.2rem);} header h2{margin:5px 0 0 0;font-size:1.2rem;color:#bbdefb;}
+        .container{max-width:850px;margin:20px auto;padding:15px;background:var(--card-bg);border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.08);}
+        .student-form{background:#e8eaf6;padding:20px;border-radius:8px;margin-bottom:30px;border:2px solid var(--primary);}
+        .student-form h3{margin-top:0;color:var(--primary);text-align:center;} .form-row{display:flex;gap:15px;flex-wrap:wrap;}
+        .form-group{flex:1;min-width:200px;} .form-group label{display:block;font-weight:bold;margin-bottom:5px;}
+        .form-group input,.form-group select{width:100%;padding:10px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;}
+        .instructions{background:#fff8e1;padding:15px;border-left:5px solid var(--secondary);margin-bottom:30px;font-size:0.95rem;}
+        .question-block{margin-bottom:25px;padding:15px;border:1px solid var(--border-color);border-radius:8px;background-color:#fafafa;}
+        .question-text{font-size:1.1rem;font-weight:500;margin-bottom:15px;}
+        input.ans-input{padding:8px 12px;font-size:1rem;border:2px solid #ccc;border-radius:4px;width:100%;max-width:220px;font-weight:bold;color:#0d47a1;}
+        .action-row{display:flex;align-items:center;gap:15px;margin-top:15px;flex-wrap:wrap;}
+        .check-btn{background-color:var(--secondary);color:white;border:none;padding:10px 20px;font-size:1rem;border-radius:5px;cursor:pointer;font-weight:bold;}
+        .check-btn:disabled{background-color:#e0e0e0;color:#9e9e9e;cursor:not-allowed;} .feedback{font-size:1.05rem;font-weight:bold;}
+        .correct{color:#2e7d32;} .incorrect{color:#c62828;}
+        .explanation{display:none;margin-top:15px;padding:15px;background-color:#e3f2fd;border-left:4px solid #1976d2;border-radius:4px;color:#0d47a1;}
+        .submit-section{text-align:center;margin-top:40px;padding-top:20px;border-top:2px dashed #ccc;}
+        #finalSubmitBtn{background-color:var(--primary);color:white;padding:15px 30px;font-size:1.2rem;border:none;border-radius:8px;cursor:pointer;font-weight:bold;width:100%;max-width:400px;}
+        #finalResult{display:none;background-color:#e8f5e9;border:2px solid #4caf50;padding:20px;border-radius:8px;margin-top:20px;} .score-display{font-size:2.5rem;font-weight:bold;color:#1b5e20;}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container"><img src="verchas-logo.webp" alt="Verchas Academy Logo"><h1>Verchas Academy, Ayodhya</h1></div>
+        <h2>Present Tenses - Part 2 (Questions 1-25)</h2>
+    </header>
+    <div class="container">
+        <div class="student-form">
+            <h3>Student Details</h3>
+            <div class="form-row">
+                <div class="form-group"><label>Full Name</label><input type="text" id="studentName" required></div>
+                <div class="form-group"><label>Batch</label><select id="studentBatch" required>
+                    <option value="" disabled selected>Select Batch...</option><option value="9th Foundation">9th Foundation</option><option value="10th Foundation">10th Foundation</option><option value="BSc. Nursing">BSc. Nursing</option>
+                </select></div>
+                <div class="form-group"><label>Mobile No.</label><input type="tel" id="studentMobile" pattern="[0-9]{10}" maxlength="10" required></div>
+            </div>
+        </div>
+        <div class="instructions"><strong>Instructions:</strong> Type the correct Present Tense form and click <strong>Check Answer</strong>.</div>
+        <div id="questionsContainer"></div>
+        <div class="submit-section">
+            <button id="finalSubmitBtn" onclick="submitExamData()">Submit Exam & Show Final Score</button>
+            <div id="finalResult"></div>
+        </div>
+    </div>
+    <script>
+        let currentScore = 0; let questionsAttempted = 0;
+        const expIndef = "Present Indefinite: यह रोज़ की आदत (habit) या सत्य (fact) है। इसलिए Subject के अनुसार Verb की 1st form (s/es) लगेगी।";
+        const expCont = "Present Continuous: कार्य अभी वर्तमान में चल रहा है। इसलिए is/am/are + V1+ing लगेगी।";
+        const expPerf = "Present Perfect: कार्य अभी-अभी पूरा हो चुका है। इसलिए has/have + V3 लगेगी।";
+        const expPerfCont = "Present Perfect Continuous: कार्य बीते समय से शुरू होकर अब भी चल रहा है (since/for)। इसलिए has/have been + V1+ing लगेगी।";
+
+        const quizData = [
+            { q: "My sister ________ (paint) a picture right now.", a: ["is painting"], exp: expCont },
+            { q: "________ (you / ever / see) the Taj Mahal?", a: ["have you ever seen"], exp: expPerf },
+            { q: "The gardener ________ (water) the plants since 4 PM.", a: ["has been watering"], exp: expPerfCont },
+            { q: "Stars ________ (shine) at night.", a: ["shine"], exp: expIndef },
+            { q: "The wind ________ (blow) very fast outside.", a: ["is blowing"], exp: expCont },
+            { q: "I ________ (lose) my keys.", a: ["have lost"], exp: expPerf },
+            { q: "He ________ (practice) dance for two hours.", a: ["has been practicing"], exp: expPerfCont },
+            { q: "Good students ________ (complete) their work.", a: ["complete"], exp: expIndef },
+            { q: "I ________ (not / go) to school today.", a: ["am not going"], exp: expCont },
+            { q: "She ________ (never / eat) sushi.", a: ["has never eaten"], exp: expPerf },
+            { q: "They ________ (play) chess since morning.", a: ["have been playing"], exp: expPerfCont },
+            { q: "The earth ________ (revolve) around the sun.", a: ["revolves"], exp: expIndef },
+            { q: "My father ________ (read) the newspaper right now.", a: ["is reading"], exp: expCont },
+            { q: "We ________ (just / reach) the station.", a: ["have just reached"], exp: expPerf },
+            { q: "I ________ (wait) for you for 30 minutes.", a: ["have been waiting"], exp: expPerfCont },
+            { q: "She ________ (drink) milk every day.", a: ["drinks"], exp: expIndef },
+            { q: "The boys ________ (run) in the field now.", a: ["are running"], exp: expCont },
+            { q: "He ________ (already / clean) his room.", a: ["has already cleaned"], exp: expPerf },
+            { q: "It ________ (snow) since yesterday.", a: ["has been snowing"], exp: expPerfCont },
+            { q: "Dogs ________ (bark) at strangers.", a: ["bark"], exp: expIndef },
+            { q: "We ________ (discuss) the problem at the moment.", a: ["are discussing"], exp: expCont },
+            { q: "I ________ (not / see) him today.", a: ["have not seen", "haven't seen"], exp: expPerf },
+            { q: "She ________ (teach) in this school for 10 years.", a: ["has been teaching"], exp: expPerfCont },
+            { q: "I ________ (like) mangoes.", a: ["like"], exp: expIndef },
+            { q: "They ________ (build) a new bridge these days.", a: ["are building"], exp: expCont }
+        ];
+
+        const container = document.getElementById('questionsContainer');
+        quizData.forEach((item, index) => {
+            const block = document.createElement('div'); block.className = 'question-block'; const parts = item.q.split('________');
+            block.innerHTML = `<div class="question-text">${index + 1}. ${parts[0]} <input type="text" id="q${index}" class="ans-input" autocomplete="off" placeholder="your answer"> ${parts[1]}</div>
+                <div class="action-row"><button class="check-btn" id="btn${index}" onclick="checkAnswer(${index})">Check Answer</button><span class="feedback" id="feedback${index}"></span></div>
+                <div class="explanation" id="exp${index}"><strong>व्याख्या:</strong><br> ${item.exp}</div>`;
+            container.appendChild(block);
+        });
+
+        function checkAnswer(index) {
+            const item = quizData[index]; const inputElement = document.getElementById(`q${index}`); const feedbackElement = document.getElementById(`feedback${index}`); const btnElement = document.getElementById(`btn${index}`); const expElement = document.getElementById(`exp${index}`);
+            const userAnswer = inputElement.value.trim().toLowerCase().replace(/\s+/g, ' '); const isCorrect = item.a.some(ans => ans.toLowerCase() === userAnswer);
+            inputElement.disabled = true; btnElement.disabled = true; btnElement.textContent = "Checked"; questionsAttempted++;
+            if (isCorrect) { currentScore++; inputElement.style.borderColor = "#2e7d32"; inputElement.style.backgroundColor = "#e8f5e9"; inputElement.style.color = "#1b5e20"; feedbackElement.textContent = "✔ Correct!"; feedbackElement.className = "feedback correct"; } 
+            else { inputElement.style.borderColor = "#c62828"; inputElement.style.backgroundColor = "#ffebee"; inputElement.style.color = "#b71c1c"; feedbackElement.innerHTML = `✘ Incorrect. Correct: <strong>${item.a[0]}</strong>`; feedbackElement.className = "feedback incorrect"; }
+            expElement.style.display = "block";
+        }
+
+        function submitExamData() {
+            const name = document.getElementById('studentName').value.trim(); const batch = document.getElementById('studentBatch').value; const mobile = document.getElementById('studentMobile').value.trim();
+            if (!name || !batch || !mobile) { alert("Please fill in your Name, Batch, and Mobile Number."); return; }
+            if (!/^\d{10}$/.test(mobile)) { alert("Please enter a valid 10-digit mobile number."); return; }
+            if (questionsAttempted < 25) { alert(`Please attempt all questions before submitting. You have checked ${questionsAttempted} out of 25.`); return; }
+            const submitBtn = document.getElementById('finalSubmitBtn'); submitBtn.textContent = "Submitting Data..."; submitBtn.disabled = true;
+            
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxsOEpHG0OI4ktJfhFKEzqsKZNqLqXwuTlR-kMmtbBjCCsZVSMseNYVCBQSA222ANmt/exec';
+            
+            const formData = new FormData(); formData.append('Name', name); formData.append('Batch', batch); formData.append('Mobile', mobile); formData.append('Score', currentScore);
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData })
+                .then(() => {
+                    document.getElementById('finalResult').innerHTML = `<h2>Exam Completed!</h2><p>Name: ${name} | Batch: ${batch}</p><p>Your Final Score:</p><div class="score-display">${currentScore} / 25</div>`;
+                    document.getElementById('finalResult').style.display = "block"; submitBtn.style.display = "none";
+                }).catch(error => { alert("Error saving data."); submitBtn.textContent = "Submit Exam & Show Final Score"; submitBtn.disabled = false; });
+        }
+    </script>
+</body>
+</html>

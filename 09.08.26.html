@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verchas Academy - Past Tenses (Part 2)</title>
+    <style>
+        :root{--primary:#1a237e;--secondary:#ff8f00;--bg-color:#f4f7f6;--card-bg:#ffffff;--text-main:#333333;--border-color:#e0e0e0;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background-color:var(--bg-color);color:var(--text-main);line-height:1.6;margin:0;padding:0;}
+        header{background-color:var(--primary);color:white;padding:1.5rem 1rem;text-align:center;}
+        .logo-container{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:10px;flex-wrap:wrap;}
+        .logo-container img{height:90px;} header h1{margin:0;font-size:clamp(1.5rem,5vw,2.2rem);} header h2{margin:5px 0 0 0;font-size:1.2rem;color:#bbdefb;}
+        .container{max-width:850px;margin:20px auto;padding:15px;background:var(--card-bg);border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.08);}
+        .student-form{background:#e8eaf6;padding:20px;border-radius:8px;margin-bottom:30px;border:2px solid var(--primary);}
+        .student-form h3{margin-top:0;color:var(--primary);text-align:center;} .form-row{display:flex;gap:15px;flex-wrap:wrap;}
+        .form-group{flex:1;min-width:200px;} .form-group label{display:block;font-weight:bold;margin-bottom:5px;}
+        .form-group input,.form-group select{width:100%;padding:10px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;}
+        .instructions{background:#fff8e1;padding:15px;border-left:5px solid var(--secondary);margin-bottom:30px;font-size:0.95rem;}
+        .question-block{margin-bottom:25px;padding:15px;border:1px solid var(--border-color);border-radius:8px;background-color:#fafafa;}
+        .question-text{font-size:1.1rem;font-weight:500;margin-bottom:15px;}
+        input.ans-input{padding:8px 12px;font-size:1rem;border:2px solid #ccc;border-radius:4px;width:100%;max-width:220px;font-weight:bold;color:#0d47a1;}
+        .action-row{display:flex;align-items:center;gap:15px;margin-top:15px;flex-wrap:wrap;}
+        .check-btn{background-color:var(--secondary);color:white;border:none;padding:10px 20px;font-size:1rem;border-radius:5px;cursor:pointer;font-weight:bold;}
+        .check-btn:disabled{background-color:#e0e0e0;color:#9e9e9e;cursor:not-allowed;} .feedback{font-size:1.05rem;font-weight:bold;}
+        .correct{color:#2e7d32;} .incorrect{color:#c62828;}
+        .explanation{display:none;margin-top:15px;padding:15px;background-color:#e3f2fd;border-left:4px solid #1976d2;border-radius:4px;color:#0d47a1;}
+        .submit-section{text-align:center;margin-top:40px;padding-top:20px;border-top:2px dashed #ccc;}
+        #finalSubmitBtn{background-color:var(--primary);color:white;padding:15px 30px;font-size:1.2rem;border:none;border-radius:8px;cursor:pointer;font-weight:bold;width:100%;max-width:400px;}
+        #finalResult{display:none;background-color:#e8f5e9;border:2px solid #4caf50;padding:20px;border-radius:8px;margin-top:20px;} .score-display{font-size:2.5rem;font-weight:bold;color:#1b5e20;}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container"><img src="verchas-logo.webp" alt="Verchas Academy Logo"><h1>Verchas Academy, Ayodhya</h1></div>
+        <h2>Past Tenses - Part 2 (Questions 1-25)</h2>
+    </header>
+    <div class="container">
+        <div class="student-form">
+            <h3>Student Details</h3>
+            <div class="form-row">
+                <div class="form-group"><label>Full Name</label><input type="text" id="studentName" required></div>
+                <div class="form-group"><label>Batch</label><select id="studentBatch" required>
+                    <option value="" disabled selected>Select Batch...</option><option value="9th Foundation">9th Foundation</option><option value="10th Foundation">10th Foundation</option><option value="BSc. Nursing">BSc. Nursing</option>
+                </select></div>
+                <div class="form-group"><label>Mobile No.</label><input type="tel" id="studentMobile" pattern="[0-9]{10}" maxlength="10" required></div>
+            </div>
+        </div>
+        <div class="instructions"><strong>Instructions:</strong> Type the correct Past Tense form and click <strong>Check Answer</strong>.</div>
+        <div id="questionsContainer"></div>
+        <div class="submit-section">
+            <button id="finalSubmitBtn" onclick="submitExamData()">Submit Exam & Show Final Score</button>
+            <div id="finalResult"></div>
+        </div>
+    </div>
+    <script>
+        let currentScore = 0; let questionsAttempted = 0;
+        const expIndef = "Past Indefinite: कार्य बीते हुए समय में पूरा हो गया (yesterday, last night)। इसलिए Verb की 2nd form (V2) का प्रयोग होगा।";
+        const expCont = "Past Continuous: बीते हुए समय में कार्य चल रहा था। इसलिए was/were + V1+ing का प्रयोग होगा।";
+        const expPerf = "Past Perfect: बीते समय में कोई कार्य किसी अन्य कार्य से पहले ही पूरा हो चुका था। इसलिए had + V3 का प्रयोग होगा।";
+        const expPerfCont = "Past Perfect Continuous: बीते समय में कोई कार्य एक निश्चित समय (since/for) से चल रहा था। इसलिए had been + V1+ing का प्रयोग होगा।";
+
+        const quizData = [
+            { q: "I ________ (visit) my grandparents last weekend.", a: ["visited"], exp: expIndef },
+            { q: "He ________ (drive) very fast when the accident happened.", a: ["was driving"], exp: expCont },
+            { q: "The film ________ (start) before we bought the tickets.", a: ["had started"], exp: expPerf },
+            { q: "They ________ (talk) for an hour before the teacher arrived.", a: ["had been talking"], exp: expPerfCont },
+            { q: "We ________ (find) a lost puppy yesterday.", a: ["found"], exp: expIndef },
+            { q: "My mom ________ (cook) dinner when I reached home.", a: ["was cooking"], exp: expCont },
+            { q: "I ________ (complete) my assignment before Monday.", a: ["had completed"], exp: expPerf },
+            { q: "He ________ (live) in Delhi for ten years before moving to Mumbai.", a: ["had been living"], exp: expPerfCont },
+            { q: "She ________ (meet) her best friend last week.", a: ["met"], exp: expIndef },
+            { q: "I ________ (listen) to music at 8 PM yesterday.", a: ["was listening"], exp: expCont },
+            { q: "By the time I woke up, the sun ________ (rise).", a: ["had risen"], exp: expPerf },
+            { q: "The baby ________ (cry) for 30 minutes before his mother fed him.", a: ["had been crying"], exp: expPerfCont },
+            { q: "They ________ (go) to the market yesterday.", a: ["went"], exp: expIndef },
+            { q: "We ________ (laugh) at his jokes continuously.", a: ["were laughing"], exp: expCont },
+            { q: "She ________ (not / finish) her lunch before the bell rang.", a: ["had not finished", "hadn't finished"], exp: expPerf },
+            { q: "I ________ (read) that book for hours before falling asleep.", a: ["had been reading"], exp: expPerfCont },
+            { q: "He ________ (drink) a glass of milk last night.", a: ["drank"], exp: expIndef },
+            { q: "The boys ________ (swim) in the river yesterday evening.", a: ["were swimming"], exp: expCont },
+            { q: "I knew I ________ (meet) him somewhere before.", a: ["had met"], exp: expPerf },
+            { q: "They ________ (play) chess since afternoon before it got dark.", a: ["had been playing"], exp: expPerfCont },
+            { q: "She ________ (break) her favourite glass yesterday.", a: ["broke"], exp: expIndef },
+            { q: "The wind ________ (blow) strongly all night.", a: ["was blowing"], exp: expCont },
+            { q: "We ________ (already / reach) the station before the train left.", a: ["had already reached"], exp: expPerf },
+            { q: "She ________ (practice) the piano for hours before the concert.", a: ["had been practicing"], exp: expPerfCont },
+            { q: "I ________ (take) a bath early morning yesterday.", a: ["took"], exp: expIndef }
+        ];
+
+        const container = document.getElementById('questionsContainer');
+        quizData.forEach((item, index) => {
+            const block = document.createElement('div'); block.className = 'question-block'; const parts = item.q.split('________');
+            block.innerHTML = `<div class="question-text">${index + 1}. ${parts[0]} <input type="text" id="q${index}" class="ans-input" autocomplete="off" placeholder="your answer"> ${parts[1]}</div>
+                <div class="action-row"><button class="check-btn" id="btn${index}" onclick="checkAnswer(${index})">Check Answer</button><span class="feedback" id="feedback${index}"></span></div>
+                <div class="explanation" id="exp${index}"><strong>व्याख्या:</strong><br> ${item.exp}</div>`;
+            container.appendChild(block);
+        });
+
+        function checkAnswer(index) {
+            const item = quizData[index]; const inputElement = document.getElementById(`q${index}`); const feedbackElement = document.getElementById(`feedback${index}`); const btnElement = document.getElementById(`btn${index}`); const expElement = document.getElementById(`exp${index}`);
+            const userAnswer = inputElement.value.trim().toLowerCase().replace(/\s+/g, ' '); const isCorrect = item.a.some(ans => ans.toLowerCase() === userAnswer);
+            inputElement.disabled = true; btnElement.disabled = true; btnElement.textContent = "Checked"; questionsAttempted++;
+            if (isCorrect) { currentScore++; inputElement.style.borderColor = "#2e7d32"; inputElement.style.backgroundColor = "#e8f5e9"; inputElement.style.color = "#1b5e20"; feedbackElement.textContent = "✔ Correct!"; feedbackElement.className = "feedback correct"; } 
+            else { inputElement.style.borderColor = "#c62828"; inputElement.style.backgroundColor = "#ffebee"; inputElement.style.color = "#b71c1c"; feedbackElement.innerHTML = `✘ Incorrect. Correct: <strong>${item.a[0]}</strong>`; feedbackElement.className = "feedback incorrect"; }
+            expElement.style.display = "block";
+        }
+
+        function submitExamData() {
+            const name = document.getElementById('studentName').value.trim(); const batch = document.getElementById('studentBatch').value; const mobile = document.getElementById('studentMobile').value.trim();
+            if (!name || !batch || !mobile) { alert("Please fill in your Name, Batch, and Mobile Number."); return; }
+            if (!/^\d{10}$/.test(mobile)) { alert("Please enter a valid 10-digit mobile number."); return; }
+            if (questionsAttempted < 25) { alert(`Please attempt all questions before submitting. You have checked ${questionsAttempted} out of 25.`); return; }
+            const submitBtn = document.getElementById('finalSubmitBtn'); submitBtn.textContent = "Submitting Data..."; submitBtn.disabled = true;
+            
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxsOEpHG0OI4ktJfhFKEzqsKZNqLqXwuTlR-kMmtbBjCCsZVSMseNYVCBQSA222ANmt/exec';
+            
+            const formData = new FormData(); formData.append('Name', name); formData.append('Batch', batch); formData.append('Mobile', mobile); formData.append('Score', currentScore);
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData })
+                .then(() => {
+                    document.getElementById('finalResult').innerHTML = `<h2>Exam Completed!</h2><p>Name: ${name} | Batch: ${batch}</p><p>Your Final Score:</p><div class="score-display">${currentScore} / 25</div>`;
+                    document.getElementById('finalResult').style.display = "block"; submitBtn.style.display = "none";
+                }).catch(error => { alert("Error saving data."); submitBtn.textContent = "Submit Exam & Show Final Score"; submitBtn.disabled = false; });
+        }
+    </script>
+</body>
+</html>

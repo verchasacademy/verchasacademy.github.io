@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verchas Academy - English Tenses</title>
+    <style>
+        :root {
+            --primary: #1a237e; 
+            --secondary: #ff8f00; 
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --border-color: #e0e0e0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .logo-container img {
+            height: 90px; 
+        }
+        header h1 {
+            margin: 0;
+            font-size: clamp(1.5rem, 5vw, 2.2rem); 
+            letter-spacing: 1px;
+        }
+        header h2 {
+            margin: 5px 0 0 0;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: 400;
+            color: #bbdefb;
+        }
+        .container {
+            max-width: 850px;
+            margin: 20px auto;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            box-sizing: border-box; 
+        }
+        
+        /* Student Form Styles */
+        .student-form {
+            background: #e8eaf6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 2px solid var(--primary);
+        }
+        .student-form h3 {
+            margin-top: 0;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .instructions {
+            background: #fff8e1;
+            padding: 15px;
+            border-left: 5px solid var(--secondary);
+            margin-bottom: 30px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        .question-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            line-height: 1.8; 
+        }
+        input[type="text"].ans-input {
+            padding: 8px 12px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 220px; 
+            transition: border-color 0.3s;
+            font-weight: bold;
+            color: #0d47a1;
+            display: inline-block;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        input[type="text"].ans-input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        .action-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap; 
+        }
+        .check-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            width: auto;
+        }
+        .check-btn:hover { background-color: #ff6f00; }
+        .check-btn:disabled { background-color: #e0e0e0; color: #9e9e9e; cursor: not-allowed; }
+        
+        .feedback {
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+        .correct { color: #2e7d32; }
+        .incorrect { color: #c62828; }
+        
+        .explanation {
+            display: none;
+            margin-top: 15px;
+            padding: 12px 15px;
+            background-color: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: #0d47a1;
+        }
+
+        /* Final Submit Section */
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px dashed #ccc;
+        }
+        #finalSubmitBtn {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            width: 100%;
+            max-width: 400px;
+        }
+        #finalSubmitBtn:hover { background-color: #283593; }
+        #finalSubmitBtn:disabled { background-color: #9fa8da; cursor: not-allowed; }
+        
+        #finalResult {
+            display: none;
+            background-color: #e8f5e9;
+            border: 2px solid #4caf50;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        #finalResult h2 { margin-top: 0; color: #2e7d32; }
+        .score-display { font-size: 2.5rem; font-weight: bold; color: #1b5e20; }
+
+        @media (max-width: 600px) {
+            .check-btn { width: 100%; }
+            .action-row { flex-direction: column; align-items: stretch; text-align: center; }
+            .form-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="verchas-logo.webp" alt="Verchas Academy Logo" id="logo">
+            <h1>Verchas Academy, Ayodhya</h1>
+        </div>
+        <h2>Interactive English Tenses Worksheet: 9th & 10th Foundation</h2>
+    </header>
+
+    <div class="container">
+        
+        <!-- Student Details Form -->
+        <div class="student-form">
+            <h3>Student Details</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="studentName">Full Name</label>
+                    <input type="text" id="studentName" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentBatch">Batch</label>
+                    <select id="studentBatch" required>
+                        <option value="" disabled selected>Select Batch...</option>
+                        <option value="9th Foundation">9th Foundation</option>
+                        <option value="10th Foundation">10th Foundation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="studentMobile">Mobile No.</label>
+                    <input type="tel" id="studentMobile" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <strong>Instructions:</strong> Type the correct verb form in the blank space and click <strong>Check Answer</strong>. You must check all 50 questions before submitting your final score.
+        </div>
+
+        <div id="questionsContainer"></div>
+
+        <!-- Final Submit Section -->
+        <div class="submit-section">
+            <button id="finalSubmitBtn" onclick="submitExamData()">Submit Exam & Show Final Score</button>
+            <div id="finalResult"></div>
+        </div>
+    </div>
+
+    <script>
+        // Track Student Progress
+        let currentScore = 0;
+        let questionsAttempted = 0;
+
+        // Quiz Data - 50 Questions
+        const quizData = [
+            { q: "I think it ________ (rain) tomorrow based on those dark clouds.", a: ["will rain"], exp: "Future Indefinite ('will rain') is used for predictions about the future." },
+            { q: "What ________ (you / do) at 8 PM last night?", a: ["were you doing"], exp: "Past Continuous is used to ask about an action in progress at a precise time in the past." },
+            { q: "I ________ (already / finish) my homework, so I can go out now.", a: ["have already finished"], exp: "Present Perfect with 'already' shows an action completed recently." },
+            { q: "She ________ (study) English for three years by the time she graduates.", a: ["will have been studying"], exp: "Future Perfect Continuous describes an ongoing action continuing up to a future point." },
+            { q: "While we ________ (walk) in the park, it started to pour.", a: ["were walking"], exp: "Past Continuous sets the background scene for a longer ongoing action." },
+            { q: "Water ________ (boil) at 100 degrees Celsius.", a: ["boils"], exp: "Present Indefinite (Simple Present) is used for scientific facts." },
+            { q: "How long ________ (you / live) in that apartment before you moved out?", a: ["had you been living"], exp: "Past Perfect Continuous focuses on the duration of an ongoing action before another completed past action." },
+            { q: "How long ________ (you / learn) Spanish?", a: ["have you been learning"], exp: "Present Perfect Continuous asks about the duration of an action still continuing now." },
+            { q: "By next month, I ________ (save) enough money for a summer vacation.", a: ["will have saved"], exp: "Future Perfect is used for actions fully completed before a specific future deadline." },
+            { q: "I ________ (not / see) you at the graduation party on Friday.", a: ["did not see", "didn't see"], exp: "Past Indefinite is used for completed actions that happened at a specific, finished time." },
+            { q: "What ________ (she / do) at this exact time next year?", a: ["will she be doing"], exp: "Future Continuous describes an action in progress at a specific future time." },
+            { q: "The sun ________ (rise) in the east and sets in the west.", a: ["rises"], exp: "Present Indefinite (Simple Present) is used for universal laws." },
+            { q: "She realized she ________ (forget) her house keys on the kitchen counter.", a: ["had forgotten"], exp: "Past Perfect is used when one past action happened before another past action." },
+            { q: "They ________ (not / watch) TV at the moment; they are studying.", a: ["are not watching", "aren't watching"], exp: "Present Continuous is used for actions happening right now." },
+            { q: "I ________ (know) my best friend since we were in kindergarten.", a: ["have known"], exp: "Present Perfect is used because 'know' is a stative verb." },
+            { q: "I ________ (never / see) such a beautiful beach before I went to Hawaii.", a: ["had never seen"], exp: "Past Perfect emphasizes the experience did not happen before a specific past event." },
+            { q: "By 8 PM tonight, we ________ (drive) for six hours straight.", a: ["will have been driving"], exp: "Future Perfect Continuous emphasizes duration leading up to a specific future time." },
+            { q: "He ________ (buy) a brand-new car just yesterday.", a: ["bought"], exp: "Past Indefinite is used for single, completed past actions." },
+            { q: "________ (you / call) me as soon as you land?", a: ["will you call"], exp: "Future Indefinite is used to make promises or requests." },
+            { q: "It ________ (rain) since 8 AM, and the streets are flooded.", a: ["has been raining"], exp: "Present Perfect Continuous describes an action that started in the past and is still visibly happening." },
+            { q: "They ________ (work) on this massive project all week.", a: ["have been working"], exp: "Present Perfect Continuous is perfect for actions happening over a recent period up to now." },
+            { q: "We ________ (not / complete) the renovations by the deadline.", a: ["will not have completed", "won't have completed"], exp: "Future Perfect is used for an action that will not be finished before a future deadline." },
+            { q: "Look! The kids ________ (play) football in the garden right now.", a: ["are playing"], exp: "Present Continuous is used for actions happening exactly at the time of speaking." },
+            { q: "They ________ (wait) for over an hour before the bus finally arrived.", a: ["had been waiting"], exp: "Past Perfect Continuous highlights the length of time an action was ongoing before another past action." },
+            { q: "If you need a ride tomorrow morning, I ________ (be) there for you.", a: ["will be"], exp: "Future Indefinite is used for an offer of help." },
+            { q: "I ________ (not / like) spicy food; it upsets my stomach.", a: ["do not like", "don't like"], exp: "Present Indefinite is used for permanent personal preferences." },
+            { q: "She ________ (practice) the piano all afternoon before the evening concert.", a: ["had been practicing"], exp: "Past Perfect Continuous shows an action ongoing for a period before a past event." },
+            { q: "This time tomorrow, I ________ (fly) to London for my business trip.", a: ["will be flying"], exp: "Future Continuous is used for planned actions in progress at a specific future time." },
+            { q: "When ________ (the last train / leave) the station?", a: ["did the last train leave"], exp: "Past Indefinite is used to ask questions about completed past events." },
+            { q: "She usually ________ (go) to the gym in the morning before work.", a: ["goes"], exp: "Present Indefinite is used for habits and routines." },
+            { q: "________ (they / leave) the office by the time we get there?", a: ["will they have left"], exp: "Future Perfect asks if an action will be completed before another future action." },
+            { q: "I was exhausted last night because I ________ (run) for ten miles.", a: ["had been running"], exp: "Past Perfect Continuous provides the ongoing cause for a past state/feeling." },
+            { q: "Please be quiet, the baby ________ (sleep) in the next room.", a: ["is sleeping"], exp: "Present Continuous describes an action happening at the very moment of speaking." },
+            { q: "I ________ (cook) dinner when the telephone suddenly rang.", a: ["was cooking"], exp: "Past Continuous describes the longer background action interrupted by a shorter action." },
+            { q: "The mechanic ________ (finish) fixing the car by 5 PM today.", a: ["will have finished"], exp: "Future Perfect is used because the action will be completely done before the deadline." },
+            { q: "They ________ (wait) for us at the station when our train arrives.", a: ["will be waiting"], exp: "Future Continuous describes an action that will already be in progress when another event happens." },
+            { q: "She ________ (visit) Paris three times in her life.", a: ["has visited"], exp: "Present Perfect is used for life experiences when the exact time is not mentioned." },
+            { q: "How long ________ (you / wait) when the stadium doors finally open?", a: ["will you have been waiting"], exp: "Future Perfect Continuous asks about accumulated duration leading right up to a future event." },
+            { q: "They ________ (not / pay) attention when the professor explained the formula.", a: ["were not paying", "weren't paying"], exp: "Past Continuous shows an action that was actively not happening during another past event." },
+            { q: "By the time we arrived at the cinema, the movie ________ (start).", a: ["had started"], exp: "Past Perfect is used for the older of two past actions." },
+            { q: "We ________ (never / eat) authentic Japanese sushi before today.", a: ["have never eaten"], exp: "Present Perfect is used for experiences from the past up to the present moment." },
+            { q: "We ________ (visit) our grandparents in the countryside last weekend.", a: ["visited"], exp: "Past Indefinite is used because the action was completed at a specific stated time." },
+            { q: "By next year, I ________ (work) at this company for exactly five years.", a: ["will have been working"], exp: "Future Perfect Continuous emphasizes continuous duration leading up to a point in the future." },
+            { q: "I ________ (read) a fascinating science fiction book these days.", a: ["am reading"], exp: "Present Continuous can be used for temporary actions happening around the current period." },
+            { q: "Don't worry, I ________ (help) you carry those heavy bags.", a: ["will help"], exp: "Future Indefinite is used to make a spontaneous decision or offer." },
+            { q: "After he ________ (finish) painting the room, he went straight to bed.", a: ["had finished"], exp: "Past Perfect emphasizes the first action was completely done before the second happened." },
+            { q: "Please don't call at 9 PM; I ________ (have) dinner with my family.", a: ["will be having"], exp: "Future Continuous describes an ongoing action that shouldn't be interrupted." },
+            { q: "Right now, he is reading a book, but yesterday he ________ (watch) a documentary.", a: ["watched"], exp: "Past Indefinite contrasts a present ongoing action with a simple completed action from the past." },
+            { q: "They ________ (not / attend) the annual board meeting next week.", a: ["will not attend", "won't attend"], exp: "Future Indefinite states a factual plan or prediction about a singular future event." },
+            { q: "________ (the package / arrive) in the mail yet?", a: ["has the package arrived"], exp: "Present Perfect is often used with 'yet' to ask if an expected action has happened up to now." }
+        ];
+
+        const container = document.getElementById('questionsContainer');
+        
+        // Render Questions
+        quizData.forEach((item, index) => {
+            const block = document.createElement('div');
+            block.className = 'question-block';
+            
+            const parts = item.q.split('________');
+            
+            block.innerHTML = `
+                <div class="question-text">${index + 1}. ${parts[0]} <input type="text" id="q${index}" class="ans-input" autocomplete="off" placeholder="your answer"> ${parts[1]}</div>
+                <div class="action-row">
+                    <button class="check-btn" id="btn${index}" onclick="checkAnswer(${index})">Check Answer</button>
+                    <span class="feedback" id="feedback${index}"></span>
+                </div>
+                <div class="explanation" id="exp${index}">
+                    <strong>Explanation:</strong> ${item.exp}
+                </div>
+            `;
+            container.appendChild(block);
+        });
+
+        // Check Answer Logic
+        function checkAnswer(index) {
+            const item = quizData[index];
+            const inputElement = document.getElementById(`q${index}`);
+            const feedbackElement = document.getElementById(`feedback${index}`);
+            const btnElement = document.getElementById(`btn${index}`);
+            const expElement = document.getElementById(`exp${index}`);
+            
+            const userAnswer = inputElement.value.trim().toLowerCase().replace(/\s+/g, ' ');
+            const isCorrect = item.a.some(ans => ans.toLowerCase() === userAnswer);
+
+            inputElement.disabled = true;
+            btnElement.disabled = true;
+            btnElement.textContent = "Checked";
+
+            // Track Stats
+            questionsAttempted++;
+            if (isCorrect) {
+                currentScore++;
+                inputElement.style.borderColor = "#2e7d32";
+                inputElement.style.backgroundColor = "#e8f5e9";
+                inputElement.style.color = "#1b5e20";
+                feedbackElement.textContent = "✔ Correct!";
+                feedbackElement.className = "feedback correct";
+            } else {
+                inputElement.style.borderColor = "#c62828";
+                inputElement.style.backgroundColor = "#ffebee";
+                inputElement.style.color = "#b71c1c";
+                feedbackElement.innerHTML = `✘ Incorrect. Correct answer: <strong>${item.a[0]}</strong>`;
+                feedbackElement.className = "feedback incorrect";
+            }
+
+            expElement.style.display = "block";
+        }
+
+        // Final Submit and Send to Google Sheets
+        function submitExamData() {
+            const name = document.getElementById('studentName').value.trim();
+            const batch = document.getElementById('studentBatch').value;
+            const mobile = document.getElementById('studentMobile').value.trim();
+
+            // 1. Validation Checks
+            if (!name || !batch || !mobile) {
+                alert("Please fill in your Name, Batch, and Mobile Number at the top of the page before submitting.");
+                return;
+            }
+            if (!/^\d{10}$/.test(mobile)) {
+                alert("Please enter a valid 10-digit mobile number.");
+                return;
+            }
+            if (questionsAttempted < quizData.length) {
+                alert(`Please attempt all questions before submitting. You have checked ${questionsAttempted} out of 50.`);
+                return;
+            }
+
+            // 2. Prepare Submit Button
+            const submitBtn = document.getElementById('finalSubmitBtn');
+            submitBtn.textContent = "Submitting Data... Please Wait";
+            submitBtn.disabled = true;
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxsOEpHG0OI4ktJfhFKEzqsKZNqLqXwuTlR-kMmtbBjCCsZVSMseNYVCBQSA222ANmt/exec';
+            
+            const formData = new FormData();
+            formData.append('Name', name);
+            formData.append('Batch', batch);
+            formData.append('Mobile', mobile);
+            formData.append('Score', currentScore);
+
+            // 3. Send Data to Google Sheets
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData })
+                .then(() => {
+                    // Show Final Result
+                    document.getElementById('finalResult').innerHTML = `
+                        <h2>Exam Completed Successfully!</h2>
+                        <p>Name: ${name} | Batch: ${batch}</p>
+                        <p>Your Final Score:</p>
+                        <div class="score-display">${currentScore} / 50</div>
+                        <p><em>Your score has been submitted to Verchas Academy.</em></p>
+                    `;
+                    document.getElementById('finalResult').style.display = "block";
+                    submitBtn.style.display = "none";
+                })
+                .catch(error => {
+                    alert("An error occurred while saving your data. Please check your internet connection and try again.");
+                    submitBtn.textContent = "Submit Exam & Show Final Score";
+                    submitBtn.disabled = false;
+                });
+        }
+    </script>
+</body>
+</html>

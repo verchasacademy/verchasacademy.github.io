@@ -214,15 +214,16 @@
 
   <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbxffhVZm_nctVZJ09YlUx3FwQlq7eozkOJmr7wGFWrA5c1ZHawX85dUSMMiQJboZ00AFg/exec";
-const TESTS = {
-  misc: "Miscellaneous Result",
-  minor1: "1st Minor Test Result",
-  minor2: "2nd Minor Test Result",
-  minor3: "3rd Minor Test Result"
-};
+
 const params = new URLSearchParams(window.location.search);
-const selectedTest = TESTS[params.get("test")] ? params.get("test") : "misc";
-document.getElementById("pageTitle").textContent = TESTS[selectedTest];
+
+// 1. Grab the exact sheet name directly from the URL (defaults to "Misc")
+const sheetName = params.get("sheet") || "Misc";
+
+// 2. Automatically generate the Page Title based on the sheet name
+const displayTitle = sheetName === "Misc" ? "Miscellaneous Result" : sheetName + " Result";
+document.getElementById("pageTitle").textContent = displayTitle;
+
 const returnPage = params.get("lang") === "hi" ? "hindi.html" : "index.html";
 document.getElementById("homeBtn").href = returnPage;
 
@@ -237,10 +238,13 @@ function getResult() {
     return;
   }
 
-  // 🔄 Show loading spinner
+  // Show loading spinner
   resultDiv.innerHTML = "<div class='loader'></div><div style='color: #004aad;'>Fetching result…</div>";
 
-  fetch(API_URL + "?test=" + encodeURIComponent(selectedTest) + "&mobile=" + encodeURIComponent(mobile))
+  // 3. Send the exact sheetName straight to your future-proof Google Script
+  const fetchUrl = API_URL + "?sheetName=" + encodeURIComponent(sheetName) + "&mobile=" + encodeURIComponent(mobile);
+
+  fetch(fetchUrl)
     .then(res => res.json())
     .then(data => {
       if (data.error) {
@@ -259,7 +263,6 @@ function getResult() {
           
           let subjects = subjectString.split(',');
           subjects.forEach(sub => {
-            // Non-greedy matcher supporting decimals and negative signs
             let match = sub.trim().match(/^(.*?)\s*-\s*(-?[\d.]+\/[\d.]+)$/);
             
             if (match) {
@@ -270,7 +273,6 @@ function getResult() {
                               <td>${marks}</td>
                             </tr>`;
             } else {
-              // Fallback just in case format is entirely unrecognizable 
               let subParts = sub.trim().split('-');
               if (subParts.length >= 2) {
                 let marks = subParts.pop().trim();

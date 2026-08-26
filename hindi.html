@@ -341,10 +341,10 @@ footer p{margin:5px 0}
 }
 .exam-countdown{
   display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
+  grid-template-columns:repeat(4, minmax(0, 1fr));
   align-items:center;
   gap:18px;
-  max-width:1050px;
+  max-width:1200px; /* Increased max-width */
   margin:0 auto;
 }
 .countdown-box{
@@ -363,6 +363,9 @@ footer p{margin:5px 0}
 }
 .countdown-box:nth-child(3){
   animation-delay:0.4s;
+}
+.countdown-box:nth-child(4){
+  animation-delay:0.6s;
 }
 .countdown-box::after{
   content:"";
@@ -2548,6 +2551,51 @@ white-space:normal;
     display: none !important;
   }
 }
+/* ===== COUNTDOWN MOBILE DROPDOWN ===== */
+.toggle-icon {
+  display: none; /* Hidden on Desktop */
+}
+.countdown-content {
+  display: block; /* Visible on Desktop */
+}
+
+@media (max-width: 900px) {
+  .exam-countdown-section {
+    cursor: pointer;
+    padding: 16px 12px;
+    transition: all 0.3s ease;
+  }
+  .toggle-icon {
+    display: inline-block;
+    font-size: 0.6em;
+    margin-left: 10px;
+    color: #d66b00;
+    transition: transform 0.3s ease;
+    vertical-align: middle;
+  }
+  .countdown-content {
+    display: none; /* Hidden by default on Mobile */
+    margin-top: 15px;
+  }
+  .exam-countdown-section.expanded .countdown-content {
+    display: block;
+    animation: fadeDown 0.4s ease forwards;
+  }
+  .exam-countdown-section.expanded .toggle-icon {
+    transform: rotate(180deg); /* Flips the arrow upwards */
+  }
+  .countdown-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -2629,19 +2677,19 @@ white-space:normal;
 <div class="news-ticker-header">
   <div class="ticker-track">
     <span>
-🔴 NEET एवं IIT-JEE 2027 के नए बैच 20 जुलाई 2026 से प्रारंभ 
-🔴 शुल्क में रियायतें 30 जुलाई 2026 तक मान्य 
+🔴 NEET 2027, IIT-JEE 2027 एवं BSc Nursing 2027 के नए बैच प्रारंभ 
+🔴 शुल्क में रियायतें 15 सितंबर 2026 तक मान्य 
 🔴 प्रवेश-पूर्व छात्रवृत्ति परीक्षा : अधिकतम 70% तक शुल्क रियायत 
 🔴 सुरक्षा कर्मियों के लिए विशेष शुल्क रियायत
-🔴 NEET, IIT-JEE, CUET, B.Sc Nursing एवं Foundation (9वीं-12वीं) हेतु प्रवेश प्रारम्भ 
+🔴 NEET, IIT-JEE, BSc Nursing एवं Foundation (9वीं-12वीं) हेतु प्रवेश जारी है
 🔴 वर्चस अकेडमी में सभी श्रेणियों के लिए निःशुल्क करियर मार्गदर्शन
     </span>
 <span>
-🔴 NEET एवं IIT-JEE 2027 के नए बैच 20 जुलाई 2026 से प्रारंभ 
-🔴 शुल्क में रियायतें 30 जुलाई 2026 तक मान्य 
+🔴 NEET, IIT-JEE 2027 एवं BSc Nursing के नए बैच प्रारंभ 
+🔴 शुल्क में रियायतें 15 सितंबर 2026 तक मान्य 
 🔴 प्रवेश-पूर्व छात्रवृत्ति परीक्षा : अधिकतम 70% तक शुल्क रियायत 
 🔴 सुरक्षा कर्मियों के लिए विशेष शुल्क रियायत
-🔴 NEET, IIT-JEE, CUET, B.Sc Nursing एवं Foundation (9वीं-12वीं) हेतु प्रवेश प्रारम्भ 
+🔴 NEET, IIT-JEE, BSc Nursing एवं Foundation (9वीं-12वीं) हेतु प्रवेश जारी है
 🔴 वर्चस अकेडमी में सभी श्रेणियों के लिए निःशुल्क करियर मार्गदर्शन
     </span>
   </div>
@@ -2714,27 +2762,7 @@ white-space:normal;
 </div>
 
 <div class="watermark-section">
-<section class="exam-countdown-section fade-in" aria-label="Exam countdown">
-  <h2 class="countdown-heading">Your Dream Countdown</h2>
-  <p class="countdown-subtitle">सपनों को हकीकत में बदलने का समय शुरू हो चुका है।</p>
-  <div class="exam-countdown">
-    <div class="countdown-box">
-      <span class="countdown-label">Days left: NEET (UG)</span>
-      <span class="countdown-days" data-countdown="neet">--</span>
-      <span class="countdown-text">मई का पहला रविवार</span>
-    </div>
-    <div class="countdown-box">
-      <span class="countdown-label">Days left: JEE Mains 1</span>
-      <span class="countdown-days" data-countdown="jee1">--</span>
-      <span class="countdown-text">जनवरी का पहला रविवार</span>
-    </div>
-    <div class="countdown-box">
-      <span class="countdown-label">Days left: JEE Mains 2</span>
-      <span class="countdown-days" data-countdown="jee2">--</span>
-      <span class="countdown-text">अप्रैल का पहला रविवार</span>
-    </div>
-  </div>
-</section>
+
 <section id="about" class="fade-in">
 <div class="section-center">
 <h2>हमारे बारे में</h2>
@@ -2808,6 +2836,37 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
   </div>
 </div>
 </div></section>
+
+<section class="exam-countdown-section fade-in" id="countdownSection" aria-label="Exam countdown">
+  <div class="countdown-header-mobile" id="countdownToggle">
+    <h2 class="countdown-heading">Your Dream Countdown <span class="toggle-icon">▼</span></h2>
+    <p class="countdown-subtitle">सपनों को हकीकत में बदलने का समय शुरू हो चुका है।</p>
+  </div>
+  <div class="countdown-content" id="countdownContent">
+    <div class="exam-countdown">
+    <div class="countdown-box">
+      <span class="countdown-label">Days left: NEET (UG)</span>
+      <span class="countdown-days" data-countdown="neet">--</span>
+      <span class="countdown-text">मई 2027</span>
+    </div>
+    <div class="countdown-box">
+      <span class="countdown-label">Days left: JEE Mains 1</span>
+      <span class="countdown-days" data-countdown="jee1">--</span>
+      <span class="countdown-text">जनवरी 2027</span>
+    </div>
+    <div class="countdown-box">
+      <span class="countdown-label">Days left: JEE Mains 2</span>
+      <span class="countdown-days" data-countdown="jee2">--</span>
+      <span class="countdown-text">अप्रैल 2027</span>
+    </div>
+   <div class="countdown-box">
+      <span class="countdown-label">BSc. Nursing</span>
+      <span class="countdown-days" data-countdown="nursing">--</span>
+      <span class="countdown-text">मई-जून 2027</span>
+    </div> <!-- Closes individual box -->
+  </div> <!-- Closes exam-countdown grid -->
+  </div> <!-- NEW: Closes countdown-content -->
+</section>
 
 <section class="features fade-in">
   <div class="section-center">
@@ -3233,7 +3292,8 @@ document.addEventListener("DOMContentLoaded", function(){
   const exams = {
     neet: nextExamDate(4),
     jee1: nextExamDate(0),
-    jee2: nextExamDate(3)
+    jee2: nextExamDate(3),
+    nursing: nextExamDate(5)
   };
 
   Object.keys(exams).forEach(function(key){
@@ -3305,6 +3365,32 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-</body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const countdownToggle = document.getElementById("countdownToggle");
+  const countdownSection = document.getElementById("countdownSection");
+  
+  if(countdownToggle && countdownSection) {
+    
+    // Toggle when clicking the header/subtitle
+    countdownToggle.addEventListener("click", function(event) {
+      if(window.innerWidth <= 900) {
+        countdownSection.classList.toggle("expanded");
+      }
+    });
 
+    // Close when clicking anywhere outside the box
+    document.addEventListener("click", function(event) {
+      if (window.innerWidth <= 900) {
+        // Check if the click happened outside the countdownSection
+        if (!countdownSection.contains(event.target)) {
+          countdownSection.classList.remove("expanded");
+        }
+      }
+    });
+
+  }
+});
+</script>
+</body>
 </html>

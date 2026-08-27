@@ -1,35 +1,41 @@
 # ===================================================
-# AI Crawler Directives for Verchas Academy Ayodhya
+# Verchas Academy, Ayodhya
+# Search Engine & AI Crawler Directives
 # ===================================================
 
-# Global defaults for standard web engines
+# Allow all standard search engines
 User-agent: *
 Allow: /
 
-# Explicitly invite AI search & training crawlers
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
+# OpenAI Search
+# Helps Verchas Academy content appear in ChatGPT Search
 User-agent: OAI-SearchBot
 Allow: /
 
+# OpenAI crawler for ChatGPT ad landing-page validation
+User-agent: OAI-AdsBot
+Allow: /
+
+# OpenAI user-triggered crawler
+User-agent: ChatGPT-User
+Allow: /
+
+# Google AI / Gemini
+# Does not control ordinary Google Search crawling
 User-agent: Google-Extended
 Allow: /
 
+# Anthropic / Claude
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Claude-Web
-Allow: /
-
+# Perplexity
 User-agent: PerplexityBot
 Allow: /
 
+# Apple AI-related crawler
 User-agent: Applebot-Extended
 Allow: /
 
-# Point AI directly to your site architecture
+# XML Sitemap
 Sitemap: https://verchasacademy.in/sitemap.xml

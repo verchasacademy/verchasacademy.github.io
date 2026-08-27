@@ -2596,6 +2596,128 @@ white-space:normal;
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* ===== VERCHAS EDUCATIONAL INITIATIVES ===== */
+.educational-initiatives {
+  padding: 40px 20px;
+  background: #f0f0f0;
+}
+
+.initiatives-intro {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 35px;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.initiatives-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.initiative-card {
+  color: #ffffff;
+  padding: 35px 25px;
+  border-radius: 14px;
+  flex: 1;
+  min-width: 300px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradients for differentiation */
+.career-card {
+  background: linear-gradient(135deg, #4facfe, #00c6fb);
+}
+
+.study-card {
+  background: linear-gradient(135deg, #004aad, #3282b8); /* Matches your brand blue */
+}
+
+.initiative-card h3 {
+  color: #ffcc00;
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.initiative-card p {
+  text-align: center;
+  font-size: 1.05em;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Container to hold both buttons side by side */
+.initiative-btn-group {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: nowrap; /* 🔥 This forces them to stay side by side */
+  margin-top: auto; 
+  width: 100%;
+}
+
+/* Updated button class */
+.initiative-btn {
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  background: #ffcc00;
+  color: #003366;
+  padding: 10px 18px; 
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap; /* 🔥 Keeps the text from breaking into two lines */
+}
+
+.initiative-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  background: #ffffff;
+}
+
+/* Mobile tweak so they fit perfectly side by side on phone screens */
+@media (max-width: 600px) {
+  .initiative-btn-group {
+    gap: 6px;
+  }
+  .initiative-btn {
+    padding: 8px 10px;
+    font-size: 0.75em;
+  }
+}
+
+/* Background overlay effect */
+.initiative-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
 </style>
 <script type="application/ld+json">
 {
@@ -3090,28 +3212,41 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
     </p>
   </div>
 </section>
-<section class="career-banner fade-in">
+<section class="educational-initiatives fade-in">
+  <div class="section-center">
+    <h2>वर्चस अकेडमी की शैक्षिक पहल: शिक्षा सभी के लिए</h2>
+    
+    <p class="initiatives-intro">
+      वर्चस अकेडमी शिक्षा के क्षेत्र में जनसेवा के लिए प्रतिबद्ध है। हम प्रत्येक विद्यार्थी को सशक्त बनाने के उद्देश्य से ये सभी पहल पूरी तरह निःशुल्क प्रदान करते हैं, चाहे वह हमारे संस्थान में अध्ययनरत हो या नहीं।
+    </p>
 
-<h2>करियर मार्गदर्शन केंद्र</h2>
+    <div class="initiatives-flex">
+      
+      <!-- करियर मार्गदर्शन केंद्र -->
+      <div class="initiative-card career-card">
+        <h3>करियर मार्गदर्शन केंद्र</h3>
+        <p>क्या आप कक्षा 10, कक्षा 12 या स्नातक के बाद अपने करियर को लेकर असमंजस में हैं? चिकित्सा, इंजीनियरिंग, रक्षा, सिविल सेवा एवं उभरते करियर अवसरों के लिए निःशुल्क विशेषज्ञ परामर्श प्राप्त करें।</p>
+        
+        <div class="initiative-btn-group">
+          <a href="https://wa.me/918756591001?text=Hi%20Sir,%20I%20Need%20Free%20Career%20Counseling%20from%20Verchas%20Academy,%20Ayodhya" target="_blank" rel="noopener" class="initiative-btn">परामर्श के लिए संपर्क करें</a>
+          <a href="career-guidance-cell.html" class="initiative-btn">निःशुल्क परामर्श बुक करें</a>
+        </div>
+      </div>
 
-<p class="career-tagline">
-"Your Pathway to the Right Career"
-</p>
+      <!-- शिक्षा केंद्र -->
+      <div class="initiative-card study-card">
+        <h3>शिक्षा केंद्र</h3>
+        <p>सभी के लिए खुला ऑनलाइन शिक्षण मंच, जहाँ आपको कक्षा 9वीं से 12वीं, NEET, IIT-JEE एवं BSc. Nursing के उच्च स्तरीय-अध्यायवार नोट्स, निःशुल्क मॉक टेस्ट एवं ऑनलाइन शैक्षिक वीडियो उपलब्ध कराए जाते हैं, ताकि आप प्रतियोगी परीक्षाओं में सफलता प्राप्त कर सकें।</p>
+        <a href="https://verchasacademy.in/studyzone/" class="initiative-btn">शिक्षा केंद्र पर जाएँ</a>
+      </div>
 
-<p>
-कक्षा 10, कक्षा 12 या स्नातक के बाद सही करियर चुनने को लेकर असमंजस में हैं?
-चिकित्सा, इंजीनियरिंग, वाणिज्य, कला, विधि, रक्षा सेवाएँ, सिविल सेवाएँ, अनुसंधान, उद्यमिता तथा उभरते हुए करियर विकल्पों के लिए निःशुल्क विशेषज्ञ मार्गदर्शन प्राप्त करें।
-</p>
-
-<a href="career-guidance-cell-hindi.html" class="career-banner-btn">
-निःशुल्क करियर परामर्श बुक करें
-</a>
-
+    </div>
+  </div>
 </section>
 
 <section class="testimonial-section fade-in">
 <div class="section-center">
-<div class="testimonial-intro"><div class="testimonial-stars-top">★★★★★ WHAT OUR STUDENTS SAY ★★★★★</div><div class="testimonial-main-title">STUDENT TESTIMONIALS</div><div class="testimonial-divider">❝</div><p class="testimonial-subtitle" style="text-align:center;font-weight:600;">Real reviews from our students on <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></p></div>
+<div class="testimonial-intro"><div class="testimonial-main-title">विद्यार्थियों की प्रतिक्रियाएँ</div><div class="testimonial-divider">❝</div><p class="testimonial-subtitle" style="text-align:center;font-weight:700;"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e पर हमारे विद्यार्थियों की वास्तविक समीक्षाएँ </span></div>
 <div class="testimonial-slider"><div class="testimonial-track">
 
 <!-- ***** STUDENT TESTIMONIALS STARTS HERE ***** -->

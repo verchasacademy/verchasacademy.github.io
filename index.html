@@ -2692,6 +2692,128 @@ white-space:normal;
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* ===== VERCHAS EDUCATIONAL INITIATIVES ===== */
+.educational-initiatives {
+  padding: 40px 20px;
+  background: #f0f0f0;
+}
+
+.initiatives-intro {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 35px;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.initiatives-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.initiative-card {
+  color: #ffffff;
+  padding: 35px 25px;
+  border-radius: 14px;
+  flex: 1;
+  min-width: 300px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradients for differentiation */
+.career-card {
+  background: linear-gradient(135deg, #4facfe, #00c6fb);
+}
+
+.study-card {
+  background: linear-gradient(135deg, #004aad, #3282b8); /* Matches your brand blue */
+}
+
+.initiative-card h3 {
+  color: #ffcc00;
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.initiative-card p {
+  text-align: center;
+  font-size: 1.05em;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Container to hold both buttons side by side */
+.initiative-btn-group {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: nowrap; /* 🔥 This forces them to stay side by side */
+  margin-top: auto; 
+  width: 100%;
+}
+
+/* Updated button class */
+.initiative-btn {
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  background: #ffcc00;
+  color: #003366;
+  padding: 10px 18px; 
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap; /* 🔥 Keeps the text from breaking into two lines */
+}
+
+.initiative-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  background: #ffffff;
+}
+
+/* Mobile tweak so they fit perfectly side by side on phone screens */
+@media (max-width: 600px) {
+  .initiative-btn-group {
+    gap: 6px;
+  }
+  .initiative-btn {
+    padding: 8px 10px;
+    font-size: 0.75em;
+  }
+}
+
+/* Background overlay effect */
+.initiative-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
 </style>
 <script type="application/ld+json">
 {
@@ -3166,22 +3288,36 @@ Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS A
     </p>
   </div>
 </section>
-<section class="career-banner fade-in">
+<section class="educational-initiatives fade-in">
+  <div class="section-center">
+    <h2>EDUCATIONAL INITIATIVE OF VERCHAS ACADEMY: EDUCATION FOR ALL</h2>
+    
+    <p class="initiatives-intro">
+      Verchas Academy is committed to public service in education. We offer these completely free initiatives to empower every student, regardless of whether they are enrolled with us.
+    </p>
 
-<h2>Career Guidance Cell</h2>
-<p class="career-tagline">
-"Your Pathway to the Right Career"
-</p>
+    <div class="initiatives-flex">
+      
+      <!-- Career Guidance Cell -->
+      <div class="initiative-card career-card">
+        <h3>Career Guidance Cell</h3>
+        <p>Confused about your path after Class 10, Class 12, or Graduation? Get free, expert counseling for Medical, Engineering, Defence, Civil Services, and emerging career opportunities.</p>
+        
+        <div class="initiative-btn-group">
+          <a href="https://wa.me/918756591001?text=Hi%20Sir,%20I%20Need%20Free%20Career%20Counseling%20from%20Verchas%20Academy,%20Ayodhya." target="_blank" rel="noopener" class="initiative-btn">Connect With Counseller</a>
+          <a href="career-guidance-cell.html" class="initiative-btn">Book Free Counseling</a>
+        </div>
+      </div>
 
-<p>
-Confused about choosing the right career after Class 10, Class 12 or Graduation ?
-Get free expert guidance for Medical, Engineering, Commerce, Arts, Law, Defence Services, Civil Services, Research, Entrepreneurship and emerging career opportunities.
-</p>
+      <!-- Study Zone -->
+      <div class="initiative-card study-card">
+        <h3>Study Zone</h3>
+        <p>An open-for-all online learning platform providing free mock tests, study materials, and premium academic resources to help you ace your competitive exams.</p>
+        <a href="https://verchasacademy.in/studyzone/" class="initiative-btn">Access Study Zone</a>
+      </div>
 
-<a href="career-guidance-cell.html" class="career-banner-btn">
-Book Free Career Counseling
-</a>
-
+    </div>
+  </div>
 </section>
 
 <section class="testimonial-section fade-in">

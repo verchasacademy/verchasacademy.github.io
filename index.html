@@ -2814,6 +2814,23 @@ white-space:normal;
   background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
   pointer-events: none;
 }
+/* Hide the nav result button on desktop by default */
+.mobile-nav-result {
+  display: none !important;
+}
+
+/* Mobile specific rules for Results button */
+@media (max-width: 768px) {
+  /* Show the result dropdown inside the nav bar */
+  .mobile-nav-result {
+    display: inline-block !important; 
+  }
+  
+  /* Hide the floating result dropdown to prevent duplicates */
+  .floating-result-dropdown {
+    display: none !important;
+  }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -2912,7 +2929,18 @@ white-space:normal;
     <a href="#courses" class="cta-animate">Our Courses</a>
     <a href="#founders" class="cta-animate">Know the Founders</a>
     <a href="#hods" class="cta-animate">Our Educators</a>
-	<a href="#contact" class="cta-animate">Contact Us</a>
+    <a href="#contact" class="cta-animate">Contact Us</a>
+    <div class="result-dropdown mobile-nav-result">
+  <button type="button" class="cta-animate result-toggle">Results</button>
+  <div class="result-menu">
+    <a href="result.html?sheet=Misc">Miscellaneous</a>
+    <a href="result.html?sheet=1st Minor">1st Minor Test</a>
+    <a href="result.html?sheet=2nd Minor">2nd Minor Test</a>
+    <a href="result.html?sheet=3rd Minor">3rd Minor Test</a>
+    <a href="result.html?sheet=4th Minor">4th Minor Test</a>
+    <a href="result.html?sheet=5th Minor">5th Minor Test</a>
+  </div>
+</div>
     <a href="career-guidance-cell.html" class="nav-btn career-btn">
   🎯Career Guidance</a>
     <a href="faq.html" class="cta-animate">FAQ</a>
@@ -3443,6 +3471,7 @@ Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS A
 </a>
 <!-- Floating Call Button -->
 <a href="tel:+918347658985"
+
    class="floating-contact floating-call"
    aria-label="Call Verchas Academy"
    title="Call Now">
@@ -3470,6 +3499,7 @@ Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS A
   <a href="result.html?sheet=2nd Minor">2nd Minor Test</a>
   <a href="result.html?sheet=3rd Minor">3rd Minor Test</a>
   <a href="result.html?sheet=4th Minor">4th Minor Test</a>
+  <a href="result.html?sheet=5th Minor">5th Minor Test</a>
 </div>
 </div>
 

@@ -3645,5 +3645,48 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelector('.nav-links');
+  if (!navLinks) return;
+
+  let isDragging = false;
+  let startX;
+  let dragOffset = 0;
+
+  // 1. Touch Start (Pause animation & record starting point)
+  navLinks.addEventListener('touchstart', (e) => {
+    if (window.innerWidth > 768) return; // Only triggers on mobile
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    
+    // Pause your existing navMarquee CSS animation
+    navLinks.style.animationPlayState = 'paused';
+  }, { passive: true });
+
+  // 2. Touch Move (Drag the menu manually)
+  navLinks.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+    
+    // Apply offset via margin so it doesn't break the CSS transform animation
+    navLinks.style.marginLeft = `${dragOffset + diff}px`;
+  }, { passive: true });
+
+  // 3. Touch End (Save position & resume animation)
+  navLinks.addEventListener('touchend', (e) => {
+    if (!isDragging || window.innerWidth > 768) return;
+    isDragging = false;
+    
+    // Save the new offset so the next drag starts from here
+    const endX = e.changedTouches[0].clientX;
+    dragOffset += (endX - startX);
+    
+    // Resume the marquee animation seamlessly
+    navLinks.style.animationPlayState = 'running';
+  });
+});
+</script>
 </body>
 </html>

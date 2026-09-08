@@ -38,11 +38,11 @@ body{
   font-family:'Segoe UI', Arial, sans-serif;
   background:#f0f0f0;
 }
-/* HEADER */
 header{
   background: linear-gradient(135deg, #0f4c75, #3282b8);
   color:#ffffff;
   padding:22px 24px;
+  position: relative; /* This keeps the button inside the blue area */
 }
 .header-content{
   display:flex;
@@ -1541,42 +1541,47 @@ html {
   }
 
 }
-.hindi-btn{
-position: fixed;
-bottom: 420px;   /* Call button ke upar */
-right: 26px;
-
-width: 72px;
-height: 72px;
-
-background:#ff9933;
-color:#fff;
-
-font-size:15px;
-font-weight:700;
-line-height:1.1;
-text-align:center;
-
-border-radius:50%;
-
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-
-text-decoration:none;
-box-shadow:0 6px 16px rgba(0,0,0,0.35);
-
-animation:pulseRingHindi 2s infinite, subtleBounce 15s infinite;
-
-z-index:100000;
+/* Language Button - Bottom Right Header Position */
+.hindi-btn {
+  position: absolute !important;
+  top: auto !important;       /* Top पोजीशन को पूरी तरह हटा दिया */
+  bottom: 65px !important;    /* Desktop पर Ticker के ठीक ऊपर */
+  right: 30px !important;
+  width: 65px;
+  height: 65px;
+  background: #ff9933;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  animation: pulseRingHindi 2s infinite;
+  z-index: 10;
 }
 
-.hindi-btn:hover{
-transform:scale(1.1);
-background:#e67e22;
+.hindi-btn:hover {
+  transform: scale(1.1);
+  background: #e67e22;
 }
 
+/* Mobile View Bottom-Right Fix */
+@media(max-width: 768px) {
+  .hindi-btn {
+    top: auto !important;
+    bottom: 15px !important;  /* Mobile में एकदम बॉटम-राइट कॉर्नर में */
+    right: 15px !important;
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 10px !important;
+  }
+}
 @keyframes pulseRingHindi{
 0%{box-shadow:0 0 0 0 rgba(255,153,51,0.7);}
 70%{box-shadow:0 0 0 18px rgba(255,153,51,0);}
@@ -1922,21 +1927,7 @@ header{
     bottom:158px;
   }
 
-  .hindi-btn{
-    bottom:224px;
-    right:18px;
-    width:62px;
-    height:62px;
-    padding:0;
-    border-radius:50%;
-    font-size:0.72em;
-    line-height:1.1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
   }
-}
 
 /* ===== PREMIUM TESTIMONIALS ===== */
 /* ===== MOVING COURSE CARDS ===== */
@@ -2799,6 +2790,13 @@ white-space:normal;
   </div>
 </div>
 <header>
+<!-- English Button -->
+<a href="index.html" 
+   class="hindi-btn" 
+   aria-label="Open English website"
+   title="हिंदी वेबसाइट पर जाएं"
+   onclick="sessionStorage.removeItem('capsulePopupShown');">English</a>
+
   <div class="header-content">
     <img src="verchas-logo.webp" alt="Verchas Academy Logo">
     <div class="header-text">
@@ -2868,19 +2866,7 @@ white-space:normal;
     <a href="career-guidance-cell-hindi.html" class="nav-btn career-btn">
   🎯करियर मार्गदर्शन</a>
     <a href="faq-hindi.html" class="cta-animate">सामान्य प्रश्न</a>
-    <div class="result-dropdown">
-      <button type="button" class="cta-animate result-toggle">
-  परीक्षा परिणाम</button>
-      <div class="result-menu">
-  <a href="result.html?sheet=Misc&lang=hi">विविध</a>
-  <a href="result.html?sheet=1st Minor&lang=hi">1st माइनर टेस्ट</a>
-  <a href="result.html?sheet=2nd Minor&lang=hi">2nd माइनर टेस्ट</a>
-  <a href="result.html?sheet=3rd Minor&lang=hi">3rd माइनर टेस्ट</a>
-  <a href="result.html?sheet=4th Minor&lang=hi">4th माइनर टेस्ट</a>
-  <a href="result.html?sheet=5th Minor&lang=hi">5th माइनर टेस्ट</a>
-</div>
     </div>
-  </div>
 </nav>
 <section class="new-batch-capsule">
   <span class="capsule-badge">🔥 नए बैच </span>
@@ -3388,14 +3374,6 @@ NEET एवं IIT-JEE अभ्यर्थियों के लिए हम
 
 </footer>
 
-<!-- English Button -->
-<a href="index.html" 
-   class="hindi-btn" 
-   aria-label="Open English website"
-   title="हिंदी वेबसाइट पर जाएं"
-   onclick="sessionStorage.removeItem('capsulePopupShown');">
-   English Website
-</a>
 <!-- Floating Call Button -->
 <a href="tel:+918347658985"
    class="floating-contact floating-call"

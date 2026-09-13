@@ -250,7 +250,8 @@ function getResult() {
       if (data.error) {
         resultDiv.innerHTML = "<span class='error'>No result found</span>";
       } else {
-        let rawMarks = data.marks; 
+        
+        let rawMarks = String(data.marks); 
         let tableHTML = "";
 
         if (rawMarks.includes('(') && rawMarks.includes(')')) {
@@ -291,7 +292,12 @@ function getResult() {
                         </tr>
                       </table>`;
         } else {
-          tableHTML = `<div style='margin-top: 15px;'><b>${rawMarks}</b></div>`;
+          // Check if the word is "ABSENT" and make it red
+          if (rawMarks.trim().toUpperCase() === "ABSENT") {
+            tableHTML = `<div style='margin-top: 15px; color: #d32f2f; font-size: 1.2em;'><b>ABSENT</b></div>`;
+          } else {
+            tableHTML = `<div style='margin-top: 15px;'><b>${rawMarks}</b></div>`;
+          }
         }
 
         resultDiv.innerHTML = 

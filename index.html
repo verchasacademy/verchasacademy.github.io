@@ -1,3677 +1,1008 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://maps.googleapis.com https://*.googleapis.com https://*.gstatic.com https://www.googletagmanager.com; script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-src https://www.google.com https://google.com; frame-ancestors 'none';">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KP1HYGJL04"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KP1HYGJL04');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verchas Academy - Best NEET, IIT-JEE & Foundation (9th-12th) Coaching in Ayodhya</title>
-<meta name="description" content="Verchas Academy Ayodhya offers expert coaching for NEET, IIT-JEE, CUET, BSc. Nursing and Foundation classes with experienced faculty, tests and mentorship.">
-<link rel="canonical" href="https://verchasacademy.in/">
-<link rel="alternate" hreflang="en" href="https://verchasacademy.in/">
-<link rel="alternate" hreflang="hi" href="https://verchasacademy.in/hindi.html">
-<meta name="keywords" content="Verchas Academy Ayodhya, NEET coaching Ayodhya, IIT-JEE coaching Ayodhya, Foundation (9th-12th), CUET coaching Ayodhya, BSc. Nursing coaching Ayodhya">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
-
-<style>
-*{box-sizing:border-box}
-body{
-  font-size:1.25em;
-  margin:0;
-  font-family:'Segoe UI', Arial, sans-serif;
-  background:#f0f0f0;
-}
-/* HEADER */
-header{
-  background: linear-gradient(135deg, #0f4c75, #3282b8);
-  color:#ffffff;
-  padding:22px 24px;
-  position: relative; /* This keeps the button inside the blue area */
-}
-.header-content{
-  display:flex;
-  align-items:flex-start;   /* 🔑 logo ke top se align */
-  justify-content:center;
-  gap:25px;
-  text-align:left;
-}
-.header-content img{
-  height:240px;
-}
-.header-text h1{
-  margin-top:0;
-  margin-bottom:0;
-
-  font-size:4.6em;
-  text-align:center;
-
-  font-family:'Playfair Display', serif;   /* ⭐ SERIF */
-  font-weight:600;
-  letter-spacing:0.8px;
-  line-height:1.25;                        /* V/Y safe */
-  text-transform:uppercase;
-
-  text-shadow:0 2px 5px rgba(0,0,0,0.25);
-}
-
-.header-text{
-  text-align: center;          /* 🔑 forces proper alignment */
-}
-
-/* Academy location */
-.academy-location{
-  font-family: 'Cinzel', serif;
-  font-size: 3.8em;
-  font-weight: 630;
-  color: #ff9933;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-}
-
-/* Tablet */
-@media (max-width:900px){
-  .academy-location{ font-size: 1.6em; }
-}
-
-/* Mobile */
-@media (max-width:600px){
-  .academy-location{ font-size: 1.15em; white-space: nowrap; }
-}.header-text p{
-  margin-top: 4px;
-  font-size: 2em;
-  font-weight: 600;
-
-  font-family: 'Poppins', sans-serif;
-  font-style: italic;
-
-  color: #ffeb3b;
-  letter-spacing: 1px;
-
-  display: inline-block;   /* 🔑 FIX */
-  text-align: center;
-  white-space: nowrap;     /* one row */
-  padding: 0 0.6em;        /* 🔑 left–right breathing space */
-
-  text-shadow: 0 2px 4px rgba(0,0,0,0.35);
-
-}
-
-/* NAV BAR */
-nav{
-  background:#ffcc00;
-  padding:12px;
-  position: relative;
-  z-index: 99999; /* Ensure nav is above banners */
-}
-.nav-links{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:18px;
-}
-.nav-links a{
-  display:inline-flex;
-  align-items:center;
-  text-decoration:none;
-  color:#004aad;
-  font-weight:bold;
-  font-size:1.05em;
-  padding:8px 12px;
-  border-radius:6px;
-  transition: all 0.35s ease;
-}
-.nav-links .cta{
-  background:#004aad;
-  color:#fff;
-  padding:8px 22px;
-  border-radius:6px;
-}
-.nav-links a:hover,
-.nav-links a:focus-visible,
-.nav-links .result-toggle:hover,
-.nav-links .result-toggle:focus-visible{
-  background: linear-gradient(135deg, #004aad, #002f6c);
-  color: #ffffff;
-  transform: translateY(-4px) scale(1.06);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.28);
-}
-
-/* Hide duplicated links on Desktop */
-@media (min-width: 769px) {
-  .nav-links > *:nth-child(n+10) {
-     display: none !important;
-  }
-}
-
-/* HERO */
-.hero{position:relative;}
-.hero img{
-  width:100%;
-  display:block;
-  filter: brightness(1.25) contrast(1.05);
-}
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background: transparent;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  padding-top:30px;   /* 🔑 moves scholarship box to TOP */
-}
-.hero-content{
-  max-width:900px;
-  color:#fff;
-  text-align:center;
-}
-.hero-content h1{
-  font-size:2.75em;
-  margin-bottom:6px;
-  margin-top:-15px;   /* 🔑 moves ONLY the text UP */
-}
-.hero-content h2{
-  font-size:2.75em;   /* SAME size as earlier h1 */
-  margin-bottom:6px;
-  margin-top:-15px;
-  font-weight:700;    /* keeps it bold like h1 */
-}
-.hero-content p{
-  white-space:nowrap;
-
-  font-size:1.2em;
-}
-
-/* SECTIONS */
-section { padding: 20px 45px;
-}
-section h2{
-  margin-top: 0;
-  text-transform: uppercase;   /* 🔥 force CAPITAL letters */
-}
-p{
-  text-align:justify;
-  line-height:1.6;
-}
-
-/* COURSES – single row */
-.courses{
-  display:flex;
-  gap:18px;
-  justify-content:space-between;
-}
-
-.course-card{
-  width:16%;
-  border:2px solid #004aad;
-  background:#eef6ff;
-  border-radius:14px;
-  padding:18px;
-  text-align:center;
-  box-shadow:0 4px 10px rgba(0,0,0,.15);
-  color:inherit;
-  text-decoration:none;
-  display:flex;
-  flex-direction:column;
-}
-.course-card h3{
-  color:#004aad;
-  margin-top:0;
-}
-
-/* FEATURES */
-.features ul{
-  list-style: none;      /* remove dot bullets */
-  padding-left: 0;
-  margin-top: 5px;
-}
-
-.features li{
-  margin: 10px 0;
-  color: #000;           /* normal text color */
-  position: relative;
-  padding-left: 28px;   /* space for tick */
-}
-
-.features li::before{
-  content: "✔";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #1b5e20;
-  font-weight: 800;
-  font-size: 1.25em;   /* 🔥 bigger tick */
-}
-
-/* FOUNDERS */
-.founder-cards{
-  display:flex;
-  gap:30px;
-  flex-wrap:wrap;
-}
-.founder{
-  flex:1;
-  min-width:280px;
-}
-.founder img{
-  width:200px;
-  display:block;
-  margin:0 auto;
-  border-radius:10px;
-}
-img[src="founder3.webp"]{
-  width: 204px;   /* increase from 180px to 200px */
-}
-/* ===== PREMIUM SUBTLE HOVER EFFECT FOR ALL PHOTOS ===== */
-
-.founder img,
-.hod-card img{
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.founder img:hover,
-.hod-card img:hover{
-  transform: scale(1.05);   /* 5% subtle zoom */
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25);
-}
-
-.founder h4{
-  text-align:center;
-  color:#004aad;
-  margin-top:6px;     /* 🔑 reduced space from photo */
-  margin-bottom:4px;  /* 🔑 tighter gap to qualifications */
-}
-.founder-description{
-  text-align:justify;
-  font-size:.95em;
-}
-
-.founder-qualification{
-  text-align:center;
-  font-size:0.95em;
-  line-height:1.3;        /* slightly tighter */
-  margin:2px 0 14px 0;    /* 🔑 reduced top gap */
-  color:#1b5e20;
-  font-weight:600;
-  min-height:110px;       /* keep alignment intact */
-}
-
-/* CONTACT */
-.contact-btn{
-  text-align:center;
-  margin-top:15px;
-}
-.contact-btn a{
-  background:#ffcc00;
-  color:#004aad;
-  padding:12px 35px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-/* FOOTER */
-footer{
-  background:#222;
-  color:#fff;
-  text-align:center;
-  padding:22px;
-}
-footer p{margin:5px 0}
-
-.exam-countdown-section{
-  max-width:1200px;
-  width:calc(100% - 48px);
-  margin:0 auto;
-  padding:28px 30px;
-  text-align:center;
-  border:2px solid #004aad;
-  border-radius:14px;
-  background:#f7f9fc;
-  box-shadow:0 8px 22px rgba(0,0,0,0.15);
-}
-.countdown-heading{
-  margin:0;
-  color:#004aad;
-  font-size:2em;
-  font-weight:900;
-  text-align:center;
-}
-.countdown-subtitle{
-  margin:6px 0 18px;
-  color:#1b5e20;
-  font-size:1.05em;
-  font-weight:800;
-  text-align:center;
-}
-.exam-countdown{
-  display:grid;
-  grid-template-columns:repeat(4, minmax(0, 1fr));
-  align-items:center;
-  gap:18px;
-  max-width:1200px; /* Increased max-width */
-  margin:0 auto;
-}
-.countdown-box{
-  position:relative;
-  overflow:hidden;
-  background:#eef6ff;
-  border:2px solid #004aad;
-  border-radius:14px;
-  padding:18px 12px;
-  text-align:center;
-  box-shadow:0 6px 16px rgba(0,0,0,0.14);
-  animation:countdownFloat 3.2s ease-in-out infinite;
-}
-.countdown-box:nth-child(2){
-  animation-delay:0.2s;
-}
-.countdown-box:nth-child(3){
-  animation-delay:0.4s;
-}
-.countdown-box:nth-child(4){
-  animation-delay:0.6s;
-}
-.countdown-box::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.65) 45%, transparent 70%);
-  transform:translateX(-120%);
-  animation:countdownShine 4.5s ease-in-out infinite;
-}
-@keyframes countdownFloat{
-  0%,100%{transform:translateY(0);box-shadow:0 6px 16px rgba(0,0,0,0.14)}
-  50%{transform:translateY(-6px);box-shadow:0 12px 24px rgba(0,74,173,0.24)}
-}
-@keyframes countdownShine{
-  0%,55%{transform:translateX(-120%)}
-  80%,100%{transform:translateX(120%)}
-}
-.countdown-label{
-  display:block;
-  color:#004aad;
-  font-size:0.95em;
-  font-weight:900;
-  text-transform:uppercase;
-}
-.countdown-days{
-  display:block;
-  margin-top:8px;
-  color:#d66b00;
-  font-size:2.35em;
-  line-height:1;
-  font-weight:900;
-}
-.countdown-text{
-  display:block;
-  margin-top:6px;
-  color:#111;
-  font-size:0.9em;
-  font-weight:700;
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .courses{
-    flex-wrap:wrap;
-  }
-  .course-card{
-    width:48%;
-  }
-  .exam-countdown{
-    grid-template-columns:1fr;
-  }
-  .exam-countdown-section{
-    width:calc(100% - 28px);
-    margin-top:28px;
-    padding:14px 12px;
-  }
-  .countdown-heading{
-    font-size:1.25em;
-    line-height:1.15;
-  }
-  .countdown-subtitle{
-    font-size:0.82em;
-    line-height:1.35;
-    margin:5px 0 10px;
-  }
-  .exam-countdown{
-    gap:9px;
-  }
-  .countdown-box{
-    padding:9px 8px;
-    border-radius:10px;
-  }
-  .countdown-label{
-    font-size:0.72em;
-  }
-  .countdown-days{
-    font-size:1.55em;
-    margin-top:4px;
-  }
-  .countdown-text{
-    font-size:0.72em;
-    margin-top:3px;
-  }
-}
-@media(max-width:360px){
-  .header-text h1{ font-size:2em; }
-  .header-text p{ font-size:1.2em; }
-}
-@media (max-width:900px){
-  .header-content{
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-  }
-
-  .header-text h1{
-    white-space: nowrap;
-    font-size:2.2em;
-  }
-  
-}
-
-@media(max-width:600px){
-
-  .courses{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    justify-content:space-between;
-  }
-
-  .header-text p{
-    font-size: 1.1em;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    padding: 0 0.8em;
-  }
-
-  .header-content{
-    flex-direction:column;
-    text-align:center;
-    align-items:center;
-  }
-
-  /* Force VERCHAS ACADEMY into ONE ROW */
-  .header-text h1{
-    font-size:2.2em;
-    letter-spacing:1px;
-    white-space: nowrap;
-    margin-top:6px;
-  }
-
-  .hero{
-    min-height:520px;
-  }
-
-  .hero img{
-    height:520px;
-    object-fit:cover;
-  }
-
-  .hero-overlay{
-    padding-top:20px;
-  }
-
-   /* ===== Stand Out Box (Mobile FULL WIDTH) ===== */
-  .standout-box{
-    margin: 20px calc(-1 * (100vw - 100%) / 2) 0;
-    padding: 22px 16px;
-    width: 100vw;
-    max-width: 100vw;
-  }
-/* ===== Standout Box: Mobile Stack Layout ===== */
-.standout-box table,
-.standout-box tbody,
-.standout-box tr,
-.standout-box td{
-  display: block;
-  width: 100%;
-}
-
-.standout-box td{
-  padding: 0;
-  margin-bottom: 14px;
-}
-.standout-box td br{
-  display: none;
-}
-
-.standout-box td{
-  line-height: 1.6;
-}
-
-}
-
-/* Watermark background for main content */
-.watermark-section{
-  position: relative;
-  background:#e0e0e0;
-  padding-top:40px;
-}
-.watermark-section::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url('verchas-logo.webp') no-repeat center center;
-  background-size:80%;
-  opacity:0.10;
-  pointer-events:none;
-}
-.watermark-section > *{
-  position:relative;
-}
-
-
-/* Center align main content sections */
-#about, #courses, .features, .founder-cards {
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-
-/* Proper horizontal centering of sections (heading + content) */
-.section-center{
-  max-width:none;
-  margin:0 auto;
-}
-
-
-/* Center section headings */
-.section-center > h2{
-  text-align:center;
-}
-
-
-/* Salient Features list aligned under centered heading */
-.features .section-center ul{
-  margin-top:20px;
-  padding-left:20px;
-}
-
-
-/* Center-align text inside course boxes */
-.course-card p{
-  text-align:center;
-}
-
-.course-card .click-info{
-  display:block;
-  margin-top:auto;
-  font-weight:800;
-  color:#d66b00;
-  padding-top:14px;
-}
-
-
-/* Subtle premium animations for course boxes */
-.course-card{
-  transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
-}
-.course-card:hover{
-  transform: scale(1.03);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.18);
-}
-
-.course-card{
-  cursor: pointer;
-}
-
-.course-card:focus-visible{
-  outline: 4px solid #ffcc00;
-  outline-offset: 4px;
-}
-
-.course-card.active{
-  background:#004aad;
-  color:#ffffff;
-  box-shadow:0 14px 30px rgba(0,74,173,0.28);
-}
-
-.course-card.active h3{
-  color:#ffcc00;
-}
-
-.course-info{
-  display:none;
-  margin-top:24px;
-  padding:24px 28px;
-  border:2px solid #004aad;
-  border-radius:14px;
-  background:#ffffff;
-  box-shadow:0 8px 22px rgba(0,0,0,0.12);
-}
-
-.course-info.show{
-  display:block;
-}
-
-.course-info-panel{
-  display:none;
-}
-
-.course-info-panel.active{
-  display:block;
-}
-
-.course-info-panel h3{
-  margin-top:0;
-  color:#004aad;
-  text-align:center;
-}
-
-.course-info-panel p{
-  margin:8px 0;
-  text-align:justify;
-}
-
-.course-info-panel ul{
-  margin:14px 0 0;
-  padding-left:24px;
-}
-
-.course-info-panel li{
-  margin:8px 0;
-}
-
-.exam-section{
-  border-top:1px solid #ddd;
-  margin-top:24px;
-  padding-top:18px;
-}
-
-.exam-section:first-child{
-  border-top:0;
-  margin-top:0;
-  padding-top:0;
-}
-
-.exam-section h4{
-  color:#111;
-  margin:0 0 10px;
-}
-
-.exam-section .main-heading{
-  font-size:1.35em;
-  font-weight:500;
-}
-
-.exam-list{
-  list-style:none;
-  padding-left:0;
-}
-
-.exam-list li{
-  margin:12px 0;
-}
-
-.exam-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:10px;
-  font-size:0.92em;
-}
-
-.exam-table th{
-  background:#a80000;
-  color:#ffffff;
-  text-align:left;
-  padding:10px 12px;
-}
-
-.exam-table td{
-  border:1px solid #cfcfcf;
-  padding:10px 12px;
-  vertical-align:top;
-}
-
-.exam-table td:first-child{
-  width:24%;
-  font-weight:700;
-}
-
-@media(max-width:700px){
-  .course-info{
-    padding:18px;
-  }
-
-  .exam-table,
-  .exam-table tbody,
-  .exam-table tr,
-  .exam-table td{
-    display:block;
-    width:100%;
-  }
-
-  .exam-table td:first-child{
-    width:100%;
-    background:#f4f4f4;
-  }
-}
-
-
-/* Force center alignment for footer text */
-footer, footer p{
-  text-align: center !important;
-}
-
-
-/* Nav buttons style */
-nav a{
-  padding:14px 30px;
-  border-radius:10px;
-  background:#77c5ff;
-  color:#ffffff !important;
-}
-
-nav a:hover{
-  background:#003f8a;
-}
-
-
-/* Use consistent sky-blue across header and nav buttons */
-:root{
-  --sky-blue:#77c5ff;
-}
-
-nav a{
-  background: var(--sky-blue) !important;
-  color:#ffffff !important;
-}
-nav a:hover{
-  filter: brightness(0.9);
-}
-
-/* ===== FIXED ENROLL NOW DROPDOWN ===== */
-
-.dropdown-content{
-  display: none;
-  position: absolute;
-  top: 120%;
-  right: 0;
-
-  background: #ffffff;
-  color: #000;
-  padding: 14px 26px;        /* 🔑 extra horizontal padding */
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-
-  width: min(90vw, 360px);
-  box-sizing: border-box;    /* 🔑 include padding in width */
-
-  white-space: normal;       /* allow wrapping if needed */
-  text-align: center;
-  line-height: 1.4;
-  z-index: 9999;
-  font-size: 0.95em;
-}
-
-.result-link {
-  display: inline-block;
-  background: #ffcc00;
-  color: #004aad;
-  font-weight: bold;
-  padding: 10px 22px;
-  border-radius: 6px;
-  margin-bottom: 14px;
-  text-decoration: none;
-  animation: flash 1.2s infinite;
-}
-
-.result-dropdown{
-  position:relative;
-  display:inline-block;
-}
-
-.result-toggle{
-  border:0;
-  cursor:pointer;
-  font:inherit;
-  line-height:normal;
-}
-
-nav .result-toggle{
-  display:inline-flex;
-  align-items:center;
-  padding:8px 12px;
-  border-radius:6px;
-  background:transparent;
-  color:#004aad;
-  text-decoration:none;
-  font-size:1.05em;
-  font-weight:bold;
-  line-height:normal;
-  transition: all 0.35s ease;
-}
-.result-menu{
-  position:absolute;
-  top:100%;
-  right:0;
-  min-width:210px;
-  display:none;
-  flex-direction:column;
-  gap:6px;
-  padding:8px;
-  background:#fff;
-  border-radius:8px;
-  box-shadow:0 10px 26px rgba(0,0,0,.22);
-  z-index:100000;
-}
-
-.result-menu::before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:-10px;
-  height:10px;
-}
-
-.result-dropdown:hover .result-menu,
-.result-dropdown:focus-within .result-menu{
-  display:flex;
-}
-
-.result-menu a{
-  color:#004aad;
-  background:#f4f7fb;
-  padding:10px 12px;
-  border-radius:6px;
-  text-decoration:none;
-  font-weight:800;
-  white-space:nowrap;
-}
-
-.result-menu a:hover,
-.result-menu a:focus-visible{
-  color:#fff;
-  background:#004aad;
-}
-
-.floating-result-dropdown{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:16px 36px;
-  box-sizing:border-box;
-  width:auto;
-}
-
-.floating-result-dropdown .result-toggle{
-  width:auto;
-  height:auto;
-  margin:0;
-  padding:0;
-  border-radius:50px;
-  background:transparent;
-  color:inherit;
-  font-size:inherit;
-  font-weight:inherit;
-  white-space:nowrap;
-}
-
-.floating-result-dropdown .result-menu{
-  top:auto;
-  bottom:calc(100% + 6px);
-}
-
-/* Hover bridge for floating result dropdown */
-.floating-result-dropdown .result-menu::before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:auto;
-  bottom:-10px;
-  height:10px;
-  background:transparent;
-}
-
-@keyframes flash {
-  0% { opacity: 1; }
-  50% { opacity: 0.35; }
-  100% { opacity: 1; }
-}
-.cta-animate{
-  transition: all 0.35s ease;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-/* ===== HOD FLEX LAYOUT (4 + 2) ===== */
-
-.hod-flex {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 26px;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-#hods .section-center {
-  max-width: none;
-  padding-left: 0;
-  padding-right: 0;
-  width: 100%;
-}
-
-/* Tablet */
-@media (max-width: 992px){
-  .hod-flex{
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Mobile */
-@media (max-width: 600px){
-  .hod-flex{
-    grid-template-columns: repeat(2, 1fr);  /* 🔥 2 cards per row */
-    gap: 12px;
-  }
-
-  .hod-card{
-    width: 100%;
-  }
-}
-
-.hod-description {
-  text-align: justify;
-  font-size: 1.05em;
-  line-height: 1.65;
-  color: #333;
-  margin-top: 10px;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-  width: 100%;
-}
-
-/* Mobile optimization */
-@media (max-width: 600px){
-  .hod-image-wrapper img{
-    max-height: 320px;
-  }
-}
-
-nav{
-  overflow: visible;  /* dropdowns / buttons can overflow */
-}
-
-/* ===== NAV BUTTON TEXT ALIGNMENT FIX ===== */
-
-.nav-links .cta {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  line-height:1.2;
-  white-space:normal;
-}
-/* ================= MOBILE RESPONSIVE FIX ================= */
-@media (max-width: 768px){
-  body{ font-size:1em; }
-  .site-container{ margin:0; border-radius:0; border-width:6px; }
-  .header-content{ flex-direction:column; text-align:center; }
-  .header-content img{ height:250px; }
-  .header-text h1{ font-size:2.2em; }
-  .hero-content h1{ font-size:1.9em; }
-  .hero-content p{ white-space:normal; font-size:1em; }
-  section{ padding:18px 20px; }
-  .courses{
-    flex-direction:row;
-    flex-wrap:wrap;
-    gap:12px;
-  }
-
- .founder-cards{ flex-direction:column; gap:25px; }
-  .founder img{ width:160px; }
-  #contact p{ font-size:1em; text-align:center; }
-  .cta{ font-size:1em; padding:12px; }
-}
-a[href^="tel"]{
-  color: #004aad;
-  font-weight: 600;
-  text-decoration: none;
-}
-.google-social-row{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 36px;
-  width: 100%;
-  margin-top: 12px;
-}
-.google-text,
-.follow-text{
-  font-family: "Poppins", "Segoe UI", Roboto, Arial, sans-serif;
-  font-weight: 600;
-  font-size: 1.05em;
-  letter-spacing: 0.2px;
-  color: #000;
-}
-
-/* === Google section === */
-.google-check{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-}
-
-.google-check img{
-  width: 120px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.google-check img:hover{
-  transform: scale(1.1);
-}
-
-/* === Follow us section === */
-.contact-social{
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin: 0;
-}
-
-.contact-social img{
-  width: 48px;
-  height: 36px;
-  cursor: pointer;
-  transition: transform 0.25s ease;
-}
-
-.contact-social img:hover{
- transform: scale(1.25);
- filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
-}
-
-/* === Mobile handling === */
-@media (max-width: 700px){
-  .google-social-row{
-    flex-direction: column;
-    justify-content: center;
-    gap: 14px;
-  }
-}
-/* ===== Mobile handling for Google + Social ===== */
-@media (max-width:600px){
-
-  .google-social-row{
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    text-align: center;
-  }
-
-  .google-check{
-    justify-content: center;
-  }
-
-  .contact-social{
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 14px;
-  }
-  .follow-text{
-    margin-right: 6px;
-  }
-.contact-social img:hover{
-    transform: scale(1.1);
-    filter: none;
-  }
-}
-
-#contact{
-  text-align: center;
-}
-
-#contact p{
-  text-align: center;
-}
-
-#contact p{
-  margin: 8px 0;
-}
-
-/* ===== HERO MOBILE HEIGHT FIX ===== */
-@media(max-width:600px){
-  .hero{
-    min-height: auto;
-  }
-
-  .hero img{
-    height: auto;
-    width: 100%;
-    object-fit: contain;
-    background: #000;
-  }
-
-  .hero{
-  position: relative;
-}
-
-.hero-overlay{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  padding: 4px 8px 14px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  overflow: visible;
-}
-}
-.floating-enroll{
-  position: fixed;
-  bottom: 26px;
-  right: 26px;
-  z-index: 99999;
-
-  padding: 16px 36px;
-  border-radius: 50px;
-
-  background: linear-gradient(135deg, #ffcc00, #ff9800);
-  color: #004aad;
-  font-size: 1.25em;
-  font-weight: 800;
-  text-decoration: none;
-
-  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
-
-  animation: pulseGlow 2s infinite, subtleBounce 15s infinite;
-
-  transition: all 0.35s ease;
-}
-
-/* Hover effect */
-.floating-enroll:hover{
-  transform: translateY(-4px) scale(1.06);
-  background: linear-gradient(135deg, #004aad, #002f6c);
-  color: #ffffff;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
-}
-
-/* Glow pulse */
-@keyframes pulseGlow{
-  0%{
-    box-shadow: 0 0 0 0 rgba(255,204,0,0.7);
-  }
-  70%{
-    box-shadow: 0 0 0 18px rgba(255,204,0,0);
-  }
-  100%{
-    box-shadow: 0 0 0 0 rgba(255,204,0,0);
-  }
-}
-
-/* 🎯 Subtle bounce every 15 seconds */
-@keyframes subtleBounce{
-  0%   { transform: translateY(0); }
-  92%  { transform: translateY(0); }
-
-  94%  { transform: translateY(-6px); }
-  96%  { transform: translateY(0); }
-  98%  { transform: translateY(-3px); }
-  100% { transform: translateY(0); }
-}
-
-/* Mobile optimization */
-@media(max-width:600px){
-  .floating-enroll{
-    bottom: 18px;
-    right: 18px;
-    font-size: 1.05em;
-    padding: 14px 26px;
-  }
-}
-.seo-text{
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-/* ===== FINAL HEADER BACKGROUND FIX ===== */
-@media (max-width:600px){
-
-  /* Header spacing */
-  header{
-    padding-top:0px;
-    padding-bottom:40px;
-  }
-
-  .header-text h1{
-    font-size:1.9em;
-    line-height:1.35;
-    padding:6px 0;
-    white-space:nowrap;
-  }
-
-  /* Contact phone alignment */
-  #contact p:has(a[href^="tel"]){
-    text-align: center;
-    padding-left: 4.5em;
-    text-indent: -4.5em;
-    line-height: 1.6;
-  }
-
-  #contact a[href^="tel"]{
-    white-space: nowrap;
-  }
-
-  /* Social icons */
-  .contact-social img{
-    width: 32px;
-    height: 24px;
-  }
-
-  .contact-social img:hover{
-    transform: scale(1.05);
-    filter: none;
-  }
-}
-/* ===== STAND OUT BOX ===== */
-.standout-box {
-  border: 2px solid #004aad;
-  border-radius: 14px;
-  padding: 28px 30px;
-  background: #f7f9fc;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.15);
-  margin: 20px 0 0 0;
-  max-width: 100%;
-  width: 100%;
-}
-
-/* Sub-headings inside standout box */
-.standout-box h3{
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  margin: 35px 0 18px 0;
-
-  animation: subtlePulse 2.2s ease-in-out infinite;
-}
-
-/* Slightly different rhythm for second heading */
-.standout-box .solution-heading{
-  animation-delay: 1.1s;
-}
-
-/* Red: Problems */
-.standout-box .problem-heading{
-  color: #c62828;
-}
-
-/* Green: Solutions */
-.standout-box .solution-heading{
-  color: #1b5e20;
-}
-@keyframes subtlePulse{
-  0%{
-    transform: scale(1);
-    text-shadow: none;
-  }
-  50%{
-    transform: scale(1.03);
-    text-shadow: 0 0 8px rgba(0,0,0,0.15);
-  }
-  100%{
-    transform: scale(1);
-    text-shadow: none;
-  }
-}
-html, body{
-  overflow-x: hidden;
-}
-/* ===== CONS & PROS LIST SYSTEM ===== */
-
-.cons-list,
-.pros-list{
-  list-style: none;
-  padding: 0;
-  margin: 22px 0;
-}
-
-.cons-list li,
-.pros-list li{
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  line-height: 1.6;
-  margin-bottom: 14px;
-  break-inside: avoid;
-}
-
-/* ✖ Cons */
-.cons-list li::before{
-  content: "✖";
-  color: #c62828;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-/* ✔ Pros */
-.pros-list li::before{
-  content: "✔";
-  color: #1b5e20;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-/* 💻 Desktop: 2-column (table-like) */
-@media (min-width: 901px){
-  .cons-list,
-  .pros-list{
-    column-count: 2;
-    column-gap: 40px;
-  }
-}
-
-/* 📱 Mobile: single column (automatic) */
-@media (max-width: 900px){
-  .cons-list,
-  .pros-list{
-    column-count: 1;
-  }
-}
-@media (min-width: 901px){
-  .standout-box{
-    max-width: 1200px;     /* same as site-container */
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media (min-width: 901px){
-  section.features .section-center{
-    max-width: none;      /* 🔑 FREE THE CONTAINER */
-    padding-left: 45px;   /* keep section rhythm */
-    padding-right: 45px;
-  }
-}
-/* ===== DESKTOP: ACTUALLY WIDEN STANDOUT BOX ===== */
-@media (min-width: 901px){
-  .standout-box{
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: calc(100% + 150px);
-    max-width: none;
-
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-/* ===== HERO: COMPLETELY FLAT (NO SHADOW / NO OVERLAY) ===== */
-.hero-overlay{
-  background: none !important;
-}
-
-.hero img{
-  filter: none !important;
-}
-
-.site-container{
-  box-shadow: none !important;
-}
-
-/* ===== HOD CARD SYSTEM ===== */
-
-.hod-card{
-  flex: 1 1 0;
-  min-width: 250px;
-  background: #ffffff;
-  padding: 22px 18px;
-  border-radius: 16px;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.15);
-  text-align: center;              /* 🔥 ensures everything inside is centered */
-  display: flex;
-  flex-direction: column;
-  align-items: center;             /* 🔥 perfect horizontal center */
-  justify-content: flex-start;
-}
-
-.hod-card img{
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 14px;
-}
-
-.hod-card h4{
-  margin: 8px 0 8px 0;
-  color: #004aad;
-  font-size: 1.1em;
-}
-
-.hod-qualification{
-  text-align: center;              /* 🔥 force center */
-  font-size: 0.95em;
-  line-height: 1.6;
-  color: #1b5e20;
-  font-weight: 600;
-  margin: 0;
-}
-.hod-department{
-  font-weight: 800;        /* 🔥 makes it bold */
-  font-size: 1.05em;       /* slightly larger */
-  letter-spacing: 1px;     /* premium spacing */
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
-@media (max-width:600px){
-
-  #hods{
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .hod-card{
-    min-width: 0;       /* 🔥 remove 250px restriction */
-  }
-
-  .hod-flex{
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-}
-/* ===== FADE-IN ON SCROLL ANIMATION ===== */
-
-.fade-in{
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.show{
-  opacity: 1;
-  transform: translateY(0);
-}
-html {
-  scroll-behavior: smooth;
-}
-
-/* ===== FLOATING CONTACT BUTTONS WITH REAL PULSE ===== */
-
-.floating-contact{
-  position: fixed;
-  right: 26px;
-  z-index: 100000;   /* 🔥 ABOVE all enroll buttons */
-
-  width: 62px;
-  height: 62px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  animation: subtleBounce 15s infinite;
-  transition: transform 0.3s ease;
-}
-/* PNG icon */
-.floating-contact img{
-  width: 42px;
-  height: auto;
-  z-index: 2;
-}
-
-/* PULSE RING */
-.floating-contact::before{
-  content: "";
-  position: absolute;
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  background: rgba(255, 204, 0, 0.5);
-  z-index: 1;
-
-  animation: pulseRing 2s infinite;
-}
-
-/* WhatsApp & Call position */
-/* ===== CONTACT BUTTONS (TOP MOST) ===== */
-
-.floating-call{
-  bottom: 340px;   /* Highest */
-}
-
-.floating-whatsapp{
-  bottom: 265px;   /* Below Call */
-}
-/* Hover */
-.floating-contact:hover{
-  transform: scale(1.12);
-}
-
-/* Expanding Ring */
-@keyframes pulseRing{
-  0%{
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  70%{
-    transform: scale(1.8);
-    opacity: 0;
-  }
-  100%{
-    transform: scale(1);
-    opacity: 0;
-  }
-}
-
-/* Mobile */
-@media(max-width:600px){
-  .floating-contact{
-    right: 18px;
-    width: 54px;
-    height: 54px;
-  }
-
-  .floating-contact img{
-    width: 36px;
-  }
-
-  .floating-contact::before{
-    width: 54px;
-    height: 54px;
-  }
-
-  .floating-whatsapp{ bottom:225px; }
-  .floating-call{ bottom:290px; }
-}
-/* ===== Slightly Bigger WhatsApp (Aligned Properly) ===== */
-
-.floating-whatsapp img{
-  width: 60px;   /* increase only icon size */
-}
-
-/* Optional: slightly stronger pulse */
-.floating-whatsapp::before{
-  animation: pulseRing 2s infinite;
-}
-/* ===== STACK ADDITIONAL FLOATING BUTTONS ===== */
-
-/* Scholarship Button Position */
-.floating-scholarship{
-  bottom: 95px;
-}
-
-/* Mobile Optimization */
-@media(max-width:600px){
-
-  .floating-scholarship{
-    bottom: 85px;
-    font-size: 0.95em;
-    padding: 12px 22px;
-  }
-
-}
-
-/* Language Button - Bottom Right Header Position */
-.hindi-btn {
-  position: absolute !important;
-  top: auto !important;       /* Top पोजीशन को पूरी तरह हटा दिया */
-  bottom: 65px !important;    /* Desktop पर Ticker के ठीक ऊपर */
-  right: 30px !important;
-  width: 65px;
-  height: 65px;
-  background: #ff9933;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
-  animation: pulseRingHindi 2s infinite;
-  z-index: 10;
-}
-
-.hindi-btn:hover {
-  transform: scale(1.1);
-  background: #e67e22;
-}
-
-/* Mobile View Bottom-Right Fix */
-@media(max-width: 768px) {
-  .hindi-btn {
-    top: auto !important;
-    bottom: 12px !important;  /* Mobile में एकदम बॉटम-राइट कॉर्नर में */
-    right: 15px !important;
-    width: 50px !important;
-    height: 50px !important;
-    font-size: 10px !important;
-  }
-}
-@keyframes pulseRingHindi{
-0%{box-shadow:0 0 0 0 rgba(255,153,51,0.7);}
-70%{box-shadow:0 0 0 18px rgba(255,153,51,0);}
-100%{box-shadow:0 0 0 0 rgba(255,153,51,0);}
-}
-.hero-slider{
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-}
-
-.slide{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out;
-  z-index: 0;
-}
-
-/* 🔥 active slide ALWAYS visible */
-.slide.active{
-  opacity: 1;
-  z-index: 1;
-}
-.hero{
-  position: relative;
-  width: 100%;
-  height: auto;   /* 🔥 IMPORTANT */
-}
-
-.hero-slider{
-  position: relative;
-  width: 100%;
-}
-
-.slide{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-slider{
-  aspect-ratio: 16 / 9;
-}
-.slider-title{
-  background: #111;
-  color: #ff9933;
-
-  text-align: center;
-  padding: 14px 10px;
-
-  font-size: 1.6em;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-/* Framed hero slideshow */
-.hero{
-  min-height: 0;
-  padding: 18px 0 10px;
-  background: #f4f7fb;
-}
-
-.hero-slider{
-  width: min(1100px, calc(100% - 32px));
-  height: clamp(260px, 46vw, 520px);
-  margin: 0 auto;
-  aspect-ratio: auto;
-  background:
-    linear-gradient(135deg, rgba(0,74,173,.10), rgba(255,153,51,.14)),
-    repeating-linear-gradient(45deg, rgba(0,74,173,.08) 0 1px, transparent 1px 18px),
-    #f8fbff;
-  border: 5px solid #fff;
-  border-radius: 8px;
-  box-shadow: 0 8px 22px rgba(0,0,0,.16);
-}
-
-.hero-slider::before{
-  content: "VERCHAS ACADEMY";
-  position: absolute;
-  left: 18px;
-  top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: left center;
-  color: rgba(0,74,173,.16);
-  font-size: clamp(1rem, 2.4vw, 1.8rem);
-  font-weight: 800;
-  letter-spacing: 4px;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hero-slider .slide{
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center center;
-  background:
-    linear-gradient(135deg, rgba(0,74,173,.10), rgba(255,153,51,.14)),
-    repeating-linear-gradient(45deg, rgba(0,74,173,.08) 0 1px, transparent 1px 18px),
-    #f8fbff;
-  filter: none;
-  z-index: 1;
-}
-
-.hero-slider .slide.active{
-  z-index: 2;
-}
-
-.hero-slider .slide.active.slide-anim-left{
-  animation: slideFromLeft 3s ease-out both;
-}
-
-.hero-slider .slide.active.slide-anim-right{
-  animation: slideFromRight 3s ease-out both;
-}
-
-.hero-slider .slide.active.slide-anim-up{
-  animation: slideFromUp 3s ease-out both;
-}
-
-.hero-slider .slide.active.slide-anim-down{
-  animation: slideFromDown 3s ease-out both;
-}
-
-.hero-slider .slide.active.slide-anim-zoom{
-  animation: softZoomIn 3s ease-out both;
-}
-
-@keyframes slideFromLeft{
-  from{ transform: translateX(-22px) scale(.985); }
-  to{ transform: translateX(0) scale(1); }
-}
-
-@keyframes slideFromRight{
-  from{ transform: translateX(22px) scale(.985); }
-  to{ transform: translateX(0) scale(1); }
-}
-
-@keyframes slideFromUp{
-  from{ transform: translateY(-18px) scale(.985); }
-  to{ transform: translateY(0) scale(1); }
-}
-
-@keyframes slideFromDown{
-  from{ transform: translateY(18px) scale(.985); }
-  to{ transform: translateY(0) scale(1); }
-}
-
-@keyframes softZoomIn{
-  from{ transform: scale(.97); }
-  to{ transform: scale(1); }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .hero-slider .slide.active{
-    animation: none !important;
-  }
-}
-
-@media(max-width:600px){
-  .hero{
-    padding: 12px 0 8px;
-  }
-
-  .hero-slider{
-    width: calc(100% - 20px);
-    height: clamp(220px, 62vw, 320px);
-    border-width: 4px;
-  }
-
-  .hero-slider .slide{
-    height: 100%;
-    object-fit: contain;
-  }
-}
-
-/* ===== RUNNING NEWS TICKER ===== */
-
-/* ===== RUNNING NEWS TICKER FIX ===== */
-.news-ticker-header {
-  width: 100%;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.25);
-  padding: 8px 0;
-  margin-top: 10px;
-  border-radius: 6px;
-  /* GPU acceleration ke liye */
-  transform: translateZ(0);
-}
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  /* Animation ko hardware pe shift kiya */
-  animation: tickerScroll 30s linear infinite;
-  will-change: transform;
-}
-
-.ticker-track span {
-  white-space: nowrap;
-  color: #ffeb3b;
-  font-weight: 500;
-  font-size: 1em;
-  padding-right: 60px;
-}
-
-/* Hover = Pause */
-.news-ticker-header:hover .ticker-track {
-  animation-play-state: paused;
-}
-
-/* GPU Accelerated Animation */
-@keyframes tickerScroll {
-  0% {
-    transform: translate3d(-50%, 0, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-/* ===== CLEAN MOBILE FLOATING ACTIONS ===== */
-/* ===== FINAL HEADER LOGO LEFT ALIGNMENT ===== */
-header{
-  position:relative;
-}
-
-.header-content{
-  position:relative;
-  display:grid;
-  grid-template-columns:310px minmax(0, auto) 310px;
-  align-items:center;
-  justify-content:center;
-  column-gap:28px;
-  min-height:330px;
-  transform:translateX(70px);
-}
-
-.header-content img{
-  position:static;
-  transform:translateY(-12px);
-  justify-self:end;
-  flex:0 0 auto;
-  height:300px;
-  width:auto;
-  z-index:2;
-}
-
-.header-text{
-  grid-column:2;
-  width:100%;
-  min-width:0;
-  text-align:center;
-}
-
-.header-text h1{
-  font-size:clamp(2.8em, 5vw, 4.6em);
-  white-space:nowrap;
-}
-
-@media(max-width:768px){
-.career-banner{
-  width:calc(100% - 32px);
-  margin:15px auto;
-  padding:22px 16px;
-}
-.career-banner .career-tagline{
-  font-size:1.02em;
-  padding:6px 14px;
-  margin-bottom:12px;
-}
-.career-banner h2{
-  font-size:1.5em;
-}
-
-.career-banner p{
-  font-size:0.95em;
-  line-height:1.6;
-}
-  .header-content{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    min-height:auto;
-    padding:8px 0 10px;
-    transform:none;
-    text-align:center;
-  }
-
-  .header-content img{
-    position:static;
-    transform:none;
-    justify-self:center;
-    height:118px;
-  }
-
-  .header-text{
-    grid-column:auto;
-  }
-
-  .header-text h1{
-    font-size:clamp(1.8em, 7vw, 2.35em);
-    white-space:normal;
-    line-height:1.15;
-    margin:0;
-  }
-
-  .academy-location{
-    font-size:clamp(1.35em, 6vw, 1.8em);
-    letter-spacing:1.5px;
-    margin-top:2px;
-  }
-
-  .header-text p{
-    font-size:0.95em;
-    white-space:normal;
-    padding:0;
-    margin:6px 0 0;
-  }
-}
-
-.news-ticker-header{
-  position:relative;
-  left:50%;
-  width:100vw;
-  transform:translateX(-50%);
-  border-radius:0;
-}
-
-@media(max-width:600px){
-  .floating-scholarship{
-    display:none;
-  }
-
-  .floating-call{
-    bottom:92px;
-  }
-
-  .floating-whatsapp{
-    bottom:158px;
-  }
-
-  }
-
-
-/* ===== PREMIUM TESTIMONIALS ===== */
-/* ===== MOVING COURSE CARDS ===== */
-#courses{overflow:hidden;}
-.courses{width:100vw;margin-left:50%;transform:translateX(-50%);overflow:hidden;display:block;padding:20px 0 20px;}
-.courses-track{
-  display:flex;
-  width:max-content;
-  will-change:transform;
-}
-.courses-set{display:flex;gap:18px;padding-right:18px;}
-.courses .course-card{width:240px;min-width:240px;}
-@keyframes courseScroll{
-0%{transform:translateX(0);}
-100%{transform:translateX(-50%);}
-}
-@media(max-width:600px){
-.courses{display:block;gap:0;padding-bottom:8px;}
-.courses-set{gap:12px;padding-right:12px;}
-.courses .course-card{width:220px;min-width:220px;}
-}
-
-.testimonial-section{padding:50px 0 18px;overflow:hidden;text-align:center;}
-.testimonial-section .section-center{max-width:1180px;margin:0 auto;padding:0 16px;}
-.testimonial-intro{margin:0 auto 24px;padding:0 8px;max-width:100%;}
-.testimonial-stars-top{color:#d4af37;font-size:clamp(.62rem,2.65vw,1.1em);font-weight:700;letter-spacing:clamp(.2px,.35vw,2px);line-height:1.25;white-space:nowrap;}
-.testimonial-main-title{font-family:'Cinzel',serif;font-size:clamp(1.45rem,7.2vw,3em);color:#004aad;margin:8px 0;line-height:1.05;white-space:nowrap;}
-.testimonial-divider{display:flex;align-items:center;justify-content:center;gap:15px;color:#d4af37;margin:10px 0 15px;}
-.testimonial-divider:before,.testimonial-divider:after{content:'';width:120px;height:2px;background:#d4af37;}
-.testimonial-subtitle{font-size:clamp(.78rem,3.5vw,1em);color:#555;margin:0 0 18px;line-height:1.25;white-space:nowrap;}
-.testimonial-slider{width:100vw;margin-left:50%;transform:translateX(-50%);overflow:hidden;}
-.testimonial-track{
-  display:flex;
-  gap:16px;
-  width:max-content;
-  will-change:transform;
-}
-.testimonial-card{width:240px;min-width:240px;background:#fff;border-radius:14px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,.12);}
-.testimonial-card img{width:65px;height:65px;border-radius:50%;display:block;margin:auto;}
-.testimonial-card h4{font-size:.95em;color:#004aad;margin:8px 0;}
-.review-text{font-size:.86em;line-height:1.5;}
-.quote-banner-testimonial{
-margin:30px auto 8px;
-max-width:calc(100vw - 24px);
-background:none;
-color:#8B6508;
-text-shadow:
-0 1px 0 #f7e6a8,
-0 2px 3px rgba(0,0,0,0.18);
-text-align:center;
-padding:8px 12px 0;
-font-family:'Cinzel',serif;
-font-size:clamp(1.1rem,2.6vw,2.1rem);
-letter-spacing:clamp(.2px,.25vw,1px);
-line-height:1.15;
-white-space:nowrap;
-box-shadow:none;
-border:none;
-}
-
-
-
-@keyframes testimonialScroll{
-0%{transform:translateX(0);}
-100%{transform:translateX(-50%);}
-}
-
-.quote-banner-testimonial .decor{
-display:block;
-font-size:clamp(.5rem,2.4vw,.55em);
-margin-top:8px;
-opacity:.95;
-color:#d4af37;
-line-height:1.2;
-white-space:normal;
-}
-.quote-break{display:inline;}
-
-@media (max-width:600px){
-.testimonial-section{padding:34px 0 14px;}
-.testimonial-section .section-center{padding:0 10px;}
-.testimonial-intro{margin-bottom:18px;padding:0;}
-.testimonial-divider{gap:8px;margin:8px 0 10px;}
-.testimonial-divider:before,.testimonial-divider:after{width:60px;}
-.quote-banner-testimonial{font-size:clamp(.76rem,4.3vw,1.25rem);letter-spacing:0;padding-left:4px;padding-right:4px;}
-.quote-break{display:block;}
-.quote-banner-testimonial .decor{font-size:clamp(.48rem,2.35vw,.82rem);letter-spacing:0;}
-.testimonial-card{width:220px;min-width:220px;}
-}
-.course-title span{
-    display:block;
-    font-size:0.85em;
-    margin-top:3px;
-}
-/* Career Guidance Button Animation */
-.career-btn {
-  animation: careerPulse 2.5s infinite;
-}
-
-@keyframes careerPulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.08);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-.career-banner{
-    background:linear-gradient(135deg,#4facfe,#00c6fb);
-    color:#ffffff;
-    text-align:center;
-    padding:15px 25px;
-    border-radius:14px;
-    margin:0 auto 15px;
-    max-width:1200px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.20);
-    position:relative;
-    overflow:hidden;
-}
-.career-banner::before{
-    content:"";
-    position:absolute;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background:radial-gradient(
-        circle,
-        rgba(255,255,255,0.08) 0%,
-        transparent 60%
-    );
-    pointer-events:none;
-}
-.career-banner h2{
-  color:#ffcc00;
-  margin-top:0;
-  margin-bottom:15px;
-  font-size:2rem;
-  font-weight:800;
-}
-
-.career-banner p{
-  text-align:center;
-  max-width:1000px;
-  margin:0 auto;
-}
-.career-banner .career-tagline{
-  display:inline-block;
-  margin:0 auto 14px;
-  color:#ffffff;
-  font-size:1.18em;
-  font-weight:800;
-  letter-spacing:0.4px;
-  line-height:1.35;
-  text-align:center;
-}
-.career-banner-btn{
-  display:inline-block;
-  margin-top:22px;
-
-  background:#ffcc00;
-  color:#003366;
-
-  padding:14px 32px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:700;
-
-  transition:all 0.3s ease;
-  animation:careerPulse 2.5s infinite;
-}
-.career-banner-btn:hover{
-  transform:translateY(-3px);
-}
-@keyframes careerPulse{
-  0%{
-    transform:scale(1);
-  }
-  50%{
-    transform:scale(1.06);
-  }
-  100%{
-    transform:scale(1);
-  }
-}
-/* FINAL NAV BUTTON BORDER + HOVER */
-.nav-links a,
-.nav-links .result-toggle{
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  padding:8px 14px !important;
-  background:#FFF8DC !important;   /* Soft Ivory */
-  border:1px solid rgba(0, 74, 173, 0.45) !important;
-  border-radius:999px !important;
-  color:#004aad !important;
-  text-decoration:none !important;
-  font-weight:800 !important;
-  box-shadow:none !important;
-  box-sizing:border-box !important;
-  transition:all 0.35s ease !important;
-}
-
-.nav-links a:hover,
-.nav-links a:focus-visible,
-.nav-links .result-toggle:hover,
-.nav-links .result-toggle:focus-visible{
-  background:linear-gradient(135deg, #004aad, #002f6c) !important;
-  border-color:#002f6c !important;
-  color:#ffffff !important;
-  transform:translateY(-4px) scale(1.06) !important;
-  box-shadow:0 10px 24px rgba(0,0,0,0.28) !important;
-}
-
-.nav-links .career-btn:hover,
-.nav-links .career-btn:focus-visible{
-  animation:none !important;
-}
-
-/* Keep result dropdown menu items clean */
-.nav-links .result-menu a{
-  border:0 !important;
-  padding:10px 12px !important;
-  border-radius:6px !important;
-  background:#f4f7fb !important;
-  color:#004aad !important;
-  transform:none !important;
-  box-shadow:none !important;
-}
-
-.nav-links .result-menu a:hover,
-.nav-links .result-menu a:focus-visible{
-  background:#004aad !important;
-  color:#ffffff !important;
-  transform:none !important;
-  box-shadow:none !important;
-}
-/* ===== ELEGANT CAPSULE BANNER ===== */
-.new-batch-capsule {
-  background: linear-gradient(135deg, #004aad, #3282b8); /* Premium Verchas Blue */
-  color: #ffffff;
-  padding: 12px 28px;
-  margin: 20px auto;
-  max-width: 90%;
-  width: fit-content;
-  
-  border-radius: 999px; /* Perfect Capsule Shape */
-  box-shadow: 0 8px 24px rgba(0, 74, 173, 0.25);
-  
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  
-  font-family: 'Poppins', sans-serif;
-  animation: gentleFloat 4s ease-in-out infinite;
-  z-index: 1; /* Keeping standard z-index so nav dropdown can go above */
-  position: relative;
-}
-
-.capsule-badge {
-  background: #ffcc00;
-  color: #002f6c;
-  font-weight: 800;
-  font-size: 0.85em;
-  padding: 6px 16px;
-  border-radius: 50px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  white-space: nowrap;
-  animation: capsulePulse 2s infinite;
-}
-
-.capsule-text {
-  font-size: 1.05em;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  line-height: 1.3;
-  text-align: center;
-}
-
-.capsule-text strong {
-  color: #ffcc00;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.capsule-subtext {
-  font-size: 0.85em;
-  font-style: italic;
-  opacity: 0.95;
-}
-
-.capsule-btn {
-  background: #ffffff;
-  color: #004aad;
-  font-weight: 800;
-  font-size: 0.95em;
-  padding: 10px 24px;
-  border-radius: 50px;
-  text-decoration: none;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.capsule-btn:hover {
-  background: #ffcc00;
-  color: #002f6c;
-  transform: scale(1.05);
-}
-
-/* Animations */
-@keyframes capsulePulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.06); }
-  100% { transform: scale(1); }
-}
-
-@keyframes gentleFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-/* Mobile Adjustments (Forces 4-Row Layout) */
-@media (max-width: 900px) {
-  .new-batch-capsule {
-    flex-direction: column;
-    border-radius: 24px;
-    padding: 18px 16px;
-    gap: 14px;
-  }
-  .capsule-badge {
-    font-size: 0.8em;
-    margin-bottom: 2px;
-  }
-  .capsule-text {
-    display: flex;
-    flex-direction: column;
-    gap: 6px; /* Space between the rows */
-  }
-  .hide-mobile {
-    display: none !important; /* Hides desktop dividers/breaks */
-  }
-  .mob-block {
-    display: block !important;
-  }
-  
-  /* Specific Row Styling for Mobile */
-  .row-1 {
-    color: #ffcc00;
-    font-weight: 700;
-    font-size: 1.1em;
-  }
-  .row-2 {
-    font-weight: 800;
-    font-size: 1.15em;
-    letter-spacing: 0.5px;
-  }
-  .row-3 {
-    font-size: 0.95em;
-    margin-top: 4px;
-  }
-  .row-4 {
-    font-size: 1.05em;
-    font-weight: 700;
-    color: #ffeb3b; /* Bright yellow for urgency */
-  }
-}
-
-/* Mobile Nav: Compact, Non-bold, Smooth Horizontal Scroll */
-@media (max-width: 768px) {
-  nav {
-    overflow: visible !important; 
-    position: relative;
-    z-index: 9999; /* Ensure it stays above the banner */
-  }
-  .nav-links {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    overflow: visible !important; /* Fixes dropdown hiding behind */
-    width: max-content;
-    gap: 8px;
-    padding: 8px 5px;
-    animation: navMarquee 20s linear infinite; 
-  }
-  /* Pause marquee on tap so user can click */
-  .nav-links:hover, 
-  .nav-links:active,
-  .nav-links:focus-within {
-    animation-play-state: paused !important;
-  }
-  .nav-links a, .nav-links .result-toggle {
-    padding: 6px 12px !important;
-    font-size: 0.85em !important;
-    font-weight: normal !important;
-    white-space: nowrap;
-    flex: 0 0 auto;
-    border-radius: 999px !important;
-  }
-  .nav-links a.active, .nav-links .result-toggle.active {
-    background: #004aad !important;
-    color: #fff !important;
-  }
-  .nav-links .result-dropdown,
-  .nav-links .result-toggle {
-    width: auto !important; 
-  }
-  /* Keep dropdown menu on top */
-  .result-menu {
-    z-index: 100000 !important;
-  }
-  
-  /* ===== FOOTER MOBILE LAYOUT FIX ===== */
-  footer p .no-break {
-    display: block;
-    margin-top: 4px;
-    margin-bottom: 4px;
-  }
-}
-
-@keyframes navMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ===== POP-UP OVERLAY SYSTEM ===== */
-.popup-overlay {
-  display: none; 
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.65);
-  z-index: 999999; 
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(4px); 
-}
-
-.popup-wrapper {
-  position: relative;
-  max-width: 95%;
-  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-.popup-capsule {
-  margin: 0 !important; 
-}
-
-.popup-close-btn {
-  position: absolute;
-  top: -15px;
-  right: -5px;
-  background: #ffcc00;
-  color: #002f6c;
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 26px;
-  font-weight: bold;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 100;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-}
-
-.popup-close-btn:hover {
-  background: #c62828;
-  color: #ffffff;
-  transform: scale(1.1) rotate(90deg);
-}
-
-@keyframes popIn {
-  0% { transform: scale(0.7); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-/* Forces the first text row to stay on a single line on Desktop */
-@media (min-width: 901px) {
-  .desktop-nowrap {
-    white-space: nowrap;
-  }
-}
-/* ===== SCROLL TO TOP BUTTON ===== */
-.scroll-to-top {
-  position: fixed;
-  bottom: 26px;
-  left: 26px; /* Placed on the left so it doesn't overlap your contact buttons */
-  z-index: 99999;
-  background: #004aad;
-  color: #ffcc00;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 2px solid #ffcc00;
-  font-size: 1.5em;
-  cursor: pointer;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  
-  /* Hidden by default */
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
-}
-
-.scroll-to-top:hover {
-  background: #ffcc00;
-  color: #004aad;
-  border-color: #004aad;
-  transform: translateY(0) scale(1.1);
-}
-
-/* Class added via JavaScript when scrolling */
-.scroll-to-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* Mobile Adjustments */
-@media (max-width: 600px) {
-  .scroll-to-top {
-    bottom: 18px;
-    left: 18px;
-    width: 42px;
-    height: 42px;
-    font-size: 1.15em;
-  }
-}
-/* ===== FLOATING STUDY ZONE BUTTON (LHS) ===== */
-.floating-mock-test {
-  position: fixed;
-  bottom: 26px;
-  left: 26px; /* Positioned on the Left Hand Side */
-  z-index: 99999;
-
-  padding: 16px 36px;
-  border-radius: 50px;
-
-  /* Matches the Enroll Now gradient and text colors */
-  background: linear-gradient(135deg, #ffcc00, #ff9800);
-  color: #004aad;
-  font-size: 1.25em;
-  font-weight: 800;
-  text-decoration: none;
-
-  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
-
-  /* Matches the Enroll Now animations */
-  animation: pulseGlow 2s infinite, subtleBounce 15s infinite;
-  transition: all 0.35s ease;
-}
-
-/* Hover effect matching Enroll Now */
-.floating-mock-test:hover {
-  transform: translateY(-4px) scale(1.06);
-  background: linear-gradient(135deg, #004aad, #002f6c);
-  color: #ffffff;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
-}
-
-/* Pushes the Scroll to Top button up so it doesn't overlap the new Study Zone button */
-.scroll-to-top {
-  bottom: 100px !important;
-  left: 30px !important;
-}
-
-/* Mobile optimization */
-@media(max-width: 600px) {
-  .floating-mock-test {
-    bottom: 18px;
-    left: 18px;
-    font-size: 1.05em;
-    padding: 14px 26px;
-  }
-  
-  .scroll-to-top {
-    bottom: 85px !important;
-    left: 25px !important;
-  }
-.news-ticker-header {
-    display: none !important;
-  }
-
-}
-@media (max-width: 768px) {
-  .news-ticker-header {
-    display: none !important;
-  }
-}
-/* ===== COUNTDOWN MOBILE DROPDOWN ===== */
-.toggle-icon {
-  display: none; /* Hidden on Desktop */
-}
-.countdown-content {
-  display: block; /* Visible on Desktop */
-}
-
-@media (max-width: 900px) {
-  .exam-countdown-section {
-    cursor: pointer;
-    padding: 16px 12px;
-    transition: all 0.3s ease;
-  }
-  .toggle-icon {
-    display: inline-block;
-    font-size: 0.6em;
-    margin-left: 10px;
-    color: #d66b00;
-    transition: transform 0.3s ease;
-    vertical-align: middle;
-  }
-  .countdown-content {
-    display: none; /* Hidden by default on Mobile */
-    margin-top: 15px;
-  }
-  .exam-countdown-section.expanded .countdown-content {
-    display: block;
-    animation: fadeDown 0.4s ease forwards;
-  }
-  .exam-countdown-section.expanded .toggle-icon {
-    transform: rotate(180deg); /* Flips the arrow upwards */
-  }
-  .countdown-heading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-  }
-}
-
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-/* ===== VERCHAS EDUCATIONAL INITIATIVES ===== */
-.educational-initiatives {
-  padding: 40px 20px;
-  background: #f0f0f0;
-}
-
-.initiatives-intro {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 35px;
-  font-size: 1.1em;
-  color: #333;
-}
-
-.initiatives-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.initiative-card {
-  color: #ffffff;
-  padding: 35px 25px;
-  border-radius: 14px;
-  flex: 1;
-  min-width: 300px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Gradients for differentiation */
-.career-card {
-  background: linear-gradient(135deg, #4facfe, #00c6fb);
-}
-
-.study-card {
-  background: linear-gradient(135deg, #004aad, #3282b8); /* Matches your brand blue */
-}
-
-.initiative-card h3 {
-  color: #ffcc00;
-  font-size: 1.8em;
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-weight: 800;
-}
-
-.initiative-card p {
-  text-align: center;
-  font-size: 1.05em;
-  line-height: 1.5;
-  margin-bottom: 30px;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Container to hold both buttons side by side */
-.initiative-btn-group {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: nowrap; /* 🔥 This forces them to stay side by side */
-  margin-top: auto; 
-  width: 100%;
-}
-
-/* Updated button class */
-.initiative-btn {
-  display: inline-flex; 
-  align-items: center;
-  justify-content: center;
-  background: #ffcc00;
-  color: #003366;
-  padding: 10px 18px; 
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.9em;
-  transition: all 0.3s ease;
-  margin: 0;
-  text-align: center;
-  white-space: nowrap; /* 🔥 Keeps the text from breaking into two lines */
-}
-
-.initiative-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  background: #ffffff;
-}
-
-/* Mobile tweak so they fit perfectly side by side on phone screens */
-@media (max-width: 600px) {
-  .initiative-btn-group {
-    gap: 6px;
-  }
-  .initiative-btn {
-    padding: 8px 10px;
-    font-size: 0.75em;
-  }
-}
-
-/* Background overlay effect */
-.initiative-card::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
-  pointer-events: none;
-}
-/* Hide the nav result button on desktop by default */
-.mobile-nav-result {
-  display: none !important;
-}
-
-/* Mobile specific rules for Results button */
-@media (max-width: 768px) {
-  /* Show the result dropdown inside the nav bar */
-  .mobile-nav-result {
-    display: inline-block !important; 
-  }
-  
-  /* Hide the floating result dropdown to prevent duplicates */
-  .floating-result-dropdown {
-    display: none !important;
-  }
-}
-</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "EducationalOrganization",
-      "@id": "https://verchasacademy.in/#organization",
-      "name": "Verchas Academy",
-      "url": "https://verchasacademy.in",
-      "logo": "https://www.verchasacademy.in/verchas-logo.webp",
-      "telephone": ["+91 8347658985", "+91 8756591001"],
-      "email": "verchas@outlook.com",
-      "description": "Premier educational institute in Ayodhya offering specialized coaching for NEET, IIT-JEE, CUET, BSc. Nursing, and Foundation classes.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Saketpuri Road, Deokali Bypass, Opposite RSS Bhawan (Saket Nilyam)",
-        "addressLocality": "Ayodhya",
-        "addressRegion": "Uttar Pradesh",
-        "postalCode": "224001",
-        "addressCountry": "IN"
-      },
-      "areaServed": {
-        "@type": "AdministrativeArea",
-        "name": "Ayodhya"
-      },
-      "sameAs": [
-        "https://www.facebook.com/people/Verchas-Academy/61585473614021/",
-        "https://www.instagram.com/verchas.academy/",
-        "https://maps.app.goo.gl/MP6Z6k6E4SXY6xku8"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://verchasacademy.in/#website",
-      "url": "https://verchasacademy.in",
-      "name": "Verchas Academy",
-      "publisher": {
-        "@id": "https://verchasacademy.in/#organization"
-      }
-    }
-  ]
-}
-</script>
-</head>
-
-<body>
-<div id="newBatchPopup" class="popup-overlay">
-  <div class="popup-wrapper">
-    <button class="popup-close-btn" id="closePopupBtn" aria-label="Close Pop-up">&times;</button>
-    <section class="new-batch-capsule popup-capsule">
-      <span class="capsule-badge">🔥 NEW BATCHES </span>
-      <span class="capsule-text">
-      <span class="mob-block row-2" style="white-space: nowrap;">NEET • IIT-JEE • BSc. Nursing</span> <br class="hide-mobile">
-        <span class="capsule-subtext">
-      </span>
-      </span>
-      <a href="registration.html" class="capsule-btn">Book 7 Days Free Demo Now</a>
-</section>
-   </div>
-</div>
-
-<header>
-<!-- Hindi Button -->
-<a href="hindi.html" 
-   class="hindi-btn" 
-   aria-label="Open Hindi website"
-   title="हिंदी वेबसाइट पर जाएं"
-   onclick="sessionStorage.removeItem('capsulePopupShown');">हिंदी</a>
-
-  <div class="header-content">
-    <img src="verchas-logo.webp" alt="Verchas Academy Logo">
-    <div class="header-text">
-  <h1>Verchas Academy
-    <span class="seo-text"> Best NEET, IIT-JEE & Foundation (9th-12th) Coaching in Ayodhya</span>
-  </h1>
-
-  <div class="academy-location">Ayodhya</div>
-
-  <p>Igniting Minds, Shaping Futures</p>
-    </div>
-  </div>
-
-<!-- 🔴 RUNNING NEWS TICKER -->
-<div class="news-ticker-header">
-  <div class="ticker-track">
-    <span>
-      🔴 New batches of NEET 2027, IIT-JEE 2027 & BSc Nursing 2027
-🔴 Fee Concessions valid upto 15 September 2026 🔴 Prior-Admission Scholarship Test: Upto 70% Fee Concessions 🔴Exclusive Fee-Concession for Security Forces 🔴 Admissions Continues for Foundation NEET, IIT-JEE, CUET, BSc. Nursing & Foundation (9th to 12th) 🔴 Dedicated Career Guidance Cell for All Categories 🔴
-    </span>
-    <span>
-      🔴 New batches of NEET 2027, IIT-JEE 2027 & BSc Nursing 2027
-🔴 Fee Concessions valid upto 15 September 2026 🔴 Prior-Admission Scholarship Test: Upto 70% Fee Concessions 🔴Exclusive Fee-Concession for Security Forces 🔴 Admissions Continues for Foundation NEET, IIT-JEE, CUET, BSc. Nursing & Foundation (9th to 12th) 🔴 Dedicated Career Guidance Cell for All Categories 🔴
-    </span>
-  </div>
-</div>
-</header>
-
-<nav>
-  <div class="nav-links">
-    <!-- SET 1 -->
-    <a href="#about" class="cta-animate">About Us</a>
-    <a href="#courses" class="cta-animate">Our Courses</a>
-    <a href="#founders" class="cta-animate">Know the Founders</a>
-    <a href="#hods" class="cta-animate">Our Educators</a>
-    <a href="#contact" class="cta-animate">Contact Us</a>
-    <div class="result-dropdown mobile-nav-result">
-  <button type="button" class="cta-animate result-toggle">Results</button>
-  <div class="result-menu">
-    <a href="result.html?sheet=Misc">Miscellaneous</a>
-    <a href="result.html?sheet=1st Minor">1st Minor Test</a>
-    <a href="result.html?sheet=2nd Minor">2nd Minor Test</a>
-    <a href="result.html?sheet=3rd Minor">3rd Minor Test</a>
-    <a href="result.html?sheet=4th Minor">4th Minor Test</a>
-    <a href="result.html?sheet=5th Minor">5th Minor Test</a>
-  </div>
-</div>
-    <a href="career-guidance-cell.html" class="nav-btn career-btn">
-  🎯Career Guidance</a>
-    <a href="faq.html" class="cta-animate">FAQ</a>
-    <a href="https://verchasacademy.in/studyzone/" class="cta-animate">Study Zone</a>
-    
-    <!-- SET 2 (DUPLICATED FOR ENDLESS LOOP) -->
-    <a href="#about" class="cta-animate">About Us</a>
-    <a href="#courses" class="cta-animate">Our Courses</a>
-    <a href="#contact" class="cta-animate">Contact Us</a>
-    <a href="#founders" class="cta-animate">Know the Founders</a>
-    <a href="#hods" class="cta-animate">Our Educators</a>
-    <a href="career-guidance-cell.html" class="nav-btn career-btn">
-  🎯Career Guidance</a>
-    <a href="faq.html" class="cta-animate">FAQ</a>
-    <a href="https://verchasacademy.in/studyzone/" class="cta-animate">Study Zone</a>
-  </div>
-</nav>
-<section class="new-batch-capsule">
-  <span class="capsule-badge">🔥 NEW BATCHES </span>
-  <span class="capsule-text">
-        <span class="desktop-nowrap">
-        <span class="mob-block row-2">NEET • IIT-JEE • BSc. Nursing</span>
-        </span>
-        <br class="hide-mobile">
-        <span class="capsule-subtext">
-      </span>
-      </span>
-  <a href="registration.html" class="capsule-btn">Book 7 Days Free Demo Now</a>
-</section>
-<div class="hero">
-  <div class="hero-slider">
-  <img src="1.webp" class="slide active" alt="Verchas Academy - Deokali Campus" fetchpriority="high">
-  <img src="2.webp" class="slide" alt="Verchas Academy - Inside View" loading="lazy">
-  <img src="3.webp" class="slide" alt="Verchas Academy - Bilology Class - Dr. Ambrish Sir" loading="lazy">
-  <img src="4.webp" class="slide" alt="Verchas Academy - Dr. Ambrish During PTM July 26" loading="lazy">
-  <img src="5.webp" class="slide" alt="Verchas Academy - Chemistry Class - Miss Usha Ma'am" loading="lazy">
-  <img src="6.webp" class="slide" alt="Verchas Academy - Outdoor Activity Session" loading="lazy">
-  <img src="7.webp" class="slide" alt="Verchas Academy - Certificate Distribution to Toppers" loading="lazy">
-  <img src="8.webp" class="slide" alt="Verchas Academy - Certificate Distribution to Toppers" loading="lazy">
-  <img src="9.webp" class="slide" alt="Verchas Academy - Certificate Distribution to Toppers" loading="lazy">
-  <img src="10.webp" class="slide" alt="Verchas Academy - Certificate Distribution to Toppers" loading="lazy">
-  <img src="11.webp" class="slide" alt="Verchas Academy - Parents-Teacher Meeting July 26" loading="lazy">
-  <img src="12.webp" class="slide" alt="Verchas Academy - Verchas Academy - Certificate Distribution to Toppers" loading="lazy">
-  <img src="13.webp" class="slide" alt="Verchas Academy - Parents-Teacher Meeting July 26" loading="lazy">
-  </div>
-</div>
-
-<div class="watermark-section">
-
-<section id="about" class="fade-in">
-<div class="section-center">
-<h2>About Us</h2>
-<p>
-Founded & Mentored by Dr Ambrish Sir, Mr Satish Sir and Mr Nikhil Sir, VERCHAS ACADEMY is a premier institute for Board & Competitive Exam preparation. Inspired by Banaras Hindu University's academic culture and the Indian Air Force's ethos of discipline, dedication & sacrifice, We deliver metropolitan-level academic excellence. Concept-driven, result-oriented coaching for NEET-UG & IIT-JEE aspirants, focusing on fundamentals, consistent practice & scientific learning methods.
-</p>
-</div>
-</section>
-
-<section id="courses" class="fade-in">
-<div class="section-center">
-<h2>Our Courses</h2>
-<div class="courses"><div class="courses-track"><div class="courses-set">
-  <a class="course-card" href="neet-information.html"><h3>NEET (UG)</h3><p>Complete medical entrance coaching with tests and personal mentorship.</p><span class="click-info">Click for More Information</span></a>
-  <a class="course-card" href="iit-jee-information.html"><h3 class="course-title">IIT-JEE<span>(Mains & Advanced)</span></h3><p>Advanced problem-solving with strong conceptual foundation.</p><span class="click-info">Click for More Information</span></a>
-  <a class="course-card" href="cuet-information.html"><h3>CUET (UG)</h3><p>Focused preparation for university entrance exams with concept clarity and regular practice.</p><span class="click-info">Click for More Information</span></a>
-  <a class="course-card" href="bsc-nursing-information.html"><h3>BSc. Nursing</h3><p>Dedicated entrance exam preparation for nursing aspirants with guided study support.</p><span class="click-info">Click for More Information</span></a>
-  <div class="course-card" role="button" tabindex="0" data-course="foundation" aria-controls="course-info" aria-expanded="false"><h3>Foundation<br><span style="font-size:0.95em;">(11th & 12th)</span></h3><p>Board + competitive exam integrated preparation.</p>
-<span class="click-info">Click for More Information</span></div>
-  <div class="course-card" role="button" tabindex="0" data-course="pre-foundation" aria-controls="course-info" aria-expanded="false"><h3>Pre-Foundation<br><span style="font-size:0.95em;">(9th & 10th)</span></h3><p>Early foundation and Olympiad orientation.</p>
-<span class="click-info">Click for More Information</span></div>
-</div><div class="courses-set" aria-hidden="true">
-  <a class="course-card" href="neet-information.html" tabindex="-1"><h3>NEET (UG)</h3><p>Complete medical entrance coaching with tests and personal mentorship.</p><span class="click-info">Click for More Information</span></a>
-  <a class="course-card" href="iit-jee-information.html" tabindex="-1"><h3>IIT-JEE (Mains & Advanced)</h3><p>Advanced problem-solving with strong conceptual foundation.</p><span class="click-info">Click for More Information</span></a>
-  <a class="course-card" href="cuet-information.html" tabindex="-1"><h3>CUET (UG)</h3><p>Focused preparation for university entrance exams with concept clarity and regular practice.</p><span class="click-info">Click for More Information</span></a>
-  <a class="course-card" href="bsc-nursing-information.html" tabindex="-1"><h3>BSc. Nursing</h3><p>Dedicated entrance exam preparation for nursing aspirants with guided study support.</p><span class="click-info">Click for More Information</span></a>
-  <div class="course-card" role="button" tabindex="-1" data-course="foundation" aria-controls="course-info" aria-expanded="false"><h3>Foundation<br><span style="font-size:0.95em;">(11th & 12th)</span></h3><p>Board + competitive exam integrated preparation.</p>
-<span class="click-info">Click for More Information</span></div>
-  <div class="course-card" role="button" tabindex="-1" data-course="pre-foundation" aria-controls="course-info" aria-expanded="false"><h3>Pre-Foundation<br><span style="font-size:0.95em;">(9th & 10th)</span></h3><p>Early foundation and Olympiad orientation.</p>
-<span class="click-info">Click for More Information</span></div>
-</div></div></div>
-
-<div id="course-info" class="course-info" aria-live="polite">
-  <div class="course-info-panel" data-info="foundation">
-    <h3>Foundation Information</h3>
-    <p>Foundation preparation for Classes 11th and 12th builds strong board exam performance while gradually preparing students for NEET, IIT-JEE and other competitive examinations.</p>
-    <ul>
-      <li>Integrated learning for school boards and competitive exam basics.</li>
-      <li>Strong emphasis on concepts, revision, tests and doubt support.</li>
-      <li>Best suited for students who want early, structured preparation with academic discipline.</li>
-    </ul>
-  </div>
-
-  <div class="course-info-panel" data-info="pre-foundation">
-    <h3>Pre-Foundation Information</h3>
-    <p>Pre-Foundation preparation for Classes 9th and 10th strengthens the basics of Science and Mathematics and helps students develop confidence before entering senior secondary competitive preparation.</p>
-    <ul>
-      <li>Early concept building for Physics, Chemistry, Biology and Mathematics.</li>
-      <li>Useful for board exams, Olympiad orientation and future NEET/IIT-JEE readiness.</li>
-      <li>Best suited for students who want a strong academic base from the school level.</li>
-    </ul>
-  </div>
-</div>
-</div></section>
-
-<section class="exam-countdown-section fade-in" id="countdownSection" aria-label="Exam countdown">
-  <div class="countdown-header-mobile" id="countdownToggle">
-    <h2 class="countdown-heading">Your Dream Countdown <span class="toggle-icon">▼</span></h2>
-    <p class="countdown-subtitle">सपनों को हकीकत में बदलने का समय शुरू हो चुका है।</p>
-  </div>
-  <div class="countdown-content" id="countdownContent">
-    <div class="exam-countdown">
-    <div class="countdown-box">
-      <span class="countdown-label">Days left: NEET (UG)</span>
-      <span class="countdown-days" data-countdown="neet">--</span>
-      <span class="countdown-text">May 2027</span>
-    </div>
-    <div class="countdown-box">
-      <span class="countdown-label">Days left: JEE Mains 1</span>
-      <span class="countdown-days" data-countdown="jee1">--</span>
-      <span class="countdown-text">January 2027</span>
-    </div>
-    <div class="countdown-box">
-      <span class="countdown-label">Days left: JEE Mains 2</span>
-      <span class="countdown-days" data-countdown="jee2">--</span>
-      <span class="countdown-text">April 2027</span>
-    </div>
-    <div class="countdown-box">
-      <span class="countdown-label">BSc. Nursing</span>
-      <span class="countdown-days" data-countdown="nursing">--</span>
-      <span class="countdown-text">May-June 2027</span>
-    </div> <!-- Closes individual box -->
-  </div> <!-- Closes exam-countdown grid -->
-  </div> <!-- NEW: Closes countdown-content -->
-</section>
-
-<section class="features fade-in">
-  <div class="section-center">
-
-       <!-- BOX START -->
-    <div class="standout-box">
-
-      <!-- SECTION 1 -->
-      <h3 class="problem-heading">
-      WHY STUDENTS STRUGGLE IN MOST COACHING INSTITUTES
-      </h3>
-      <p>
-        Despite hard work and dedication, many students fail to achieve their true
-        potential due to common institutional gaps:
-      </p>
-
-      <ul class="cons-list">
-  <li>Difficulty in finding expert faculty for all subjects under one roof.</li>
-  <li>Coaching and test series not integrated into one system.</li>
-  <li>Lack of personal mentorship and academic monitoring.</li>
-  <li>No recorded classes for revision or absentees.</li>
-  <li>Frequent change of teachers, breaking academic continuity.</li>
-  <li>Fees charged even before students experience teaching quality.</li>
-  <li>No backup support if a student misses classes or falls behind.</li>
-  <li>Parents remain uncertain about the real classroom environment.</li>
-</ul>
-
-      <!-- SECTION 2 -->
-      <h3 class="solution-heading" style="margin-top:35px;">
-      WHY VERCHAS ACADEMY IS THE RIGHT CHOICE
-      </h3>
-
-      <ul class="pros-list">
-  <li>7 Days Free Demo Classes: No fees before experiencing teaching quality. Pay only when you are satisfied with the performance of Academy.</li>
-  <li>Top-Quality Faculty for Every Subject: We commit to provide expert teachers for all subjects under one roof.</li>
-  <li>Teacher Continuity Guaranteed: Same teachers from demo to final exams. We ensure that the best teachers always stay with us.</li>
-  <li>Integrated Coaching + Test Series: We have collaborated with one of the top Test Series providers in India so that Teaching, Practice, Testing & Evaluation are achieved altogether.</li>
-  <li>Personal Mentorship: Monthly progress reviews & one-to-one guidance.</li>
-  <li>Pure Offline Classes with Online Backup: Missed a class? Want revision? Access recorded lectures anytime - Zero Learning Loss.</li>
-  <li>Transparent Parent Review System: Parents can observe live classrooms environment (with the permission of the authorities).</li>
-</ul>
-
-    </div>
-    <!-- BOX END -->
-
-  </div>
-</section>
-
-<section id="founders" class="fade-in">
-<div class="section-center">
-<h2>Know the Founders</h2>
-<div class="founder-cards">
-
-<div class="founder">
-    <img src="founder1.webp" loading="lazy" alt="Dr. Ambrish Sir Founder Verchas Academy">
-    <h4>Dr. Ambrish Sir</h4>
-    <p class="founder-qualification">
-      MD (Ay), Gold Medalist<br>
-      PGDHCM<br>
-      Former Junior Resident Doctor<br>
-      IMS, BHU<br>
-      (7+ years of Teaching Experience)
-    </p>
-    <div class="founder-description">
-      Dr. Ambrish Sir is the proud recipient of 8 Gold Medals from the Institute of Medical Sciences, Banaras Hindu University, reflecting his academic brilliance and dedication to excellence. He has served as a Junior Resident Doctor at IMS BHU, gaining invaluable clinical and academic exposure. With over 7 years of teaching experience, he has mentored countless aspirants and under his mentorship many students have secured MBBS & other professional courses in government medical colleges across India.
-    </div>
-  </div>
-
-  
-
-<div class="founder">
-    <img src="founder3.webp" loading="lazy" alt="Mr. Nikhil Sir Founder Verchas Academy">
-    <h4>Mr. Satish Sir</h4>
-    <p class="founder-qualification">
-      Ex. Indian Air Force<br>
-      MA (English),
-      BSc. (Mathematics)<br>
-      Dip. in Electronics<br>
-      Cyber Security (NIELIT Kolkata)<br>
-      QAS (Aeronautical)
-    </p>
-    <div class="founder-description">
-      Mr. Satish Sir devoted 20 years of distinguished service to the Armed Forces. During his journey in the Indian Air Force, he closely observed diverse education policies and teaching methods across India, gaining deep insight into what truly shapes successful learners. Drawing from this vast experience, he brings a powerful vision of instilling military-grade discipline, resilience, and dedication in students. His guidance ensures that learners not only achieve academic excellence but also develop the mindset of warriors, prepared to face challenges, overcome obstacles, and succeed in every sphere of life.
-    </div>
-  </div>
-
-
-<div class="founder">
-    <img src="founder2.webp" loading="lazy" alt="Mr Satish Sir Founder Verchas Academy">
-    <h4>Mr. Nikhil Sir</h4>
-    <p class="founder-qualification">
-      MSc. (Chemistry) AU<br>
-      (4+ Years of Teaching Experience)<br>
-      Former Faculty at Prayagraj
-    </p>
-    <div class="founder-description">
-      Mr. Nikhil Sir brings with him a vast experience of teaching and mentoring students, shaping their academic journeys with clarity and confidence. Having faced challenges during his own school days where proper guidance and structured support were lacking, he now envisions providing every student with the essential guidelines and mentorship. His mission is to ensure that learners never feel directionless, but instead receive the right strategies and conceptual clarity to excel in their chosen fields.
-    </div>
-  </div>
-
-  
-</div></div></section>
-
-<section id="hods" class="fade-in">
-  <div class="section-center">
-    <h2>Our Top Educators</h2>
-
-    <div class="hod-flex">
-
-  <!-- Biology -->
-  <div class="hod-card">
-
-  <div class="hod-department">BIOLOGY</div>
-
-  <img src="HOD1.webp" loading="lazy" alt="Dr. Ambrish Sir - HOD Biology">
-
-    <h4>Dr. Ambrish Sir</h4>
-    <p class="hod-qualification">
-      MD (Ay), Gold Medalist<br>
-      PGDHCM<br>
-      Former Resident Doctor IMS, BHU<br>
-      (7+ Years of Teaching Experience)
-    </p>
-  </div>
-
-  <!-- Mathematics -->
-  <div class="hod-card">
-<div class="hod-department">MATHEMATICS</div>
-    <img src="HOD2.webp" loading="lazy" alt="Dr. Prashant Sir - HOD Mathematics">
-    <h4>Dr. Prashant Sir</h4>
-    <p class="hod-qualification">
-      PhD, IITian<br>
-      SPM Fellow at IIT BHU<br>
-      Awarded Honorary Professor from Cypress University, USA<br>
-      (11+ Years of Teaching Experience)
-    </p>
-  </div>
-<!-- Mathematics -->
-  <div class="hod-card">
-<div class="hod-department">MATHEMATICS</div>
-    <img src="HOD10.webp" loading="lazy" alt="Mr. Amar Sir - Mathematics">
-    <h4>Mr. Amar Sir</h4>
-    <p class="hod-qualification">
-      MSc. (Mathematics)<br>
-      (21+ Years of Teaching Experience)
-    </p>
-  </div>
-
-  <!-- Physics -->
-  <div class="hod-card">
-<div class="hod-department">PHYSICS<br><span>(NEET)</div>
-    <img src="HOD3.webp" loading="lazy" alt="Dr. Rajan Sir - HOD Physics">
-    <h4>Dr. Rajan Sir</h4>
-    <p class="hod-qualification">
-      PhD (Physics)<br>
-      (12+ Years of Teaching Experience)
-    </p>
-  </div>
-<!-- Physics-2 -->
-  <div class="hod-card">
-<div class="hod-department">PHYSICS<br><span>(IIT-JEE)</div>
-    <img src="HOD8.webp" loading="lazy" alt="Er. Prafull Sir - HOD Physics (IIT-JEE)">
-    <h4>Er. Prafull Sir</h4>
-    <p class="hod-qualification">
-      B Tech. (Electronics)<br>
-      Former Faculty of Unacademy
-      (7+ Years of Teaching Experience)
-    </p>
-  </div>
-
-  <!-- Chemistry -->
-  <div class="hod-card">
-<div class="hod-department">CHEMISTRY</div>
-    <img src="HOD4.webp" loading="lazy" alt="Dr. Dharmendra Sir - HOD Chemistry">
-    <h4>Dr. Dharmendra Sir</h4>
-    <p class="hod-qualification">
-      PhD (Chemistry)<br>
-      IIT Madras<br>
-      (7+ Years of Teaching Experience)
-    </p>
-  </div>
-<!-- Chemistry -->
-  <div class="hod-card">
-<div class="hod-department">CHEMISTRY</div>
-    <img src="HOD9.webp" loading="lazy" alt="Mr. Nikhil Sir - Chemistry">
-    <h4>Mr. Nikhil Sir</h4>
-    <p class="hod-qualification">
-      MSc. (Chemistry), AU<br>
-      Former Faculty of Prayagraj<br>
-      (4+ Years of Teaching Experience)
-    </p>
-  </div>
-
-<!-- Botany -->
-  <div class="hod-card">
-<div class="hod-department">BOTANY</div>
-    <img src="HOD7.webp" loading="lazy" alt="Dr. Awadhesh Sir - HOD Botany">
-    <h4>Dr. Awadhesh Sir</h4>
-    <p class="hod-qualification">
-      PhD (Botany)<br>
-      Banaras Hindu University<br>
-      (15+ Years of Teaching Experience)
-    </p>
-  </div>
-
-  <!-- Digital Education -->
-  <div class="hod-card">
-<div class="hod-department">DIGITAL EDUCATION</div>
-    <img src="HOD6.webp" loading="lazy" alt="Miss Usha Ma'am - HOD Digital Education">
-    <h4>Miss Usha Ma'am</h4>
-    <p class="hod-qualification">
-      MSc. (Chemistry)<br>
-      JNV Alumna<br>
-      (7+ Years of Teaching Experience)
-    </p>
-  </div>
-
-<!-- Discipline -->
-  <div class="hod-card">
-<div class="hod-department">ENGLISH & DISCIPLINE</div>
-    <img src="HOD5.webp" loading="lazy" alt="Mr. Satish Sir - HOD English & Discipline">
-    <h4>Mr. Satish Sir</h4>
-    <p class="hod-qualification">
-      Ex. Indian Air Force<br>
-      MA (English)<br>
-      BSc. (Mathematics)<br>
-      Dip. in Electronics<br>
-      Cyber Security (NIELIT)<br>
-      QAS (Aeronautical)
-    </p>
-  </div>
-
-</div>
-
-
-    <p class="hod-description">
-      Our commitment is to always provide the best and most experienced faculty to our students. To ensure this, the quality of teaching and faculty performance is regularly reviewed. Teachers undergo a monthly evaluation test conducted by our expert academic panel from Kota, Delhi, and Lucknow, ensuring that teaching standards remain consistently high and up to national benchmarks. Feedback is taken not only from students, but parents/ guardians are always welcome to visit the academy and experience the live classroom teaching environment.
-    </p>
-  </div>
-</section>
-<section class="educational-initiatives fade-in">
-  <div class="section-center">
-    <h2>EDUCATIONAL INITIATIVES OF VERCHAS ACADEMY: EDUCATION FOR ALL</h2>
-    
-    <p class="initiatives-intro">
-      Verchas Academy is committed to public service in education. We offer these completely free initiatives to empower every student, regardless of whether they are enrolled with us.
-    </p>
-
-    <div class="initiatives-flex">
-      
-      <!-- Career Guidance Cell -->
-      <div class="initiative-card career-card">
-        <h3>Career Guidance Cell</h3>
-        <p>Confused about your path after Class 10, Class 12, or Graduation? Get free, expert counseling for Medical, Engineering, Defence, Civil Services, and emerging career opportunities.</p>
-        
-        <div class="initiative-btn-group">
-          <a href="https://wa.me/918756591001?text=Hi%20Sir,%20I%20Need%20Free%20Career%20Counseling%20from%20Verchas%20Academy,%20Ayodhya." target="_blank" rel="noopener" class="initiative-btn">Connect With Counseller</a>
-          <a href="career-guidance-cell.html" class="initiative-btn">Book Free Counseling</a>
-        </div>
-      </div>
-
-      <!-- Study Zone -->
-      <div class="initiative-card study-card">
-        <h3>Study Zone</h3>
-        <p>An open-for-all online learning platform providing free mock tests, study materials, and premium academic resources to help you ace your competitive exams.</p>
-        <a href="https://verchasacademy.in/studyzone/" class="initiative-btn">Access Study Zone</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="testimonial-section fade-in">
-<div class="section-center">
-<div class="testimonial-intro"><div class="testimonial-stars-top">★★★★★ WHAT OUR STUDENTS SAY ★★★★★</div><div class="testimonial-main-title">STUDENT TESTIMONIALS</div><div class="testimonial-divider">❝</div><p class="testimonial-subtitle" style="text-align:center;font-weight:600;">Real reviews from our students on <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></p></div>
-<div class="testimonial-slider"><div class="testimonial-track">
-
-<!-- ***** STUDENT TESTIMONIALS STARTS HERE ***** -->
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Ayush Tripathi"><h4>AYUSH TRIPATHI</h4><div class="stars">★★★★★</div><div class="review-text">Amazing Experience. Faculties are Highly Experienced, Updated Modules, DPP, Test level is Osm. Thank you Verchas Academy for providing the amazing ambience.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Aditya Mishra"><h4>Aditya Mishra</h4><div class="stars">★★★★★</div><div class="review-text">Verchas Academy has played a vital role in producing All India Rank holders through its strong focus on rigorous question practice, regular tests and detailed performance analysis.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Atulya Shukla"><h4>Atulya Shukla</h4><div class="stars">★★★★☆</div><div class="review-text">The best thing I like is the counselling session by Satish Sir. The foundation classes are really fantastic and my grades are improving.</div></div>
-
-<div class="testimonial-card"><img src="female.webp" alt="Student testimonial from Dr Forever"><h4>Dr Forever</h4><div class="stars">★★★★★</div><div class="review-text">Very good coaching institute for NEET, IIT-JEE and Foundation classes. Best faculty, doubt clearing classes and peaceful discipline environment.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Alok Mishra"><h4>ALOK MISHRA</h4><div class="stars">★★★★★</div><div class="review-text">One of the Best Faculty in Ayodhya.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Anand Pandey"><h4>Anand Pandey</h4><div class="stars">★★★★★</div><div class="review-text">It's a very good academy, good teacher and very good behaviour of all staff.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Sandeep Pandey"><h4>Sandeep Pandey</h4><div class="stars">★★★★★</div><div class="review-text">Best Facilities & Discipline. Thank you Team Verchas for providing the amazing platform at my Native place.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Amit Kumar"><h4>Amit Kumar</h4><div class="stars">★★★★★</div><div class="review-text">Nice institute. The experience of the faculties are good.</div></div>
-
-<div class="testimonial-card"><img src="female.webp" alt="Student testimonial from Poonam Shukla"><h4>Poonam Shukla</h4><div class="stars">★★★★☆</div><div class="review-text">Nice coaching centre with affordable price and best facilities. Experienced teachers including IITians, BHU Gold Medalists and Air Force veterans.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Bansi Lal"><h4>Bansi Lal</h4><div class="stars">★★★★★</div><div class="review-text">Dr Ambrish Mishra Sir is the best teacher for Biology.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Jitu Mishra"><h4>Jitu Mishra</h4><div class="stars">★★★★★</div><div class="review-text">One of the best faculty in Ayodhya for Foundation 9th to 12th, NEET and IIT-JEE.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Anuj Kumar"><h4>Anuj Kumar</h4><div class="stars">★★★★★</div><div class="review-text">Varchas Academy, Ayodhya is an excellent institution that provides quality education to its students. The teachers are experienced and supportive, giving individual attention to students. The school environment is positive and motivating, encouraging students to achieve their goals.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Raghav Mishra"><h4>Raghav Mishra</h4><div class="stars">★★★★★</div><div class="review-text">Best coaching institute for NEET & JEE preparation! Great faculty and excellent guidance. Mera experience yahan bahut achha raha. Ek baar logo ko jarur try karna chahiye, aapke doubts definitely solve ho jayenge.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Monark Shrivastava"><h4>Monark Shrivastava</h4><div class="stars">★★★★★</div><div class="review-text">Best academy for classes 9th to 12th and for NEET & IIT-JEE aspirants. The faculty is highly experienced and very supportive. A special mention to Ambrish Sir for Biology — his teaching style makes even the toughest concepts easy to understand.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Rahul Kumar Singh"><h4>Rahul Kumar Singh</h4><div class="stars">★★★★★</div><div class="review-text">Best faculty, best facilities and best environment for competitive examinations. Ambrish Sir is the best.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Anirudh Dubey"><h4>Anirudh Dubey</h4><div class="stars">★★★★★</div><div class="review-text">Teachers are awesome.</div></div>
-
-<div class="testimonial-card"><img src="male.webp" alt="Student testimonial from Pankaj Kumar Jaiswal"><h4>Pankaj Kumar Jaiswal</h4><div class="stars">★★★★☆</div><div class="review-text">Best faculty in Ayodhya.</div></div>
-
-</div></div><div class="quote-banner-testimonial">❝ EXCELLENCE IS NOT AN ACT,<span class="quote-break"> IT IS A HABIT ❞</span><span class="decor">✧───────────── ☆ ─────────────✧</span></div></div></section>
-
-<section id="contact">
-<h2>Contact Us</h2>
-<p>Email: verchas@outlook.com</p>
-<p>Contacts: <a href="tel:+91 8347658985">+91 8347658985</a> <a href="tel:+91 8756591001">+91 8756591001</a></p>
-<p>Address: Saketpuri Road, Deokali Bypass, Ayodhya, Uttar Pradesh</p>
-<div class="map-section" style="margin:18px auto; max-width:750px;">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3562.2078185046084!2d82.1746081!3d26.769644699999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x49cb68c0e740f4c5%3A0xb32d46e686e15ead!2sVerchas%20Academy!5e0!3m2!1sen!2sin!4v1769104698577!5m2!1sen!2sin"
-    width="100%"
-    height="250"
-    style="border:0; border-radius:14px;"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
-
-<!-- Google + Social Row -->
-<div class="google-social-row">
-
-  <!-- Check us out on Google -->
-  <div class="google-check">
-    <span class="google-text">Check us out on:</span>
-    <a href="https://www.google.com/search?sca_esv=cc34ee859529854e&q=Verchas+Academy&nfpr=1"
-       target="_blank" rel="noopener">
-      <img src="Google.png" alt="Verchas Academy Google Business Profile">
-    </a>
-  </div>
-
-  <!-- Follow Us -->
-  <div class="contact-social">
-    <span class="follow-text">Follow Us:</span>
-
-    <a href="https://www.facebook.com/share/14Qz4YCwXY2/?mibextid=wwXIfr" target="_blank">
-      <img src="facebook.png" alt="Verchas Academy Facebook Page">
-    </a>
-
-    <a href="https://www.instagram.com/verchas.academy/" target="_blank">
-      <img src="instagram.png" alt="Verchas Academy Instagram Page">
-    </a>
-
-    <a href="https://www.youtube.com/channel/UCkq2_eaocfAdiY4hwj03Stw" target="_blank">
-      <img src="youtube.png" alt="Verchas Academy YouTube Channel">
-    </a>
-   <a href="https://wa.me/918756591001?text=I%20want%20to%20enquire%20about%20admission%20at%20Verchas%20Academy"
-       target="_blank">
-      <img src="whatsapp.webp" alt="Verchas Academy WhatsApp Contact">
-    </a>
-  </div>
-
-</div>
-
-</section>
-<footer>
-<a href="privacy-policy.html"
-   style="color:#ffcc00; font-weight:bold; text-decoration:none;">
-   Privacy Policy
-</a>
-
-&nbsp; | &nbsp;
-
-<a href="faq.html"
-   style="color:#ffcc00; font-weight:bold; text-decoration:none;">
-   FAQ
-</a>  
-  <p>Website Developed & Maintained by 
-  <span class="no-break">Sgt Satish Shukla (Retd)</span> <br> © 2026 Verchas Academy. All rights reserved.</p>
-
-</footer>
-
-<!-- Floating Call Button -->
-<a href="tel:+918347658985"
-
-   class="floating-contact floating-call"
-   aria-label="Call Verchas Academy"
-   title="Call Now">
-   <img src="call.webp" alt="Call Verchas Academy">
-</a>
-
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/918756591001?text=I%20want%20to%20enquire%20about%20admission%20at%20Verchas%20Academy"
-   target="_blank"
-   class="floating-contact floating-whatsapp"
-   aria-label="Chat with Verchas Academy on WhatsApp"
-   title="Chat on WhatsApp">
-   <img src="whatsapp.webp" alt="Chat with Verchas Academy on WhatsApp">
-</a>
-<!-- FLOATING ENROLL BUTTON -->
-<a href="registration.html" class="floating-enroll cta-animate">Enroll Now</a>
-<!-- FLOATING STUDY ZONE BUTTON -->
-<a href="https://verchasacademy.in/studyzone" class="floating-mock-test cta-animate">Study Zone</a>
-<!-- Floating Result Button -->
-<div class="result-dropdown floating-result-dropdown floating-enroll floating-scholarship cta-animate">
-  <button type="button" class="result-toggle">Results</button>
-  <div class="result-menu">
-  <a href="result.html?sheet=Misc">Miscellaneous</a>
-  <a href="result.html?sheet=1st Minor">1st Minor Test</a>
-  <a href="result.html?sheet=2nd Minor">2nd Minor Test</a>
-  <a href="result.html?sheet=3rd Minor">3rd Minor Test</a>
-  <a href="result.html?sheet=4th Minor">4th Minor Test</a>
-  <a href="result.html?sheet=5th Minor">5th Minor Test</a>
-</div>
-</div>
-
-<!-- Scroll to Top Button -->
-<button id="scrollToTopBtn" class="scroll-to-top" aria-label="Scroll to top" title="Go to top">
-  &#9650;
-</button>
-
-<script src="site.js" defer></script>
-<script>
-document.querySelectorAll('.course-card').forEach(card => {
-
-  card.addEventListener('click', function() {
-
-    document.querySelectorAll('.course-card').forEach(c=>{
-      c.classList.remove('active');
-    });
-
-    this.classList.add('active');
-
-  });
-
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-  function firstSunday(year, monthIndex){
-    const date = new Date(year, monthIndex, 1);
-    const offset = (7 - date.getDay()) % 7;
-    return new Date(year, monthIndex, 1 + offset);
-  }
-
-  function nextExamDate(monthIndex){
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    let examDate = firstSunday(today.getFullYear(), monthIndex);
-    if(examDate < today){
-      examDate = firstSunday(today.getFullYear() + 1, monthIndex);
-    }
-    return examDate;
-  }
-
-  const exams = {
-    neet: nextExamDate(4),
-    jee1: nextExamDate(0),
-    jee2: nextExamDate(3),
-    nursing: nextExamDate(5)
-  };
-
-  Object.keys(exams).forEach(function(key){
-    const element = document.querySelector('[data-countdown="' + key + '"]');
-    if(!element) return;
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    element.textContent = Math.ceil((exams[key] - today) / 86400000);
-  });
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelectorAll('.nav-links a, .nav-links .result-toggle');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      navLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-    });
-  });
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const popup = document.getElementById("newBatchPopup");
-  const closeBtn = document.getElementById("closePopupBtn");
-
-  if (popup && closeBtn) {
-    if (!sessionStorage.getItem("capsulePopupShown")) {
-      setTimeout(() => {
-        popup.style.display = "flex";
-        sessionStorage.setItem("capsulePopupShown", "true");
-      }, 1500); 
-    }
-
-    closeBtn.addEventListener("click", () => {
-      popup.style.display = "none";
-    });
-
-    window.addEventListener("click", (e) => {
-      if (e.target === popup) {
-        popup.style.display = "none";
-      }
-    });
-  }
-});
-</script>
-<script>
-// Scroll to Top Logic
-document.addEventListener("DOMContentLoaded", function() {
-  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-  // Show or hide the button based on scroll position
-  window.addEventListener("scroll", function() {
-    if (window.scrollY > 350) {
-      scrollToTopBtn.classList.add("show");
-    } else {
-      scrollToTopBtn.classList.remove("show");
-    }
-  });
-
-  // Scroll smoothly to top when clicked
-  scrollToTopBtn.addEventListener("click", function() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const countdownToggle = document.getElementById("countdownToggle");
-  const countdownSection = document.getElementById("countdownSection");
-  
-  if(countdownToggle && countdownSection) {
-    
-    // Toggle when clicking the header/subtitle
-    countdownToggle.addEventListener("click", function(event) {
-      if(window.innerWidth <= 900) {
-        countdownSection.classList.toggle("expanded");
-      }
-    });
-
-    // Close when clicking anywhere outside the box
-    document.addEventListener("click", function(event) {
-      if (window.innerWidth <= 900) {
-        // Check if the click happened outside the countdownSection
-        if (!countdownSection.contains(event.target)) {
-          countdownSection.classList.remove("expanded");
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verchas Academy | Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        :root {
+            --primary: #4F46E5; 
+            --primary-hover: #4338CA;
+            --secondary: #F97316; 
+            --bg-light: #F3F4F6;
+            --surface: #FFFFFF;
+            --text-dark: #111827;
+            --text-muted: #6B7280;
+            --sidebar-bg: #475569; 
+            --border: #E5E7EB;
         }
-      }
-    });
 
-  }
-});
-</script>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- SIDEBAR NAVIGATION --- */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: 0.3s;
+            z-index: 100;
+        }
+
+        .brand {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .brand img {
+            height: 120px;
+            margin-bottom: 15px;
+            object-fit: contain; 
+        }
+
+        .brand h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .brand h2 {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+
+        .nav-menu {
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: #CBD5E1;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+        }
+
+        /* Hide the ticker clones entirely on desktop layout */
+        .nav-btn.clone {
+            display: none;
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 2rem 3rem;
+            max-width: calc(100% - 280px);
+        }
+
+        .header-banner {
+            background: linear-gradient(135deg, var(--primary), #818CF8);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-banner h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        /* Tabs Logic */
+        .tab-section {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .tab-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 2.5rem 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        /* --- DROPDOWN MENUS --- */
+        .action-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background-color: var(--surface);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .dropdown:hover .dropdown-btn {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.2);
+        }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 280px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            z-index: 10;
+            margin-top: 10px;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            padding: 8px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 12px 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #EEF2FF;
+            color: var(--primary);
+            padding-left: 26px; 
+            font-weight: 600;
+        }
+
+        /* --- NESTED SUB-DROPDOWN LOGIC --- */
+        .sub-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .sub-dropdown-btn {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            padding: 12px 20px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sub-dropdown-btn:hover {
+            background-color: #EEF2FF;
+            color: var(--primary);
+            padding-left: 26px;
+            font-weight: 600;
+        }
+
+        .sub-dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            z-index: 20;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .sub-dropdown:hover .sub-dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scrollable-menu {
+            max-height: 350px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .scrollable-menu::-webkit-scrollbar { width: 6px; }
+        .scrollable-menu::-webkit-scrollbar-track { background: transparent; }
+        .scrollable-menu::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+
+        /* --- COMING SOON --- */
+        .coming-soon-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            text-align: center;
+            background: var(--surface);
+            border-radius: 16px;
+            border: 1px dashed var(--border);
+        }
+        .coming-soon-wrapper i { font-size: 4rem; color: #93C5FD; margin-bottom: 20px; }
+        .coming-soon-wrapper h2 { font-size: 2rem; color: var(--text-dark); margin-bottom: 10px; }
+        .coming-soon-wrapper p { color: var(--text-muted); font-size: 1.1rem; }
+
+
+        /* ================= MOBILE RESPONSIVENESS ================= */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            
+            .sidebar { 
+                width: 100%; 
+                height: auto; 
+                position: relative; 
+                display: flex; 
+                flex-direction: column; 
+                overflow-x: hidden; 
+            }
+            .brand { 
+                padding: 1.5rem; 
+                border-bottom: 1px solid rgba(255,255,255,0.1); 
+            }
+            .brand img { 
+                height: 90px;
+                margin: 0;
+            }
+
+            /* --- DRAGGABLE TICKER CONTAINER --- */
+            .nav-menu { 
+                flex-direction: row; 
+                width: 100%;
+                padding: 20px 10px; 
+                gap: 15px; 
+                overflow-x: auto; 
+                scroll-behavior: auto;
+                -ms-overflow-style: none; 
+                scrollbar-width: none; 
+                cursor: grab; 
+            }
+            
+            .nav-menu:active {
+                cursor: grabbing; 
+            }
+            
+            .nav-menu::-webkit-scrollbar {
+                display: none; 
+            }
+            
+            /* --- HIGHLIGHTED TICKER BUTTONS --- */
+            .nav-btn, .nav-btn.clone { 
+                display: flex; 
+                flex: 0 0 auto; 
+                white-space: nowrap; 
+                justify-content: center; 
+                font-size: 0.95rem;
+                padding: 10px 22px;
+                background: linear-gradient(135deg, rgba(79,70,229,0.8), rgba(67,56,202,0.9));
+                border: 1px solid #818CF8;
+                border-radius: 30px; 
+                color: #ffffff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                text-transform: none;
+                letter-spacing: 0.5px;
+                user-select: none; 
+            }
+
+            .nav-btn.active {
+                background: linear-gradient(135deg, var(--secondary), #EA580C);
+                border-color: #FDBA74;
+                box-shadow: 0 4px 15px rgba(249, 115, 22, 0.6);
+            }
+            
+            /* Rest of mobile styles */
+            .main-content { 
+                margin-left: 0; 
+                max-width: 100%; 
+                padding: 1rem; 
+            }
+            
+            /* HIDE DASHBOARD BANNER ON MOBILE */
+            .header-banner { 
+                display: none;
+            }
+
+            .action-row { 
+                flex-direction: column; 
+                gap: 15px; 
+            }
+            .dropdown { width: 100%; }
+            .dropdown-btn { 
+                width: 100%; 
+                justify-content: space-between; 
+            }
+
+            .dropdown-content {
+                position: static; 
+                width: 100%;
+                box-shadow: none;
+                border: 1px solid var(--border);
+                transform: none !important;
+                display: none; 
+            }
+            
+            .dropdown.open .dropdown-content {
+                display: block; 
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .sub-dropdown-content {
+                position: relative; 
+                left: 0;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                border-left: 4px solid var(--primary); 
+                border-radius: 0;
+                transform: none !important;
+                display: none;
+                padding-left: 10px;
+                background-color: #F8FAFC;
+            }
+            
+            .sub-dropdown.open .sub-dropdown-content {
+                display: block;
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <img src="verchas-logo.webp" alt="Logo">
+            <h1>Verchas Academy</h1>
+            <h2>Ayodhya</h2>
+        </div>
+        <nav class="nav-menu">
+            <button class="nav-btn active" onclick="switchTab(event, 'ninth')"><i class="fa-solid fa-graduation-cap"></i> 9th Batch</button>
+            <button class="nav-btn" onclick="switchTab(event, 'tenth')"><i class="fa-solid fa-graduation-cap"></i> 10th Batch</button>
+            <button class="nav-btn" onclick="switchTab(event, 'eleventh')"><i class="fa-solid fa-book"></i> 11th Batch</button>
+            <button class="nav-btn" onclick="switchTab(event, 'twelfth')"><i class="fa-solid fa-book"></i> 12th Batch</button>
+            <button class="nav-btn" onclick="switchTab(event, 'neet')"><i class="fa-solid fa-stethoscope"></i> NEET</button>
+            <button class="nav-btn" onclick="switchTab(event, 'bsc')"><i class="fa-solid fa-user-nurse"></i> BSc Nursing</button>
+            <button class="nav-btn" onclick="switchTab(event, 'jee')"><i class="fa-solid fa-rocket"></i> IIT-JEE</button>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        
+        <div class="header-banner">
+            <div>
+                <h2>Welcome to your Dashboard</h2>
+                <p>Select your batch to access notes and mock tests.</p>
+            </div>
+            <i class="fa-solid fa-laptop-file fa-3x" style="opacity: 0.8;"></i>
+        </div>
+
+        <!-- ================= 9TH BATCH ================= -->
+        <div id="ninth" class="tab-section active">
+            
+            <h3 class="section-title"><i class="fa-solid fa-file-pdf"></i> English Chapter Notes</h3>
+            <div class="action-row">
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-solid fa-book-open"></i> Kaveri - Prose <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content">
+                        <a href="Class_9.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 1. How I Taught....</a>
+                        <a href="Class_9.2.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 2. The Pot Maker</a>
+                        <a href="Class_9.3.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 3. Winds of Change</a>
+                        <a href="Class_9.4.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 4. Vitamin-M</a>
+                        <a href="Class_9.5.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 5. The World of Limitless....</a>
+                        <a href="Class_9.6.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 6. Twin Melodies</a>
+                        <a href="Class_9.7.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 7. Carrier of Words</a>
+                        <a href="Class_9.8.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 8. Follow That Dream</a>
+                    </div>
+                </div>
+<div class="dropdown">
+    <button class="dropdown-btn"><i class="fa-solid fa-book-open"></i> Kaveri - Poetry <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+    <div class="dropdown-content">
+        <a href="Class_9.1.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 1. Bharat Our Land</a>
+        <a href="Class_9.2.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 2. Gifts of Grace</a>
+        <a href="Class_9.3.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 3. Canvas of Soil</a>
+        <a href="Class_9.4.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 4. I Cannot Remember...</a>
+        <a href="Class_9.5.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 5. Nine Gold Medals</a>
+        <a href="Class_9.6.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 6. A Friend Found...</a>
+        <a href="Class_9.7.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 7. Words</a>
+        <a href="Class_9.8.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 8. Believe in Yourself</a>
+    </div>
+</div>
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-solid fa-book-open"></i> Grammar <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content">
+    	<a href="Tenses.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> Tenses</a>
+        <a href="Tense_Rules.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> Tense Rules</a>
+	<a href="Subject_Verb_Agreement.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i>Subject Verb Agreement</a>
+	<a href="Determiners.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> Determiners</a>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title"><i class="fa-solid fa-pen-to-square"></i> Mock Tests</h3>
+            <div class="action-row">
+                
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-regular fa-calendar-check"></i> Daily Practice Sets <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content scrollable-menu">
+                        <a href="02.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 02 Aug 26</a>
+                        <a href="03.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 03 Aug 26</a>
+                        <a href="04.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 04 Aug 26</a>
+                        <a href="05.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 05 Aug 26</a>
+                        <a href="06.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 06 Aug 26</a>
+                        <a href="07.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 07 Aug 26</a>
+                        <a href="08.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 08 Aug 26</a>
+                        <a href="09.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 09 Aug 26</a>
+                        <a href="10.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 10 Aug 26</a>
+                        <a href="11.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 11 Aug 26</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-solid fa-layer-group"></i> Topic-wise Mega Tests <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content">
+                        
+                        <div class="sub-dropdown">
+                            <button class="sub-dropdown-btn">
+                                <span style="display:flex; align-items:center; gap:12px;">
+                                    <i class="fa-solid fa-bullseye" style="color: var(--secondary);"></i> Present Tenses
+                                </span> 
+                                <i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color: #CBD5E1;"></i>
+                            </button>
+                            <div class="sub-dropdown-content">
+                                <a href="present1.html">Part - 1</a>
+                                <a href="present2.html">Part - 2</a>
+                                <a href="present3.html">Part - 3</a>
+                                <a href="present4.html">Part - 4</a>
+                                <a href="present5.html">Part - 5</a>
+                                <a href="present6.html">Part - 6</a>
+                            </div>
+                        </div>
+
+                        <div class="sub-dropdown">
+                            <button class="sub-dropdown-btn">
+                                <span style="display:flex; align-items:center; gap:12px;">
+                                    <i class="fa-solid fa-hourglass-half" style="color: var(--secondary);"></i> Past Tenses
+                                </span> 
+                                <i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color: #CBD5E1;"></i>
+                            </button>
+                            <div class="sub-dropdown-content">
+                                <a href="past1.html">Part - 1</a>
+                                <a href="past2.html">Part - 2</a>
+                                <a href="past3.html">Part - 3</a>
+                                <a href="past4.html">Part - 4</a>
+                                <a href="past5.html">Part - 5</a>
+                                <a href="past6.html">Part - 6</a>
+                            </div>
+                        </div>
+
+                        <div class="sub-dropdown">
+                            <button class="sub-dropdown-btn">
+                                <span style="display:flex; align-items:center; gap:12px;">
+                                    <i class="fa-solid fa-rocket" style="color: var(--secondary);"></i> Future Tenses
+                                </span> 
+                                <i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color: #CBD5E1;"></i>
+                            </button>
+                            <div class="sub-dropdown-content">
+                                <a href="future1.html">Part - 1</a>
+                                <a href="future2.html">Part - 2</a>
+                                <a href="future3.html">Part - 3</a>
+                                <a href="future4.html">Part - 4</a>
+                                <a href="future5.html">Part - 5</a>
+                                <a href="future6.html">Part - 6</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <!-- ================= 10TH BATCH ================= -->
+        <div id="tenth" class="tab-section">
+            
+            <h3 class="section-title"><i class="fa-solid fa-file-pdf"></i> English Chapter Notes</h3>
+            <div class="action-row">
+                
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-solid fa-book-open"></i> First Flight <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content">
+                        <a href="Class_10.1.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 1. A Letter to God</a>
+                        <a href="Class_10.1.2.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 2. Nelson Mandela...</a>
+                        <a href="Class_10.1.3.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 3. Two Stories...</a>
+                        <a href="Class_10.1.4.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 4. From the Diary...</a>
+                        <a href="Class_10.1.5.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 5. Glimpses of India</a>
+                        <a href="Class_10.1.6.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 6. Mijbil the Otter</a>
+                        <a href="Class_10.1.7.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 7. Madam Rides the Bus</a>
+                        <a href="Class_10.1.8.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 8. The Sermon at Benares</a>
+                        <a href="Class_10.1.9.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 9. The Proposal</a>
+                    </div>
+                </div>
+            
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-solid fa-book-open"></i> Footprints Without Feet <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content">
+                        <a href="Class_10.2.1.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 1. A Triumph of Surgery</a>
+                        <a href="Class_10.2.2.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 2. The Thief's Story</a>
+                        <a href="Class_10.2.3.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 3. The Midnight Visitor</a>
+                        <a href="Class_10.2.4.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 4. A Question of Trust</a>
+                        <a href="Class_10.2.5.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 5. Footprints without Feet</a>
+                        <a href="Class_10.2.6.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 6. The Making of a Scientist</a>
+                        <a href="Class_10.2.7.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 7. The Necklace</a>
+                        <a href="Class_10.2.8.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 8. Bholi</a>
+                        <a href="Class_10.1.9.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> 9. The Book That...</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-solid fa-book-open"></i> Grammar <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content">
+                        <a href="Tenses.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> Tenses</a>
+        <a href="Tense_Rules.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> Tense Rules</a>
+	<a href="Subject_Verb_Agreement.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i>Subject Verb Agreement</a>
+	<a href="Determiners.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> Determiners</a>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title"><i class="fa-solid fa-pen-to-square"></i> Mock Tests</h3>
+            <div class="action-row">
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-regular fa-calendar-check"></i> Daily Practice Sets <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content scrollable-menu">
+                        <a href="02.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 02 Aug 26</a>
+                        <a href="03.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 03 Aug 26</a>
+                        <a href="04.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 04 Aug 26</a>
+                        <a href="05.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 05 Aug 26</a>
+                        <a href="06.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 06 Aug 26</a>
+                        <a href="07.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 07 Aug 26</a>
+                        <a href="08.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 08 Aug 26</a>
+                        <a href="09.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 09 Aug 26</a>
+                        <a href="10.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 10 Aug 26</a>
+                        <a href="11.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 11 Aug 26</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-solid fa-layer-group"></i> Topic-wise Mega Tests <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content">
+                        
+                        <div class="sub-dropdown">
+                            <button class="sub-dropdown-btn">
+                                <span style="display:flex; align-items:center; gap:12px;">
+                                    <i class="fa-solid fa-bullseye" style="color: var(--secondary);"></i> Present Tenses
+                                </span> 
+                                <i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color: #CBD5E1;"></i>
+                            </button>
+                            <div class="sub-dropdown-content">
+                                <a href="present1.html">Part - 1</a>
+                                <a href="present2.html">Part - 2</a>
+                                <a href="present3.html">Part - 3</a>
+                                <a href="present4.html">Part - 4</a>
+                                <a href="present5.html">Part - 5</a>
+                                <a href="present6.html">Part - 6</a>
+                            </div>
+                        </div>
+
+                        <div class="sub-dropdown">
+                            <button class="sub-dropdown-btn">
+                                <span style="display:flex; align-items:center; gap:12px;">
+                                    <i class="fa-solid fa-hourglass-half" style="color: var(--secondary);"></i> Past Tenses
+                                </span> 
+                                <i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color: #CBD5E1;"></i>
+                            </button>
+                            <div class="sub-dropdown-content">
+                                <a href="past1.html">Part - 1</a>
+                                <a href="past2.html">Part - 2</a>
+                                <a href="past3.html">Part - 3</a>
+                                <a href="past4.html">Part - 4</a>
+                                <a href="past5.html">Part - 5</a>
+                                <a href="past6.html">Part - 6</a>
+                            </div>
+                        </div>
+
+                        <div class="sub-dropdown">
+                            <button class="sub-dropdown-btn">
+                                <span style="display:flex; align-items:center; gap:12px;">
+                                    <i class="fa-solid fa-rocket" style="color: var(--secondary);"></i> Future Tenses
+                                </span> 
+                                <i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color: #CBD5E1;"></i>
+                            </button>
+                            <div class="sub-dropdown-content">
+                                <a href="future1.html">Part - 1</a>
+                                <a href="future2.html">Part - 2</a>
+                                <a href="future3.html">Part - 3</a>
+                                <a href="future4.html">Part - 4</a>
+                                <a href="future5.html">Part - 5</a>
+                                <a href="future6.html">Part - 6</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= BSC NURSING ================= -->
+        <div id="bsc" class="tab-section">
+            
+            <h3 class="section-title"><i class="fa-solid fa-file-pdf"></i> English Chapter Notes</h3>
+            <div class="action-row">
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-solid fa-book-open"></i> English Notes <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content">
+                        <a href="Tenses.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> Tenses.pdf</a>
+                        <a href="Tense_Rules.pdf" target="_blank"><i class="fa-regular fa-file-pdf" style="color: #EF4444;"></i> Tense_Rules.pdf</a>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title"><i class="fa-solid fa-pen-to-square"></i> Mock Tests</h3>
+            <div class="action-row">
+                
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-regular fa-calendar-check"></i> Daily Practice Sets <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content scrollable-menu">
+                        <a href="02.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 02 Aug 26</a>
+                        <a href="03.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 03 Aug 26</a>
+                        <a href="04.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 04 Aug 26</a>
+                        <a href="05.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 05 Aug 26</a>
+                        <a href="06.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 06 Aug 26</a>
+                        <a href="07.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 07 Aug 26</a>
+                        <a href="08.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 08 Aug 26</a>
+                        <a href="09.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 09 Aug 26</a>
+                        <a href="10.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 10 Aug 26</a>
+                        <a href="11.08.26.html"><i class="fa-solid fa-pen-clip" style="color: #10B981;"></i> Practice Set: 11 Aug 26</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropdown-btn"><i class="fa-solid fa-layer-group"></i> Topic-wise Mega Tests <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></button>
+                    <div class="dropdown-content">
+                        
+                        <div class="sub-dropdown">
+                            <button class="sub-dropdown-btn">
+                                <span style="display:flex; align-items:center; gap:12px;">
+                                    <i class="fa-solid fa-bullseye" style="color: var(--secondary);"></i> Present Tenses
+                                </span> 
+                                <i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color: #CBD5E1;"></i>
+                            </button>
+                            <div class="sub-dropdown-content">
+                                <a href="present1.html">Part - 1</a>
+                                <a href="present2.html">Part - 2</a>
+                                <a href="present3.html">Part - 3</a>
+                                <a href="present4.html">Part - 4</a>
+                                <a href="present5.html">Part - 5</a>
+                                <a href="present6.html">Part - 6</a>
+                            </div>
+                        </div>
+
+                        <div class="sub-dropdown">
+                            <button class="sub-dropdown-btn">
+                                <span style="display:flex; align-items:center; gap:12px;">
+                                    <i class="fa-solid fa-hourglass-half" style="color: var(--secondary);"></i> Past Tenses
+                                </span> 
+                                <i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color: #CBD5E1;"></i>
+                            </button>
+                            <div class="sub-dropdown-content">
+                                <a href="past1.html">Part - 1</a>
+                                <a href="past2.html">Part - 2</a>
+                                <a href="past3.html">Part - 3</a>
+                                <a href="past4.html">Part - 4</a>
+                                <a href="past5.html">Part - 5</a>
+                                <a href="past6.html">Part - 6</a>
+                            </div>
+                        </div>
+
+                        <div class="sub-dropdown">
+                            <button class="sub-dropdown-btn">
+                                <span style="display:flex; align-items:center; gap:12px;">
+                                    <i class="fa-solid fa-rocket" style="color: var(--secondary);"></i> Future Tenses
+                                </span> 
+                                <i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color: #CBD5E1;"></i>
+                            </button>
+                            <div class="sub-dropdown-content">
+                                <a href="future1.html">Part - 1</a>
+                                <a href="future2.html">Part - 2</a>
+                                <a href="future3.html">Part - 3</a>
+                                <a href="future4.html">Part - 4</a>
+                                <a href="future5.html">Part - 5</a>
+                                <a href="future6.html">Part - 6</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= COMING SOON PANELS ================= -->
+        <div id="eleventh" class="tab-section">
+            <div class="coming-soon-wrapper">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <h2>11th Batch Material</h2>
+                <p>We are preparing top-tier study notes and tests. Coming very soon!</p>
+            </div>
+        </div>
+
+        <div id="twelfth" class="tab-section">
+            <div class="coming-soon-wrapper">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <h2>12th Batch Material</h2>
+                <p>We are preparing top-tier study notes and tests. Coming very soon!</p>
+            </div>
+        </div>
+
+        <div id="neet" class="tab-section">
+            <div class="coming-soon-wrapper">
+                <i class="fa-solid fa-user-doctor"></i>
+                <h2>NEET Preparation Hub</h2>
+                <p>Medical mock tests and biology modules are being assembled.</p>
+            </div>
+        </div>
+
+        <div id="jee" class="tab-section">
+            <div class="coming-soon-wrapper">
+                <i class="fa-solid fa-microchip"></i>
+                <h2>IIT-JEE Portal</h2>
+                <p>Advanced mechanics and mathematics modules are on the way.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function switchTab(evt, batchId) {
+            const sections = document.querySelectorAll('.tab-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(batchId).classList.add('active');
+            
+            // Highlight ALL buttons that point to this batch (both original and cloned in the ticker)
+            document.querySelectorAll(`.nav-btn[onclick*="${batchId}"]`).forEach(btn => {
+                btn.classList.add('active');
+            });
+        }
+
+        // ================= MOBILE DROPDOWN LOGIC =================
+        
+        // 1. Toggle dropdown when button is clicked
+        document.querySelectorAll('.dropdown-btn, .sub-dropdown-btn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                if (window.innerWidth <= 768) {
+                    event.stopPropagation(); // Stop click from immediately hitting the document listener
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // 2. Close dropdowns when clicking anywhere else on the screen
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.dropdown.open, .sub-dropdown.open').forEach(menu => {
+                    menu.classList.remove('open');
+                });
+            }
+        });
+
+        // 3. Prevent clicking inside the actual dropdown content from closing it
+        document.querySelectorAll('.dropdown-content, .sub-dropdown-content').forEach(content => {
+            content.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        });
+
+        // ================= MOBILE TICKER LOGIC =================
+        
+        const navMenu = document.querySelector('.nav-menu');
+        
+        // 1. Safely clone items for infinite scroll (CSS hides the clones on desktop)
+        if (!navMenu.dataset.cloned) {
+            const items = Array.from(navMenu.children);
+            items.forEach(item => {
+                let clone = item.cloneNode(true);
+                clone.classList.add('clone'); // This class keeps desktop looking normal!
+                navMenu.appendChild(clone);
+            });
+            navMenu.dataset.cloned = "true";
+        }
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let isInteracting = false; 
+        let currentScroll = 0;
+
+        // --- DRAG TO SCROLL (Mouse Controls) ---
+        navMenu.addEventListener('mousedown', (e) => {
+            isDown = true;
+            isInteracting = true;
+            navMenu.style.cursor = 'grabbing';
+            startX = e.pageX - navMenu.offsetLeft;
+            scrollLeft = navMenu.scrollLeft;
+        });
+        navMenu.addEventListener('mouseleave', () => {
+            isDown = false;
+            isInteracting = false;
+            navMenu.style.cursor = 'grab';
+        });
+        navMenu.addEventListener('mouseup', () => {
+            isDown = false;
+            isInteracting = false;
+            navMenu.style.cursor = 'grab';
+        });
+        navMenu.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - navMenu.offsetLeft;
+            const walk = (x - startX) * 1.5; // Drag speed multiplier
+            navMenu.scrollLeft = scrollLeft - walk;
+            currentScroll = navMenu.scrollLeft; // Sync variables
+        });
+
+        // --- DRAG TO SCROLL (Touch Controls) ---
+        navMenu.addEventListener('touchstart', () => { 
+            isInteracting = true; // Pause auto-scroll immediately on touch
+        }, {passive: true});
+        
+        navMenu.addEventListener('touchend', () => {
+            // Wait just a moment after letting go before scrolling starts again
+            setTimeout(() => { isInteracting = false; }, 800); 
+        });
+
+        // --- SMOOTH AUTO-SCROLL LOOP ---
+        function autoScrollTicker() {
+            // Only auto-scroll if screen is small AND user isn't holding the menu
+            if (window.innerWidth <= 768 && !isInteracting) {
+                currentScroll += 0.8; // SPEED: Change this number (1 is fast, 0.5 is slow)
+                navMenu.scrollLeft = currentScroll;
+                
+                // Once it scrolls exactly halfway, snap back to the start invisibly
+                if (navMenu.scrollLeft >= navMenu.scrollWidth / 2) {
+                    currentScroll = 0;
+                    navMenu.scrollLeft = 0;
+                }
+            } else {
+                // If on desktop or being dragged, just keep track of where we are
+                currentScroll = navMenu.scrollLeft;
+            }
+            requestAnimationFrame(autoScrollTicker); 
+        }
+        
+        // Start the engine
+        autoScrollTicker();
+    </script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelector('.nav-links');
-  if (!navLinks) return;
-
-  let isDragging = false;
-  let startX;
-  let dragOffset = 0;
-
-  // 1. Touch Start (Pause animation & record starting point)
-  navLinks.addEventListener('touchstart', (e) => {
-    if (window.innerWidth > 768) return; // Only triggers on mobile
-    isDragging = true;
-    startX = e.touches[0].clientX;
-    
-    // Pause your existing navMarquee CSS animation
-    navLinks.style.animationPlayState = 'paused';
-  }, { passive: true });
-
-  // 2. Touch Move (Drag the menu manually)
-  navLinks.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    const currentX = e.touches[0].clientX;
-    const diff = currentX - startX;
-    
-    // Apply offset via margin so it doesn't break the CSS transform animation
-    navLinks.style.marginLeft = `${dragOffset + diff}px`;
-  }, { passive: true });
-
-  // 3. Touch End (Save position & resume animation)
-  navLinks.addEventListener('touchend', (e) => {
-    if (!isDragging || window.innerWidth > 768) return;
-    isDragging = false;
-    
-    // Save the new offset so the next drag starts from here
-    const endX = e.changedTouches[0].clientX;
-    dragOffset += (endX - startX);
-    
-    // Resume the marquee animation seamlessly
-    navLinks.style.animationPlayState = 'running';
-  });
-});
+    document.addEventListener('DOMContentLoaded', () => {
+        // Find all links that end in .pdf
+        const pdfLinks = document.querySelectorAll('a[href$=".pdf"]');
+        
+        pdfLinks.forEach(link => {
+            link.addEventListener('click', async function(e) {
+                e.preventDefault(); // Stop the link from opening immediately
+                const url = this.getAttribute('href');
+                
+                try {
+                    // Send a quick 'HEAD' request to see if the file exists without downloading it
+                    const response = await fetch(url, { method: 'HEAD' });
+                    
+                    if (response.ok) {
+                        // File exists, redirect the current window to the PDF
+                        // Note: We use window.location.href instead of window.open to avoid popup blockers
+                        window.location.href = url;
+                    } else {
+                        // File returned a 404 or other error
+                        alert("Coming Soon....");
+                    }
+                } catch (error) {
+                    // If the check fails completely (e.g., network error)
+                    alert("Coming Soon....");
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>

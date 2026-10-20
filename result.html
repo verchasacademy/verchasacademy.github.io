@@ -213,7 +213,7 @@
   </div>
 
   <script>
-const API_URL = "https://script.google.com/macros/s/AKfycbxffhVZm_nctVZJ09YlUx3FwQlq7eozkOJmr7wGFWrA5c1ZHawX85dUSMMiQJboZ00AFg/exec";
+const API_URL = "https://vera.runasp.net/api/results";
 
 const params = new URLSearchParams(window.location.search);
 
@@ -241,17 +241,20 @@ function getResult() {
   // Show loading spinner
   resultDiv.innerHTML = "<div class='loader'></div><div style='color: #004aad;'>Fetching result…</div>";
 
-  // 3. Send the exact sheetName straight to your future-proof Google Script
+  // 3. Request the selected test result from the VeraERP Results API
   const fetchUrl = API_URL + "?sheetName=" + encodeURIComponent(sheetName) + "&mobile=" + encodeURIComponent(mobile);
 
-  fetch(fetchUrl)
-    .then(res => res.json())
+  fetch(fetchUrl, { method: "GET", headers: { "Accept": "application/json" } })
+    .then(async res => {
+      const data = await res.json();
+      if (!res.ok || data.error) throw new Error("NO_RESULT");
+      return data;
+    })
     .then(data => {
-      if (data.error) {
-        resultDiv.innerHTML = "<span class='error'>No result found</span>";
-      } else {
-        
-        let rawMarks = String(data.marks); 
+        const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, ch => ({
+          "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
+        }[ch]));
+        let rawMarks = String(data.marks ?? "");
         let tableHTML = "";
 
         if (rawMarks.includes('(') && rawMarks.includes(')')) {
@@ -270,8 +273,8 @@ function getResult() {
               let subName = match[1].trim(); 
               let marks = match[2].trim();   
               tableHTML += `<tr>
-                              <td><b>${subName}</b></td>
-                              <td>${marks}</td>
+                              <td><b>${escapeHTML(subName)}</b></td>
+                              <td>${escapeHTML(marks)}</td>
                             </tr>`;
             } else {
               let subParts = sub.trim().split('-');
@@ -279,8 +282,8 @@ function getResult() {
                 let marks = subParts.pop().trim();
                 let subName = subParts.join('-').trim();
                 tableHTML += `<tr>
-                                <td><b>${subName}</b></td>
-                                <td>${marks}</td>
+                                <td><b>${escapeHTML(subName)}</b></td>
+                                <td>${escapeHTML(marks)}</td>
                               </tr>`;
               }
             }
@@ -288,7 +291,7 @@ function getResult() {
 
           tableHTML += `<tr class="total-row">
                           <td>Total</td>
-                          <td>${totalScore}</td>
+                          <td>${escapeHTML(totalScore)}</td>
                         </tr>
                       </table>`;
         } else {
@@ -296,19 +299,24 @@ function getResult() {
           if (rawMarks.trim().toUpperCase() === "ABSENT") {
             tableHTML = `<div style='margin-top: 15px; color: #d32f2f; font-size: 1.2em;'><b>ABSENT</b></div>`;
           } else {
-            tableHTML = `<div style='margin-top: 15px;'><b>${rawMarks}</b></div>`;
+            tableHTML = `<div style='margin-top: 15px;'><b>${escapeHTML(rawMarks)}</b></div>`;
           }
         }
 
         resultDiv.innerHTML = 
           "<div class='success'>" +
-          "<div style='font-size: 1.15em; margin-bottom: 5px; color: #004aad;'>Name: <span style='color: #333;'><b>" + data.name + "</b></span></div>" +
+          "<div style='font-size: 1.15em; margin-bottom: 5px; color: #004aad;'>Name: <span style='color: #333;'><b>" + escapeHTML(data.name) + "</b></span></div>" +
+          (data.batch ? "<div style='font-size: 1em; margin-bottom: 8px; color: #004aad;'>Batch: <span style='color: #333;'><b>" + escapeHTML(data.batch) + "</b></span></div>" : "") +
           tableHTML +
           "</div>";
       }
     })
-    .catch(() => {
-      resultDiv.innerHTML = "<span class='error'>Something went wrong. Please try again.</span>";
+    .catch(error => {
+      if (error && error.message === "NO_RESULT") {
+        resultDiv.innerHTML = "<span class='error'>No result found</span>";
+      } else {
+        resultDiv.innerHTML = "<span class='error'>Something went wrong. Please try again.</span>";
+      }
     });
 }
 </script>

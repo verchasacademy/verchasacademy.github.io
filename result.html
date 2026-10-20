@@ -309,7 +309,6 @@ function getResult() {
           (data.batch ? "<div style='font-size: 1em; margin-bottom: 8px; color: #004aad;'>Batch: <span style='color: #333;'><b>" + escapeHTML(data.batch) + "</b></span></div>" : "") +
           tableHTML +
           "</div>";
-      }
     })
     .catch(error => {
       if (error && error.message === "NO_RESULT") {

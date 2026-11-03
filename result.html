@@ -90,6 +90,25 @@
     .success {
       color: #2e7d32;
     }
+
+    .rank-message {
+      margin: 12px 0 14px;
+      padding: 12px 10px;
+      border: 1px solid #f2c94c;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #fff8db, #fff0b3);
+      color: #805600;
+      font-size: 1em;
+      line-height: 1.5;
+      font-weight: 700;
+      box-shadow: 0 3px 9px rgba(128, 86, 0, 0.10);
+    }
+
+    .rank-message .rank-icon {
+      display: block;
+      font-size: 1.45em;
+      margin-bottom: 3px;
+    }
     .logo {
       max-width: 120px;
       margin-bottom: 4px;
@@ -303,10 +322,18 @@ function getResult() {
           }
         }
 
-        resultDiv.innerHTML = 
+        const rankLabels = { 1: "1st", 2: "2nd", 3: "3rd" };
+        const rankMessage = rankLabels[data.rank]
+          ? "<div class='rank-message'><span class='rank-icon'>🏆🎉</span>" +
+            "Congratulations! You ranked <strong>" + rankLabels[data.rank] +
+            "</strong> in your batch.</div>"
+          : "";
+
+        resultDiv.innerHTML =
           "<div class='success'>" +
           "<div style='font-size: 1.15em; margin-bottom: 5px; color: #004aad;'>Name: <span style='color: #333;'><b>" + escapeHTML(data.name) + "</b></span></div>" +
           (data.batch ? "<div style='font-size: 1em; margin-bottom: 8px; color: #004aad;'>Batch: <span style='color: #333;'><b>" + escapeHTML(data.batch) + "</b></span></div>" : "") +
+          rankMessage +
           tableHTML +
           "</div>";
     })

@@ -195,6 +195,69 @@
       color: #2e7d32; 
       font-size: 1.2em; 
     }
+  
+    /* Ranker celebration: lightweight CSS-only balloons and confetti */
+    .celebration-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .celebration-balloon {
+      position: absolute;
+      bottom: -130px;
+      width: 38px;
+      height: 50px;
+      border-radius: 50% 50% 46% 46%;
+      opacity: 0.92;
+      box-shadow: inset -7px -6px 0 rgba(0,0,0,0.10);
+      animation: balloon-rise var(--duration, 4.8s) ease-in forwards;
+    }
+    .celebration-balloon::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      transform: translateX(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 0;
+      border-top: 9px solid var(--balloon-color);
+    }
+    .celebration-balloon::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 56px;
+      width: 1px;
+      height: 48px;
+      background: rgba(80,80,80,0.45);
+      transform: rotate(4deg);
+      transform-origin: top;
+    }
+    @keyframes balloon-rise {
+      0% { transform: translate3d(0, 0, 0) rotate(-7deg); opacity: 0; }
+      10% { opacity: .95; }
+      50% { transform: translate3d(18px, -55vh, 0) rotate(8deg); }
+      100% { transform: translate3d(-12px, -115vh, 0) rotate(-5deg); opacity: .9; }
+    }
+    .celebration-confetti {
+      position: absolute;
+      top: -18px;
+      width: 9px;
+      height: 14px;
+      opacity: .95;
+      animation: confetti-fall var(--duration, 4s) linear forwards;
+    }
+    @keyframes confetti-fall {
+      0% { transform: translate3d(0, -5vh, 0) rotate(0deg); opacity: 1; }
+      100% { transform: translate3d(var(--drift, 30px), 110vh, 0) rotate(var(--spin, 720deg)); opacity: .9; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .celebration-balloon, .celebration-confetti { animation-duration: 1ms !important; }
+    }
+
   </style>
 <script type="application/ld+json">
 {
@@ -225,7 +288,7 @@
       maxlength="10"
     >
 
-    <button onclick="getResult()">View Result</button>
+    <button id="viewResultBtn" onclick="getResult()">View Result</button>
 
     <div id="result" class="result"></div>
     <a href="index.html" id="homeBtn" class="home-btn">Home</a>
@@ -245,6 +308,50 @@ document.getElementById("pageTitle").textContent = displayTitle;
 
 const returnPage = params.get("lang") === "hi" ? "hindi.html" : "index.html";
 document.getElementById("homeBtn").href = returnPage;
+
+
+function launchRankCelebration() {
+  // Remove any previous animation before starting a fresh one.
+  document.querySelector(".celebration-layer")?.remove();
+
+  const layer = document.createElement("div");
+  layer.className = "celebration-layer";
+  layer.setAttribute("aria-hidden", "true");
+  document.body.appendChild(layer);
+
+  const balloonColors = ["#ff4d6d", "#ffd166", "#06d6a0", "#4cc9f0", "#9b5de5", "#ff922b"];
+  for (let i = 0; i < 15; i++) {
+    const balloon = document.createElement("span");
+    balloon.className = "celebration-balloon";
+    const color = balloonColors[i % balloonColors.length];
+    balloon.style.left = (3 + Math.random() * 94) + "%";
+    balloon.style.setProperty("--balloon-color", color);
+    balloon.style.background = color;
+    balloon.style.setProperty("--duration", (4.2 + Math.random() * 1.4) + "s");
+    balloon.style.animationDelay = (Math.random() * 0.65) + "s";
+    layer.appendChild(balloon);
+  }
+
+  const confettiColors = ["#ff4d6d", "#ffd166", "#06d6a0", "#4cc9f0", "#9b5de5", "#ff922b"];
+  for (let i = 0; i < 95; i++) {
+    const piece = document.createElement("span");
+    piece.className = "celebration-confetti";
+    piece.style.left = (Math.random() * 100) + "%";
+    piece.style.background = confettiColors[i % confettiColors.length];
+    piece.style.setProperty("--duration", (3.2 + Math.random() * 2.0) + "s");
+    piece.style.setProperty("--drift", ((Math.random() - 0.5) * 220) + "px");
+    piece.style.setProperty("--spin", (360 + Math.random() * 1080) + "deg");
+    piece.style.animationDelay = (Math.random() * 0.8) + "s";
+    if (Math.random() > 0.55) {
+      piece.style.width = "6px";
+      piece.style.height = "6px";
+      piece.style.borderRadius = "50%";
+    }
+    layer.appendChild(piece);
+  }
+
+  window.setTimeout(() => layer.remove(), 6500);
+}
 
 function getResult() {
   const mobile = document.getElementById("mobile").value.trim();
@@ -336,6 +443,15 @@ function getResult() {
           rankMessage +
           tableHTML +
           "</div>";
+
+        // Once a result is successfully fetched, hide the search controls.
+        document.getElementById("mobile").style.display = "none";
+        document.getElementById("viewResultBtn").style.display = "none";
+
+        const rank = Number(data.rank);
+        if (Number.isInteger(rank) && rank >= 1 && rank <= 3) {
+          launchRankCelebration();
+        }
     })
     .catch(error => {
       if (error && error.message === "NO_RESULT") {
